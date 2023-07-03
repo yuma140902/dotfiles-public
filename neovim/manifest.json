@@ -4,6 +4,10 @@
     {
       "src": "nvim",
       "dst": "${XDG_CONFIG_HOME}/nvim"
+    },
+    {
+      "src": ".vsnip/",
+      "dst": "${HOME}/.vsnip"
     }
   ]
 }
