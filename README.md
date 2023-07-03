@@ -2,7 +2,7 @@
 
 ## インストール方法
 
-```sh
+```
 > ./dotfiles --help
 usage: dotfiles [-h] [-y] [-v] {install,list,info} ...
 
