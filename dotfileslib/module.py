@@ -69,7 +69,7 @@ def resolve_src_path(module_dir_path, src):
     return module_dir_path / src
 
 def make_symlink(src, dst, allow_overwrite=False):
-    if dst.exists():
+    if dst.exists() or dst.is_symlink(): # dst.is_symlink()はwindows対応
         if not allow_overwrite:
             return False
         if dst.is_symlink():
