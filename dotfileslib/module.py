@@ -37,7 +37,7 @@ class ModuleInfo:
             elif "src" in f and "dst" in f:
                 if "cond" not in f:
                     files.append(FileInstallation(f["src"], f["dst"]))
-                elif condition_matches(f.cond):
+                elif condition_matches(f["cond"]):
                     files.append(FileInstallation(f["src"], f["dst"]))
             else:
                 print("ignore " + str(f) + "")
