@@ -1,0 +1,9 @@
+{
+  "notice": "`:Lazy sync` to install plugins",
+  "files": [
+    {
+      "src": "nvim",
+      "dst": "${XDG_CONFIG_HOME}/nvim"
+    }
+  ]
+}
