@@ -14,11 +14,15 @@ def install(args):
             if mod is not None:
                 modules.append(mod)
 
-    all_ok = False
+    all_ok = True
     for mod in modules:
         print("Installing " + mod.get_name())
         if not mod.install_files(allow_overwrite=allow_overwrite):
             all_ok = False
+
+    for mod in modules:
+        print("Message from " + mod.get_name() + ":")
+        print(mod.get_notice())
 
     if not all_ok:
         sys.exit(1)

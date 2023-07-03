@@ -77,6 +77,8 @@ def make_symlink(src, dst, allow_overwrite=False):
             dst.unlink()
         else:
             shutil.move(dst, get_bak_path(dst))
+        print("created backup file")
+    dst.parent.mkdir(parents=True, exist_ok=True)
     dst.symlink_to(src, target_is_directory=src.is_dir())
     return True
 
