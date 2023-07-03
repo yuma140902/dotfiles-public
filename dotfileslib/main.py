@@ -8,6 +8,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog="dotfiles")
     parser.add_argument("-y", "--noconfirm", action="store_true",
                         help="ユーザーに入力を求めない")
+    parser.add_argument("-v", "--version", action="version", version='%(prog)s 0.1.0')
     sub_parsers = parser.add_subparsers(title="Sub Commands", dest="subcmd")
 
     parser_install = sub_parsers.add_parser("install", help="モジュールをインストールする")

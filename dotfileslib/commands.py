@@ -21,8 +21,10 @@ def install(args):
             all_ok = False
 
     for mod in modules:
-        print("Message from " + mod.get_name() + ":")
-        print(mod.get_notice())
+        notice = mod.get_notice()
+        if notice is not None:
+            print("Message from " + mod.get_name() + ":")
+            print(mod.get_notice())
 
     if not all_ok:
         sys.exit(1)
