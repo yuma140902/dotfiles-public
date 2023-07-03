@@ -18,8 +18,12 @@ if __name__ == '__main__':
                                 help="設定ファイル等の上書きを許可する。上書きされたファイルは\"元のファイル名.日時.bak\"などの名前で残される")
     parser_install.add_argument("-a", "--all", action="store_true",
                                 help="すべてのモジュールをインストールする")
+    parser_install.add_argument("-p", "--path", default=".",
+                             help="探索パス. デフォルト: \".\"")
 
     parser_list = sub_parsers.add_parser("list", help="モジュールを一覧表示する")
+    parser_list.add_argument("-p", "--path", default=".",
+                             help="探索パス. デフォルト: \".\"")
 
     parser_info = sub_parsers.add_parser("info", help="モジュールの情報を表示する")
     parser_info.add_argument("module", metavar="MODULE")

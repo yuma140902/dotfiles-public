@@ -7,7 +7,7 @@ def install(args):
     allow_overwrite = args.allow_overwrite
     modules = []
     if args.all:
-        modules = get_list_of_all_modules()
+        modules = get_list_of_all_modules(pathlib.Path(args.path))
     else:
         for name in args.module:
             mod = module.create_module_info(pathlib.Path.cwd() / name)
@@ -31,7 +31,7 @@ def install(args):
 
 
 def list(args):
-    modules = get_list_of_all_modules()
+    modules = get_list_of_all_modules(pathlib.Path(args.path))
     for mod in modules:
         print(module_to_oneline(mod))
 
@@ -43,10 +43,9 @@ def info(args):
         sys.exit(1)
     print_module(mod)
 
-def get_list_of_all_modules():
-    cwd = pathlib.Path.cwd()
+def get_list_of_all_modules(root):
     lst = []
-    for dir in cwd.iterdir():
+    for dir in root.iterdir():
         module_info = module.create_module_info(dir)
         if module_info is not None:
             lst.append(module_info)
