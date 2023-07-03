@@ -1,0 +1,9 @@
+{
+  "files": [
+    {
+      "cond": "platform.system() == 'Windows'",
+      "src": ".vsvimrc",
+      "dst": ".vsvimrc"
+    }
+  ]
+}
