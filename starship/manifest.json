@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "cond": "platform.system() == 'Linux'",
+      "src": "starship.ubuntu.toml",
+      "dst": "${XDG_CONFIG_HOME}/starship.toml"
+    },
+    {
+      "cond": "platform.system() == 'Windows'",
+      "src": "starship.windows.toml",
+      "dst": "${XDG_CONFIG_HOME}/starship.toml"
+    }
+  ]
+}
