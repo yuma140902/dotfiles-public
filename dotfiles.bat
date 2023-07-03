@@ -17,4 +17,4 @@ IF "%PYTHON%"=="" (
   )
 )
 
-%PYTHON% dotfiles.py %*
+%PYTHON% -m dotfileslib.main %*

@@ -13,4 +13,4 @@ if [ -z $PYTHON ]; then
   fi
 fi
 
-$PYTHON dotfiles.py $*
+$PYTHON -m dotfileslib.main $*
