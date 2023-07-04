@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "src": "settings.toml",
+      "dst": ".goneovim/settings.toml"
+    }
+  ]
+}
