@@ -31,13 +31,14 @@ options:
   -f, --allow-overwrite
                         設定ファイル等の上書きを許可する。上書きされたファイルは"元のファイル名.日時.bak"などの名前で残される
   -a, --all             すべてのモジュールをインストールする
-  -p PATH, --path PATH  探索パス. デフォルト: "."
-[root@a1226d165c99 app]# ./dotfiles list --help
+  -p PATH, --path PATH  --allが指定されたときの探索パス. デフォルト: "."
+
+> ./dotfiles list --help
 usage: dotfiles list [-h] [-p PATH]
 
 options:
   -h, --help            show this help message and exit
-  -p PATH, --path PATH  探索パス. デフォルト: "."
+  -p PATH, --path PATH  --allが指定されたときの探索パス. デフォルト: "."
 
 > ./dotfiles info --help
 usage: dotfiles info [-h] MODULE
