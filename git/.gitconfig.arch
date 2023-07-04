@@ -1,0 +1,19 @@
+[include]
+  path = ".gitconfig.private"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	autoCRLF = false
+	editor = nvim -N
+	quotepath = false
+[alias]
+	plog = log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
+	glog = plog --all --graph
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+[pull]
+	rebase = false
+
+# vim: ft=gitconfig ff=unix noexpandtab
