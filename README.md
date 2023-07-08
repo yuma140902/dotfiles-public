@@ -3,13 +3,24 @@
 - アプリケーションのインストールは行いません。設定ファイルの設置のみを行います。
 - 設定ファイルはアプリケーションごとにモジュールという単位で分けていて、`./dotfiles`スクリプトで個別にインストールできます。
 
+## 動作環境
+
+- OS
+  - Linux
+  - Windows
+  - (macOS)
+- Python 3
+
 ## インストール方法
 
 まずリポジトリをクローンします。クローン先は自由です。
 
 ```sh
 git clone https://github.com/yuma140902/dotfiles-public
+cd dotfiles-public
 ```
+
+次に`./dotfiles`を使って必要なモジュールをインストールします。
 
 ```
 > ./dotfiles --help
