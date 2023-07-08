@@ -5,6 +5,12 @@
 
 ## インストール方法
 
+まずリポジトリをクローンします。クローン先は自由です。
+
+```sh
+git clone https://github.com/yuma140902/dotfiles-public
+```
+
 ```
 > ./dotfiles --help
 usage: dotfiles [-h] [-y] [-v] {install,list,info} ...
