@@ -12,6 +12,40 @@ local function setup_lsp()
     -- :h lspconfig-keybindings
     -- :h vim.lsp.*
     --
+
+
+    require 'lsp_signature'.on_attach({
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+      -- If you want to hook lspsaga or other signature handler, pls set to false
+      handler_opts = {
+        border = "rounded" -- double, rounded, single, shadow, none, or a table of borders
+      },
+      extra_trigger_chars = { "(", "," },
+      always_trigger = false,
+
+      floating_window_above_cur_line = false,
+      floating_window_off_x = 1,                         -- adjust float windows x position.
+      floating_window_off_y = function()                 -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
+        local linenr = vim.api.nvim_win_get_cursor(0)[1] -- buf line number
+        local pumheight = vim.o.pumheight
+        local winline = vim.fn.winline()                 -- line number in the window
+        local winheight = vim.fn.winheight(0)
+
+        local margin = 3
+
+        -- window top
+        if winline - 1 < pumheight + margin then
+          return pumheight + margin
+        end
+
+        -- window bottom
+        if winheight - winline < pumheight + margin then
+          return -pumheight - margin
+        end
+
+        return 0
+      end,
+    }, bufnr)
   end
 
   -- 保存時にLSPの機能を使ってフォーマットする
