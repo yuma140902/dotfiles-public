@@ -1,6 +1,6 @@
 {
   "aerial.nvim": { "branch": "master", "commit": "00cac8e96f932dca8f559849cbea3f0812621d0d" },
-  "auto-session": { "branch": "main", "commit": "f391aba10ee61927a1cceb9ea3a9dde501e87e9e" },
+  "auto-session": { "branch": "main", "commit": "c61fa86a43fde1ad6b503fd14002260dbaa4d923" },
   "auto-split-direction.nvim": { "branch": "master", "commit": "f4e68b4121b5ea901f8664a9ca1c5cca5f96cab0" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "5af1bb7d722ef8a96658f01d6eb219c4cf746b32" },
@@ -16,7 +16,6 @@
   "lazy.nvim": { "branch": "main", "commit": "ceb413678dfcf3d5455208959185e3db1f7892c7" },
   "lightline.vim": { "branch": "master", "commit": "b1e91b41f5028d65fa3d31a425ff21591d5d957f" },
   "linediff.vim": { "branch": "main", "commit": "3925a50a02b4b1e7958807676f93e06b53c66e27" },
-  "lsp_signature.nvim": { "branch": "master", "commit": "17ff7a405fea8376b015b8ea7910d2e59958bf68" },
   "lspsaga.nvim": { "branch": "main", "commit": "5faeec9f2508d2d49a66c0ac0d191096b4e3fa81" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "22d17951315e22e602912c9629b97d183fb90d16" },
   "mason.nvim": { "branch": "main", "commit": "9a68a4bd997b72cee4132459e0fd99eea0cdc627" },
