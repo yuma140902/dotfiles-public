@@ -25,11 +25,6 @@ return {
       { 'hrsh7th/cmp-path',                    lazy = true },
       -- コマンドラインでの補完ソース
       { 'hrsh7th/cmp-cmdline',                 lazy = true },
-      {
-        -- cmp-nvim-lsp-signature-helpのかわり。試用中
-        'ray-x/lsp_signature.nvim',
-        lazy = true
-      }
     },
     init = function()
       vim.cmd 'set completeopt=menu,menuone,noselect'
@@ -89,7 +84,7 @@ return {
         },
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          --{ name = 'nvim_lsp_signature_help' },
+          { name = 'nvim_lsp_signature_help' },
           { name = 'vsnip' },
           { name = 'path' },
         }, {
