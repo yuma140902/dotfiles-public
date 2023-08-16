@@ -40,6 +40,9 @@ local function register_keymaps()
       },
       x = { name = 'EXTRA' }
     },
+    c = {
+      name = 'crates.nvim'
+    }
   }, { prefix = '<space>' })
 
   require 'which-key'.register({
