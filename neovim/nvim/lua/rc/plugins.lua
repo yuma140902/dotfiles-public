@@ -129,11 +129,7 @@ local plugins = {
     -- キーマップを表示するやつ
     'folke/which-key.nvim',
     lazy = true, -- 初めてrequire('which-key')が実行されたときにこのプラグインが読み込まれるようになる
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require 'which-key'.setup()
-    end
+    config = require 'pl/which-key'.config,
   },
   {
     -- スクロールバーを表示する
