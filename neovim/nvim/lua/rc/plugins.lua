@@ -287,14 +287,7 @@ local plugins = {
   },
   {
     'rcarriga/nvim-notify',
-    init = function()
-      require 'notify'.setup {
-        render = 'default',
-        stages = 'slide',
-        top_down = false,
-      }
-      vim.notify = require 'notify'
-    end
+    init = require 'pl/nvim-notify'.init,
   },
 
   -- util.lua --
