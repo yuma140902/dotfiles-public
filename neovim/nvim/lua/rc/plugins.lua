@@ -315,9 +315,7 @@ local plugins = {
   {
     'thinca/vim-partedit',
     cmd = 'Partedit',
-    config = function()
-      vim.g['partedit#opener'] = ':tabe'
-    end
+    config = require 'pl/vim-partedit'.config,
   },
 
   -- visual.lua --
