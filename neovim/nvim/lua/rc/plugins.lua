@@ -59,8 +59,8 @@ local plugins = {
         lazy = true
       }
     },
-    init = require 'pl/nvim-cmp'.init,
-    config = require 'pl/nvim-cmp'.config,
+    init = require 'pl.nvim-cmp'.init,
+    config = require 'pl.nvim-cmp'.config,
     event = { 'InsertEnter', 'CmdlineEnter' }
   },
   -- etc.lua --
@@ -68,7 +68,7 @@ local plugins = {
     'navarasu/onedark.nvim', -- カラースキーム
     lazy = false,            -- メインのカラースキームは確実に非同期で読み込むようにするらしい
     priority = 1000,         -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
-    config = require 'pl/onedark'.config
+    config = require 'pl.onedark'.config
   },
   -- ファイラ
   {
@@ -83,7 +83,7 @@ local plugins = {
   -- GhostTextとneovimはlocalhost:4001で通信する
   {
     'subnut/nvim-ghost.nvim',
-    init = require 'pl/nvim-ghost'.init,
+    init = require 'pl.nvim-ghost'.init,
     cmd = 'GhostTextStart'
   },
 
@@ -98,7 +98,7 @@ local plugins = {
       { 'nvim-telescope/telescope-github.nvim',   lazy = true },
       { 'debugloop/telescope-undo.nvim',          lazy = true },
     },
-    config = require 'pl/telescope'.config,
+    config = require 'pl.telescope'.config,
     cmd = 'Telescope'
   },
 
@@ -129,7 +129,7 @@ local plugins = {
     -- キーマップを表示するやつ
     'folke/which-key.nvim',
     lazy = true, -- 初めてrequire('which-key')が実行されたときにこのプラグインが読み込まれるようになる
-    config = require 'pl/which-key'.config,
+    config = require 'pl.which-key'.config,
   },
   {
     -- スクロールバーを表示する
@@ -153,20 +153,20 @@ local plugins = {
     -- セッション
     -- TODO: nvim-treeのウィンドウが復元されない
     'rmagatti/auto-session',
-    config = require 'pl/auto-session'.config,
+    config = require 'pl.auto-session'.config,
   },
   {
     -- ドキュメントコメントを生成してくれるやつ
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    config = require 'pl/neogen'.config,
+    config = require 'pl.neogen'.config,
     cmd = 'Neogen'
     -- Uncomment next line if you want to follow only stable versions
     -- version = "*"
   },
   {
     'lewis6991/gitsigns.nvim',
-    config = require 'pl/gitsigns'.config,
+    config = require 'pl.gitsigns'.config,
     cmd = 'Gitsigns'
   },
   {
@@ -184,7 +184,7 @@ local plugins = {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     lazy = true,
-    config = require 'pl/tree-sitter'.config,
+    config = require 'pl.tree-sitter'.config,
     cmd = { 'TSUpdate', 'TSEnable' },
     event = { 'BufNewFile', 'BufRead' }
   },
@@ -203,7 +203,7 @@ local plugins = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim'
     },
-    config = require 'pl/nvim-lspconfig'.config,
+    config = require 'pl.nvim-lspconfig'.config,
     cmd = 'Mason',
     event = { 'BufNewFile', 'BufRead' }
   },
@@ -213,7 +213,7 @@ local plugins = {
     'j-hui/fidget.nvim', -- LSPの状態を右下に表示する
     tag = 'legacy',      -- TODO:
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = require 'pl/fidget'.config,
+    config = require 'pl.fidget'.config,
     event = 'LspAttach'
   },
 
@@ -239,7 +239,7 @@ local plugins = {
   {
     'itchyny/lightline.vim', -- ステータスライン TODO: lualineを試す
     dependencies = 'itchyny/vim-gitbranch',
-    init = require 'pl/lightline'.init,
+    init = require 'pl.lightline'.init,
     event = { 'BufNewFile', 'BufRead' }
   },
   {
@@ -250,7 +250,7 @@ local plugins = {
   },
   {
     'rcarriga/nvim-notify',
-    init = require 'pl/nvim-notify'.init,
+    init = require 'pl.nvim-notify'.init,
   },
 
   -- util.lua --
@@ -268,8 +268,8 @@ local plugins = {
   {
     'cohama/lexima.vim',
     event = 'InsertEnter',
-    init = require 'pl/lexima'.init,
-    config = require 'pl/lexima'.config,
+    init = require 'pl.lexima'.init,
+    config = require 'pl.lexima'.config,
   },
   {
     'machakann/vim-sandwich',
@@ -278,7 +278,7 @@ local plugins = {
   {
     'thinca/vim-partedit',
     cmd = 'Partedit',
-    config = require 'pl/vim-partedit'.config,
+    config = require 'pl.vim-partedit'.config,
   },
 
   -- visual.lua --
@@ -286,7 +286,7 @@ local plugins = {
   {
     'folke/twilight.nvim', -- 近くのメソッドだけを表示する
     dependencies = 'nvim-treesitter/nvim-treesitter',
-    config = require 'pl/twilight'.config,
+    config = require 'pl.twilight'.config,
     cmd = 'Twilight'
   },
   --{ 'RRethy/vim-illuminate', -- カーソル下の単語をハイライトする。lsp, treesitter, 正規表現を使用して「同じ」単語を抽出する。さらに<a-n>, <a-p>で移動、<a-i>でテキストオブジェクトとして参照できる
@@ -304,7 +304,7 @@ local plugins = {
     -- dir = '~/pj/nvim/auto-split-direction.nvim',
     branch = 'master',
     cmd = 'SplitAutoDirection',
-    config = require 'pl/auto-split-direction'.config,
+    config = require 'pl.auto-split-direction'.config,
   },
 
   -- }}}
