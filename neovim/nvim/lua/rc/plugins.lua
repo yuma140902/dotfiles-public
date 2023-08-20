@@ -261,8 +261,7 @@ local plugins = {
     'stevearc/aerial.nvim',
     dependencies = 'nvim-treesitter/nvim-treesitter',
     config = function()
-      require('aerial').setup {
-      }
+      require('aerial').setup {}
     end,
     cmd = { 'AerialOpen', 'AerialPrev', 'AerialNext' }
   },
@@ -275,21 +274,9 @@ local plugins = {
   -- ui.lua --
   -- UIを改善するプラグイン
   {
-    'itchyny/lightline.vim', -- ステータスライン
+    'itchyny/lightline.vim', -- ステータスライン TODO: lualineを試す
     dependencies = 'itchyny/vim-gitbranch',
-    init = function()
-      vim.g.lightline = {
-        colorscheme = 'one',
-        active = {
-          left = { { 'mode', 'paste' },
-            { 'gitbranch', 'readonly', 'filename', 'modified' } }
-        },
-        component_function = {
-          gitbranch = 'gitbranch#name'
-        },
-      }
-      vim.o.showmode = false
-    end,
+    init = require 'pl/lightline'.init,
     event = { 'BufNewFile', 'BufRead' }
   },
   {
