@@ -83,9 +83,7 @@ local plugins = {
   -- GhostTextとneovimはlocalhost:4001で通信する
   {
     'subnut/nvim-ghost.nvim',
-    init = function()
-      vim.g.nvim_ghost_autostart = 0
-    end,
+    init = require 'pl/nvim-ghost'.init,
     cmd = 'GhostTextStart'
   },
 
