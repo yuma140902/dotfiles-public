@@ -68,11 +68,7 @@ local plugins = {
     'navarasu/onedark.nvim', -- カラースキーム
     lazy = false,            -- メインのカラースキームは確実に非同期で読み込むようにするらしい
     priority = 1000,         -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
-    config = function()
-      vim.opt.termguicolors = true
-      vim.opt.cursorline = true
-      require 'onedark'.load()
-    end
+    config = require 'pl/onedark'.config
   },
   -- ファイラ
   {
