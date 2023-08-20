@@ -1,4 +1,4 @@
-require 'disable_default_plugins'.disable()
+require 'rc/disable_default_plugins'
 
 -- lazy.nvim(プラグインマネージャ)を自動インストール
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
