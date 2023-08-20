@@ -240,9 +240,7 @@ local plugins = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim'
     },
-    config = function()
-      require 'lsp'.setup_lsp()
-    end,
+    config = require 'pl/nvim-lspconfig'.config,
     cmd = 'Mason',
     event = { 'BufNewFile', 'BufRead' }
   },
