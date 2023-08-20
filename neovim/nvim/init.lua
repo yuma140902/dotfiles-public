@@ -21,8 +21,4 @@ require 'rc/base'
 -- キーマップの設定
 require 'keymaps'.register_keymaps()
 
-vim.o.guifont = 'HackGen Console NF:h10'
-vim.o.autochdir = false
-if vim.g.neovide then
-  require 'neovide'
-end
+require 'rc/gui'
