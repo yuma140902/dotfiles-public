@@ -323,13 +323,7 @@ local plugins = {
   {
     'folke/twilight.nvim', -- 近くのメソッドだけを表示する
     dependencies = 'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require 'twilight'.setup {
-        dimming = {
-          alpha = 0.25
-        }
-      }
-    end,
+    config = require 'pl/twilight'.config,
     cmd = 'Twilight'
   },
   --{ 'RRethy/vim-illuminate', -- カーソル下の単語をハイライトする。lsp, treesitter, 正規表現を使用して「同じ」単語を抽出する。さらに<a-n>, <a-p>で移動、<a-i>でテキストオブジェクトとして参照できる
