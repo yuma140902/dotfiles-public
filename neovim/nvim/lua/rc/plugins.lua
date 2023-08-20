@@ -203,11 +203,7 @@ local plugins = {
   },
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      require 'gitsigns'.setup {
-        trouble = true,
-      }
-    end,
+    config = require 'pl/gitsigns'.config,
     cmd = 'Gitsigns'
   },
   {
