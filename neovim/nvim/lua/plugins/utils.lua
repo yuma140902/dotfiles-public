@@ -24,5 +24,12 @@ return {
       vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '$', 'at': '\\%#\\$', 'leave': 1})"
       vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '<BS>', 'at': '\\$\\%#\\$', 'delete': 1})"
     end
+  },
+  {
+    'machakann/vim-sandwich',
+    event = { 'BufNewFile', 'BufRead' },
+    config = function()
+      vim.cmd "let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)"
+    end
   }
 }
