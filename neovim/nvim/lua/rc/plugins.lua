@@ -1,4 +1,6 @@
 -- プラグインに関する設定
+--
+-- vim: set foldmethod=marker :
 
 -- lazy.nvim(プラグインマネージャ)を自動インストール
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -14,4 +16,562 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require 'lazy'.setup 'plugins'
+local plugins = {
+  -- { 'folke/lazy.nvim' },
+  -----------------------------------------------------------------------------
+  -- ライブラリ {{{
+  -----------------------------------------------------------------------------
+  -- }}}
+
+  -----------------------------------------------------------------------------
+  -- 未整理 {{{
+  -----------------------------------------------------------------------------
+  -- complete.lua --
+  -- 自動補完に関するプラグイン
+  {
+    -- vim-vsnip
+    'hrsh7th/vim-vsnip',
+    dependencies = {
+      { 'hrsh7th/vim-vsnip-integ',      lazy = true },
+      { 'rafamadriz/friendly-snippets', lazy = true },
+    },
+    event = { 'InsertEnter', 'CmdlineEnter' }
+  },
+
+  {
+    -- nvim-cmp
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      -- バッファ内の単語。普通フォールバック先として使う。ddc.vimのaroundソースに相当
+      { 'hrsh7th/cmp-buffer',                  lazy = true },
+      -- vsnipからの候補
+      { 'hrsh7th/cmp-vsnip',                   lazy = true },
+      -- lspからの候補
+      { 'hrsh7th/cmp-nvim-lsp',                lazy = true },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
+      -- ファイルパスの補完ソース
+      { 'hrsh7th/cmp-path',                    lazy = true },
+      -- コマンドラインでの補完ソース
+      { 'hrsh7th/cmp-cmdline',                 lazy = true },
+      {
+        -- cmp-nvim-lsp-signature-helpのかわり。試用中
+        'ray-x/lsp_signature.nvim',
+        lazy = true
+      }
+    },
+    init = function()
+      vim.cmd 'set completeopt=menu,menuone,noselect'
+    end,
+    config = function()
+      local cmp = require 'cmp'
+
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and
+            vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match(
+              '%s') ==
+            nil
+      end
+
+      local feedkey = function(key, mode)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode,
+          true)
+      end
+
+      cmp.setup {
+        snippet = {
+          -- REQUIRED - you must specify a snippet engine
+          expand = function(args)
+            vim.fn['vsnip#anonymous'](args.body)
+          end,
+        },
+        window = {
+          --completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        mapping = {
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item { behavior = cmp.SelectBehavior
+                  .Select }
+            elseif has_words_before() then
+              cmp.confirm { select = false }
+            else
+              fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
+          end, { 'i', 's' }),
+          ['<S-Tab>'] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item { behavior = cmp.SelectBehavior
+                  .Select }
+            elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+              feedkey('<Plug>(vsnip-jump-prev)', '')
+            end
+          end, { 'i', 's' }),
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.confirm { select = false }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<C-e>'] = cmp.mapping.abort(),
+        },
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          --{ name = 'nvim_lsp_signature_help' },
+          { name = 'vsnip' },
+          { name = 'path' },
+        }, {
+          {
+            name = 'buffer',
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+              keyword_length = 3
+            }
+          },
+        })
+      }
+
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline', keyword_length = 3 }
+        })
+      })
+    end,
+    event = { 'InsertEnter', 'CmdlineEnter' }
+  },
+  -- etc.lua --
+  {
+    'navarasu/onedark.nvim', -- カラースキーム
+    lazy = false,            -- メインのカラースキームは確実に非同期で読み込むようにするらしい
+    priority = 1000,         -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
+    config = function()
+      vim.opt.termguicolors = true
+      vim.opt.cursorline = true
+      require 'onedark'.load()
+    end
+  },
+  -- ファイラ
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function() require 'nvim-tree'.setup() end,
+    cmd = 'NvimTreeToggle',
+  },
+  -- Webページ内のテキストボックスを編集するために外部のテキストエディタを使用できるようにするブラウザアドオンGhostTextに対応するためのプラグイン
+  -- Neovim側がサーバーとして動作する
+  -- GhostTextを利用するためにはneovimを予め立ち上げ、:GhostTextStartでサーバーを起動させておく必要がある
+  -- GhostTextとneovimはlocalhost:4001で通信する
+  {
+    'subnut/nvim-ghost.nvim',
+    init = function()
+      vim.g.nvim_ghost_autostart = 0
+    end,
+    cmd = 'GhostTextStart'
+  },
+
+  -- fuzzy_finder.lua --
+  -- ファジーファインダに関するプラグイン
+  {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      -- コマンドパレット(VSCodeのC-S-PあるいはF1で表示されるやつ)
+      { 'LinArcX/telescope-command-palette.nvim', lazy = true },
+      { 'nvim-telescope/telescope-github.nvim',   lazy = true },
+      { 'debugloop/telescope-undo.nvim',          lazy = true },
+    },
+    config = function()
+      require 'telescope'.setup {
+        defaults = { file_ignore_patterns = { ".git" } },
+        extensions = {
+          command_palette = require 'command_palette'.table,
+          undo = {
+            side_by_side = true,
+            layout_strategy = 'vertical',
+            layout_config = {
+              preview_height = 0.8
+            }
+          }
+        },
+        pickers = {
+          buffers = {
+            mappings = {
+              i = {
+                ['<esc>'] = require 'telescope.actions'.close
+              },
+              n = {
+                ['<C-f>'] = require 'telescope.actions'.close
+              }
+            }
+          }
+        }
+      }
+      require 'telescope'.load_extension 'command_palette'
+      require 'telescope'.load_extension 'gh'
+      require 'telescope'.load_extension 'notify'
+      require 'telescope'.load_extension 'undo'
+    end,
+    cmd = 'Telescope'
+  },
+
+  -- ide_like.lua --
+  -- IDE風に操作するためのプラグイン達
+  {
+    -- LSP用のUI
+    'kkharji/lspsaga.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function() require 'lspsaga'.setup() end,
+    event = 'LspAttach'
+  },
+  {
+    -- quickfix, LSPのdiagnostics, referenceなどのリストを下部にきれいに表示する
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function() require 'trouble'.setup() end,
+    cmd = { 'TroubleToggle', 'TodoTrouble' },
+  },
+  {
+    -- いわゆるTODOコメントへ移動・一覧表示する
+    'folke/todo-comments.nvim',
+    dependencies = 'folke/trouble.nvim',
+    config = function() require 'todo-comments'.setup() end,
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  {
+    -- キーマップを表示するやつ
+    'folke/which-key.nvim',
+    lazy = true, -- 初めてrequire('which-key')が実行されたときにこのプラグインが読み込まれるようになる
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require 'which-key'.setup()
+    end
+  },
+  {
+    -- スクロールバーを表示する
+    'petertriho/nvim-scrollbar',
+    config = function() require 'scrollbar'.setup() end,
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  { 'simrat39/rust-tools.nvim', lazy = true, ft = 'rust' }, -- LSPと連携してInline hintを表示するなど、いくつかの機能を追加する
+  {
+    'saecki/crates.nvim',
+    tag = 'v0.3.0',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      require 'crates'.setup()
+
+      -- nvim-cmpソースの追加
+      vim.api.nvim_create_autocmd("BufRead", {
+        group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
+        pattern = "Cargo.toml",
+        callback = function()
+          require 'cmp'.setup.buffer({ sources = { { name = "crates" } } })
+        end,
+      })
+
+      -- キーマップの追加
+      local crates = require('crates')
+
+      vim.keymap.set('n', '<space>ct', crates.toggle, { silent = true, desc = 'Toggle' })
+      vim.keymap.set('n', '<space>cr', crates.reload, { silent = true, desc = 'Reload' })
+
+      vim.keymap.set('n', '<space>cv', crates.show_versions_popup, { silent = true, desc = 'Show versions popup' })
+      vim.keymap.set('n', '<space>cf', crates.show_features_popup, { silent = true, desc = 'Show features popup' })
+      vim.keymap.set('n', '<space>cd', crates.show_dependencies_popup,
+        { silent = true, desc = 'Show dependencies popup' })
+
+      vim.keymap.set('n', '<space>cu', crates.update_crate, { silent = true, desc = 'Update crate' })
+      vim.keymap.set('v', '<space>cu', crates.update_crates, { silent = true, desc = 'Update crates' })
+      vim.keymap.set('n', '<space>ca', crates.update_all_crates, { silent = true, desc = 'Update ALL crates' })
+      vim.keymap.set('n', '<space>cU', crates.upgrade_crate, { silent = true, desc = 'Upgrade crate' })
+      vim.keymap.set('v', '<space>cU', crates.upgrade_crates, { silent = true, desc = 'Upgrade crates' })
+      vim.keymap.set('n', '<space>cA', crates.upgrade_all_crates, { silent = true, desc = 'Upgrade ALL crates' })
+
+      --vim.keymap.set('n', '<space>ce', crates.expand_plain_crate_to_inline_table, {silent = true})
+      --vim.keymap.set('n', '<space>cE', crates.extract_crate_into_table, {silent = true})
+
+      vim.keymap.set('n', '<space>cH', crates.open_homepage, { silent = true, desc = 'Open homepage' })
+      vim.keymap.set('n', '<space>cR', crates.open_repository, { silent = true, desc = 'Open repo' })
+      vim.keymap.set('n', '<space>cD', crates.open_documentation, { silent = true, desc = 'Open doc' })
+      vim.keymap.set('n', '<space>cC', crates.open_crates_io, { silent = true, desc = 'Open crates.io' })
+    end
+  },
+  {
+    'mfussenegger/nvim-jdtls',
+    lazy = true
+  },
+  {
+    -- セッション
+    -- TODO: nvim-treeのウィンドウが復元されない
+    'rmagatti/auto-session',
+    config = function()
+      require 'auto-session'.setup {
+        log_level = 'error', -- デフォルトはinfo。うるさかったらerrorにすればよい
+        auto_save_enabled = not vim.g.neovide,
+        auto_restore_enabled = not vim.g.neovide,
+      }
+    end
+  },
+  {
+    -- ドキュメントコメントを生成してくれるやつ
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require 'neogen'.setup { snippet_engine = 'vsnip' }
+    end,
+    cmd = 'Neogen'
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require 'gitsigns'.setup {
+        trouble = true,
+      }
+    end,
+    cmd = 'Gitsigns'
+  },
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      -- nothing
+    end,
+    cmd = { 'Git' }
+  },
+
+  -- library.lua --
+  -- ライブラリ的なプラグイン
+  {
+    -- 構文解析をしてくれるやつ。それぞれの言語用のパーサーを:TSInstallで別途インストールする必要があるので注意
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    lazy = true,
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        sync_install = false,
+        auto_install = true,
+        highlight = {
+          enable = true,
+          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+          -- Using this option may slow down your editor, and you may see some duplicate highlights.
+          -- Instead of true it can also be a list of languages
+          additional_vim_regex_highlighting = false,
+        },
+        incremental_selection = {
+          enable = true,
+          -- TODO: 活用方法がいまいちわからない
+          keymaps = {
+            init_selection = "tnn", -- set to `false` to disable one of the mings
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+          },
+        },
+        indent = {
+          enable = true
+        }
+      }
+    end,
+    cmd = { 'TSUpdate', 'TSEnable' },
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  { 'nvim-lua/plenary.nvim' },     -- Luaの関数集。少なくともtodo-comments.nvimが依存している
+  {
+    'nvim-tree/nvim-web-devicons', -- deviconに関するライブラリ。trouble.nvim, ddu-column-icon_filenameなどのアイコン表示が改善される
+    lazy = true,
+    config = function() require 'nvim-web-devicons'.setup() end
+  },
+
+  -- lsp.lua --
+  -- LSPに関するプラグイン
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim'
+    },
+    config = function()
+      require 'lsp'.setup_lsp()
+    end,
+    cmd = 'Mason',
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  { 'williamboman/mason.nvim',           lazy = true },
+  { 'williamboman/mason-lspconfig.nvim', lazy = true },
+  {
+    'j-hui/fidget.nvim', -- LSPの状態を右下に表示する
+    tag = 'legacy',      -- TODO:
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require 'fidget'.setup {
+        text = { spinner = 'dots' },
+        window = { blend = 0, border = 'none' }
+      }
+    end,
+    event = 'LspAttach'
+  },
+
+  -- motion.lua --
+  -- 移動に関するプラグイン
+  {
+    -- LSPを使ってコードアウトラインを作り、移動できるようにするプラグイン
+    'stevearc/aerial.nvim',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('aerial').setup {
+      }
+    end,
+    cmd = { 'AerialOpen', 'AerialPrev', 'AerialNext' }
+  },
+  {
+    -- easy-motionみたいなやつ
+    'skanehira/jumpcursor.vim',
+    event = { 'BufRead' }
+  },
+
+  -- ui.lua --
+  -- UIを改善するプラグイン
+  {
+    'itchyny/lightline.vim', -- ステータスライン
+    dependencies = 'itchyny/vim-gitbranch',
+    init = function()
+      vim.g.lightline = {
+        colorscheme = 'one',
+        active = {
+          left = { { 'mode', 'paste' },
+            { 'gitbranch', 'readonly', 'filename', 'modified' } }
+        },
+        component_function = {
+          gitbranch = 'gitbranch#name'
+        },
+      }
+      vim.o.showmode = false
+    end,
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  {
+    'itchyny/vim-gitbranch', -- Gitのブランチに関する情報を提供する。インストールされているとlightlineの該当機能が有効化される
+    lazy = true
+    -- TODO: gitsignsがあるからいらないのでは？
+    -- gitsignsに変える場合、遅延読み込みが課題である(gitbranchは軽いので同期読み込みでもよい)
+  },
+  {
+    'rcarriga/nvim-notify',
+    init = function()
+      require 'notify'.setup {
+        render = 'default',
+        stages = 'slide',
+        top_down = false,
+      }
+      vim.notify = require 'notify'
+    end
+  },
+
+  -- util.lua --
+  -- ユーティリティ的な小物のプラグイン
+  {
+    -- :Linediffコマンドで2つの選択した部分の差分を表示してくれる
+    'AndrewRadev/linediff.vim',
+    cmd = 'Linediff'
+  },
+  {
+    'norcalli/nvim-colorizer.lua', -- カラーコードに色をつける
+    config = function() require 'colorizer'.setup() end,
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  {
+    'cohama/lexima.vim',
+    event = 'InsertEnter',
+    init = function()
+      vim.g.lexima_enable_basic_rules = 1
+      vim.g.lexima_enable_newline_rules = 1
+      vim.g.lexima_enable_endwise_rules = 1
+    end,
+    config = function()
+      vim.cmd "call lexima#add_rule({'filetype': 'rust', 'char': '''', 'at': '&\\%#', 'input': ''''})"
+      vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '$', 'input_after': '$'})"
+      vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '$', 'at': '\\%#\\$', 'leave': 1})"
+      vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '<BS>', 'at': '\\$\\%#\\$', 'delete': 1})"
+    end
+  },
+  {
+    'machakann/vim-sandwich',
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  {
+    'thinca/vim-partedit',
+    cmd = 'Partedit',
+    config = function()
+      vim.g['partedit#opener'] = ':tabe'
+    end
+  },
+
+  -- visual.lua --
+  -- バッファの見た目にかかわるプラグイン。特にカーソル位置によって見た目の変わるもの
+  {
+    'folke/twilight.nvim', -- 近くのメソッドだけを表示する
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require 'twilight'.setup {
+        dimming = {
+          alpha = 0.25
+        }
+      }
+    end,
+    cmd = 'Twilight'
+  },
+  --{ 'RRethy/vim-illuminate', -- カーソル下の単語をハイライトする。lsp, treesitter, 正規表現を使用して「同じ」単語を抽出する。さらに<a-n>, <a-p>で移動、<a-i>でテキストオブジェクトとして参照できる
+  --config = function()
+  --require 'illuminate'.configure {
+  --filetypes_denylist = { 'netrw' }
+  --}
+  --end
+  --},
+
+  -- yuma.lua --
+  -- 開発中・自作のプラグイン
+  {
+    'yuma140902/auto-split-direction.nvim',
+    -- dir = '~/pj/nvim/auto-split-direction.nvim',
+    branch = 'master',
+    cmd = 'SplitAutoDirection',
+    config = function()
+      require 'auto-split-direction'.setup {
+        debug = false,
+        ratio = 3.0
+      }
+    end
+  },
+
+  -- }}}
+}
+
+require 'lazy'.setup(plugins, {
+  defaults = {
+    lazy = false -- TODO: lazy = true
+  }
+})
