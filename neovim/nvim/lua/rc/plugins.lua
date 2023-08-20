@@ -250,12 +250,7 @@ local plugins = {
     'j-hui/fidget.nvim', -- LSPの状態を右下に表示する
     tag = 'legacy',      -- TODO:
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require 'fidget'.setup {
-        text = { spinner = 'dots' },
-        window = { blend = 0, border = 'none' }
-      }
-    end,
+    config = require 'pl/fidget'.config,
     event = 'LspAttach'
   },
 
