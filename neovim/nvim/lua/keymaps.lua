@@ -1,20 +1,6 @@
 local use_lspsaga_keymaps = true
 
-local map = function(mode, key, cmd, desc, opt)
-  if opt == nil then opt = {} end
-  if opt['noremap'] == nil then opt['noremap'] = true end
-  if opt['silent'] == nil then opt['silent'] = true end
-
-  if desc ~= nil then
-    if opt['desc'] == nil then
-      opt['desc'] = desc
-    else
-      print('warn: desc argument will be ignored')
-    end
-  end
-
-  vim.keymap.set(mode, key, cmd, opt)
-end
+local map = require 'rc/lib'.map
 
 local function register_keymaps()
   require 'which-key'.register({
