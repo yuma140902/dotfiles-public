@@ -27,9 +27,13 @@ return {
   },
   {
     'machakann/vim-sandwich',
-    event = { 'BufNewFile', 'BufRead' },
+    event = { 'BufNewFile', 'BufRead' }
+  },
+  {
+    'thinca/vim-partedit',
+    cmd = 'Partedit',
     config = function()
-      vim.cmd "let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)"
+      vim.g['partedit#opener'] = ':tabe'
     end
   }
 }
