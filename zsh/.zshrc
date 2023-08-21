@@ -58,7 +58,7 @@ eval "$(pyenv init -)"
 
 eval "$(zoxide init zsh)"
 
-export PATH=$PATH:~/.local/bin/
+export PATH=$PATH:~/.local/bin/:~/go/bin
 
 source /usr/share/nvm/init-nvm.sh
 
