@@ -34,6 +34,24 @@ local plugins = {
     config = require 'pl.oil'.config,
     cmd = { 'Oil' }
   },
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = require 'pl.nvim-tree'.config,
+    cmd = {
+      'NvimTreeToggle',
+      'NvimTreeOpen',
+      'NvimTreeClose',
+      'NvimTreeFocus',
+      'NvimTreeRefresh',
+      'NvimTreeFindFile',
+      'NvimTreeFindFileToggle',
+      'NvimTreeClipboard',
+      'NvimTreeResize',
+      'NvimTreeCollapse',
+      'NvimTreeCollapseKeepBuffers',
+    }
+  },
   -- }}}
 
   -----------------------------------------------------------------------------
@@ -81,13 +99,6 @@ local plugins = {
     lazy = false,            -- メインのカラースキームは確実に非同期で読み込むようにするらしい
     priority = 1000,         -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
     config = require 'pl.onedark'.config
-  },
-  -- ファイラ
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() require 'nvim-tree'.setup() end,
-    cmd = 'NvimTreeToggle',
   },
   -- Webページ内のテキストボックスを編集するために外部のテキストエディタを使用できるようにするブラウザアドオンGhostTextに対応するためのプラグイン
   -- Neovim側がサーバーとして動作する
