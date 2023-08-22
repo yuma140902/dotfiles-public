@@ -63,11 +63,8 @@ local plugins = {
       { 'hrsh7th/cmp-path',                    lazy = true },
       -- コマンドラインでの補完ソース
       { 'hrsh7th/cmp-cmdline',                 lazy = true },
-      {
-        -- cmp-nvim-lsp-signature-helpのかわり。試用中
-        'ray-x/lsp_signature.nvim',
-        lazy = true
-      }
+      -- カーソル位置のメソッドのシグネチャを表示する
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true }
     },
     init = require 'pl.nvim-cmp'.init,
     config = require 'pl.nvim-cmp'.config,
