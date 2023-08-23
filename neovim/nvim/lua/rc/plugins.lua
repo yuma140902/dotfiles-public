@@ -24,10 +24,21 @@ local plugins = {
   -- }}}
 
   -----------------------------------------------------------------------------
-  -- 未整理 {{{
+  -- ファイルマネージャ {{{
   -----------------------------------------------------------------------------
-  -- complete.lua --
-  -- 自動補完に関するプラグイン
+  {
+    'stevearc/oil.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    config = require 'pl.oil'.config,
+    cmd = { 'Oil' }
+  },
+  -- }}}
+
+  -----------------------------------------------------------------------------
+  -- 自動補完 {{{
+  -----------------------------------------------------------------------------
   {
     -- vim-vsnip
     'hrsh7th/vim-vsnip',
@@ -37,7 +48,6 @@ local plugins = {
     },
     event = { 'InsertEnter', 'CmdlineEnter' }
   },
-
   {
     -- nvim-cmp
     'hrsh7th/nvim-cmp',
@@ -53,16 +63,18 @@ local plugins = {
       { 'hrsh7th/cmp-path',                    lazy = true },
       -- コマンドラインでの補完ソース
       { 'hrsh7th/cmp-cmdline',                 lazy = true },
-      {
-        -- cmp-nvim-lsp-signature-helpのかわり。試用中
-        'ray-x/lsp_signature.nvim',
-        lazy = true
-      }
+      -- カーソル位置のメソッドのシグネチャを表示する
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true }
     },
     init = require 'pl.nvim-cmp'.init,
     config = require 'pl.nvim-cmp'.config,
     event = { 'InsertEnter', 'CmdlineEnter' }
   },
+  -- }}}
+
+  -----------------------------------------------------------------------------
+  -- 未整理 {{{
+  -----------------------------------------------------------------------------
   -- etc.lua --
   {
     'navarasu/onedark.nvim', -- カラースキーム
