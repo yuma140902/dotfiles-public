@@ -70,4 +70,5 @@ jobs:
           git commit -m "update benchmarks.json [skip ci]"
       - name: '[Pages] Push'
         run: |
+          cd ../gh-pages
           git push
