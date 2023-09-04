@@ -18,8 +18,6 @@ jobs:
     steps:
       - name: '[Setup > repo] Checkout'
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: '[Setup > vim-startuptime] Download'
         run: wget https://github.com/rhysd/vim-startuptime/releases/download/v1.3.1/vim-startuptime_1.3.1_linux_amd64.tar.gz
@@ -48,7 +46,7 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/docs/benchmarks.json
       - name: '[Benchmark > Post] Parse result'
-        run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF##*/}
+        run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF}
 
       - name: '[Pages] Checkout gh-pages'
         run: |
@@ -69,7 +67,7 @@ jobs:
         run: |
           cd ../gh-pages
           git add docs/benchmarks.json
-          git commit -m "update benchmarks.json (${GITHUB_REF##*/}) [skip ci]"
+          git commit -m "update benchmarks.json (${GITHUB_REF}) [skip ci]"
       - name: '[Pages] Push'
         run: |
           cd ../gh-pages
