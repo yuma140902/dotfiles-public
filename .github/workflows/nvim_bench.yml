@@ -37,18 +37,20 @@ jobs:
       - name: '[Setup > Neovim] Install plugins'
         run: nvim --headless -c 'Lazy! restore' -c 'qall'
 
+      - name: '[Benchmark > Pre] Pull gh-pages branch'
+        run: git pull origin gh-pages --rebase
+
       - name: '[Benchmark]'
         run: vim-startuptime -vimpath nvim | tee ../result.txt
         env:
           TERM: screen-256color
-      - name: '[Benchmark] Download past results'
+
+      - name: '[Benchmark > Post] Download past results'
         run: |
           wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/benchmarks.json
-      - name: '[Benchmark] Pull gh-pages branch'
-        run: git pull origin gh-pages --rebase
-      - name: '[Benchmark] Parse result'
+      - name: '[Benchmark > Post] Parse result'
         run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF##*/}
-      - name: '[Benchmark] Commit'
+      - name: '[Benchmark > Post] Commit'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: gh-pages
