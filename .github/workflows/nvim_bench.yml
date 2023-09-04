@@ -39,12 +39,6 @@ jobs:
       - name: '[Setup > Neovim] Install plugins'
         run: nvim --headless -c 'Lazy! restore' -c 'qall'
 
-      - name: '[Benchmark > Pre] Pull gh-pages branch'
-        run: |
-          git clean -f -d
-          git checkout .
-          git pull origin gh-pages --rebase
-
       - name: '[Benchmark]'
         run: vim-startuptime -vimpath nvim | tee ../result.txt
         env:
@@ -55,10 +49,18 @@ jobs:
           wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/docs/benchmarks.json
       - name: '[Benchmark > Post] Parse result'
         run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF##*/}
-      - name: '[Benchmark > Post] Commit'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: gh-pages
-          create_branch: true
-          commit_message: 'doc: update benchmarks.json [skip ci]'
-          file_pattern: './benchmarks.json'
+
+      - name: '[Pages] Checkout gh-pages'
+        run: |
+          cd ..
+          git clone https://github.com/yuma140902/dotfiles-public --branch gh-pages --depth 1 gh-pages
+      - name: '[Pages] Copy benchmarks.json'
+        run: |
+          rm ../gh-pages/docs/benchmarks.json
+          cp benchmarks.json ../gh-pages/docs/benchmarks.json
+      - name: '[Pages] Commit benchmarks.json'
+        run: |
+          cd ../gh-pages
+          git add docs/benchmarks.json
+          git commit -m "update benchmarks.json [skip ci]"
+          git push
