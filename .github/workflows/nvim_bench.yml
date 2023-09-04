@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: '[Setup > repo] Checkout'
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
       - name: '[Setup > vim-startuptime] Download'
         run: wget https://github.com/rhysd/vim-startuptime/releases/download/v1.3.1/vim-startuptime_1.3.1_linux_amd64.tar.gz
       - name: '[Setup > vim-startuptime] Extract'
