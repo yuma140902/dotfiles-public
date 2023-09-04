@@ -41,12 +41,15 @@ jobs:
         run: vim-startuptime -vimpath nvim | tee ../result.txt
         env:
           TERM: screen-256color
+      - name: '[Benchmark] Download past results'
+        run: |
+          wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/pages/benchmarks.json
       - name: '[Benchmark] Parse result'
-        run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./pages/benchmarks.json -b ${GITHUB_REF##*/}
+        run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF##*/}
       - name: '[Benchmark] Commit'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: gh-pages
           create_branch: true
           commit_message: 'doc: update benchmarks.json [skip ci]'
-          file_pattern: './pages'
+          file_pattern: './benchmarks.json'
