@@ -52,7 +52,7 @@ jobs:
 
       - name: '[Benchmark > Post] Download past results'
         run: |
-          wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/benchmarks.json
+          wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/docs/benchmarks.json
       - name: '[Benchmark > Post] Parse result'
         run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF##*/}
       - name: '[Benchmark > Post] Commit'
