@@ -35,12 +35,12 @@ jobs:
         run: nvim --headless -c 'Lazy! restore' -c 'qall'
 
       - name: '[Benchmark]'
-        run: vim-startuptime -vimpath nvim | tee /result.txt
+        run: vim-startuptime -vimpath nvim | tee ./result.txt
         env:
           TERM: screen-256color
 
       - name: '[Pages] Parse result'
-        run: python .github/scripts/vim_startuptime_to_json.py -i /result.txt -o ./pages/benchmarks.json -b ${GITHUB_REF##*/}
+        run: python .github/scripts/vim_startuptime_to_json.py -i ./result.txt -o ./pages/benchmarks.json -b ${GITHUB_REF##*/}
       - name: '[Pages] Setup'
         uses: actions/configure-pages@v3
       - name: '[Pages] Upload'
