@@ -18,8 +18,7 @@ jobs:
     steps:
       - name: '[Setup > repo] Checkout'
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
+
       - name: '[Setup > vim-startuptime] Download'
         run: wget https://github.com/rhysd/vim-startuptime/releases/download/v1.3.1/vim-startuptime_1.3.1_linux_amd64.tar.gz
       - name: '[Setup > vim-startuptime] Extract'
@@ -28,6 +27,7 @@ jobs:
         run: |
           mv vim-startuptime /usr/local/bin/vim-startuptime
           chmod +x /usr/local/bin/vim-startuptime
+
       - name: '[Setup > Neovim]'
         uses: rhysd/action-setup-vim@v1
         with:
@@ -41,20 +41,35 @@ jobs:
         run: vim-startuptime -vimpath nvim | tee ../result.txt
         env:
           TERM: screen-256color
-      - name: '[Benchmark] Parse result'
-        run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./pages/benchmarks.json -b ${GITHUB_REF##*/}
-      - name: '[Benchmark] Commit'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'doc: update benchmarks.json [skip ci]'
-          file_pattern: './pages'
 
-      - name: '[Pages] Setup'
-        uses: actions/configure-pages@v3
-      - name: '[Pages] Upload'
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: './pages'
-      - name: '[Pages] Deploy'
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: '[Benchmark > Post] Download past results'
+        run: |
+          wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/docs/benchmarks.json
+      - name: '[Benchmark > Post] Parse result'
+        run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF}
+
+      - name: '[Pages] Checkout gh-pages'
+        run: |
+          cd ..
+          git clone https://github.com/yuma140902/dotfiles-public --branch gh-pages --depth 1 gh-pages
+      - name: '[Pages] Setup git config'
+        run: |
+          cd ../gh-pages
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+        env:
+          PAT: ${{ secrets.PAT }}
+      - name: '[Pages] Copy benchmarks.json'
+        run: |
+          rm ../gh-pages/docs/benchmarks.json
+          cp benchmarks.json ../gh-pages/docs/benchmarks.json
+      - name: '[Pages] Commit benchmarks.json'
+        run: |
+          cd ../gh-pages
+          git add docs/benchmarks.json
+          git commit -m "update benchmarks.json (${GITHUB_REF}) [skip ci]"
+      - name: '[Pages] Push'
+        run: |
+          cd ../gh-pages
+          git remote add tmp "https://yuma140902:${{ secrets.PAT }}@github.com/yuma140902/dotfiles-public.git"
+          git push tmp gh-pages
