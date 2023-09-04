@@ -66,6 +66,9 @@ def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> Benchma
     average_ms = -1
     max_ms = -1
     min_ms = -1
+    details_mode = False
+    details = []
+
     logger.debug('parsing vim-startuptime result')
     for line in lines:
         if line.startswith('Total Average'):
@@ -80,13 +83,35 @@ def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> Benchma
             parts = line.split()
             min_ms = float(parts[2])
             logger.debug(f'found min_ms: {min_ms}')
+        elif line.startswith('-----'):
+            details_mode = True
+            logger.debug('details_mode on')
+        elif details_mode:
+            parts = line.split(sep=':', maxsplit=2)
+            assert len(parts) == 2
+            times = parts[0].split()
+            detail_avg = float(times[0])
+            detail_max = float(times[1])
+            detail_min = float(times[2])
+            subject = parts[1].strip()
+            detail = Detail(
+                average_ms=detail_avg,
+                max_ms=detail_max,
+                min_ms=detail_min,
+                subject=subject
+            )
+            details.append(detail)
+
+    assert average_ms >= 0
+    assert max_ms >= 0
+    assert min_ms >= 0
     benchmark_result = BenchmarkResult(
         datetime=now,
         branch=branch,
         average_ms=average_ms,
         max_ms=max_ms,
         min_ms=min_ms,
-        details=[],
+        details=details,
         full_text=lines
     )
     return benchmark_result
