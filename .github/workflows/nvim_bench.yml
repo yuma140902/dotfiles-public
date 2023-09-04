@@ -47,6 +47,8 @@ jobs:
           wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/docs/benchmarks.json
       - name: '[Benchmark > Post] Parse result'
         run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF}
+        env:
+          TZ: Asia/Tokyo
 
       - name: '[Pages] Checkout gh-pages'
         run: |
