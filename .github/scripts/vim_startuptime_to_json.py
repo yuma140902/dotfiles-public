@@ -13,12 +13,20 @@ logging.basicConfig(format=FORMAT)
 logger.setLevel(logging.DEBUG)
 
 @dataclasses.dataclass
+class Detail:
+    average_ms: float
+    max_ms: float
+    min_ms: float
+    subject: str
+
+@dataclasses.dataclass
 class BenchmarkResult:
     datetime: str
     branch: str
     average_ms: float
     max_ms: float
     min_ms: float
+    details: list[Detail]
     full_text: list[str]
 
 def reset_benchmarks_json(path: pathlib.Path) -> None:
@@ -49,18 +57,18 @@ def append_to_benchmarks_json(result: BenchmarkResult, path: pathlib.Path) -> No
         json.dump(obj, f)
     logger.debug(f'wrote benchmarks to {path}')
 
-def parse_startuptime_result(lines: list[str]) -> tuple[float, float, float]:
-    """vim-startuptimeの実行結果をパースし、平均実行時間、最長実行時間、最短実行時間を抽出する
+def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> BenchmarkResult:
+    """vim-startuptimeの実行結果をパースしする
 
     Args:
         lines: vim-startuptimeの実行結果のテキスト
-
-    Returns:
-        平均実行時間、最長実行時間、最短実行時間
     """
     average_ms = -1
     max_ms = -1
     min_ms = -1
+    details_mode = False
+    details = []
+
     logger.debug('parsing vim-startuptime result')
     for line in lines:
         if line.startswith('Total Average'):
@@ -75,7 +83,38 @@ def parse_startuptime_result(lines: list[str]) -> tuple[float, float, float]:
             parts = line.split()
             min_ms = float(parts[2])
             logger.debug(f'found min_ms: {min_ms}')
-    return (average_ms, max_ms, min_ms)
+        elif line.startswith('-----'):
+            details_mode = True
+            logger.debug('details_mode on')
+        elif details_mode:
+            parts = line.split(sep=':', maxsplit=2)
+            assert len(parts) == 2
+            times = parts[0].split()
+            detail_avg = float(times[0])
+            detail_max = float(times[1])
+            detail_min = float(times[2])
+            subject = parts[1].strip()
+            detail = Detail(
+                average_ms=detail_avg,
+                max_ms=detail_max,
+                min_ms=detail_min,
+                subject=subject
+            )
+            details.append(detail)
+
+    assert average_ms >= 0
+    assert max_ms >= 0
+    assert min_ms >= 0
+    benchmark_result = BenchmarkResult(
+        datetime=now,
+        branch=branch,
+        average_ms=average_ms,
+        max_ms=max_ms,
+        min_ms=min_ms,
+        details=details,
+        full_text=lines
+    )
+    return benchmark_result
 
 def main(args) -> None:
     logger.debug(f'args={args}')
@@ -94,17 +133,9 @@ def main(args) -> None:
     with open(input_path, mode='r', encoding='UTF-8') as f:
         startuptime_text = f.readlines()
 
-    (average_ms, max_ms, min_ms) = parse_startuptime_result(startuptime_text)
     branch = args.branch
     now = datetime.datetime.now().isoformat()
-    benchmark_result = BenchmarkResult(
-        datetime=now,
-        branch=branch,
-        average_ms=average_ms,
-        max_ms=max_ms,
-        min_ms=min_ms,
-        full_text=startuptime_text
-    )
+    benchmark_result = parse_startuptime_result(branch, now, startuptime_text)
     logger.debug(f'benchmark_result={benchmark_result}')
     append_to_benchmarks_json(benchmark_result, output_path)
 
