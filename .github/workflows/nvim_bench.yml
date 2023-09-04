@@ -28,11 +28,9 @@ jobs:
       - name: '[Setup > Neovim] Download'
         run: wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
       - name: '[Setup > Neovim] Extract'
-        run: tar -xvf nvim-linux64.tar.gz
+        run: tar -xvf nvim-linux64.tar.gz -C /
       - name: '[Setup > Neovim] Install'
-        run: |
-          mv nvim /usr/local/bin/
-          chmod +x /usr/local/bin/nvim
+        run: chmod +x /bin/nvim
       - name: '[Setup > Neovim] Install config'
         run: ./dotfiles install neovim
       - name: '[Setup > Neovim] Install plugins'
