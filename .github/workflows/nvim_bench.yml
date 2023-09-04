@@ -1,0 +1,53 @@
+name: 'Neovim Benchmark'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+  pages: write
+
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: '[Setup > vim-startuptime] Download'
+      run: wget https://github.com/rhysd/vim-startuptime/releases/download/v1.3.1/vim-startuptime_1.3.1_linux_amd64.tar.gz
+    - name: '[Setup > vim-startuptime] Extract'
+      run: tar -xvf vim-startuptime_1.3.1_linux_amd64.tar.gz
+    - name: '[Setup > vim-startuptime] Install'
+      run: |
+        mv vim-startuptime_1.3.1_linux_amd64/vim-startuptime /usr/local/bin/vim-startuptime
+        chmod +x /usr/local/bin/vim-startuptime
+    - name: '[Setup > Neovim] Download'
+      run: wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+    - name: '[Setup > Neovim] Extract'
+      run: tar -xvf nvim-linux64.tar.gz
+    - name: '[Setup > Neovim] Install'
+      run: |
+        mv nvim-linux64/nvim /usr/local/bin/
+        chmod +x /usr/local/bin/nvim
+    - name: '[Setup > Neovim] Install config'
+      run: ./dotfiles install neovim
+    - name: '[Setup > Neovim] Install plugins'
+      run: nvim --headless -c 'Lazy! restore' -c 'qall'
+
+    - name: '[Benchmark]'
+      run: vim-startuptime -vimpath nvim | tee /result.txt
+      env:
+        TERM: screen-256color
+
+    - name: '[Pages] Parse result'
+      run: python .github/scripts/vim_startuptime_to_json.py -i /result.txt -o ./pages/benchmarks.json -b ${GITHUB_REF##*/}
+    - name: '[Pages] Setup'
+      uses: actions/configure-pages@v3
+    - name: '[Pages] Upload'
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: './pages'
+    - name: '[Pages] Deploy'
+      id: deployment
+      uses: actions/deploy-pages@v2
