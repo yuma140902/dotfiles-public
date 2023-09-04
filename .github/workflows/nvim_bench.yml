@@ -25,14 +25,10 @@ jobs:
         run: |
           mv vim-startuptime /usr/local/bin/vim-startuptime
           chmod +x /usr/local/bin/vim-startuptime
-      - name: '[Setup > Neovim] Download'
-        run: wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-      - name: '[Setup > Neovim] Extract'
-        run: tar -xvf nvim-linux64.tar.gz
-      - name: '[Setup > Neovim] Install'
-        run: |
-          mv nvim-linux64/* /
-          chmod +x /bin/nvim
+      - name: '[Setup > Neovim]'
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
       - name: '[Setup > Neovim] Install config'
         run: ./dotfiles install neovim
       - name: '[Setup > Neovim] Install plugins'
