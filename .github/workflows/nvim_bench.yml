@@ -42,8 +42,7 @@ jobs:
       - name: '[Benchmark > Pre] Pull gh-pages branch'
         run: |
           git clean -f -d
-          git status
-          git diff README.md
+          git checkout .
           git pull origin gh-pages --rebase
 
       - name: '[Benchmark]'
