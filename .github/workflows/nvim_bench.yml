@@ -69,7 +69,7 @@ jobs:
         run: |
           cd ../gh-pages
           git add docs/benchmarks.json
-          git commit -m "update benchmarks.json [skip ci]"
+          git commit -m "update benchmarks.json (${GITHUB_REF##*/}) [skip ci]"
       - name: '[Pages] Push'
         run: |
           cd ../gh-pages
