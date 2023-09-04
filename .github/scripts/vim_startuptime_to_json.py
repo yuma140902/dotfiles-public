@@ -41,8 +41,8 @@ def parse_startuptime_result(lines: list[str]) -> tuple[float, float, float]:
     return (average_ms, max_ms, min_ms)
 
 def main(args) -> None:
-    input_path = pathlib.Path(args['in'])
-    output_path = pathlib.Path(args['out'])
+    input_path = pathlib.Path(args.input)
+    output_path = pathlib.Path(args.output)
     if not input_path.is_file():
         raise Exception(f'{input_path} is not file')
 
@@ -53,7 +53,7 @@ def main(args) -> None:
         startuptime_text = f.readlines()
 
     (average_ms, max_ms, min_ms) = parse_startuptime_result(startuptime_text)
-    branch = args['branch']
+    branch = args.branch
     now = datetime.datetime.now().isoformat()
     benchmark_result = BenchmarkResult(
         datetime=now,
@@ -68,8 +68,8 @@ def main(args) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--in', required=True)
-    parser.add_argument('-o', '--out', required=True)
+    parser.add_argument('-i', '--input', required=True)
+    parser.add_argument('-o', '--output', required=True)
     parser.add_argument('-b', '--branch', required=True)
     args = parser.parse_args()
     main(args)
