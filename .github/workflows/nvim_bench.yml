@@ -50,6 +50,10 @@ jobs:
       - name: '[Benchmark > Post] Parse result'
         run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF##*/}
 
+      - name: '[Pages] Setup git'
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
       - name: '[Pages] Checkout gh-pages'
         run: |
           cd ..
@@ -61,8 +65,8 @@ jobs:
       - name: '[Pages] Commit benchmarks.json'
         run: |
           cd ../gh-pages
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
           git add docs/benchmarks.json
           git commit -m "update benchmarks.json [skip ci]"
+      - name: '[Pages] Push'
+        run: |
           git push
