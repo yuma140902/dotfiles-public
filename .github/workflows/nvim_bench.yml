@@ -43,6 +43,7 @@ jobs:
         run: |
           git clean -f -d
           git status
+          git diff README.md
           git pull origin gh-pages --rebase
 
       - name: '[Benchmark]'
