@@ -14,14 +14,14 @@ class BenchmarkResult:
     full_text: list[str]
 
 def reset_benchmarks_json(path: pathlib.Path) -> None:
-    with open(path, mode='w', encoding='UTF-8') as f:
+    with open(path, mode='w+', encoding='UTF-8') as f:
         f.write('{"benchmarks": []}')
 
 def append_to_benchmarks_json(result: BenchmarkResult, path: pathlib.Path) -> None:
     with open(path, mode='r', encoding='UTF-8') as f:
         obj = json.load(f)
     obj.benchmarks.append(result)
-    with open(path, mode='w', encoding='UTF-8') as f:
+    with open(path, mode='w+', encoding='UTF-8') as f:
         json.dump(obj, f)
 
 def parse_startuptime_result(lines: list[str]) -> tuple[float, float, float]:
