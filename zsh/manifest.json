@@ -1,8 +1,0 @@
-{
-  "name": "zsh",
-  "description": "zshの設定ファイル",
-  "notice": "プラグインをインストールするためにzshを一度起動する必要があります",
-  "files": [
-    ".zshrc"
-  ]
-}
