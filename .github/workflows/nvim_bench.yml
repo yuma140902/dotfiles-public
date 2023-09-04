@@ -59,7 +59,7 @@ jobs:
           cd ../gh-pages
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "yuma140902"
-          git config url."${PAT}@github.com/".insteadOf "https://github.com/"
+          git config url."yuma140902:${PAT}@github.com/".insteadOf "https://github.com/"
         env:
           PAT: ${{ secrets.PAT }}
       - name: '[Pages] Copy benchmarks.json'
