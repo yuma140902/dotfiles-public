@@ -45,7 +45,7 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/yuma140902/dotfiles-public/gh-pages/benchmarks.json
       - name: '[Benchmark] Pull gh-pages branch'
-        run: git pull origin gh-pages
+        run: git pull origin gh-pages --rebase
       - name: '[Benchmark] Parse result'
         run: python .github/scripts/vim_startuptime_to_json.py -i ../result.txt -o ./benchmarks.json -b ${GITHUB_REF##*/}
       - name: '[Benchmark] Commit'
