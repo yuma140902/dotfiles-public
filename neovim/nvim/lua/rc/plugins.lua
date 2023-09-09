@@ -309,6 +309,20 @@ local plugins = {
   --end
   --},
 
+
+  {
+    'epwalsh/obsidian.nvim',
+    lazy = true,
+    event = {
+      'BufReadPre ' .. vim.fn.expand '~' .. '/OneDrive/Obsidian/main/**.md',
+      'BufNewFile ' .. vim.fn.expand '~' .. '/OneDrive/Obsidian/main/**.md',
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = require 'pl.obsidian'.config,
+  },
+
   -- yuma.lua --
   -- 開発中・自作のプラグイン
   {
