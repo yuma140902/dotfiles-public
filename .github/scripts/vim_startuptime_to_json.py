@@ -26,8 +26,6 @@ class BenchmarkResult:
     average_ms: float
     max_ms: float
     min_ms: float
-    details: list[Detail]
-    full_text: list[str]
 
 def reset_benchmarks_json(path: pathlib.Path) -> None:
     """benchmarks.jsonをリセットする
@@ -111,8 +109,6 @@ def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> Benchma
         average_ms=average_ms,
         max_ms=max_ms,
         min_ms=min_ms,
-        details=details,
-        full_text=lines
     )
     return benchmark_result
 
