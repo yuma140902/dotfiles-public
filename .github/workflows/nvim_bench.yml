@@ -5,7 +5,13 @@ on:
   push:
     branches:
       - master
+    paths:
+      - neovim/**
+      - .github/**
   pull_request:
+    paths:
+      - neovim/**
+      - .github/**
 
 permissions:
   contents: write
