@@ -4,12 +4,12 @@
 [![pages-build-deployment](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment)
 
 いろいろなアプリケーションの設定ファイルを管理しています。
-アプリケーションごとに設定ファイルのインストールを行うことができます。
+`./dotfiles`スクリプトを使用してアプリケーションごとに設定ファイルのインストールを行うことができます。
 例えばNeovimの設定ファイルをインストールするには`./dotfiles install neovim`を実行します。
 
-- 設定ファイルの設置のみを行います。
-- パッケージのインストールは行いません。
-- 設定ファイルはアプリケーションごとにモジュールという単位で分けていて、`./dotfiles`スクリプトで個別にインストールできます。
+`./dotfiles`は設定ファイルの設置のみを行い、アプリケーション自体のインストールは行いません。つまり、`apt install`や`pacman -S`を自動で実行することはありません。
+すでに存在するパッケージマネージャのラッパーを実装するのは不毛だからです。
+アプリケーション自体のインストールは、各パッケージマネージャを使って行ってください。
 
 ## 動作環境
 
