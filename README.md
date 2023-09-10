@@ -1,5 +1,9 @@
 # dotfiles
 
+いろいろなアプリケーションの設定ファイルを管理しています。
+アプリケーションごとに設定ファイルのインストールを行うことができます。
+例えばNeovimの設定ファイルをインストールするには`./dotfiles install neovim`を実行します。
+
 - 設定ファイルの設置のみを行います。
 - パッケージのインストールは行いません。
 - 設定ファイルはアプリケーションごとにモジュールという単位で分けていて、`./dotfiles`スクリプトで個別にインストールできます。
@@ -9,10 +13,10 @@
 - OS
   - Linux
   - Windows
-  - (macOS)
+  - macOS
 - Python 3
 
-## インストール方法
+## 使用方法
 
 まずリポジトリをクローンします。クローン先は自由です。
 
@@ -67,3 +71,8 @@ positional arguments:
 options:
   -h, --help  show this help message and exit
 ```
+
+## ベンチマーク
+
+GitHub ActionsでNeovimのベンチマークを行っています。
+ベンチマーク結果は <https://yuma140902.github.io/dotfiles-public/> で見ることができます。
