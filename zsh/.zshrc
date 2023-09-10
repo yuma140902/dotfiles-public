@@ -65,3 +65,22 @@ source /usr/share/nvm/init-nvm.sh
 alias ls='lsd'
 alias grep='grep --color=auto'
 
+function obs() {
+  function help() {
+    echo 'obs'
+    echo 'Usage: obs'
+    echo 'ObsidianのVaultをNeovimで開く'
+    return
+  }
+
+  case $1 in
+    -h|--help)
+      help
+      return
+      ;;
+  esac
+
+  pushd ~/OneDrive/Obsidian/main
+  nvim
+  popd
+}
