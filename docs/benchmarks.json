@@ -1,18 +1,1 @@
-{
-    "benchmarks": [
-        {
-            "datetime": "2023-09-10T18:10:11.097835",
-            "branch": "refs/pull/16/merge",
-            "average_ms": 63.3531,
-            "max_ms": 66.246,
-            "min_ms": 60.369
-        },
-        {
-            "datetime": "2023-09-10T18:15:44.767546",
-            "branch": "refs/heads/master",
-            "average_ms": 48.2296,
-            "max_ms": 51.335,
-            "min_ms": 46.35
-        }
-    ]
-}
+{"benchmarks": [{"datetime": "2023-09-10T18:10:11.097835", "branch": "refs/pull/16/merge", "average_ms": 63.3531, "max_ms": 66.246, "min_ms": 60.369}, {"datetime": "2023-09-10T18:15:44.767546", "branch": "refs/heads/master", "average_ms": 48.2296, "max_ms": 51.335, "min_ms": 46.35}, {"datetime": "2023-09-10T18:24:26.940124", "branch": "refs/pull/17/merge", "average_ms": 60.7651, "max_ms": 66.136, "min_ms": 57.342}]}
