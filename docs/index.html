@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>Neovimのベンチマーク結果 - yuma140902/dotfiles-public</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script src="https://cdn.plot.ly/plotly-2.25.2.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Neovimのベンチマーク結果</h1>
+    <p>
+      <a href="https://github.com/yuma140902/dotfiles-public/actions/workflows/nvim_bench.yml">
+        <img src="https://github.com/yuma140902/dotfiles-public/actions/workflows/nvim_bench.yml/badge.svg" alt="ベンチマーク状況のバッジ" />
+      </a>
+      <a href="https://github.com/yuma140902/dotfiles-public/pull/13">
+        <img src="https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment/badge.svg" alt="デプロイ状況のバッジ" />
+      </a>
+    </p>
+    <p>
+      リポジトリ: <a href="https://github.com/yuma140902/dotfiles-public">yuma140902/dotfiles-public</a><br />
+      データ: <a href="https://yuma140902.github.io/dotfiles-public/benchmarks.json">https://yuma140902.github.io/dotfiles-public/benchmarks.json</a><br />
+    </p>
+    <div id="tester" style="width:90vw;height:80vh;"></div>
+
+    <script>
+
+    const TESTER = document.getElementById("tester");
+
+    fetch("https://yuma140902.github.io/dotfiles-public/benchmarks.json")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        let date = [];
+        let time_avg = [];
+        let time_max = [];
+        let time_min = [];
+        let text = [];
+        for (const benchmark of data.benchmarks) {
+          date.push(benchmark.datetime);
+          time_avg.push(benchmark.average_ms);
+          time_max.push(benchmark.max_ms);
+          time_min.push(benchmark.min_ms);
+          text.push("branch=" + benchmark.branch);
+        }
+
+        Plotly.newPlot(
+          TESTER, 
+          [
+            {
+              x: date,
+              y: time_avg,
+              text: text,
+              name: "average"
+            },
+            {
+              x: date,
+              y: time_max,
+              text: text,
+              name: "max"
+            },
+            {
+              x: date,
+              y: time_min,
+              text: text,
+              name: "min"
+            },
+          ], 
+          { 
+            xaxis: {
+              title: '日時'
+            },
+            yaxis: {
+              title: '起動時間 [ms]',
+              rangemode: 'tozero'
+            },
+            margin: {
+              t: 0
+            }
+          }
+        );
+      });
+
+    </script>
+  </body>
+</html>
