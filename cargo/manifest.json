@@ -1,8 +1,0 @@
-{
-  "files": [
-    {
-      "src": "config.toml",
-      "dst": ".cargo/config.toml"
-    }
-  ]
-}
