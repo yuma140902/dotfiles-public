@@ -314,11 +314,12 @@ local plugins = {
     'epwalsh/obsidian.nvim',
     lazy = true,
     event = {
-      'BufReadPre ' .. vim.fn.expand '~' .. '/OneDrive/Obsidian/main/**.md',
-      'BufNewFile ' .. vim.fn.expand '~' .. '/OneDrive/Obsidian/main/**.md',
+      'BufReadPre ' .. (vim.fn.expand '~'):gsub('\\', '/') .. '/OneDrive/Obsidian/main/**.md',
+      'BufReadPre ' .. (vim.fn.expand '~'):gsub('\\', '/') .. '/OneDrive/Obsidian/main/**.md',
     },
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
     },
     config = require 'pl.obsidian'.config,
   },

@@ -62,6 +62,9 @@ function M.config()
       { name = 'nvim_lsp_signature_help' },
       { name = 'vsnip' },
       { name = 'path' },
+      -- https://github.com/epwalsh/obsidian.nvim/issues/124
+      { name = "obsidian",               option = require 'pl.obsidian'.opt },
+      { name = "obsidian_new",           option = require 'pl.obsidian'.opt },
     }, {
       {
         name = 'buffer',
