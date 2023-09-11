@@ -319,6 +319,7 @@ local plugins = {
     },
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
     },
     config = require 'pl.obsidian'.config,
   },
