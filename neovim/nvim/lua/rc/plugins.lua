@@ -324,6 +324,12 @@ local plugins = {
     config = require 'pl.obsidian'.config,
   },
 
+  {
+    'dense-analysis/ale',
+    lazy = false,
+    config = require 'pl.ale'.config
+  },
+
   -- yuma.lua --
   -- 開発中・自作のプラグイン
   {
