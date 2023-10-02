@@ -330,6 +330,11 @@ local plugins = {
     config = require 'pl.ale'.config
   },
 
+  {
+    'rbtnn/vim-ambiwidth',
+    lazy = false,
+  },
+
   -- yuma.lua --
   -- 開発中・自作のプラグイン
   {
