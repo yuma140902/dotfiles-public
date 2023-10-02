@@ -134,7 +134,7 @@ local plugins = {
     -- いわゆるTODOコメントへ移動・一覧表示する
     'folke/todo-comments.nvim',
     dependencies = 'folke/trouble.nvim',
-    config = function() require 'todo-comments'.setup() end,
+    config = require 'pl.todo-comments'.config,
     event = { 'BufNewFile', 'BufRead' }
   },
   {
@@ -328,6 +328,11 @@ local plugins = {
     'dense-analysis/ale',
     lazy = false,
     config = require 'pl.ale'.config
+  },
+
+  {
+    'rbtnn/vim-ambiwidth',
+    lazy = false,
   },
 
   -- yuma.lua --
