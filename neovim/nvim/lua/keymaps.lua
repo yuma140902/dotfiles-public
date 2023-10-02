@@ -38,7 +38,7 @@ local function register_keymaps()
   -- バニラ
   map('n', '[b', '<cmd>bprev<cr>', '前のバッファ')
   map('n', ']b', '<cmd>bnext<cr>', '次のバッファ')
-  map('n', '<C-c>', '<cmd>bp|bd #<cr>', 'バッファを閉じる(ウィンドウを閉じない)')  -- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
+  map('n', '<C-c>', '<cmd>bp|bd #<cr>', 'バッファを閉じる(ウィンドウを閉じない)') -- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
 
   -- タブ
   map('n', '<C-H>', '<cmd>tabprev<cr>')
@@ -278,6 +278,9 @@ local function register_keymaps()
 
   -- auto-split-direction
   map('n', '<C-w>a', '<cmd>SplitAutoDirection<cr>', 'いい感じに分割')
+
+  -- Oil.nvim
+  map('n', '-', '<cmd>Oil<cr>', 'ディレクトリに移動')
 end
 
 return {
