@@ -77,4 +77,4 @@ options:
 ## ベンチマーク
 
 GitHub ActionsでNeovimのベンチマークを行っています。
-ベンチマーク結果は <https://yuma140902.github.io/dotfiles-public/> で見ることができます。
+ベンチマーク結果は <https://yuma14.net/dotfiles-public/> で見ることができます。
