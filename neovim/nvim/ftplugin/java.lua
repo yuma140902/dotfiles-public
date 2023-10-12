@@ -3,17 +3,16 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
 if vim.fn.has('win32') == 1 then
   local workspace_dir = 'C:\\Users\\yuma1\\.cache\\jdtls-workspaces\\' .. project_name
-  local launcher_path = 
-    'C:\\Users\\yuma1\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\plugins\\org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar'
+  local launcher_path =
+  'C:\\Users\\yuma1\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\plugins\\org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar'
   local config_path =
-    'C:\\Users\\yuma1\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\config_win'
-
+  'C:\\Users\\yuma1\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\config_win'
 else
   local workspace_dir = '/home/yuma/.cache/jdtls-workspaces/' .. project_name
   local launcher_path =
-    '/home/yuma/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar'
+  '/home/yuma/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar'
   local config_path =
-    '/home/yuma/.local/share/nvim/mason/packages/jdtls/config_linux'
+  '/home/yuma/.local/share/nvim/mason/packages/jdtls/config_linux'
 end
 
 
