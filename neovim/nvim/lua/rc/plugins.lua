@@ -335,6 +335,11 @@ local plugins = {
     lazy = false,
   },
 
+  {
+    'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
+    ft = "lisp"
+  },
+
   -- yuma.lua --
   -- 開発中・自作のプラグイン
   {
