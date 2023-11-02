@@ -149,7 +149,25 @@ local plugins = {
     config = function() require 'scrollbar'.setup() end,
     event = { 'BufNewFile', 'BufRead' }
   },
-  { 'mrcjkb/rustaceanvim', lazy = true, ft = 'rust' }, -- LSPと連携してInline hintを表示するなど、いくつかの機能を追加する
+  {
+    'vxpm/ferris.nvim',
+    config = require 'pl.ferris'.config,
+    cmd = {
+      "FerrisExpandMacro",
+      "FerrisJoinLines",
+      "FerrisViewHIR",
+      "FerrisViewMIR",
+      "FerrisViewMemoryLayout",
+      "FerrisViewSyntaxTree",
+      "FerrisViewItemTree",
+      "FerrisOpenCargoToml",
+      "FerrisOpenParentModule",
+      "FerrisOpenDocumentation",
+      "FerrisReloadWorkspace",
+      "FerrisRebuildMacros",
+    }
+  },
+  { 'mrcjkb/rustaceanvim',  lazy = true, ft = 'rust' }, -- LSPと連携してInline hintを表示するなど、いくつかの機能を追加する
   {
     'saecki/crates.nvim',
     tag = 'v0.3.0', -- TODO: バージョンを固定する必要があるのかわからない
