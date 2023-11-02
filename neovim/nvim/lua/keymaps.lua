@@ -28,6 +28,9 @@ local function register_keymaps()
     },
     c = {
       name = 'crates.nvim'
+    },
+    r = {
+      name = 'Rustaceanvim'
     }
   }, { prefix = '<space>' })
 
@@ -115,7 +118,7 @@ local function register_keymaps()
     map('n', 'gr', '<cmd>Lspsaga lsp_finder<cr>', '[LSP] 参照へ移動')
     map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
     map('n', '<C-k>', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
-    map('n', '<space>r', '<cmd>Lspsaga rename<cr>', 'リネームする')
+    map('n', '<space>R', '<cmd>Lspsaga rename<cr>', 'リネームする')
     map('n', '<space>a', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
     map('x', '<space>a', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
     map('n', '<space>xgr', '<cmd>Lspsaga lsp_finder<cr>', '参照へ移動')
@@ -128,7 +131,7 @@ local function register_keymaps()
     map('n', 'gr', vim.lsp.buf.references, '[LSP] 参照へ移動')
     map('n', 'K', vim.lsp.buf.hover, 'ドキュメント表示')
     map('n', '<C-k>', vim.lsp.buf.signature_help, 'シグネチャを表示')
-    map('n', '<space>r', vim.lsp.buf.rename, 'リネームする')
+    map('n', '<space>R', vim.lsp.buf.rename, 'リネームする')
     map('n', '<space>a', vim.lsp.buf.code_action, 'コードアクションを表示')
     map('n', '<space>xgr', vim.lsp.buf.references, '参照へ移動')
     map('n', '<space>xvk', vim.lsp.buf.hover, 'ドキュメント表示')
@@ -281,6 +284,24 @@ local function register_keymaps()
 
   -- Oil.nvim
   map('n', '-', '<cmd>Oil<cr>', 'ディレクトリに移動')
+
+  -- Rustaceanvim
+  map('n', '<space>rB', '<cmd>RustLsp debuggables<cr>', 'DAPでデバッグ')
+  map('n', '<space>rb', '<cmd>RustLsp debuggables last<cr>', '最後のターゲットをDAPでデバッグ')
+  map('n', '<space>rR', '<cmd>RustLsp runnables<cr>', '実行')
+  map('n', '<space>rr', '<cmd>RustLsp runnables last<cr>', '最後のターゲットを実行')
+  map({ 'n', 'v' }, '<space>rm', '<cmd>RustLsp expandMacro<cr>', 'マクロを再帰的に展開')
+  map({ 'n', 'v' }, '<space>rP', '<cmd>RustLsp rebuildProcMacros<cr>', 'proc macroを再ビルド')
+  map({ 'n', 'v' }, '<space>r[', '<cmd>RustLsp moveItem up<cr>', 'アイテムを上に移動')
+  map({ 'n', 'v' }, '<space>r]', '<cmd>RustLsp moveItem down<cr>', 'アイテムを下に移動')
+  map({ 'n', 'v' }, '<space>ra', '<cmd>RustLsp hover actions<cr>', 'Hover Actionsを表示')
+  map({ 'n', 'v' }, '<space>rA', '<cmd>RustLsp hover range<cr>', 'Hover Rangeを表示')
+  map('n', '<space>rd', '<cmd>RustLsp explainError<cr>', 'エラーの解説を表示')
+  map('n', '<space>rC', '<cmd>RustLsp openCargo<cr>', 'Cargo.tomlを表示')
+  map('n', '<space>rp', '<cmd>RustLsp parentModule<cr>', '親モジュール')
+  map({ 'n', 'v' }, '<space>rJ', '<cmd>RustLsp joinLines<cr>', '行を結合')
+  map({ 'n', 'v' }, '<space>rs', '<cmd>RustLsp syntaxTree<cr>', '構文木を表示')
+  map('n', '<space>rc', '<cmd>RustLsp flyCheck<cr>', 'fly-checkを実行')
 end
 
 return {

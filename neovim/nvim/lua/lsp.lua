@@ -45,22 +45,6 @@ local function setup_lsp()
         capabilities = capabilities,
       }
     end,
-    ['rust_analyzer'] = function()
-      require 'rust-tools'.setup {
-        capabilities = capabilities,
-        server = {
-          on_attach = function(client, bufnr)
-            on_attach(client, bufnr)
-            -- Hover actions
-            -- 代わりにlspsagaを使う
-            -- vim.keymap.set('n', '<C-space>', require'rust-tools'.hover_actions.hover_actions, { buffer = bufnr })
-            -- Code action groups
-            -- 代わりにlspsagaを使う
-            -- vim.keymap.set('n', '<space>a', require'rust-tools'.code_action_group.code_action_group, { buffer = bufnr })
-          end,
-        },
-      }
-    end,
     ['lua_ls'] = function()
       lspconfig.lua_ls.setup {
         on_attach = on_attach,
