@@ -64,7 +64,14 @@ local plugins = {
       -- コマンドラインでの補完ソース
       { 'hrsh7th/cmp-cmdline',                 lazy = true },
       -- カーソル位置のメソッドのシグネチャを表示する
-      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true }
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
+      {
+        'zbirenbaum/copilot-cmp',
+        lazy = true,
+        config = function()
+          require 'copilot_cmp'.setup {}
+        end
+      }
     },
     init = require 'pl.nvim-cmp'.init,
     config = require 'pl.nvim-cmp'.config,
@@ -356,6 +363,18 @@ local plugins = {
   {
     'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
     ft = "lisp"
+  },
+
+  {
+    'zbirenbaum/copilot.lua',
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+    end,
+    cmd = { "Copilot" },
+    event = { "InsertEnter" }
   },
 
   -- yuma.lua --

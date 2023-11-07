@@ -7,7 +7,7 @@ end
 function M.config()
   local cmp = require 'cmp'
 
-  local has_words_before = function()
+  --[[  local has_words_before = function()
     unpack = unpack or table.unpack
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and
@@ -15,10 +15,18 @@ function M.config()
           '%s') ==
         nil
   end
+  ]]
 
   local feedkey = function(key, mode)
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode,
       true)
+  end
+
+  -- https://github.com/zbirenbaum/copilot-cmp?tab=readme-ov-file#tab-completion-configuration-highly-recommended
+  local has_words_before = function()
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
   end
 
   cmp.setup {
@@ -58,6 +66,7 @@ function M.config()
       ['<C-e>'] = cmp.mapping.abort(),
     },
     sources = cmp.config.sources({
+      { name = "copilot",                group_index = 2 },
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
       { name = 'vsnip' },
