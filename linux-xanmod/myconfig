@@ -1,4 +1,9 @@
-../choose-gcc-optimization.sh 36
+# paru -S modprobed-db
+# modprobed-db
+# modprobed-db store
+# MAKEFLAGS="-j $(nproc)" paru -S linux-xanmod linux-xanmod-headers
+
+../choose-gcc-optimization.sh 36   # 36はIntel Alder Lake向けの最適化。詳細は https://aur.archlinux.org/cgit/aur.git/tree/choose-gcc-optimization.sh?h=linux-xanmod を参照
 scripts/config --disable CONFIG_NUMA
 scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
 env _localmodcfg=y
