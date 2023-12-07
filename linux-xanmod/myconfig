@@ -1,0 +1,2 @@
+../choose-gcc-optimization.sh 36
+scripts/config --disable CONFIG_NUMA
