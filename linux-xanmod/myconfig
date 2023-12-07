@@ -1,2 +1,4 @@
 ../choose-gcc-optimization.sh 36
 scripts/config --disable CONFIG_NUMA
+scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+env _localmodcfg=y
