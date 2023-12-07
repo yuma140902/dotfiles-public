@@ -49,20 +49,28 @@ zinit light zsh-users/zsh-completions
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-eval "$(zoxide init zsh)"
+if type 'zoxide' > /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
 
-export PATH=$PATH:~/.local/bin/:~/go/bin
+export PATH=$PATH:~/.local/bin/:~/go/bin:~/.cargo/bin:~/.volta/bin
 
-source /usr/share/nvm/init-nvm.sh
+if [ -f /usr/share/nvm/init-nvm ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
 
-alias ls='lsd'
+if type 'lsd' > /dev/null; then
+  alias ls='lsd'
+fi
 alias grep='grep --color=auto'
 
 function obs() {
