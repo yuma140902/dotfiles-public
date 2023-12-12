@@ -72,6 +72,7 @@ if type 'lsd' > /dev/null; then
   alias ls='lsd'
 fi
 alias grep='grep --color=auto'
+alias gg='nvim . -c "Git" -c "only"'
 
 function obs() {
   function help() {
