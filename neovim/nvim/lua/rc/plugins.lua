@@ -171,11 +171,8 @@ local plugins = {
 
   {
     -- Rustに関する機能を追加する
-    -- TODO: このプラグインは勝手にRust Analyzerを起動・アタッチするのでmason-lspconfig, nvim-lspconfigと競合する
-    -- Rust Analyzerが2つ起動した状態になってしまう
-    -- 回避方法: Rust Analyzerをmasonではなくrustupでインストールする
-    -- ただしこの方法だとRust Analyzerの最新版を使うことができない
-    -- 本質的な回避方法としては、masonでインストールされたRust Analyzerがnvim-lspconfigでsetupされないようにすれば良いはず
+    -- rust-analyzerのインストールについて
+    -- rust-analyzerのインストールはrustup、masonどちらで行なっても良い
     'mrcjkb/rustaceanvim',
     lazy = true,
     ft = 'rust'

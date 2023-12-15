@@ -53,6 +53,10 @@ function M.config()
           capabilities = capabilities,
         }
       end,
+      ['rust_analyzer'] = function()
+        -- なにもしない
+        -- rust-analyzerのセットアップはmason-lspconfigではなくrustaceanvimが行う
+      end,
       ['lua_ls'] = function()
         require 'lspconfig'.lua_ls.setup {
           on_attach = on_attach,
