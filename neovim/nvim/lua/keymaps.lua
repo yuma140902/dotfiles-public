@@ -31,6 +31,9 @@ local function register_keymaps()
     },
     r = {
       name = 'Rustaceanvim'
+    },
+    b = {
+      name = 'デバッグ'
     }
   }, { prefix = '<space>' })
 
@@ -251,7 +254,6 @@ local function register_keymaps()
   map('n', '<space>fd', function() require 'telescope.builtin'.find_files() end, 'ファイル')
   map('n', '<space>ff', '<cmd>Telescope find_files hidden=true<cr>', 'ファイル(すべて)')
   map('n', '<space>fr', function() require 'telescope.builtin'.live_grep() end, 'Live grep')
-  map('n', '<space>b', '<cmd>Telescope buffers initial_mode=normal<cr>', 'バッファ選択')
   map('n', '<C-f>', '<cmd>Telescope buffers initial_mode=normal<cr>', 'バッファ選択')
   map('n', '<space>fb', function() require 'telescope.builtin'.buffers() end, 'バッファ')
   map('n', '<space>fh', function() require 'telescope.builtin'.help_tags() end, 'ヘルプファイル')
@@ -300,33 +302,33 @@ local function register_keymaps()
   map('n', '<space>rc', '<cmd>RustLsp flyCheck<cr>', 'fly-checkを実行')
 
   -- DAP
-  -- TODO: <leader>ではなく<space>を中心にマップし直す
-  vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-  vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-  vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-  vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
-  vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
-  vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-  vim.keymap.set('n', '<Leader>lp',
-    function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-  vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
-  vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-  vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
-    require('dap.ui.widgets').hover()
-  end)
-  vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
-    require('dap.ui.widgets').preview()
-  end)
-  vim.keymap.set('n', '<Leader>df', function()
+  map('n', '<F5>', function() require 'dap'.continue() end, '続行')
+  map('n', '<space>bc', function() require 'dap'.continue() end, '続行')
+  map('n', '<F10>', function() require 'dap'.step_over() end, 'ステップ・オーバー')
+  map('n', '<space>bN', function() require 'dap'.step_over() end, 'ステップ・オーバー')
+  map('n', '<F11>', function() require 'dap'.step_into() end, 'ステップ・イン')
+  map('n', '<space>bn', function() require 'dap'.step_into() end, 'ステップ・イン')
+  map('n', '<F12>', function() require 'dap'.step_out() end, 'ステップ・アウト')
+  map('n', '<space>bp', function() require 'dap'.step_out() end, 'ステップ・アウト')
+  map('n', '<space>ba', function() require 'dap'.toggle_breakpoint() end, 'ブレークポイントの切り替え')
+  map('n', '<Leader>b', function() require 'dap'.toggle_breakpoint() end, 'ブレークポイントの切り替え')
+  map('n', '<space>bA', function() require 'dap'.set_breakpoint() end, 'ブレークポイントの設置')
+  map('n', '<Leader>B', function() require 'dap'.set_breakpoint() end, 'ブレークポイントの設置')
+  map('n', '<space>bl', function() require 'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
+    'ログ付きのブレークポイントの設置')
+  map('n', '<space>bR', function() require 'dap'.repl.open() end, 'REPLを開く')
+  map('n', '<space>br', function() require 'dap'.run_last() end, '最後のデバッグセッションをもう一度実行')
+  map({ 'n', 'v' }, '<space>bh', function() require 'dap.ui.widgets'.hover() end, 'ホバー')
+  map({ 'n', 'v' }, '<space>bv', function() require 'dap.ui.widgets'.hover() end, 'プレビュー')
+  map('n', '<space>bf', function()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.frames)
-  end)
-  vim.keymap.set('n', '<Leader>ds', function()
+  end, 'フレームを表示')
+  map('n', '<space>bs', function()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.scopes)
-  end)
-
-  map('n', '<Leader>dd', function() require 'dapui'.toggle() end, 'DAP UIを開く/閉じる')
+  end, 'スコープを表示')
+  map('n', '<space>bb', function() require 'dapui'.toggle() end, 'DAP UIを開く/閉じる')
 end
 
 return {
