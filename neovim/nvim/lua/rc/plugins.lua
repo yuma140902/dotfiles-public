@@ -97,7 +97,7 @@ local plugins = {
   -- etc.lua --
   {
     'navarasu/onedark.nvim', -- カラースキーム
-    lazy = false,            -- メインのカラースキームは確実に非同期で読み込むようにするらしい
+    lazy = false,
     priority = 1000,         -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
     config = require 'pl.onedark'.config
   },
@@ -209,6 +209,7 @@ local plugins = {
   {
     'lewis6991/gitsigns.nvim',
     config = require 'pl.gitsigns'.config,
+    event = { 'CursorHold', 'CursorHoldI' },
     cmd = 'Gitsigns'
   },
   {
