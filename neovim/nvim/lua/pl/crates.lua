@@ -1,7 +1,13 @@
 local M = {}
 
 function M.config()
-  require 'crates'.setup()
+  require 'crates'.setup {
+    src = {
+      cmp = {
+        enabled = true,
+      },
+    },
+  }
 
   -- nvim-cmpソースの追加
   -- TODO: 機能していない気がする
