@@ -307,6 +307,42 @@ local plugins = {
   },
 
   {
+    -- DAP
+    'mfussenegger/nvim-dap',
+    cmd = {
+      "DapSetLogLevel",
+      "DapShowLog",
+      "DapContinue",
+      "DapToggleBreakpoint",
+      "DapToggleRepl",
+      "DapStepOver",
+      "DapStepInto",
+      "DapStepOut",
+      "DapTerminate",
+    },
+    config = require 'pl.nvim-dap'.config,
+  },
+
+  {
+    -- DAPのUI
+    'rcarriga/nvim-dap-ui',
+    lazy = true,
+    config = require 'pl.nvim-dap-ui'.config,
+  },
+
+  {
+    -- デバッグ中の変数の値などをvirtual textで表示する
+    'theHamsta/nvim-dap-virtual-text'
+    -- TODO: nvim-dapのhookを使って遅延読み込みする
+  },
+
+  {
+    -- プロジェクト単位でデバッグ設定を管理する
+    'yuma140902/nvim-dap-projects',
+    -- TODO: nvim-dapのhookを使って遅延読み込みする
+  },
+
+  {
     -- カーソルのあるクラスやメソッドをウィンドウの上に表示する
     'nvim-treesitter/nvim-treesitter-context',
     event = { 'CursorHold', 'CursorHoldI' },
