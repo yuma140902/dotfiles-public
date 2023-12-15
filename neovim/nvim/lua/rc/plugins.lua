@@ -187,6 +187,13 @@ local plugins = {
   },
 
   {
+    -- lua_lsに対してneovimのLua APIや読み込まれているプラグインのドキュメント・型を提供する
+    'folke/neodev.nvim',
+    -- mason-lspconfigがlua_lsの設定をするときに読み込まれる
+    lazy = true,
+  },
+
+  {
     -- セッション管理
     'olimorris/persisted.nvim',
     lazy = false,
