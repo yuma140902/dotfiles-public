@@ -16,7 +16,7 @@ function M.config()
     type = 'server',
     port = '${port}',
     executable = {
-      command = vim.fn.stdpath 'data' .. '/mason/packages/codelldb/extension/adapter/codelldb' .. exe_suffix,
+      command = vim.fn.exepath 'codelldb',
       args = { '--port', '${port}' }
     }
   }
