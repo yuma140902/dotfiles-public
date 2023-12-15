@@ -262,26 +262,29 @@ local plugins = {
   {
     -- LSPサーバーの起動、デフォルト設定の提供など
     'neovim/nvim-lspconfig',
+    lazy = true,
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim'
     },
-    config = require 'pl.nvim-lspconfig'.config,
-    cmd = 'Mason',
-    event = { 'BufNewFile', 'BufRead' }
   },
 
   {
     -- LSP等のインストーラ
     -- TODO: lsp.luaを分割する
     'williamboman/mason.nvim',
-    lazy = true
+    -- mason.nvimを遅延読み込みするのは非推奨だし不要である
+    -- > mason.nvim is optimized to load as little as possible during setup. Lazy-loading the plugin, or somehow deferring the setup, is not recommended.
+    lazy = false,
+    config = require 'pl.mason'.config,
   },
 
   {
     -- masonでインストールしたサーバーのsetupを行う
     'williamboman/mason-lspconfig.nvim',
-    lazy = true
+    lazy = true,
+    config = require 'pl.mason-lspconfig'.config,
+    event = { 'BufNewFile', 'BufReadPre', 'FilterReadPre', 'FileReadPre' }
   },
 
   {

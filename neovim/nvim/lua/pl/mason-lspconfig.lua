@@ -1,11 +1,6 @@
-local function setup_lsp()
-  require 'mason'.setup()
-  local mason_lspconfig = require 'mason-lspconfig'
-  local lspconfig = require 'lspconfig'
-  mason_lspconfig.setup {
-    ensure_installed = {}
-  }
+local M = {}
 
+function M.config()
   local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 
   local group = vim.api.nvim_create_augroup('format_on_save', { clear = true })
@@ -48,46 +43,47 @@ local function setup_lsp()
     end
   end
 
-  -- :h mason-lspconfig-automatic-server-setup
-  mason_lspconfig.setup_handlers {
-    function(server_name)
-      lspconfig[server_name].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
-    end,
-    ['lua_ls'] = function()
-      lspconfig.lua_ls.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' }
+
+  require 'mason-lspconfig'.setup {
+    ensure_installed = {},
+    handlers = {
+      function(server_name)
+        require 'lspconfig'[server_name].setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+        }
+      end,
+      ['lua_ls'] = function()
+        require 'lspconfig'.lua_ls.setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { 'vim' }
+              }
             }
           }
         }
-      }
-    end,
-    ['denols'] = function()
-      lspconfig.denols.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
-        single_file_support = false,
-      }
-    end,
-    ['tsserver'] = function()
-      lspconfig.tsserver.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        root_dir = lspconfig.util.root_pattern('package.json'),
-        single_file_support = false,
-      }
-    end,
+      end,
+      ['denols'] = function()
+        require 'lspconfig'.denols.setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          root_dir = require 'lspconfig'.util.root_pattern('deno.json', 'deno.jsonc'),
+          single_file_support = false,
+        }
+      end,
+      ['tsserver'] = function()
+        require 'lspconfig'.tsserver.setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          root_dir = require 'lspconfig'.util.root_pattern('package.json'),
+          single_file_support = false,
+        }
+      end,
+    },
   }
 end
 
-return {
-  setup_lsp = setup_lsp
-}
+return M
