@@ -331,13 +331,6 @@ local plugins = {
   },
 
   {
-    -- デバッグ中の変数の値などをvirtual textで表示する
-    'theHamsta/nvim-dap-virtual-text',
-    -- TODO: nvim-dapのhookを使って遅延読み込みする
-    config = require 'pl.nvim-dap-virtual-text'.config,
-  },
-
-  {
     -- プロジェクト単位でデバッグ設定を管理する
     'yuma140902/nvim-dap-projects',
     lazy = true,
