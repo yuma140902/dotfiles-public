@@ -300,6 +300,13 @@ local plugins = {
   },
 
   {
+    -- カーソルのあるクラスやメソッドをウィンドウの上に表示する
+    'nvim-treesitter/nvim-treesitter-context',
+    event = { 'CursorHold', 'CursorHoldI' },
+  },
+
+
+  {
     -- LSP/TSを使ってコードアウトラインを作り、移動できるようにするプラグイン
     'stevearc/aerial.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },

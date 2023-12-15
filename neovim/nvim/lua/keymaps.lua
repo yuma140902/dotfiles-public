@@ -186,6 +186,8 @@ local function register_keymaps()
   -- jujmpcursor.vim
   map('n', '[j', '<Plug>(jumpcursor-jump)', 'jumpcursor.vimで移動')
 
+  map('n', '[c', function() require("treesitter-context").go_to_context() end, 'コンテキストに移動')
+
   -- Gitsigns
   -- Navigation
   map('n', ']h', function()
