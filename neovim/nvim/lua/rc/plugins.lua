@@ -53,20 +53,24 @@ local plugins = {
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- バッファ内の単語。普通フォールバック先として使う。ddc.vimのaroundソースに相当
-      { 'hrsh7th/cmp-buffer',                  lazy = true },
+      { 'hrsh7th/cmp-buffer',                   lazy = true },
       -- vsnipからの候補
-      { 'hrsh7th/cmp-vsnip',                   lazy = true },
+      { 'hrsh7th/cmp-vsnip',                    lazy = true },
       -- lspからの候補
-      { 'hrsh7th/cmp-nvim-lsp',                lazy = true },
-      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
+      { 'hrsh7th/cmp-nvim-lsp',                 lazy = true },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help',  lazy = true },
       -- NeovimのLua APIの補完ソース
-      { 'hrsh7th/cmp-nvim-lua',                lazy = true },
+      { 'hrsh7th/cmp-nvim-lua',                 lazy = true },
       -- ファイルパスの補完ソース
-      { 'hrsh7th/cmp-path',                    lazy = true },
+      { 'hrsh7th/cmp-path',                     lazy = true },
       -- コマンドラインでの補完ソース
-      { 'hrsh7th/cmp-cmdline',                 lazy = true },
+      { 'hrsh7th/cmp-cmdline',                  lazy = true },
       -- カーソル位置のメソッドのシグネチャを表示する
-      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help',  lazy = true },
+      -- 検索を使用してドキュメントのアウトラインをもとに移動できる
+      -- `/@`または`/<Tab>`
+      { 'hrsh7th/cmp-nvim-lsp-document-symbol', lazy = true },
+      -- GitHub Copilot
       {
         'zbirenbaum/copilot-cmp',
         lazy = true,

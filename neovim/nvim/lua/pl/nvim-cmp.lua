@@ -94,9 +94,11 @@ function M.config()
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
-    sources = {
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp_document_symbol' }
+    }, {
       { name = 'buffer' }
-    }
+    })
   })
 
   cmp.setup.cmdline(':', {
