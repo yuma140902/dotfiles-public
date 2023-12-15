@@ -192,10 +192,10 @@ local plugins = {
   },
 
   {
-    -- セッション
-    -- TODO: fugitiveのバッファは保存しないようにしたい
-    'rmagatti/auto-session',
-    config = require 'pl.auto-session'.config,
+    -- セッション管理
+    'olimorris/persisted.nvim',
+    lazy = false,
+    config = require 'pl.persisted'.config,
   },
 
   {
@@ -473,7 +473,10 @@ require 'lazy'.setup(plugins, {
     -- directory where you store your local plugin projects
     path = "~/pj/nvim",
     ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-    patterns = { 'yuma140902' },
+    patterns = {
+      'yuma140902',
+      'olimorris/persisted.nvim'
+    },
     fallback = false, -- Fallback to git when local plugin doesn't exist
   },
   performance = {
