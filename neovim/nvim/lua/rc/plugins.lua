@@ -389,6 +389,12 @@ local plugins = {
     event = { "InsertEnter" }
   },
 
+  {
+    'lambdalisue/suda.vim',
+    cmd = { 'SudaRead', 'SudaWrite' },
+    init = require 'pl.suda'.init
+  },
+
   -- yuma.lua --
   -- 開発中・自作のプラグイン
   {
