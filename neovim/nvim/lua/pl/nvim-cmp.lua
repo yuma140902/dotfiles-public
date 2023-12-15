@@ -40,6 +40,10 @@ function M.config()
       --completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+    view = {
+      docs = { auto_open = true },
+      entries = { name = 'custom', selection_order = 'near_cursor' },
+    },
     mapping = {
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
