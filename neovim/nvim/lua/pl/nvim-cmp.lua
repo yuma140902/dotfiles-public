@@ -88,6 +88,17 @@ function M.config()
     })
   }
 
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'conventionalcommits' },
+      { name = "copilot",            group_index = 2 },
+      { name = 'vsnip' },
+      { name = 'path' },
+    }, {
+      { name = 'buffer' }
+    })
+  })
+
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     window = {
