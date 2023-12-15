@@ -192,11 +192,6 @@ local plugins = {
   },
 
   {
-    'mfussenegger/nvim-jdtls',
-    lazy = true
-  },
-
-  {
     -- セッション
     -- TODO: fugitiveのバッファは保存しないようにしたい
     'rmagatti/auto-session',
