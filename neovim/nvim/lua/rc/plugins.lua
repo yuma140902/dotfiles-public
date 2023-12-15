@@ -268,7 +268,6 @@ local plugins = {
 
   {
     -- LSP等のインストーラ
-    -- TODO: lsp.luaを分割する
     'williamboman/mason.nvim',
     -- mason.nvimを遅延読み込みするのは非推奨だし不要である
     -- > mason.nvim is optimized to load as little as possible during setup. Lazy-loading the plugin, or somehow deferring the setup, is not recommended.
