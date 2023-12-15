@@ -101,13 +101,6 @@ local plugins = {
     priority = 1000,         -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
     config = require 'pl.onedark'.config
   },
-  -- ファイラ
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() require 'nvim-tree'.setup() end,
-    cmd = 'NvimTreeToggle',
-  },
   -- Webページ内のテキストボックスを編集するために外部のテキストエディタを使用できるようにするブラウザアドオンGhostTextに対応するためのプラグイン
   -- Neovim側がサーバーとして動作する
   -- GhostTextを利用するためにはneovimを予め立ち上げ、:GhostTextStartでサーバーを起動させておく必要がある

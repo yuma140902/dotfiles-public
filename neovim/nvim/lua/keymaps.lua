@@ -238,10 +238,6 @@ local function register_keymaps()
   map('n', '<space>gg', '<cmd>Git<cr><C-w>T', 'git status')
   map('n', '<space>gc', '<cmd>Git commit<cr>', 'git commit')
 
-  -- NvimTree
-  map('n', '<space>t', '<cmd>NvimTreeToggle<cr>', 'NvimTreeをトグル')
-  map('n', '<left>', '<cmd>NvimTreeToggle<cr>', 'NvimTreeをトグル')
-
   -- vsnipで挿入されたスニペットのプレースホルダ間を移動するキーマップ
   vim.cmd([[
   " Jump forward or backward
