@@ -246,18 +246,23 @@ local plugins = {
       'TSUpdate',
       'TSUpdateSync',
     },
-    event = { 'BufNewFile', 'BufReadPre', 'FilterReadPre', 'FileReadPre' }
+    event = { 'BufNewFile', 'BufReadPost', 'FilterReadPre', 'FileReadPost' }
   },
-  { 'nvim-lua/plenary.nvim' },     -- Luaの関数集。少なくともtodo-comments.nvimが依存している
+
   {
-    'nvim-tree/nvim-web-devicons', -- deviconに関するライブラリ。trouble.nvim, ddu-column-icon_filenameなどのアイコン表示が改善される
+    -- ライブラリ
+    'nvim-lua/plenary.nvim'
+  },
+
+  {
+    -- deviconsを表示するためのプラグイン(ライブラリ)
+    'nvim-tree/nvim-web-devicons',
     lazy = true,
     config = function() require 'nvim-web-devicons'.setup() end
   },
 
-  -- lsp.lua --
-  -- LSPに関するプラグイン
   {
+    -- LSPサーバーの起動、デフォルト設定の提供など
     'neovim/nvim-lspconfig',
     dependencies = {
       'williamboman/mason.nvim',
@@ -267,20 +272,31 @@ local plugins = {
     cmd = 'Mason',
     event = { 'BufNewFile', 'BufRead' }
   },
-  { 'williamboman/mason.nvim',           lazy = true },
-  { 'williamboman/mason-lspconfig.nvim', lazy = true },
+
   {
-    'j-hui/fidget.nvim', -- LSPの状態を右下に表示する
-    tag = 'legacy',      -- TODO:
+    -- LSP等のインストーラ
+    -- TODO: lsp.luaを分割する
+    'williamboman/mason.nvim',
+    lazy = true
+  },
+
+  {
+    -- masonでインストールしたサーバーのsetupを行う
+    'williamboman/mason-lspconfig.nvim',
+    lazy = true
+  },
+
+  {
+    -- LSPの状態を右下に表示する
+    'j-hui/fidget.nvim',
+    tag = 'legacy', -- TODO: mainブランチに移行する
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.fidget'.config,
     event = 'LspAttach'
   },
 
-  -- motion.lua --
-  -- 移動に関するプラグイン
   {
-    -- LSPを使ってコードアウトラインを作り、移動できるようにするプラグイン
+    -- LSP/TSを使ってコードアウトラインを作り、移動できるようにするプラグイン
     'stevearc/aerial.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.aerial'.config,
@@ -299,67 +315,80 @@ local plugins = {
       'AerialToggle',
     }
   },
+
   {
     -- easy-motionみたいなやつ
     'skanehira/jumpcursor.vim',
     event = { 'BufRead' }
   },
 
-  -- ui.lua --
-  -- UIを改善するプラグイン
   {
-    'itchyny/lightline.vim', -- ステータスライン TODO: lualineを試す
+    -- ステータスライン
+    -- TODO: lualineを試す
+    'itchyny/lightline.vim',
     dependencies = 'itchyny/vim-gitbranch',
     init = require 'pl.lightline'.init,
-    event = { 'BufNewFile', 'BufRead' }
+    event = { 'BufNewFile', 'BufReadPost', 'BufAdd', 'FileReadPost', 'FilterReadPost' }
   },
+
   {
-    'itchyny/vim-gitbranch', -- Gitのブランチに関する情報を提供する。インストールされているとlightlineの該当機能が有効化される
+    -- Gitのブランチに関する情報を提供する。インストールされているとlightlineの該当機能が有効化される
+    'itchyny/vim-gitbranch',
     lazy = true
     -- TODO: gitsignsがあるからいらないのでは？
     -- gitsignsに変える場合、遅延読み込みが課題である(gitbranchは軽いので同期読み込みでもよい)
   },
+
   {
+    -- vim.notifyを置き換えていい感じの見た目にする
     'rcarriga/nvim-notify',
     init = require 'pl.nvim-notify'.init,
   },
 
-  -- util.lua --
-  -- ユーティリティ的な小物のプラグイン
   {
     -- :Linediffコマンドで2つの選択した部分の差分を表示してくれる
     'AndrewRadev/linediff.vim',
     cmd = 'Linediff'
   },
+
   {
-    'norcalli/nvim-colorizer.lua', -- カラーコードに色をつける
+    -- カラーコードに色をつける
+    'norcalli/nvim-colorizer.lua',
     config = function() require 'colorizer'.setup() end,
-    event = { 'BufNewFile', 'BufRead' }
+    event = { 'BufNewFile', 'BufReadPost', 'FilterReadPost', 'FileReadPost' }
   },
+
   {
+    -- 閉じカッコなどの自動入力
     'cohama/lexima.vim',
     event = 'InsertEnter',
     init = require 'pl.lexima'.init,
     config = require 'pl.lexima'.config,
   },
+
   {
+    -- カッコの追加・削除・置き換えなど
     'machakann/vim-sandwich',
     event = { 'BufNewFile', 'BufRead' }
   },
+
   {
+    -- バッファの一部を新しいバッファに切り出して編集できる
+    -- markdownのコードブロック、Rustのdoctestなどに使える
     'thinca/vim-partedit',
     cmd = 'Partedit',
     config = require 'pl.vim-partedit'.config,
   },
 
-  -- visual.lua --
-  -- バッファの見た目にかかわるプラグイン。特にカーソル位置によって見た目の変わるもの
   {
-    'folke/twilight.nvim', -- 近くのメソッドだけを表示する
+    -- カーソルから離れた行を暗い色で表示する
+    -- treesitterにも対応
+    'folke/twilight.nvim',
     dependencies = 'nvim-treesitter/nvim-treesitter',
     config = require 'pl.twilight'.config,
-    cmd = 'Twilight'
+    cmd = 'Twilight',
   },
+
   --{ 'RRethy/vim-illuminate', -- カーソル下の単語をハイライトする。lsp, treesitter, 正規表現を使用して「同じ」単語を抽出する。さらに<a-n>, <a-p>で移動、<a-i>でテキストオブジェクトとして参照できる
   --config = function()
   --require 'illuminate'.configure {
@@ -368,8 +397,8 @@ local plugins = {
   --end
   --},
 
-
   {
+    -- Obsidian関係の機能を追加する
     'epwalsh/obsidian.nvim',
     lazy = true,
     event = {
@@ -384,22 +413,28 @@ local plugins = {
   },
 
   {
+    -- Asynchronous Lint Engine
+    -- TODO: none-lsを試す
     'dense-analysis/ale',
     lazy = false,
     config = require 'pl.ale'.config
   },
 
   {
+    -- 曖昧幅文字の幅を設定する
     'rbtnn/vim-ambiwidth',
     lazy = false,
   },
 
   {
+    -- 対応するカッコをネストの深さに応じて色分けする
+    -- Lispのときだけ使用する
     'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
     ft = "lisp"
   },
 
   {
+    -- GitHub Copilot
     'zbirenbaum/copilot.lua',
     config = function()
       require("copilot").setup {
@@ -412,14 +447,14 @@ local plugins = {
   },
 
   {
+    -- sudoでファイルを読み書きする
     'lambdalisue/suda.vim',
     cmd = { 'SudaRead', 'SudaWrite' },
     init = require 'pl.suda'.init
   },
 
-  -- yuma.lua --
-  -- 開発中・自作のプラグイン
   {
+    -- ウィンドウの分割方向を自動で決める
     'yuma140902/auto-split-direction.nvim',
     -- dir = '~/pj/nvim/auto-split-direction.nvim',
     branch = 'master',
