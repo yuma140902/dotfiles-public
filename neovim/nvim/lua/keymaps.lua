@@ -178,12 +178,10 @@ local function register_keymaps()
   map('n', '<space>xgT', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
 
   -- aerial
-  map('n', '<space>m', '<cmd>AerialOpen<cr>', 'Aerialを開く')
-  map('n', '<right>', '<cmd>AerialOpen<cr>', 'Aerialを開く')
+  map('n', '<space><space>', '<cmd>AerialToggle float<cr>', 'Aerialを開く')
+  map('n', '<right>', '<cmd>AerialToggle! right<cr>', 'Aerialを開閉')
   map('n', ']]', '<cmd>AerialNext<cr>', 'AerialNext')
   map('n', '[[', '<cmd>AerialPrev<cr>', 'AerialPrev')
-  map('n', '{', '<cmd>AerialPrev<CR>', 'AerialNext')
-  map('n', '}', '<cmd>AerialNext<CR>', 'AerialPrev')
 
   -- jujmpcursor.vim
   map('n', '[j', '<Plug>(jumpcursor-jump)', 'jumpcursor.vimで移動')
