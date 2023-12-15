@@ -18,15 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- { 'folke/lazy.nvim' },
-  -----------------------------------------------------------------------------
-  -- ライブラリ {{{
-  -----------------------------------------------------------------------------
-  -- }}}
 
-  -----------------------------------------------------------------------------
-  -- ファイルマネージャ {{{
-  -----------------------------------------------------------------------------
   {
+    -- ウィンドウスタイル(split window style)のファイルマネージャー
     'stevearc/oil.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons'
@@ -34,13 +28,9 @@ local plugins = {
     config = require 'pl.oil'.config,
     cmd = { 'Oil' }
   },
-  -- }}}
 
-  -----------------------------------------------------------------------------
-  -- 自動補完 {{{
-  -----------------------------------------------------------------------------
   {
-    -- vim-vsnip
+    -- スニペット
     'hrsh7th/vim-vsnip',
     dependencies = {
       { 'hrsh7th/vim-vsnip-integ',      lazy = true },
@@ -49,7 +39,7 @@ local plugins = {
     event = { 'InsertEnter', 'CmdlineEnter' }
   },
   {
-    -- nvim-cmp
+    -- 自動補完
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- バッファ内の単語。普通フォールバック先として使う。ddc.vimのaroundソースに相当
@@ -91,29 +81,26 @@ local plugins = {
   },
   -- }}}
 
-  -----------------------------------------------------------------------------
-  -- 未整理 {{{
-  -----------------------------------------------------------------------------
-  -- etc.lua --
   {
-    'navarasu/onedark.nvim', -- カラースキーム
+    -- カラースキーム
+    'navarasu/onedark.nvim',
     lazy = false,
-    priority = 1000,         -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
+    priority = 1000, -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
     config = require 'pl.onedark'.config
   },
-  -- Webページ内のテキストボックスを編集するために外部のテキストエディタを使用できるようにするブラウザアドオンGhostTextに対応するためのプラグイン
-  -- Neovim側がサーバーとして動作する
-  -- GhostTextを利用するためにはneovimを予め立ち上げ、:GhostTextStartでサーバーを起動させておく必要がある
-  -- GhostTextとneovimはlocalhost:4001で通信する
+
   {
+    -- ブラウザのテキストボックスに入力する
+    -- Neovim側がサーバーとして動作する
+    -- GhostTextを利用するためにはneovimを予め立ち上げ、:GhostTextStartでサーバーを起動させておく必要がある
+    -- GhostTextとneovimはlocalhost:4001で通信する
     'subnut/nvim-ghost.nvim',
     init = require 'pl.nvim-ghost'.init,
     cmd = 'GhostTextStart'
   },
 
-  -- fuzzy_finder.lua --
-  -- ファジーファインダに関するプラグイン
   {
+    -- ファジーファインダ
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
@@ -126,8 +113,6 @@ local plugins = {
     cmd = 'Telescope'
   },
 
-  -- ide_like.lua --
-  -- IDE風に操作するためのプラグイン達
   {
     -- LSP用のUI
     'kkharji/lspsaga.nvim',
@@ -135,6 +120,7 @@ local plugins = {
     config = function() require 'lspsaga'.setup() end,
     event = 'LspAttach'
   },
+
   {
     -- quickfix, LSPのdiagnostics, referenceなどのリストを下部にきれいに表示する
     'folke/trouble.nvim',
@@ -142,6 +128,7 @@ local plugins = {
     config = function() require 'trouble'.setup() end,
     cmd = { 'TroubleToggle', 'TodoTrouble' },
   },
+
   {
     -- いわゆるTODOコメントへ移動・一覧表示する
     'folke/todo-comments.nvim',
@@ -149,19 +136,23 @@ local plugins = {
     config = require 'pl.todo-comments'.config,
     event = { 'BufNewFile', 'BufRead' }
   },
+
   {
     -- キーマップを表示するやつ
     'folke/which-key.nvim',
     lazy = true, -- 初めてrequire('which-key')が実行されたときにこのプラグインが読み込まれるようになる
     config = require 'pl.which-key'.config,
   },
+
   {
     -- スクロールバーを表示する
     'petertriho/nvim-scrollbar',
     config = function() require 'scrollbar'.setup() end,
     event = { 'BufNewFile', 'BufRead' }
   },
+
   {
+    -- Rust Analyzerの機能をコマンドで呼び出すためのプラグイン
     'vxpm/ferris.nvim',
     config = require 'pl.ferris'.config,
     cmd = {
@@ -179,24 +170,39 @@ local plugins = {
       "FerrisRebuildMacros",
     }
   },
-  { 'mrcjkb/rustaceanvim',  lazy = true, ft = 'rust' }, -- LSPと連携してInline hintを表示するなど、いくつかの機能を追加する
+
   {
+    -- Rustに関する機能を追加する
+    -- TODO: このプラグインは勝手にRust Analyzerを起動・アタッチするのでmason-lspconfig, nvim-lspconfigと競合する
+    -- Rust Analyzerが2つ起動した状態になってしまう
+    -- 回避方法: Rust Analyzerをmasonではなくrustupでインストールする
+    -- ただしこの方法だとRust Analyzerの最新版を使うことができない
+    -- 本質的な回避方法としては、masonでインストールされたRust Analyzerがnvim-lspconfigでsetupされないようにすれば良いはず
+    'mrcjkb/rustaceanvim',
+    lazy = true,
+    ft = 'rust'
+  },
+
+  {
+    -- クレートの情報を見たりアップデートしたりする
     'saecki/crates.nvim',
-    tag = 'v0.3.0', -- TODO: バージョンを固定する必要があるのかわからない
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = { "BufRead Cargo.toml" },
     config = require 'pl.crates'.config,
   },
+
   {
     'mfussenegger/nvim-jdtls',
     lazy = true
   },
+
   {
     -- セッション
-    -- TODO: nvim-treeのウィンドウが復元されない
+    -- TODO: fugitiveのバッファは保存しないようにしたい
     'rmagatti/auto-session',
     config = require 'pl.auto-session'.config,
   },
+
   {
     -- ドキュメントコメントを生成してくれるやつ
     "danymat/neogen",
