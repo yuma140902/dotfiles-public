@@ -72,6 +72,8 @@ local plugins = {
       { 'hrsh7th/cmp-nvim-lsp-document-symbol',  lazy = true },
       -- Conventional Commitsで定義されているキーワードを補完する
       { 'davidsierradz/cmp-conventionalcommits', lazy = true },
+      -- コマンドの履歴と検索の履歴を補完する
+      { 'dmitmel/cmp-cmdline-history',           lazy = true },
       -- GitHub Copilot
       {
         'zbirenbaum/copilot-cmp',
