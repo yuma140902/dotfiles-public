@@ -347,6 +347,7 @@ local plugins = {
     -- カーソルのあるクラスやメソッドをウィンドウの上に表示する
     'nvim-treesitter/nvim-treesitter-context',
     event = { 'CursorHold', 'CursorHoldI' },
+    config = require 'pl.nvim-treesitter-context'.config,
   },
 
 
