@@ -72,9 +72,15 @@ function M.config()
       { name = 'nvim_lsp_signature_help' },
       { name = 'vsnip' },
       { name = 'path' },
+      {
+        name = 'latex_symbols',
+        option = {
+          strategy = 0 -- Show the command and insert the symbol
+        }
+      },
       -- https://github.com/epwalsh/obsidian.nvim/issues/124
-      { name = "obsidian",               option = require 'pl.obsidian'.opt },
-      { name = "obsidian_new",           option = require 'pl.obsidian'.opt },
+      { name = "obsidian",     option = require 'pl.obsidian'.opt },
+      { name = "obsidian_new", option = require 'pl.obsidian'.opt },
     }, {
       {
         name = 'buffer',
@@ -94,6 +100,12 @@ function M.config()
       { name = "copilot",            group_index = 2 },
       { name = 'vsnip' },
       { name = 'path' },
+      {
+        name = 'latex_symbols',
+        option = {
+          strategy = 0 -- Show the command and insert the symbol
+        }
+      },
     }, {
       { name = 'buffer' }
     })

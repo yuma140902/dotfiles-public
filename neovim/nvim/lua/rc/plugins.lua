@@ -74,6 +74,8 @@ local plugins = {
       { 'davidsierradz/cmp-conventionalcommits', lazy = true },
       -- コマンドの履歴と検索の履歴を補完する
       { 'dmitmel/cmp-cmdline-history',           lazy = true },
+      -- LaTeXの記法をもとに数学記号を入力する
+      { 'kdheepak/cmp-latex-symbols',            lazy = true },
       -- GitHub Copilot
       {
         'zbirenbaum/copilot-cmp',
