@@ -59,6 +59,8 @@ local plugins = {
       -- lspからの候補
       { 'hrsh7th/cmp-nvim-lsp',                lazy = true },
       { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
+      -- NeovimのLua APIの補完ソース
+      { 'hrsh7th/cmp-nvim-lua',                lazy = true },
       -- ファイルパスの補完ソース
       { 'hrsh7th/cmp-path',                    lazy = true },
       -- コマンドラインでの補完ソース
