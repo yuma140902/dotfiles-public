@@ -29,6 +29,50 @@ function M.config()
     return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
   end
 
+  local cmp_kinds = {
+    Text = ' ',
+    Method = ' ',
+    Function = ' ',
+    Constructor = ' ',
+    Field = ' ',
+    Variable = ' ',
+    Class = ' ',
+    Interface = ' ',
+    Module = ' ',
+    Property = ' ',
+    Unit = ' ',
+    Value = ' ',
+    Enum = ' ',
+    Keyword = ' ',
+    Snippet = ' ',
+    Color = ' ',
+    File = ' ',
+    Reference = ' ',
+    Folder = ' ',
+    EnumMember = ' ',
+    Constant = ' ',
+    Struct = ' ',
+    Event = ' ',
+    Operator = ' ',
+    TypeParameter = ' ',
+  }
+
+  local source_names = {
+    buffer = '[BUF]',
+    nvim_lsp = '[LSP]',
+    vsnip = '[VSNIP]',
+    nvim_lua = '[LUA]',
+    latex_symbols = '[LATEX]',
+    path = '[PATH]',
+    copilot = '[COPILOT]',
+    cmdline = '[CMD]',
+    cmdline_history = '[HIST]',
+    conventionalcommits = '[CONV]',
+    obsidian = '[OBS]',
+    obsidian_new = '[OBS_NEW]',
+    nvim_lsp_document_symbol = '[LSP_SYM]',
+  }
+
   cmp.setup {
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -44,6 +88,28 @@ function M.config()
       docs = { auto_open = true },
       entries = { name = 'custom', selection_order = 'near_cursor' },
     },
+    formatting = {
+      expandable_indicator = true,
+      fields = { 'abbr', 'kind', 'menu' }, -- :h completion-itemsを参照
+      format = function(entry, vim_item)
+        -- fun(entry: cmp.Entry, vim_item: vim.CompletedItem): vim.CompletedItem
+        local kind_icon = cmp_kinds[vim_item.kind]
+        if kind_icon == nil then
+          vim_item.kind = '   ' .. vim_item.kind
+        else
+          vim_item.kind = '   ' .. kind_icon .. ' ' .. vim_item.kind
+        end
+
+        local source_name = source_names[entry.source.name]
+        if source_name ~= nil then
+          vim_item.menu = source_name
+        end
+        return vim_item
+      end
+    },
+    --[[sorting = {
+      comparators = {}
+    },]]
     mapping = {
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
