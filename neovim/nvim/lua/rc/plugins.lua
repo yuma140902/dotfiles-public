@@ -199,38 +199,54 @@ local plugins = {
   },
 
   {
-    -- ドキュメントコメントを生成してくれるやつ
+    -- ドキュメントコメントを生成する
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = require 'pl.neogen'.config,
     cmd = 'Neogen'
-    -- Uncomment next line if you want to follow only stable versions
-    -- version = "*"
   },
+
   {
+    -- 行番号の部分にgitの更新・追加・削除などの情報を表示する
     'lewis6991/gitsigns.nvim',
     config = require 'pl.gitsigns'.config,
     event = { 'CursorHold', 'CursorHoldI' },
     cmd = 'Gitsigns'
   },
+
   {
+    -- vim内でgit操作をする
     'tpope/vim-fugitive',
     config = function()
       -- nothing
     end,
-    cmd = { 'Git' }
+    cmd = { 'Git', 'G' }
   },
 
-  -- library.lua --
-  -- ライブラリ的なプラグイン
   {
-    -- 構文解析をしてくれるやつ。それぞれの言語用のパーサーを:TSInstallで別途インストールする必要があるので注意
+    -- 構文解析
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    lazy = true,
     config = require 'pl.tree-sitter'.config,
-    cmd = { 'TSUpdate', 'TSEnable' },
-    event = { 'BufNewFile', 'BufRead' }
+    cmd = {
+      'TSBufDisable',
+      'TSBufEnable',
+      'TSBufToggle',
+      'TSDisable',
+      'TSEditQuery',
+      'TSEditQueryUserAfter',
+      'TSEnable',
+      'TSInstall',
+      'TSInstallInfo',
+      'TSInstallSync',
+      'TSModuleInfo',
+      'TSToggle',
+      'TSToggle',
+      'TSUninstall',
+      'TSUpdate',
+      'TSUpdateSync',
+    },
+    event = { 'BufNewFile', 'BufReadPre', 'FilterReadPre', 'FileReadPre' }
   },
   { 'nvim-lua/plenary.nvim' },     -- Luaの関数集。少なくともtodo-comments.nvimが依存している
   {
