@@ -103,13 +103,27 @@ function M.config()
         local source_name = source_names[entry.source.name]
         if source_name ~= nil then
           vim_item.menu = source_name
+        else
+          vim_item.menu = '[' .. entry.source.name .. ']'
         end
         return vim_item
       end
     },
-    --[[sorting = {
-      comparators = {}
-    },]]
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        -- compare.scopes,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.locality,
+        cmp.config.compare.kind,
+        -- compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
     mapping = {
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
