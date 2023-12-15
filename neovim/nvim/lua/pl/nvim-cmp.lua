@@ -70,7 +70,7 @@ function M.config()
       ['<C-e>'] = cmp.mapping.abort(),
     },
     sources = cmp.config.sources({
-      { name = "copilot",                group_index = 2 },
+      { name = "copilot" },
       { name = 'nvim_lua' },
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
@@ -96,7 +96,7 @@ function M.config()
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
       { name = 'conventionalcommits' },
-      { name = "copilot",            group_index = 2 },
+      { name = "copilot" },
       { name = 'vsnip' },
       { name = 'path' },
       { name = 'latex_symbols',      option = { strategy = 0 } },
