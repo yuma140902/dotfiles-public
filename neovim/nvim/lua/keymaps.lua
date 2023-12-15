@@ -329,6 +329,7 @@ local function register_keymaps()
     widgets.centered_float(widgets.scopes)
   end, 'スコープを表示')
   map('n', '<space>bb', function() require 'dapui'.toggle() end, 'DAP UIを開く/閉じる')
+  map('n', '<space>bo', function() require 'nvim-dap-projects'.search_project_config() end, 'プロジェクト固有の設定を読み込む')
 end
 
 return {

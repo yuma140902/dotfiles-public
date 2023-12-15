@@ -340,7 +340,7 @@ local plugins = {
   {
     -- プロジェクト単位でデバッグ設定を管理する
     'yuma140902/nvim-dap-projects',
-    -- TODO: nvim-dapのhookを使って遅延読み込みする
+    lazy = true,
   },
 
   {
