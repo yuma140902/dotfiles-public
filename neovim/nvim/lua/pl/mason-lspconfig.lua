@@ -87,6 +87,18 @@ function M.config()
           single_file_support = false,
         }
       end,
+      ['jsonls'] = function()
+        require 'lspconfig'.jsonls.setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = {
+            json = {
+              schemas = require 'schemastore'.json.schemas(),
+              validate = { enable = true },
+            }
+          }
+        }
+      end
     },
   }
 end

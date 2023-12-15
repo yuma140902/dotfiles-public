@@ -43,6 +43,7 @@
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "0b4c1ab6724062f3582746c6a5a8c0636bf7ed81" },
   "rustaceanvim": { "branch": "master", "commit": "ff208ee3c9d67f450e88eb05417ad256c7ebfec4" },
+  "schemastore.nvim": { "branch": "main", "commit": "3927fbff75d5777660bfc4d29ff8d5b4a0cae2af" },
   "suda.vim": { "branch": "master", "commit": "8b0fc3711760195aba104e2d190cff9af8267052" },
   "telescope-command-palette.nvim": { "branch": "master", "commit": "cf38d89446ff36d07191d32796eed6e38e5ce118" },
   "telescope-github.nvim": { "branch": "master", "commit": "ee95c509901c3357679e9f2f9eaac3561c811736" },

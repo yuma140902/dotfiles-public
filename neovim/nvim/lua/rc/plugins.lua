@@ -194,6 +194,13 @@ local plugins = {
   },
 
   {
+    -- schemastore.orgが提供しているJSONの様々なスキーマを読み込む
+    'b0o/schemastore.nvim',
+    -- mason-lspconfigがjsonlsの設定をするときに読み込まれる
+    lazy = true,
+  },
+
+  {
     -- セッション管理
     'olimorris/persisted.nvim',
     lazy = false,
