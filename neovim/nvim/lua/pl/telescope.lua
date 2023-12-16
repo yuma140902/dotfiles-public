@@ -2,7 +2,7 @@ local M = {}
 
 function M.config()
   require 'telescope'.setup {
-    defaults = { file_ignore_patterns = { ".git" } },
+    defaults = { file_ignore_patterns = {} },
     extensions = {
       command_palette = require 'command_palette'.table,
       undo = {
