@@ -35,7 +35,7 @@
   "nvim-ghost.nvim": { "branch": "main", "commit": "a1ca0b2dac59881066d7ac9373cf64d59ba29d6a" },
   "nvim-lspconfig": { "branch": "master", "commit": "84f2dd42efffa20d505ac44c78568d778ca7e0a1" },
   "nvim-notify": { "branch": "master", "commit": "e4a2022f4fec2d5ebc79afa612f96d8b11c627b3" },
-  "nvim-scrollbar": { "branch": "main", "commit": "35f99d559041c7c0eff3a41f9093581ceea534e8" },
+  "nvim-scrollview": { "branch": "main", "commit": "7eb9030662fad8bfbc1df2c6cfc165aa4a8904b2" },
   "nvim-treesitter": { "branch": "master", "commit": "9bc1f1e6406933e9263456e5761e47b9cb1da71d" },
   "nvim-treesitter-context": { "branch": "master", "commit": "cfa8ee19ac9bae9b7fb2958eabe2b45b70c56ccb" },
   "nvim-web-devicons": { "branch": "master", "commit": "a1425903ab52a0a0460622519e827f224e5b4fee" },

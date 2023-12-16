@@ -144,9 +144,9 @@ local plugins = {
 
   {
     -- スクロールバーを表示する
-    'petertriho/nvim-scrollbar',
-    config = function() require 'scrollbar'.setup() end,
-    event = { 'BufNewFile', 'BufRead' }
+    'dstein64/nvim-scrollview',
+    config = require 'pl.scrollview'.config,
+    event = { 'CursorHold', 'CursorHoldI' }
   },
 
   {
