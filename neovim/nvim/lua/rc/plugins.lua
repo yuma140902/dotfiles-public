@@ -233,6 +233,19 @@ local plugins = {
   },
 
   {
+    -- git diffの表示、コンフリクトの解決
+    'sindrets/diffview.nvim',
+    cmd = {
+      'DiffviewOpen',
+      'DiffviewClose',
+      'DiffviewToggleFiles',
+      'DiffviewFocusFiles',
+      'DiffviewRefresh',
+      'DiffviewFileHistory'
+    }
+  },
+
+  {
     -- 構文解析
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
