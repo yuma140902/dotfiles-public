@@ -3,9 +3,9 @@ local M = {}
 function M.config()
   local exe_suffix = vim.fn.has('win32') == 1 and '.exe' or ''
 
-  local g = vim.api.nvim_create_augroup("dap_quit", {})
-  vim.api.nvim_create_autocmd({ "User" }, {
-    pattern = "PersistedSavePre",
+  local g = vim.api.nvim_create_augroup('dap_quit', {})
+  vim.api.nvim_create_autocmd({ 'User' }, {
+    pattern = 'PersistedSavePre',
     group = g,
     callback = function()
       require 'dapui'.close {}

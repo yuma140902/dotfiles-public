@@ -226,15 +226,14 @@ local plugins = {
   {
     -- vim内でgit操作をする
     'tpope/vim-fugitive',
-    config = function()
-      -- nothing
-    end,
+    config = require 'pl.fugitive'.config,
     cmd = { 'Git', 'G' }
   },
 
   {
     -- git diffの表示、コンフリクトの解決
     'sindrets/diffview.nvim',
+    config = require 'pl.diffview'.config,
     cmd = {
       'DiffviewOpen',
       'DiffviewClose',

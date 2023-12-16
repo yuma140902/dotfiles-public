@@ -17,16 +17,6 @@ function M.config()
       reset_prompt_after_deletion = true, -- whether to reset prompt after session deleted
     },
   }
-
-  local group = vim.api.nvim_create_augroup("PersistedHooks", {})
-
-  vim.api.nvim_create_autocmd({ "User" }, {
-    pattern = "PersistedSavePre",
-    group = group,
-    callback = function()
-      pcall(vim.cmd, "bw fugitive*")
-    end,
-  })
 end
 
 return M
