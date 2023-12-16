@@ -158,9 +158,6 @@ function M.config()
       -- https://github.com/epwalsh/obsidian.nvim/issues/124
       { name = "obsidian",               option = require 'pl.obsidian'.opt },
       { name = "obsidian_new",           option = require 'pl.obsidian'.opt },
-    }, {
-
-    }, {
       {
         name = 'buffer',
         option = {
@@ -179,7 +176,6 @@ function M.config()
       { name = "copilot" },
       { name = 'vsnip' },
       { name = 'path' },
-    }, {
       { name = 'buffer' }
     })
   })
@@ -191,8 +187,8 @@ function M.config()
       documentation = cmp.config.window.bordered(),
     },
     sources = cmp.config.sources({
-      { name = 'nvim_lsp_document_symbol' },
-      { name = 'cmdline_history',         keyword_length = 2 }
+      { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
+      { name = 'cmdline_history',          keyword_length = 3 }
     }, {
       { name = 'buffer' }
     })
@@ -207,8 +203,8 @@ function M.config()
     sources = cmp.config.sources({
       { name = 'path' }
     }, {
-      { name = 'cmdline',         keyword_length = 2 },
-      { name = 'cmdline_history', keyword_length = 2 }
+      { name = 'cmdline',         keyword_length = 3 },
+      { name = 'cmdline_history', keyword_length = 3 }
     })
   })
 end
