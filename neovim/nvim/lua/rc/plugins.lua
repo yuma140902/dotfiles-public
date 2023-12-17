@@ -515,6 +515,12 @@ local plugins = {
   },
 
   {
+    -- quickfixリストから置換バッファを作り、置換バッファを編集すると実際のファイルに反映される
+    'thinca/vim-qfreplace',
+    cmd = { 'Qfreplace' }
+  },
+
+  {
     -- ウィンドウの分割方向を自動で決める
     'yuma140902/auto-split-direction.nvim',
     -- dir = '~/pj/nvim/auto-split-direction.nvim',
