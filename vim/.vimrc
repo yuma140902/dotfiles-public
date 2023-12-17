@@ -6,10 +6,10 @@ endif
 
 packadd vim-jetpack
 call jetpack#begin()
-call jetpack#add('tani/vim-jetpack')
+call jetpack#add('tani/vim-jetpack', { 'opt': 1 })
 call jetpack#add('joshdick/onedark.vim')
-call jetpack#add('cohama/lexima.vim')
-call jetpack#add('machakann/vim-sandwich')
+call jetpack#add('cohama/lexima.vim', { 'on_event': 'InsertEnter' })
+call jetpack#add('machakann/vim-sandwich', { 'on_event': ['BufNewFile', 'BufReadPre', 'FilterReadPre', 'FileReadPre'] })
 call jetpack#add('prabirshrestha/async.vim')
 call jetpack#add('prabirshrestha/asyncomplete.vim')
 call jetpack#add('prabirshrestha/asyncomplete-buffer.vim')
@@ -20,14 +20,14 @@ call jetpack#add('MarcWeber/vim-addon-mw-utils')
 call jetpack#add('tomtom/tlib_vim')
 "Plug 'garbas/vim-snipmate'
 "Plug 'honza/vim-snippets'
-call jetpack#add('yuma140902/vim-vsnip')
-call jetpack#add('hrsh7th/vim-vsnip-integ')
+call jetpack#add('yuma140902/vim-vsnip', { 'on_event': 'InsertEnter' })
+call jetpack#add('hrsh7th/vim-vsnip-integ', { 'depends': 'vim-vsnip', 'on_event': 'InsertEnter' })
 call jetpack#add('rafamadriz/friendly-snippets')
-call jetpack#add('ctrlpvim/ctrlp.vim')
-call jetpack#add('yuma140902/ctrlp-grep')
+call jetpack#add('ctrlpvim/ctrlp.vim', { 'on_cmd': ['CtrlP', 'CtrlPBuffer', 'CtrlPCurFile', 'CtrlPCurWD', 'CtrlPMRU', 'CtrlPMixed', 'CtrlPLastMode', 'CtrlPRoot', 'CtrlPClearCache', 'CtrlPClearAllCaches', 'CtrlPTag', 'CtrlPBufTag', 'CtrlPBufTagAll', 'CtrlPQuickfix', 'CtrlPDir', 'CtrlPRTS', 'CtrlPUndo', 'CtrlPLine', 'CtrlPChange', 'CtrlPChangeAll', 'CtrlPBookmarkDir', 'CtrlPBookmarkDirAdd'] })
+call jetpack#add('yuma140902/ctrlp-grep', { 'depends': 'ctrlp.vim', 'on_cmd': 'CtrlPGrep' })
 call jetpack#add('tpope/vim-vinegar')
-call jetpack#add('thinca/vim-qfreplace')
-call jetpack#add('itchyny/vim-qfedit')
+call jetpack#add('thinca/vim-qfreplace', { 'on_cmd': 'Qfreplace' })
+call jetpack#add('itchyny/vim-qfedit', { 'on_event': 'BufReadPre' })
 call jetpack#end()
 
 syntax on
