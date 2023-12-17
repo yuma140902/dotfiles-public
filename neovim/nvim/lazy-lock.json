@@ -59,6 +59,7 @@
   "vim-fugitive": { "branch": "master", "commit": "46eaf8918b347906789df296143117774e827616" },
   "vim-gitbranch": { "branch": "master", "commit": "1a8ba866f3eaf0194783b9f8573339d6ede8f1ed" },
   "vim-partedit": { "branch": "master", "commit": "5936e9bc04c8e3925489397079a6b0a862353d3a" },
+  "vim-qfedit": { "branch": "master", "commit": "6ba4cc57597fa96a36b44b1a2274244fcb44e28f" },
   "vim-qfreplace": { "branch": "master", "commit": "db1c4b0161931c9a63942f4f562a0d0f4271ac14" },
   "vim-sandwich": { "branch": "master", "commit": "c5a2cc438ce6ea2005c556dc833732aa53cae21a" },
   "vim-vsnip": { "branch": "master", "commit": "8eebdf6ab4a880d845893f210fd20516d2e2384f" },

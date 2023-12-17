@@ -74,5 +74,6 @@ end
 vim.api.nvim_create_autocmd('QuickFixCmdPost', {
   group = vim.api.nvim_create_augroup('auto_open_quickfix_window', { clear = true }),
   pattern = '*',
+  nested = true,
   command = 'cwindow'
 })

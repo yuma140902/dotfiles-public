@@ -521,6 +521,12 @@ local plugins = {
   },
 
   {
+    -- quickfixリストを編集できるようにする
+    'itchyny/vim-qfedit',
+    event = { 'BufReadPre' }
+  },
+
+  {
     -- ウィンドウの分割方向を自動で決める
     'yuma140902/auto-split-direction.nvim',
     -- dir = '~/pj/nvim/auto-split-direction.nvim',
