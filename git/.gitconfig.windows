@@ -24,5 +24,3 @@
 	gpgsign = false
 
 # vim: ft=gitconfig ff=unix noexpandtab
-[credential]
-	helper = manager
