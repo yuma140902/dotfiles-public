@@ -156,9 +156,6 @@ smap <expr> <C-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>'
 imap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 smap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 
-imap <expr> <C-k> vsnip#jumpable(-1) ? 'yesss' : 'noooo'
-smap <expr> <C-k> vsnip#jumpable(-1) ? 'yesss' : 'noooo'
-
 " CtrlP
 nnoremap <space>ff :CtrlPMixed<CR>
 nnoremap <space>fr :CtrlPGrep<CR>
