@@ -1,0 +1,15 @@
+{
+  "notice": "Open vim and run `:PlugInstall` to install plugins",
+  "files": [
+    {
+      "src": ".vimrc",
+      "dst": "${HOME}/.vimrc",
+      "cond": "platform.system() == 'Linux' or platform.system() == 'Darwin'"
+    },
+    {
+      "src": ".vimrc",
+      "dst": "${HOME}/_vimrc",
+      "cond": "platform.system() == 'Windows'"
+    }
+  ]
+}
