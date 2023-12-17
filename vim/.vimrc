@@ -1,32 +1,34 @@
 let data_dir = has('nvim') ? stdpath('data') . '/site' : (has('win32') ? expand('~/vimfiles') : '~/.vim')
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+let s:jetpack_file = data_dir . '/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+if !filereadable(s:jetpack_file)
+  silent execute '!curl -fLo '.data_dir.'/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
 endif
 
-call plug#begin()
-Plug 'joshdick/onedark.vim'
-Plug 'cohama/lexima.vim'
-Plug 'machakann/vim-sandwich'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'keremc/asyncomplete-clang.vim'
-Plug 'akaimo/asyncomplete-around.vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
+packadd vim-jetpack
+call jetpack#begin()
+call jetpack#add('tani/vim-jetpack')
+call jetpack#add('joshdick/onedark.vim')
+call jetpack#add('cohama/lexima.vim')
+call jetpack#add('machakann/vim-sandwich')
+call jetpack#add('prabirshrestha/async.vim')
+call jetpack#add('prabirshrestha/asyncomplete.vim')
+call jetpack#add('prabirshrestha/asyncomplete-buffer.vim')
+call jetpack#add('prabirshrestha/asyncomplete-file.vim')
+call jetpack#add('keremc/asyncomplete-clang.vim')
+call jetpack#add('akaimo/asyncomplete-around.vim')
+call jetpack#add('MarcWeber/vim-addon-mw-utils')
+call jetpack#add('tomtom/tlib_vim')
 "Plug 'garbas/vim-snipmate'
 "Plug 'honza/vim-snippets'
-Plug 'yuma140902/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'rafamadriz/friendly-snippets'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'yuma140902/ctrlp-grep'
-Plug 'tpope/vim-vinegar'
-Plug 'thinca/vim-qfreplace'
-Plug 'itchyny/vim-qfedit'
-call plug#end()
+call jetpack#add('yuma140902/vim-vsnip')
+call jetpack#add('hrsh7th/vim-vsnip-integ')
+call jetpack#add('rafamadriz/friendly-snippets')
+call jetpack#add('ctrlpvim/ctrlp.vim')
+call jetpack#add('yuma140902/ctrlp-grep')
+call jetpack#add('tpope/vim-vinegar')
+call jetpack#add('thinca/vim-qfreplace')
+call jetpack#add('itchyny/vim-qfedit')
+call jetpack#end()
 
 syntax on
 filetype plugin indent on
@@ -86,6 +88,7 @@ augroup auto_cwindow
   autocmd!
   au QuickFixCmdPost * nested cwindow
 augroup END
+
 
 let g:asyncomplete_auto_popup = 1
 
