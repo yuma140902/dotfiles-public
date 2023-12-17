@@ -1,5 +1,4 @@
 {
-  "notice": "Open vim and run `:PlugInstall` to install plugins",
   "files": [
     {
       "src": ".vimrc",
