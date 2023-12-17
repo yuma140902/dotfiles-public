@@ -24,6 +24,8 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'yuma140902/ctrlp-grep'
 Plug 'tpope/vim-vinegar'
+Plug 'thinca/vim-qfreplace'
+Plug 'itchyny/vim-qfedit'
 call plug#end()
 
 syntax on
@@ -78,6 +80,12 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 " For Vim 8 (<c-@> corresponds to <c-space>):
 " imap <c-@> <Plug>(asyncomplete_force_refresh)
+
+" quickfix windowを自動で開く
+augroup auto_cwindow
+  autocmd!
+  au QuickFixCmdPost * nested cwindow
+augroup END
 
 let g:asyncomplete_auto_popup = 1
 
