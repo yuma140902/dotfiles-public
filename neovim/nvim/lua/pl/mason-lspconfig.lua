@@ -2,47 +2,7 @@ local M = {}
 
 function M.config()
   local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
-
-  local group = vim.api.nvim_create_augroup('format_on_save', { clear = true })
-
-  local do_format = function(bufnr)
-    -- no_formatがセットされているならフォーマットしない
-    -- :let b:no_format = 1
-    if vim.b[bufnr].no_format or vim.b[bufnr].no_format == 1 then
-      return
-    end
-
-    -- bufnrをもとにどのようにフォーマットするか決める
-    -- 今のところはいつもLSPを使う
-    vim.lsp.buf.format({
-      filter = function(client_)
-        -- bufnrとclient_をもとに、各LSPサーバでフォーマットを行うかどうか決定する
-        -- 今のところはいつもtrueを返す。つまりアタッチされているすべてのLSPサーバでフォーマットを行う
-        return true
-      end,
-      bufnr = bufnr,
-    })
-  end
-
-  -- LSPサーバにアタッチされたときに呼ばれる
-  local on_attach = function(client, bufnr)
-    -- :h lspconfig-keybindings
-    -- :h vim.lsp.*
-
-    -- [Avoiding LSP formatting conflicts · nvimtools/none-ls.nvim Wiki](https://github.com/nvimtools/none-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts)
-    -- 保存時にフォーマットする
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = group,
-        buffer = bufnr,
-        callback = function()
-          do_format(bufnr)
-        end,
-      })
-    end
-  end
-
+  local on_attach = require 'rc.lib'.on_attach
 
   require 'mason-lspconfig'.setup {
     ensure_installed = {},

@@ -175,6 +175,7 @@ local plugins = {
     -- rust-analyzerのインストールはrustup、masonどちらで行なっても良い
     'mrcjkb/rustaceanvim',
     lazy = true,
+    init = require 'pl.rustaceanvim'.init,
     ft = 'rust'
   },
 
