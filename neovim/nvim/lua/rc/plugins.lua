@@ -551,7 +551,7 @@ require 'lazy'.setup(plugins, {
       'yuma140902',
       'olimorris/persisted.nvim'
     },
-    fallback = false, -- Fallback to git when local plugin doesn't exist
+    fallback = true, -- Fallback to git when local plugin doesn't exist
   },
   performance = {
     cache = {
