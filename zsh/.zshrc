@@ -93,3 +93,6 @@ function obs() {
   nvim
   popd
 }
+
+# opam configuration
+[[ ! -r /home/yuma/.opam/opam-init/init.zsh ]] || source /home/yuma/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
