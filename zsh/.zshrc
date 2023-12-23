@@ -1,7 +1,8 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=1000000
+HISTORY_IGNORE="(ls|cd|nvim|vim)"
 setopt extendedglob nomatch notify
 unsetopt autocd beep
 bindkey -e
@@ -60,6 +61,7 @@ eval "$(pyenv init -)"
 
 if type 'zoxide' > /dev/null; then
   eval "$(zoxide init zsh)"
+  alias cd=z
 fi
 
 export PATH=$PATH:~/.local/bin/:~/go/bin:~/.cargo/bin:~/.volta/bin
@@ -91,6 +93,40 @@ function obs() {
 
   pushd ~/OneDrive/Obsidian/main
   nvim
+  popd
+}
+
+if type 'fzf' > /dev/null; then
+  function select-history() {
+    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+    CURSOR=$#BUFFER
+  }
+  zle -N select-history
+  bindkey '^r' select-history
+fi
+
+alias :q='exit'
+
+function backup() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: backup <file>"
+    return
+  fi
+  if [ ! -e $1 ]; then
+    echo "File not found: $1"
+    return
+  fi
+  cp $1 $1.`date '+%Y%m%d-%H%M%S'`.bak
+}
+
+function mk() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: mk <task>"
+    return
+  fi
+
+  pushd ~/repo/dotfiles/makefile
+  make $1
   popd
 }
 
