@@ -64,7 +64,7 @@ if type 'zoxide' > /dev/null; then
   alias cd=z
 fi
 
-export PATH=$PATH:~/.local/bin/:~/go/bin:~/.cargo/bin:~/.volta/bin
+export PATH=$PATH:~/.local/bin/:~/go/bin:~/.cargo/bin:~/.volta/bin:~/.cabal/bin:~/.ghcup/bin
 
 if [ -f /usr/share/nvm/init-nvm ]; then
   source /usr/share/nvm/init-nvm.sh
