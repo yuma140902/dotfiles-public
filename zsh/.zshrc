@@ -132,3 +132,7 @@ function mk() {
 
 # opam configuration
 [[ ! -r /home/yuma/.opam/opam-init/init.zsh ]] || source /home/yuma/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+if type 'rtx' > /dev/null; then
+  eval "$(rtx activate zsh)"
+fi
