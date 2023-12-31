@@ -75,6 +75,10 @@ if type 'lsd' > /dev/null; then
 fi
 alias grep='grep --color=auto'
 alias gg='nvim DUMMY -c "Git" -c "only"'
+alias :q='exit'
+alias cp='cp -i'
+set rmstar
+alias rm='trash'
 
 function obs() {
   function help() {
@@ -104,8 +108,6 @@ if type 'fzf' > /dev/null; then
   zle -N select-history
   bindkey '^r' select-history
 fi
-
-alias :q='exit'
 
 function backup() {
   if [ $# -ne 1 ]; then
