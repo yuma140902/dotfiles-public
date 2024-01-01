@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "src": "rules",
+      "dst": "${XDG_CONFIG_HOME}/libskk/rules"
+    }
+  ]
+}
