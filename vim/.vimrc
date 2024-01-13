@@ -39,6 +39,7 @@ set listchars=tab:>\ ,trail:-,nbsp:+,eol:$
 set ruler
 set showcmd
 set cursorline
+set columns
 
 set number
 
@@ -167,3 +168,6 @@ smap <expr> <C-k> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-k>'
 " CtrlP
 nnoremap <space>ff :CtrlPMixed<CR>
 nnoremap <space>fr :CtrlPGrep<CR>
+
+autocmd BufRead,BufNewFile *.c
+	\ setlocal colorcolumn=81 | highligh ColorColumn ctermbg=Red guibg=#880000
