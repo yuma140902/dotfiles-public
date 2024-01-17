@@ -7,6 +7,9 @@ function M.config()
         enabled = true,
       },
     },
+    lsp = {
+      enabled = true,
+    }
   }
 
   -- nvim-cmpソースの追加
