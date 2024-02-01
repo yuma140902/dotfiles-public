@@ -43,6 +43,13 @@ local function register_keymaps()
   map('n', '[b', '<cmd>bprev<cr>', '前のバッファ')
   map('n', ']b', '<cmd>bnext<cr>', '次のバッファ')
   map('n', '<C-c>', '<cmd>bp|bd #<cr>', 'バッファを閉じる(ウィンドウを閉じない)') -- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
+  local open = 'xdg-open'
+  if vim.fn.has('mac') == 1 then
+    open = 'open'
+  elseif vim.fn.has('win32') == 1 then
+    open = 'start'
+  end
+  map({ 'n', 'x' }, 'gx', '<cmd>silent !' .. open .. ' <cfile><cr>', '標準アプリで開く')
 
   -- タブ
   map('n', '<C-H>', '<cmd>tabprev<cr>')
