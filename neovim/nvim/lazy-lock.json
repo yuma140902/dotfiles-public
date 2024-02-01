@@ -24,7 +24,7 @@
   "lexima.vim": { "branch": "master", "commit": "5513d686801993b40c55baa65602f79cd3cf3c77" },
   "lightline.vim": { "branch": "master", "commit": "58c97bc21c6f657d3babdd4eefce7593e30e75ce" },
   "linediff.vim": { "branch": "main", "commit": "245d16328c47a132574e0fa4298d24a0f78b20b0" },
-  "lspsaga.nvim": { "branch": "main", "commit": "5faeec9f2508d2d49a66c0ac0d191096b4e3fa81" },
+  "lspsaga.nvim": { "branch": "main", "commit": "2198c07124bef27ef81335be511c8abfd75db933" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "3ba1b92b771f33256b4969d696b82c8ae7075364" },
   "mason.nvim": { "branch": "main", "commit": "bce96d2fd483e71826728c6f9ac721fc9dd7d2cf" },
   "neodev.nvim": { "branch": "main", "commit": "5bbbeda6a9c672f314c95ca47a8b495cf6de17f9" },

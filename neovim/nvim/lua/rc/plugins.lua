@@ -113,9 +113,9 @@ local plugins = {
 
   {
     -- LSP用のUI
-    'kkharji/lspsaga.nvim',
+    'nvimdev/lspsaga.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() require 'lspsaga'.setup() end,
+    config = require 'pl.lspsaga'.config,
     event = 'LspAttach'
   },
 

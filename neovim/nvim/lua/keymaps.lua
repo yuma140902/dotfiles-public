@@ -1,5 +1,3 @@
-local use_lspsaga_keymaps = true
-
 local map = require 'rc/lib'.map
 
 local function register_keymaps()
@@ -53,6 +51,8 @@ local function register_keymaps()
   -- バニラ - ターミナル
   map('n', 'tn', '<cmd>terminal<cr>', 'ターミナルを開く')
   map('n', 'tt', '<cmd>tabnew<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを新規タブで開く')
+  map('n', 'tf', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
+  map({ 'n', 't' }, '<A-t>', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
   map('n', 'tj', '<cmd>belowright new<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを下に開く')
   map('n', 'tl', '<C-W>v<C-W>l<cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを左に開く')
 
@@ -117,49 +117,29 @@ local function register_keymaps()
 
   map('n', '<space>o', function() vim.lsp.buf.format { async = true } end, 'コードフォーマットする')
   map('n', '<space>xef', function() vim.lsp.buf.format { async = true } end, 'コードフォーマットする')
-  if use_lspsaga_keymaps then
-    map('n', 'gr', '<cmd>Lspsaga lsp_finder<cr>', '[LSP] 参照へ移動')
-    map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
-    map('n', '<C-k>', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
-    map('n', '<space>R', '<cmd>Lspsaga rename<cr>', 'リネームする')
-    map('n', '<space>a', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
-    map('x', '<space>a', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
-    map('n', '<space>xgr', '<cmd>Lspsaga lsp_finder<cr>', '参照へ移動')
-    map('n', '<space>xvk', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
-    map('n', '<space>xvs', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
-    map('n', '<space>xer', '<cmd>Lspsaga rename<cr>', 'リネームする')
-    map('n', '<space>xva', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
-    map('x', '<space>xva', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
-  else
-    map('n', 'gr', vim.lsp.buf.references, '[LSP] 参照へ移動')
-    map('n', 'K', vim.lsp.buf.hover, 'ドキュメント表示')
-    map('n', '<C-k>', vim.lsp.buf.signature_help, 'シグネチャを表示')
-    map('n', '<space>R', vim.lsp.buf.rename, 'リネームする')
-    map('n', '<space>a', vim.lsp.buf.code_action, 'コードアクションを表示')
-    map('n', '<space>xgr', vim.lsp.buf.references, '参照へ移動')
-    map('n', '<space>xvk', vim.lsp.buf.hover, 'ドキュメント表示')
-    map('n', '<space>xvs', vim.lsp.buf.signature_help, 'シグネチャを表示')
-    map('n', '<space>xer', vim.lsp.buf.rename, 'リネームする')
-    map('n', '<space>xva', vim.lsp.buf.code_action, 'コードアクションを表示')
-  end
+  map('n', 'gr', '<cmd>Lspsaga finder ref+def<cr>', '[LSP] 参照・定義へ移動')
+  map('n', 'gR', '<cmd>Lspsaga finder ref+def+imp<cr>', '[LSP] 参照・定義・実装へ移動')
+  map('n', 'gI', '<cmd>Lspsaga incoming_calls<cr>', '[LSP] incoming callsを表示')
+  map('n', 'gO', '<cmd>Lspsaga outgoing_calls<cr>', '[LSP] outgoing callsを表示')
+  map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
+  --map('n', '<C-k>', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
+  map('n', '<space>R', '<cmd>Lspsaga rename<cr>', 'リネームする')
+  map('n', '<space>a', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
+  map('x', '<space>a', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
+  map('n', '<space>xvk', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
+  map('n', '<space>xvs', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
+  map('n', '<space>xer', '<cmd>Lspsaga rename<cr>', 'リネームする')
+  map('n', '<space>xva', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
+  map('x', '<space>xva', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
 
   -- 診断関係
   -- :h vim.diagnostic.*
-  if use_lspsaga_keymaps then
-    map('n', '<space>d', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示')
-    map('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ')
-    map('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
-    map('n', '<space>xve', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示')
-    map('n', '<space>xgD', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ')
-    map('n', '<space>xgd', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
-  else
-    map('n', '<space>d', vim.diagnostic.open_float, '診断(エラーメッセージ等)をフロート表示')
-    map('n', '[d', vim.diagnostic.goto_prev, '前の診断へ')
-    map('n', ']d', vim.diagnostic.goto_next, '次の診断へ')
-    map('n', '<space>xve', vim.diagnostic.open_float, '診断(エラーメッセージ等)をフロート表示')
-    map('n', '<space>xgD', vim.diagnostic.goto_prev, '前の診断へ')
-    map('n', '<space>xgd', vim.diagnostic.goto_next, '次の診断へ')
-  end
+  map('n', '<space>d', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示')
+  map('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ')
+  map('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
+  map('n', '<space>xve', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示')
+  map('n', '<space>xgD', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ')
+  map('n', '<space>xgd', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
 
   -- trouble.nvim
   map('n', '<space>lx', '<cmd>TroubleToggle<cr>', 'トグル');
