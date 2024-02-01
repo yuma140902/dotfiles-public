@@ -114,9 +114,9 @@ local function register_keymaps()
   map('t', '<C-W><C-Z>', '<cmd>pclose<cr>')
 
   -- LSP関係
-  map('n', 'gD', vim.lsp.buf.declaration, '[LSP] 宣言へ移動')
-  map('n', 'gd', vim.lsp.buf.definition, '[LSP] 定義へ移動')
-  map('n', 'gi', vim.lsp.buf.implementation, '[LSP] 実装へ移動')
+  map('n', 'gD', '<cmd>Lspsaga goto_type_definition<cr>', '[LSP] 型の定義へ移動')
+  map('n', 'gd', '<cmd>Lspsaga goto_definition<cr>', '[LSP] 定義へ移動')
+  map('n', 'gi', '<cmd>Lspsaga finder imp<cr>', '[LSP] 実装へ移動')
   map('n', '<space>D', vim.lsp.buf.type_definition, '変数の型の定義へ移動')
   map('n', '<space>xgD', vim.lsp.buf.declaration, '宣言へ移動')
   map('n', '<space>xgd', vim.lsp.buf.definition, '定義へ移動')
