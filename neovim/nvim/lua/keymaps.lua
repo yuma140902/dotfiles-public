@@ -52,7 +52,7 @@ local function register_keymaps()
   map('n', 'tn', '<cmd>terminal<cr>', 'ターミナルを開く')
   map('n', 'tt', '<cmd>tabnew<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを新規タブで開く')
   map('n', 'tf', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
-  map({ 'n', 't' }, '<A-t>', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
+  map({ 'n', 't' }, '<A-d>', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
   map('n', 'tj', '<cmd>belowright new<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを下に開く')
   map('n', 'tl', '<C-W>v<C-W>l<cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを左に開く')
 
