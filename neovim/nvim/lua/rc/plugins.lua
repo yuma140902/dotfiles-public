@@ -481,6 +481,12 @@ local plugins = {
   },
 
   {
+    'nvimtools/none-ls.nvim',
+    config = require 'pl.none-ls'.config,
+    event = { 'BufWritePre', 'FileWritePre' }
+  },
+
+  {
     -- 対応するカッコをネストの深さに応じて色分けする
     -- Lispのときだけ使用する
     'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',

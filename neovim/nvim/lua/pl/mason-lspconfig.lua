@@ -41,6 +41,8 @@ function M.config()
       end,
       ['tsserver'] = function()
         require 'lspconfig'.tsserver.setup {
+          -- TODO: prettierを使いたい場合、on_attach内でcapabilityを変更してLSPのフォーマッタを無効化する
+          -- see: https://github.com/nvimtools/none-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
           on_attach = on_attach,
           capabilities = capabilities,
           root_dir = require 'lspconfig'.util.root_pattern('package.json'),
