@@ -475,14 +475,6 @@ local plugins = {
   },
 
   {
-    -- Asynchronous Lint Engine
-    -- TODO: none-lsを試す
-    'dense-analysis/ale',
-    lazy = false,
-    config = require 'pl.ale'.config
-  },
-
-  {
     -- 曖昧幅文字の幅を設定する
     'rbtnn/vim-ambiwidth',
     lazy = false,
