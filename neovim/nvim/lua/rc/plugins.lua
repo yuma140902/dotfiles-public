@@ -477,6 +477,7 @@ local plugins = {
   {
     -- 曖昧幅文字の幅を設定する
     'rbtnn/vim-ambiwidth',
+    init = require 'pl.ambiwidth'.init,
     lazy = false,
   },
 
