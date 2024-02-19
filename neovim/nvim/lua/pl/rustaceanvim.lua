@@ -8,7 +8,7 @@ function M.init()
     -- LSP configuration
     server = {
       on_attach = require 'rc.lib'.on_attach,
-      settings = {
+      default_settings = {
         -- rust-analyzer language server configuration
         ['rust-analyzer'] = {
         },
