@@ -4,7 +4,7 @@ function M.config()
   require 'lspsaga'.setup {
     ui = {
       -- :h nvim_open_win
-      border = 'single',
+      border = 'rounded',
       devicon = true,
       title = true,
       code_action = '󰌵',
