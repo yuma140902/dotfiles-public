@@ -55,16 +55,6 @@ function M.config()
       time_format = '%H:%M',
     },
 
-    backlinks = {
-      height = 10,
-      wrap = true
-    },
-
-    tags = {
-      height = 10,
-      wrap = true
-    },
-
     picker = {
       name = "telescope.nvim",
       mappings = {
