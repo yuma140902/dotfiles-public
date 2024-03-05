@@ -31,6 +31,18 @@ function M.config()
           }
         }
       end,
+      ['clangd'] = function()
+        capabilities.offsetEncoding = "utf-8"
+        capabilities.offset_encoding = "utf-8"
+        capabilities.clang = {}
+        capabilities.clang.offsetEncoding = "utf-8"
+        capabilities.clang.offset_encoding = "utf-8"
+
+        require 'lspconfig'.clangd.setup {
+          on_attach = on_attach,
+          capabilities = capabilities,
+        }
+      end,
       ['denols'] = function()
         require 'lspconfig'.denols.setup {
           on_attach = on_attach,
