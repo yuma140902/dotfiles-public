@@ -1,4 +1,5 @@
 {
+  "notice": "Open tmux and press <C-b, I> to install plugins with tpm",
   "files": [
     {
       "src": ".tmux.conf",
