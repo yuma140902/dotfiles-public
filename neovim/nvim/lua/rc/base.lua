@@ -77,3 +77,5 @@ vim.api.nvim_create_autocmd('QuickFixCmdPost', {
   nested = true,
   command = 'cwindow'
 })
+
+vim.api.nvim_win_set_option(0, 'winblend', require 'rc.lib'.default_winblend())
