@@ -277,6 +277,10 @@ local plugins = {
   },
 
   {
+    'nvim-neotest/nvim-nio'
+  },
+
+  {
     -- deviconsを表示するためのプラグイン(ライブラリ)
     'nvim-tree/nvim-web-devicons',
     lazy = true,
