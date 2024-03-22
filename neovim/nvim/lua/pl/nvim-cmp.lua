@@ -82,6 +82,10 @@ function M.config()
     window = {
       --completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
+      completion = {
+        border = 'none',
+        winhighlight = vim.g.neovide and 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:DiagnosticUnderlineOK,Search:None' or 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None'
+      }
     },
     view = {
       docs = { auto_open = true },
