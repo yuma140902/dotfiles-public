@@ -1,5 +1,6 @@
 {
   "aerial.nvim": { "branch": "master", "commit": "993142d49274092c64a2d475aa726df3c323949d" },
+  "ccc.nvim": { "branch": "main", "commit": "f3d9d31aab7990d50ae6922fd7c1e3a9eb7da183" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
   "cmp-cmdline-history": { "branch": "master", "commit": "003573b72d4635ce636234a826fa8c4ba2895ffe" },
@@ -29,7 +30,6 @@
   "neogen": { "branch": "main", "commit": "b95347a588401a755eadd17482edc1662876bd58" },
   "none-ls.nvim": { "branch": "main", "commit": "18910d09d21d7df339805343bfe4a2b2e41c057b" },
   "nvim-cmp": { "branch": "main", "commit": "630cdf7d547c4461ef6d7362c3794a08abfad4fb" },
-  "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
   "nvim-dap": { "branch": "master", "commit": "c1695e500c7d552a0a19953a9aefcc89178fb1af" },
   "nvim-dap-ui": { "branch": "master", "commit": "edfa93f60b189e5952c016eee262d0685d838450" },
   "nvim-ghost.nvim": { "branch": "main", "commit": "a1ca0b2dac59881066d7ac9373cf64d59ba29d6a" },

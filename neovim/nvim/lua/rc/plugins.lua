@@ -417,9 +417,10 @@ local plugins = {
   },
 
   {
-    -- カラーコードに色をつける
-    'norcalli/nvim-colorizer.lua',
-    config = function() require 'colorizer'.setup() end,
+
+    -- カラーコードに色をつける、カラーピッカーで色を変える
+    'uga-rosa/ccc.nvim',
+    config = require 'pl.ccc'.config,
     event = { 'BufNewFile', 'BufReadPost', 'FilterReadPost', 'FileReadPost' }
   },
 
