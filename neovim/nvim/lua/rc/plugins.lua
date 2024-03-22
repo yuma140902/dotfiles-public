@@ -313,7 +313,6 @@ local plugins = {
   {
     -- LSPの状態を右下に表示する
     'j-hui/fidget.nvim',
-    tag = 'legacy', -- TODO: mainブランチに移行する
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.fidget'.config,
     event = 'LspAttach'
