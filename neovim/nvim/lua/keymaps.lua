@@ -32,12 +32,9 @@ local function register_keymaps()
     },
     b = {
       name = 'デバッグ'
-    }
-  }, { prefix = '<space>' })
-
-  require 'which-key'.register({
+    },
     t = { name = "ターミナル" }
-  })
+  }, { prefix = '<space>' })
 
   -- バニラ
   map('n', '[b', '<cmd>bprev<cr>', '前のバッファ')
@@ -56,12 +53,12 @@ local function register_keymaps()
   map('n', '<C-L>', '<cmd>tabnext<cr>')
 
   -- バニラ - ターミナル
-  map('n', 'tn', '<cmd>terminal<cr>', 'ターミナルを開く')
-  map('n', 'tt', '<cmd>tabnew<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを新規タブで開く')
-  map('n', 'tf', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
+  map('n', '<space>tn', '<cmd>terminal<cr>', 'ターミナルを開く')
+  map('n', '<space>tt', '<cmd>tabnew<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを新規タブで開く')
+  map('n', '<space>tf', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
   map({ 'n', 't' }, '<A-d>', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
-  map('n', 'tj', '<cmd>belowright new<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを下に開く')
-  map('n', 'tl', '<C-W>v<C-W>l<cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを左に開く')
+  map('n', '<space>tj', '<cmd>belowright new<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを下に開く')
+  map('n', '<space>tl', '<C-W>v<C-W>l<cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを左に開く')
 
   map('t', '<C-H>', '<cmd>tabprev<cr>')
   map('t', '<C-L>', '<cmd>tabnext<cr>')
