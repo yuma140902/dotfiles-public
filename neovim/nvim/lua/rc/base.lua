@@ -79,3 +79,4 @@ vim.api.nvim_create_autocmd('QuickFixCmdPost', {
 })
 
 vim.api.nvim_win_set_option(0, 'winblend', require 'rc.lib'.default_winblend())
+vim.opt.pumblend = require 'rc.lib'.default_winblend()
