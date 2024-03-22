@@ -379,8 +379,8 @@ local plugins = {
 
   {
     -- easy-motionみたいなやつ
-    'skanehira/jumpcursor.vim',
-    event = { 'BufRead' }
+    'justinmk/vim-sneak',
+    event = { 'BufNewFile', 'BufRead' },
   },
 
   {
