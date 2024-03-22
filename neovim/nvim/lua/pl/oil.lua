@@ -6,7 +6,6 @@ function M.config()
     delete_to_trash = true,
     skip_confirm_for_simple_edits = false,
     prompt_save_on_select_new_entry = true,
-    lsp_rename_autosave = 'unmodified',
     constrain_cursor = 'editable',
     experimental_watch_for_changes = false,
 
@@ -69,6 +68,11 @@ function M.config()
         { 'type', 'asc' },
         { 'name', 'asc' }
       }
+    },
+
+    lsp_file_methods = {
+      timeout_ms = 1000,
+      autosave_changes = 'unmodified',
     },
 
     float = {},
