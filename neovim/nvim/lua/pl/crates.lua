@@ -17,7 +17,21 @@ function M.config()
     group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
     pattern = "Cargo.toml",
     callback = function()
-      require 'cmp'.setup.buffer({ sources = { { name = "crates" } } })
+      require 'cmp'.setup.buffer({
+        sources = {
+          { name = "crates" },
+          { name = 'path' },
+          {
+            name = 'buffer',
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+              keyword_length = 3
+            }
+          },
+        }
+      })
     end,
   })
 
