@@ -18,6 +18,14 @@ function M.map(mode, key, cmd, desc, opt)
   vim.keymap.set(mode, key, cmd, opt)
 end
 
+function M.default_winblend()
+  if vim.g.neovide then
+    return 90
+  else
+    return 20
+  end
+end
+
 -- 特定のfiletypeを持つバッファを閉じる
 function M.close_buffers_by_filetype(filetype)
   local target_buffers = {}
