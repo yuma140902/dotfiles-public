@@ -429,8 +429,9 @@ local plugins = {
 
   {
     -- カッコの追加・削除・置き換えなど
-    'machakann/vim-sandwich',
-    event = { 'BufNewFile', 'BufRead' }
+    'kylechui/nvim-surround',
+    event = { 'BufNewFile', 'BufRead' },
+    config = require 'pl.surround'.config,
   },
 
   {
