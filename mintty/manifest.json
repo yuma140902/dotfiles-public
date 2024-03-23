@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "src": ".minttyrc",
+      "dest": ".minttyrc"
+    }
+  ]
+}
