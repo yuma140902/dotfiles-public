@@ -84,7 +84,7 @@ function M.config()
       documentation = cmp.config.window.bordered(),
       completion = {
         border = 'none',
-        winhighlight = vim.g.neovide and 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Error,Search:None' or 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None'
+        winhighlight = vim.g.neovide and 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:MyNvimCmpSel,Search:None' or 'Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None'
       }
     },
     view = {
