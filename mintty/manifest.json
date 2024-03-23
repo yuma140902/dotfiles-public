@@ -2,7 +2,7 @@
   "files": [
     {
       "src": ".minttyrc",
-      "dest": ".minttyrc"
+      "dst": ".minttyrc"
     }
   ]
 }
