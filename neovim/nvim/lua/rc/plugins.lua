@@ -382,12 +382,6 @@ local plugins = {
   },
 
   {
-    -- easy-motionみたいなやつ
-    'justinmk/vim-sneak',
-    event = { 'BufNewFile', 'BufRead' },
-  },
-
-  {
     -- ステータスライン
     -- TODO: lualineを試す
     'itchyny/lightline.vim',
