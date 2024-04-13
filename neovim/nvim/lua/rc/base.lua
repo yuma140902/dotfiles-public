@@ -78,5 +78,11 @@ vim.api.nvim_create_autocmd('QuickFixCmdPost', {
   command = 'cwindow'
 })
 
+-- フローティングウィンドウを半透明にする
 vim.api.nvim_win_set_option(0, 'winblend', require 'rc.lib'.default_winblend())
 vim.opt.pumblend = require 'rc.lib'.default_winblend()
+
+-- 組み込みのLSPクライアントの設定
+vim.diagnostic.config({
+  severity_sort = true,
+})
