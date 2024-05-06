@@ -158,8 +158,8 @@ local function register_keymaps()
   -- todo-comments.nvim
   map('n', '<space>lt', '<cmd>TodoTrouble<cr>', 'TODOコメント');
   map('n', '<space>ft', '<cmd>TodoTelescope<cr>', 'TODOコメント');
-  map('n', '[t', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
-  map('n', ']t', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
+  map('n', ']t', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
+  map('n', '[t', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
   map('n', '<space>xvt', '<cmd>TodoTrouble<cr>', 'TODOコメント');
   map('n', '<space>xgt', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
   map('n', '<space>xgT', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
