@@ -20,34 +20,36 @@ local plugins = {
   -- { 'folke/lazy.nvim' },
 
   {
-    -- ウィンドウスタイル(split window style)のファイルマネージャー
+    -- ファイルマネージャー
     'stevearc/oil.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.oil'.config,
     cmd = { 'Oil' }
   },
 
   {
-    -- スニペット
+    -- スニペットエンジン
     'hrsh7th/vim-vsnip',
     dependencies = {
+      -- 他のプラグインとの連携
       { 'hrsh7th/vim-vsnip-integ',      lazy = true },
+      -- スニペット集
       { 'rafamadriz/friendly-snippets', lazy = true },
     },
     event = { 'InsertEnter', 'CmdlineEnter' }
   },
+
   {
-    -- 自動補完
+    -- 自動補完エンジン
     'hrsh7th/nvim-cmp',
     dependencies = {
-      -- バッファ内の単語。普通フォールバック先として使う。ddc.vimのaroundソースに相当
+      -- バッファ内の単語の補完ソース
       { 'hrsh7th/cmp-buffer',                    lazy = true },
       -- vsnipからの候補
       { 'hrsh7th/cmp-vsnip',                     lazy = true },
-      -- lspからの候補
+      -- LSPからの候補
       { 'hrsh7th/cmp-nvim-lsp',                  lazy = true },
+      -- カーソル位置のメソッドのシグネチャを表示する
       { 'hrsh7th/cmp-nvim-lsp-signature-help',   lazy = true },
       -- NeovimのLua APIの補完ソース
       { 'hrsh7th/cmp-nvim-lua',                  lazy = true },
@@ -55,8 +57,6 @@ local plugins = {
       { 'hrsh7th/cmp-path',                      lazy = true },
       -- コマンドラインでの補完ソース
       { 'hrsh7th/cmp-cmdline',                   lazy = true },
-      -- カーソル位置のメソッドのシグネチャを表示する
-      { 'hrsh7th/cmp-nvim-lsp-signature-help',   lazy = true },
       -- 検索を使用してドキュメントのアウトラインをもとに移動できる
       -- `/@`または`/<Tab>`
       { 'hrsh7th/cmp-nvim-lsp-document-symbol',  lazy = true },
@@ -68,6 +68,7 @@ local plugins = {
       {
         'zbirenbaum/copilot-cmp',
         lazy = true,
+        dependencies = { 'zbirenbaum/copilot.lua' },
         config = function()
           require 'copilot_cmp'.setup {}
         end
@@ -87,6 +88,7 @@ local plugins = {
     config = require 'pl.onedark'.config
   },
 
+  -- TODO: 削除
   {
     -- ブラウザのテキストボックスに入力する
     -- Neovim側がサーバーとして動作する
@@ -102,8 +104,11 @@ local plugins = {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
+      -- GitHub CLIと連携してPRの一覧などを提供する
       { 'nvim-telescope/telescope-github.nvim', lazy = true },
+      -- undo履歴を提供する
       { 'debugloop/telescope-undo.nvim',        lazy = true },
+      'rcarriga/nvim-notify',
     },
     config = require 'pl.telescope'.config,
     cmd = 'Telescope'
@@ -112,29 +117,31 @@ local plugins = {
   {
     -- LSP用のUI
     'nvimdev/lspsaga.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-treesitter/nvim-treesitter',
+    },
     config = require 'pl.lspsaga'.config,
     event = 'LspAttach'
   },
 
   {
-    -- quickfix, LSPのdiagnostics, referenceなどのリストを下部にきれいに表示する
+    -- quickfix, LSPの診断などのリストを下部にきれいに表示する
     'folke/trouble.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/todo-comments.nvim' },
     config = function() require 'trouble'.setup() end,
     cmd = { 'TroubleToggle', 'TodoTrouble' },
   },
 
   {
-    -- いわゆるTODOコメントへ移動・一覧表示する
+    -- TODOコメントへ移動・一覧表示する
     'folke/todo-comments.nvim',
-    dependencies = 'folke/trouble.nvim',
     config = require 'pl.todo-comments'.config,
-    event = { 'BufNewFile', 'BufRead' }
+    event = { 'BufNewFile', 'BufRead' },
   },
 
   {
-    -- キーマップを表示するやつ
+    -- キーマップを表示する
     'folke/which-key.nvim',
     lazy = true, -- 初めてrequire('which-key')が実行されたときにこのプラグインが読み込まれるようになる
     config = require 'pl.which-key'.config,
@@ -169,7 +176,7 @@ local plugins = {
 
   {
     -- Rustに関する機能を追加する
-    -- rust-analyzerのインストールについて
+    -- rust-analyzerのインストールについて:
     -- rust-analyzerのインストールはrustup、masonどちらで行なっても良い
     'mrcjkb/rustaceanvim',
     lazy = true,
@@ -186,7 +193,7 @@ local plugins = {
   },
 
   {
-    -- lua_lsに対してneovimのLua APIや読み込まれているプラグインのドキュメント・型を提供する
+    -- lua_lsに対してNeovimのLua APIや読み込まれているプラグインのドキュメント・型を提供する
     'folke/neodev.nvim',
     -- mason-lspconfigがlua_lsの設定をするときに読み込まれる
     lazy = true,
@@ -208,8 +215,8 @@ local plugins = {
 
   {
     -- ドキュメントコメントを生成する
-    "danymat/neogen",
-    dependencies = "nvim-treesitter/nvim-treesitter",
+    'danymat/neogen',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = require 'pl.neogen'.config,
     cmd = 'Neogen'
   },
@@ -271,15 +278,18 @@ local plugins = {
 
   {
     -- ライブラリ
-    'nvim-lua/plenary.nvim'
+    'nvim-lua/plenary.nvim',
+    lazy = true
   },
 
   {
-    'nvim-neotest/nvim-nio'
+    -- ライブラリ
+    'nvim-neotest/nvim-nio',
+    lazy = true
   },
 
   {
-    -- deviconsを表示するためのプラグイン(ライブラリ)
+    -- deviconsを表示するためのライブラリ
     'nvim-tree/nvim-web-devicons',
     lazy = true,
     config = function() require 'nvim-web-devicons'.setup() end
@@ -351,15 +361,14 @@ local plugins = {
   },
 
   {
-    -- カーソルのあるクラスやメソッドをウィンドウの上に表示する
+    -- カーソルのあるブロックの開始行をウィンドウ上部に表示する
     'nvim-treesitter/nvim-treesitter-context',
     event = { 'CursorHold', 'CursorHoldI' },
     config = require 'pl.nvim-treesitter-context'.config,
   },
 
-
   {
-    -- LSP/TSを使ってコードアウトラインを作り、移動できるようにするプラグイン
+    -- LSPやTSを使ってコードアウトラインを作り、移動できるようにするプラグイン
     'stevearc/aerial.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.aerial'.config,
@@ -448,14 +457,6 @@ local plugins = {
     cmd = 'Twilight',
   },
 
-  --{ 'RRethy/vim-illuminate', -- カーソル下の単語をハイライトする。lsp, treesitter, 正規表現を使用して「同じ」単語を抽出する。さらに<a-n>, <a-p>で移動、<a-i>でテキストオブジェクトとして参照できる
-  --config = function()
-  --require 'illuminate'.configure {
-  --filetypes_denylist = { 'netrw' }
-  --}
-  --end
-  --},
-
   {
     -- Obsidian関係の機能を追加する
     'epwalsh/obsidian.nvim',
@@ -479,6 +480,7 @@ local plugins = {
   },
 
   {
+    -- Linter、Formatterを実行する
     'nvimtools/none-ls.nvim',
     config = require 'pl.none-ls'.config,
     event = { 'BufWritePre', 'FileWritePre' }
@@ -531,8 +533,6 @@ local plugins = {
     cmd = 'SplitAutoDirection',
     config = require 'pl.auto-split-direction'.config,
   },
-
-  -- }}}
 }
 
 require 'lazy'.setup(plugins, {
