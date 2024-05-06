@@ -1,21 +1,7 @@
 local command = require 'rc.lib'.command
 
 command('Manual', function()
-  local tmpbuf = vim.api.nvim_create_buf(false, true)
-  local height = math.floor(vim.o.lines * 0.8)
-  local width = math.min(math.floor(vim.o.columns * 0.8), 120)
-  local row = math.floor((vim.o.lines - height) / 2)
-  local col = math.floor((vim.o.columns - width) / 2)
-  vim.api.nvim_open_win(tmpbuf, true, {
-    row = row,
-    col = col,
-    width = width,
-    height = height,
-    relative = 'editor',
-    style = 'minimal',
-  })
-  vim.api.nvim_buf_set_option(tmpbuf, 'filetype', 'markdown')
-  vim.api.nvim_put({
+  local lines = {
     "# Manual",
     "",
     "## 独自に定義したコマンド",
@@ -47,8 +33,25 @@ command('Manual', function()
     "- `auto-split-direction` - `:SplitAutoDirection`, `<C-W>a`",
     "- `treesj` - `:TSJ**`",
     "",
-  }, "l", false, false)
+  }
+  local tmpbuf = vim.api.nvim_create_buf(false, true)
+  local height = math.min(math.floor(vim.o.lines * 0.8), #lines)
+  local width = math.min(math.floor(vim.o.columns * 0.8), 120)
+  local row = math.floor((vim.o.lines - height) / 2)
+  local col = math.floor((vim.o.columns - width) / 2)
+  vim.api.nvim_open_win(tmpbuf, true, {
+    row = row,
+    col = col,
+    width = width,
+    height = height,
+    relative = 'editor',
+    style = 'minimal',
+    border = 'single',
+  })
+  vim.api.nvim_buf_set_option(tmpbuf, 'filetype', 'markdown')
+  vim.api.nvim_put(lines, "l", false, false)
   vim.api.nvim_buf_set_option(tmpbuf, 'modifiable', false)
+  vim.api.nvim_buf_set_keymap(tmpbuf, 'n', 'q', '<cmd>q<cr>', {})
 end)
 
 -- ウィンドウを閉じずにバッファを閉じる
