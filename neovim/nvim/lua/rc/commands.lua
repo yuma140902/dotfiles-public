@@ -21,7 +21,6 @@ command('Manual', function()
     "## 独自に定義したコマンド",
     "",
     "- `:Manual` - このマニュアルを表示する",
-    "- `:Now` - CursorHold/Iイベントで読み込まれるプラグインを即座にまとめて読み込む",
     "- `:Bd` - ウィンドウを閉じずにバッファを閉じる",
     "",
     "## パッシブなプラグインで、手動で読み込む必要があるもの",
@@ -31,15 +30,6 @@ command('Manual', function()
     "- `diffview.nvim` - `:Diffview**`",
     "- `nvim-dap-ui` - `<space>bb`",
     "- `twilight.nvim` - `:Twilight`",
-    "",
-    "## パッシブなプラグインで、CursorHold/Iで読み込まれるもの",
-    "",
-    "`:Now`でまとめて読み込むことができる",
-    "",
-    "- プラグイン名 - 即座に読み込む方法",
-    "- `nvim-scrollview` - `:Lazy load nvim-scrollview`",
-    "- `gitsigns.nvim` - `:Gitsigns`, `<space>hh`",
-    "- `hlchunk.nvim` - `:EnableHL`",
     "",
     "## アクティブなプラグイン",
     "",
@@ -57,12 +47,6 @@ command('Manual', function()
     "",
   }, "l", false, false)
   vim.api.nvim_buf_set_option(tmpbuf, 'modifiable', false)
-end)
-
-command('Now', function()
-  vim.cmd('Lazy load nvim-scrollview')
-  vim.cmd('Lazy load gitsigns.nvim')
-  vim.cmd('Lazy load hlchunk.nvim')
 end)
 
 -- ウィンドウを閉じずにバッファを閉じる
