@@ -381,7 +381,9 @@ local plugins = {
     -- ステータスライン
     -- TODO: lualineを試す
     'itchyny/lightline.vim',
-    dependencies = 'itchyny/vim-gitbranch',
+    dependencies = {
+      'itchyny/vim-gitbranch',
+    },
     init = require 'pl.lightline'.init,
     config = require 'pl.lightline'.config,
     event = { 'User UIEnterPost' }
@@ -525,11 +527,12 @@ local plugins = {
   },
 
   {
+    -- カーソルのあるコードブロックを囲むように線を描画する
     'shellRaining/hlchunk.nvim',
     event = { 'User UIEnterPost' },
     config = require 'pl.hlchunk'.config,
     cmd = 'EnableHL'
-  }
+  },
 }
 
 require 'lazy'.setup(plugins, {
