@@ -4,16 +4,18 @@ local M = {}
 
 function M.map(mode, key, cmd, desc, opt)
   if opt == nil then opt = {} end
-  if opt['noremap'] == nil then opt['noremap'] = true end
-  if opt['silent'] == nil then opt['silent'] = true end
 
-  if desc ~= nil then
-    if opt['desc'] == nil then
-      opt['desc'] = desc
-    else
-      print('warn: desc argument will be ignored')
-    end
+  if desc ~= nil and opt['desc'] ~= nil then
+    print('warn: desc argument will be ignored')
   end
+
+  setmetatable(opt, {
+    __index = {
+      noremap = true,
+      silent = true,
+      desc = desc
+    }
+  })
 
   vim.keymap.set(mode, key, cmd, opt)
 end
