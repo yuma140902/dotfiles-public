@@ -88,17 +88,6 @@ local plugins = {
     config = require 'pl.onedark'.config
   },
 
-  -- TODO: 削除
-  {
-    -- ブラウザのテキストボックスに入力する
-    -- Neovim側がサーバーとして動作する
-    -- GhostTextを利用するためにはneovimを予め立ち上げ、:GhostTextStartでサーバーを起動させておく必要がある
-    -- GhostTextとneovimはlocalhost:4001で通信する
-    'subnut/nvim-ghost.nvim',
-    init = require 'pl.nvim-ghost'.init,
-    cmd = 'GhostTextStart'
-  },
-
   {
     -- ファジーファインダ
     'nvim-telescope/telescope.nvim',
