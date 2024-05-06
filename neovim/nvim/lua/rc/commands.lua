@@ -48,4 +48,4 @@ command('Manual', function()
     "",
   }, "l", false, false)
   vim.api.nvim_buf_set_option(tmpbuf, 'modifiable', false)
-end, 'Open manual')
+end)

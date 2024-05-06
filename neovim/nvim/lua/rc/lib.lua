@@ -18,10 +18,8 @@ function M.map(mode, key, cmd, desc, opt)
   vim.keymap.set(mode, key, cmd, opt)
 end
 
-function M.command(name, command, desc, opt)
+function M.command(name, command, opt)
   if opt == nil then opt = {} end
-  local metatable = { desc = desc }
-  setmetatable(opt, metatable)
   vim.api.nvim_create_user_command(name, command, opt)
 end
 
