@@ -140,7 +140,7 @@ local plugins = {
     -- スクロールバーを表示する
     'dstein64/nvim-scrollview',
     config = require 'pl.scrollview'.config,
-    event = { 'CursorHold', 'CursorHoldI' }
+    event = { 'UIEnter' }
   },
 
   {
@@ -214,7 +214,7 @@ local plugins = {
     -- 行番号の部分にgitの更新・追加・削除などの情報を表示する
     'lewis6991/gitsigns.nvim',
     config = require 'pl.gitsigns'.config,
-    event = { 'CursorHold', 'CursorHoldI' },
+    event = { 'UIEnter' },
     cmd = 'Gitsigns'
   },
 
@@ -352,7 +352,7 @@ local plugins = {
   {
     -- カーソルのあるブロックの開始行をウィンドウ上部に表示する
     'nvim-treesitter/nvim-treesitter-context',
-    event = { 'CursorHold', 'CursorHoldI' },
+    event = { 'UIEnter' },
     config = require 'pl.nvim-treesitter-context'.config,
   },
 
@@ -525,7 +525,7 @@ local plugins = {
 
   {
     'shellRaining/hlchunk.nvim',
-    event = { 'CursorHold', 'CursorHoldI' },
+    event = { 'UIEnter' },
     config = require 'pl.hlchunk'.config,
     cmd = 'EnableHL'
   }
