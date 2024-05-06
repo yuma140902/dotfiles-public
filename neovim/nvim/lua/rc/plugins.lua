@@ -140,7 +140,7 @@ local plugins = {
     -- スクロールバーを表示する
     'dstein64/nvim-scrollview',
     config = require 'pl.scrollview'.config,
-    event = { 'UIEnter' }
+    event = { 'User UIEnterPost' }
   },
 
   {
@@ -214,7 +214,7 @@ local plugins = {
     -- 行番号の部分にgitの更新・追加・削除などの情報を表示する
     'lewis6991/gitsigns.nvim',
     config = require 'pl.gitsigns'.config,
-    event = { 'UIEnter' },
+    event = { 'User UIEnterPost' },
     cmd = 'Gitsigns'
   },
 
@@ -352,7 +352,7 @@ local plugins = {
   {
     -- カーソルのあるブロックの開始行をウィンドウ上部に表示する
     'nvim-treesitter/nvim-treesitter-context',
-    event = { 'UIEnter' },
+    event = { 'User UIEnterPost' },
     config = require 'pl.nvim-treesitter-context'.config,
   },
 
@@ -383,7 +383,8 @@ local plugins = {
     'itchyny/lightline.vim',
     dependencies = 'itchyny/vim-gitbranch',
     init = require 'pl.lightline'.init,
-    event = { 'BufNewFile', 'BufReadPost', 'BufAdd', 'FileReadPost', 'FilterReadPost' }
+    config = require 'pl.lightline'.config,
+    event = { 'User UIEnterPost' }
   },
 
   {
@@ -525,7 +526,7 @@ local plugins = {
 
   {
     'shellRaining/hlchunk.nvim',
-    event = { 'UIEnter' },
+    event = { 'User UIEnterPost' },
     config = require 'pl.hlchunk'.config,
     cmd = 'EnableHL'
   }

@@ -14,4 +14,8 @@ function M.init()
   vim.o.showmode = false
 end
 
+function M.config()
+  vim.fn['lightline#update']()
+end
+
 return M

@@ -86,3 +86,18 @@ vim.opt.pumblend = require 'rc.lib'.default_winblend()
 vim.diagnostic.config({
   severity_sort = true,
 })
+
+-- UIEnterのあと一定時間後にUser UIEnterPostイベントを発生させる
+vim.api.nvim_create_autocmd('UIEnter', {
+  group = vim.api.nvim_create_augroup('UIEnterDelay', { clear = true }),
+  pattern = '*',
+  nested = true,
+  callback = function()
+    vim.defer_fn(function()
+      vim.api.nvim_exec_autocmds("User", {
+        pattern = "UIEnterPost",
+        modeline = false,
+      })
+    end, 600)
+  end
+})
