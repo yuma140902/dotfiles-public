@@ -522,6 +522,13 @@ local plugins = {
     cmd = 'SplitAutoDirection',
     config = require 'pl.auto-split-direction'.config,
   },
+
+  {
+    'shellRaining/hlchunk.nvim',
+    event = { 'CursorHold', 'CursorHoldI' },
+    config = require 'pl.hlchunk'.config,
+    cmd = 'EnableHL'
+  }
 }
 
 require 'lazy'.setup(plugins, {

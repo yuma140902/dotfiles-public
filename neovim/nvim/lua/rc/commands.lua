@@ -28,9 +28,12 @@ command('Manual', function()
     "",
     "## パッシブなプラグインで、時間差で読み込まれるもの",
     "",
+    "`:Now`でまとめて読み込むことができる",
+    "",
     "- プラグイン名 - 即座に読み込む方法",
     "- `nvim-scrollview` - `:Lazy load nvim-scrollview`",
     "- `gitsigns.nvim` - `:Gitsigns`, `<space>hh`",
+    "- `hlchunk.nvim` - `:EnableHL`",
     "",
     "## アクティブなプラグイン",
     "",
@@ -48,4 +51,10 @@ command('Manual', function()
     "",
   }, "l", false, false)
   vim.api.nvim_buf_set_option(tmpbuf, 'modifiable', false)
+end)
+
+command('Now', function()
+  vim.cmd('Lazy load nvim-scrollview')
+  vim.cmd('Lazy load gitsigns.nvim')
+  vim.cmd('Lazy load hlchunk.nvim')
 end)
