@@ -533,6 +533,18 @@ local plugins = {
     config = require 'pl.hlchunk'.config,
     cmd = 'EnableHL'
   },
+
+  {
+    'nvim-zh/colorful-winsep.nvim',
+    config = function()
+      require('colorful-winsep').setup({
+        smooth = false,
+        exponential_smoothing = false,
+        symbols = { '─', '│', '┌', '┐', '└', '┘' },
+      })
+    end,
+    event = { 'WinNew' },
+  }
 }
 
 require 'lazy'.setup(plugins, {

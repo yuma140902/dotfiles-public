@@ -16,6 +16,8 @@ vim.opt.scrolloff = 3
 
 vim.opt.ambiwidth = 'single' -- use rbtnn/vim-ambiwidth
 
+vim.opt.laststatus = 3
+
 -- 検索
 vim.opt.smartcase = true -- 検索ワードが小文字のみなら大文字小文字を無視
 vim.opt.wrapscan = true  -- 最後まで検索したら最初に戻る
