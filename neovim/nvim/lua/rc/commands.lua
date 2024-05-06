@@ -18,6 +18,12 @@ command('Manual', function()
   vim.api.nvim_put({
     "# Manual",
     "",
+    "## 独自に定義したコマンド",
+    "",
+    "- `:Manual` - このマニュアルを表示する",
+    "- `:Now` - CursorHold/Iイベントで読み込まれるプラグインを即座にまとめて読み込む",
+    "- `:Bd` - ウィンドウを閉じずにバッファを閉じる",
+    "",
     "## パッシブなプラグインで、手動で読み込む必要があるもの",
     "",
     "- プラグイン名 - 読み込み方法",
@@ -26,7 +32,7 @@ command('Manual', function()
     "- `nvim-dap-ui` - `<space>bb`",
     "- `twilight.nvim` - `:Twilight`",
     "",
-    "## パッシブなプラグインで、時間差で読み込まれるもの",
+    "## パッシブなプラグインで、CursorHold/Iで読み込まれるもの",
     "",
     "`:Now`でまとめて読み込むことができる",
     "",
@@ -58,3 +64,7 @@ command('Now', function()
   vim.cmd('Lazy load gitsigns.nvim')
   vim.cmd('Lazy load hlchunk.nvim')
 end)
+
+-- ウィンドウを閉じずにバッファを閉じる
+-- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
+command('Bd', 'bp|bd#')
