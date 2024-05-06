@@ -1,5 +1,5 @@
 {
-  "notice": "Open neovim and run `:Lazy sync` to install plugins",
+  "notice": "Open neovim and run `:Lazy restore` to install plugins",
   "files": [
     {
       "src": "nvim",
