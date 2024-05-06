@@ -45,6 +45,7 @@ command('Manual', function()
     "- `suda.vim` - `:Suda**`",
     "- `vim-qfreplace` - `:Qfreplace`",
     "- `auto-split-direction` - `:SplitAutoDirection`, `<C-W>a`",
+    "- `treesj` - `:TSJ**`",
     "",
   }, "l", false, false)
   vim.api.nvim_buf_set_option(tmpbuf, 'modifiable', false)

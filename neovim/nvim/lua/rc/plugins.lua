@@ -579,6 +579,13 @@ local plugins = {
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = require 'pl.wildfire'.config
   },
+
+  {
+    'Wansmer/treesj',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = require 'pl.treesj'.config,
+    cmd = { 'TSJToggle', 'TSJSplit', 'TSJJoin' }
+  },
 }
 
 require 'lazy'.setup(plugins, {
