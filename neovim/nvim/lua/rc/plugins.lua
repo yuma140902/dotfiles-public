@@ -536,13 +536,7 @@ local plugins = {
 
   {
     'nvim-zh/colorful-winsep.nvim',
-    config = function()
-      require('colorful-winsep').setup({
-        smooth = false,
-        exponential_smoothing = false,
-        symbols = { '─', '│', '┌', '┐', '└', '┘' },
-      })
-    end,
+    config = require 'pl.colorful-winsep'.config,
     event = { 'WinNew' },
   }
 }

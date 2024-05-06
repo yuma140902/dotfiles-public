@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  require("hlchunk").setup({
+  require 'hlchunk'.setup {
     chunk = {
       enable = true,
       notify = false,
@@ -16,7 +16,7 @@ function M.config()
     blank = {
       enable = false,
     }
-  })
+  }
 end
 
 return M
