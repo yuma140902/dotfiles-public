@@ -571,6 +571,14 @@ local plugins = {
     end,
     cmd = { 'NoNeckPain' }
   },
+
+  {
+    -- Treesitterの情報を元に範囲選択する
+    'sustech-data/wildfire.nvim',
+    event = { 'ModeChanged *:[vV\\x16]*' }, -- visualモードに入った時
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = require 'pl.wildfire'.config
+  },
 }
 
 require 'lazy'.setup(plugins, {
