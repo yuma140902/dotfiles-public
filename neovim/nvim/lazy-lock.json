@@ -50,7 +50,6 @@
   "rustaceanvim": { "branch": "master", "commit": "2eb8776df1aab03f514b38ddc39af57efbd8970b" },
   "schemastore.nvim": { "branch": "main", "commit": "2ef728ff7e790431f1f71052bfd4c5568157e110" },
   "suda.vim": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
-  "telescope-command-palette.nvim": { "branch": "master", "commit": "cf38d89446ff36d07191d32796eed6e38e5ce118" },
   "telescope-github.nvim": { "branch": "master", "commit": "ee95c509901c3357679e9f2f9eaac3561c811736" },
   "telescope-undo.nvim": { "branch": "main", "commit": "95b61c01ea3a4c9e8747731148e905bbcf0ccaee" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },

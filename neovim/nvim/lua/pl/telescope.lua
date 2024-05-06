@@ -4,7 +4,6 @@ function M.config()
   require 'telescope'.setup {
     defaults = { winblend = require 'rc.lib'.default_winblend(), file_ignore_patterns = { '.git/*' } },
     extensions = {
-      command_palette = require 'command_palette'.table,
       undo = {
         side_by_side = true,
         layout_strategy = 'vertical',
@@ -26,7 +25,6 @@ function M.config()
       }
     }
   }
-  require 'telescope'.load_extension 'command_palette'
   require 'telescope'.load_extension 'gh'
   require 'telescope'.load_extension 'notify'
   require 'telescope'.load_extension 'undo'

@@ -102,10 +102,8 @@ local plugins = {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
-      -- コマンドパレット(VSCodeのC-S-PあるいはF1で表示されるやつ)
-      { 'LinArcX/telescope-command-palette.nvim', lazy = true },
-      { 'nvim-telescope/telescope-github.nvim',   lazy = true },
-      { 'debugloop/telescope-undo.nvim',          lazy = true },
+      { 'nvim-telescope/telescope-github.nvim', lazy = true },
+      { 'debugloop/telescope-undo.nvim',        lazy = true },
     },
     config = require 'pl.telescope'.config,
     cmd = 'Telescope'
