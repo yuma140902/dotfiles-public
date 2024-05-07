@@ -46,7 +46,7 @@ command('Manual', function()
     height = height,
     relative = 'editor',
     style = 'minimal',
-    border = 'single',
+    border = 'rounded',
   })
   vim.api.nvim_buf_set_option(tmpbuf, 'filetype', 'markdown')
   vim.api.nvim_put(lines, "l", false, false)
