@@ -138,3 +138,9 @@ function mk() {
 if type 'mise' > /dev/null; then
   eval "$(mise activate zsh)"
 fi
+
+if type 'brew' > /dev/null; then
+  export LDFLAGS="$LDFLAGS -L/opt/homebrew/lib"
+  export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/include"
+  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/lib/pkgconfig"
+fi
