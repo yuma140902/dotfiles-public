@@ -16,6 +16,8 @@ vim.opt.scrolloff = 3
 
 vim.opt.ambiwidth = 'single' -- use rbtnn/vim-ambiwidth
 
+vim.opt.laststatus = 3
+
 -- 検索
 vim.opt.smartcase = true -- 検索ワードが小文字のみなら大文字小文字を無視
 vim.opt.wrapscan = true  -- 最後まで検索したら最初に戻る
@@ -85,4 +87,19 @@ vim.opt.pumblend = require 'rc.lib'.default_winblend()
 -- 組み込みのLSPクライアントの設定
 vim.diagnostic.config({
   severity_sort = true,
+})
+
+-- UIEnterのあと一定時間後にUser UIEnterPostイベントを発生させる
+vim.api.nvim_create_autocmd('UIEnter', {
+  group = vim.api.nvim_create_augroup('UIEnterDelay', { clear = true }),
+  pattern = '*',
+  nested = true,
+  callback = function()
+    vim.defer_fn(function()
+      vim.api.nvim_exec_autocmds("User", {
+        pattern = "UIEnterPost",
+        modeline = false,
+      })
+    end, 600)
+  end
 })

@@ -39,7 +39,6 @@ local function register_keymaps()
   -- バニラ
   map('n', '[b', '<cmd>bprev<cr>', '前のバッファ')
   map('n', ']b', '<cmd>bnext<cr>', '次のバッファ')
-  map('n', '<C-c>', '<cmd>bp|bd #<cr>', 'バッファを閉じる(ウィンドウを閉じない)') -- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
   local open = 'xdg-open'
   if vim.fn.has('mac') == 1 then
     open = 'open'
@@ -158,8 +157,8 @@ local function register_keymaps()
   -- todo-comments.nvim
   map('n', '<space>lt', '<cmd>TodoTrouble<cr>', 'TODOコメント');
   map('n', '<space>ft', '<cmd>TodoTelescope<cr>', 'TODOコメント');
-  map('n', '[t', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
-  map('n', ']t', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
+  map('n', ']t', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
+  map('n', '[t', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
   map('n', '<space>xvt', '<cmd>TodoTrouble<cr>', 'TODOコメント');
   map('n', '<space>xgt', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
   map('n', '<space>xgT', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
@@ -243,9 +242,7 @@ local function register_keymaps()
   map('n', '<space>fo', function() require 'telescope.builtin'.oldfiles({ only_cwd = true }) end, '最近のファイル(カレントディレクトリ)')
   map('n', '<space>fO', function() require 'telescope.builtin'.oldfiles({ only_cwd = false }) end, '最近のファイル(全部)')
   map('n', '<space>fu', '<cmd>Telescope undo<cr>', '履歴(Undo)')
-  map('n', '<space>fp', '<cmd>Telescope command_palette<cr>', 'コマンドパレット')
   map('n', '<space>fn', '<cmd>Telescope notify initial_mode=normal<cr>', '通知履歴')
-  map('n', '<up>', '<cmd>Telescope command_palette<cr>', 'コマンドパレット')
   map('n', '<space>fghi', '<cmd>Telescope gh issues<cr>', 'GitHub Issues')
   map('n', '<space>fghr', '<cmd>Telescope gh pull_request<cr>', 'GitHub PR プルリクエスト : <C-f> Show modified files')
   map('n', '<space>fghg', '<cmd>Telescope gh gist<cr>', 'GitHub Gist : <C-n> New')

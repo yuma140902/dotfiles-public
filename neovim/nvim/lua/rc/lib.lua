@@ -18,6 +18,11 @@ function M.map(mode, key, cmd, desc, opt)
   vim.keymap.set(mode, key, cmd, opt)
 end
 
+function M.command(name, command, opt)
+  if opt == nil then opt = {} end
+  vim.api.nvim_create_user_command(name, command, opt)
+end
+
 function M.default_winblend()
   if vim.g.neovide then
     return 90
