@@ -8,6 +8,7 @@ command('Manual', function()
     "",
     "- `:Manual` - このマニュアルを表示する",
     "- `:Bd` - ウィンドウを閉じずにバッファを閉じる",
+    "- `:LocalDap` - プロジェクトごとの DAP 設定を読み込む",
     "",
     "## パッシブなプラグインで、手動で読み込む必要があるもの",
     "",
@@ -57,3 +58,7 @@ end)
 -- ウィンドウを閉じずにバッファを閉じる
 -- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
 command('Bd', 'bp|bd#')
+
+command('LocalDap', function()
+  require 'nvim-dap-projects'.search_project_config()
+end)
