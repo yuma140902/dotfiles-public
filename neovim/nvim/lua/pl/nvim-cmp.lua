@@ -154,10 +154,10 @@ function M.config()
       ['<C-e>'] = cmp.mapping.abort(),
     },
     sources = cmp.config.sources({
-      { name = "copilot" },
       { name = 'nvim_lua' },
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
+      { name = "copilot" },
       { name = 'vsnip' },
       { name = 'path' },
       -- https://github.com/epwalsh/obsidian.nvim/issues/124
