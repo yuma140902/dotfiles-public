@@ -55,6 +55,7 @@ function M.config()
     Event = '',
     Operator = '',
     TypeParameter = '',
+    Copilot = '󰚩 ',
   }
 
   local source_names = {
