@@ -98,7 +98,7 @@ function M.config()
         -- fun(entry: cmp.Entry, vim_item: vim.CompletedItem): vim.CompletedItem
         local kind_icon = cmp_kinds[vim_item.kind]
         if kind_icon == nil then
-          vim_item.kind = '   ' .. vim_item.kind
+          vim_item.kind = '   ' .. '   ' .. vim_item.kind
         else
           vim_item.kind = '   ' .. kind_icon .. ' ' .. vim_item.kind
         end
