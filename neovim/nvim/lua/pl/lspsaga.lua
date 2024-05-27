@@ -7,12 +7,19 @@ function M.config()
       border = 'rounded',
       devicon = true,
       title = true,
+      button = { '', '' },
       code_action = '󰌵',
       actionfix = '',
       imp_sign = '󰳛'
     },
     code_action = {
-      extend_gitsigns = true
+      num_shortcut = true,
+      show_server_name = false,
+      extend_gitsigns = true,
+    },
+    definition = {
+      -- peek definitionの幅
+      width = 1.0,
     },
     lightbulb = {
       enable = true,
@@ -24,6 +31,7 @@ function M.config()
     },
     rename = {
       enable = true,
+      in_select = false,
       keys = {
         quit = '<ESC>',
         exec = '<CR>',
