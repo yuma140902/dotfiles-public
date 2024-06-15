@@ -24,6 +24,7 @@ vim.opt.wrapscan = true  -- 最後まで検索したら最初に戻る
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
+vim.opt.wildignorecase = true
 
 -- ターミナル
 local terminal_augroup = vim.api.nvim_create_augroup('terminal_augroup', { clear = true })
