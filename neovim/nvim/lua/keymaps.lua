@@ -147,21 +147,15 @@ local function register_keymaps()
   map('n', '<space>xgd', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
 
   -- trouble.nvim
-  map('n', '<space>lx', '<cmd>TroubleToggle<cr>', 'トグル');
-  map('n', '<down>', '<cmd>TroubleToggle<cr>', 'トグル');
-  map('n', '<space>ld', '<cmd>TroubleToggle document_diagnostics<cr>', '現在のファイルの診断情報');
-  map('n', '<space>lw', '<cmd>TroubleToggle workspace_diagnostics<cr>', 'プロジェクト全体の診断情報');
-  map('n', '<space>ll', '<cmd>TroubleToggle loclist<cr>', 'loclist');
-  map('n', '<space>lq', '<cmd>TroubleToggle quickfix<cr>', 'QuickFix');
-  map('n', '<space>xvd', '<cmd>TroubleToggle document_diagnostics<cr>', '現在のファイルの診断情報');
-  map('n', '<space>xvw', '<cmd>TroubleToggle workspace_diagnostics<cr>', 'プロジェクト全体の診断情報');
+  map('n', '<space>lw', '<cmd>Trouble diagnostics toggle<cr>', 'プロジェクト全体の診断情報');
+  map('n', '<space>ll', '<cmd>Trouble loclist toggle<cr>', 'loclist');
+  map('n', '<space>lq', '<cmd>Trouble quickfix toggle<cr>', 'QuickFix');
 
   -- todo-comments.nvim
-  map('n', '<space>lt', '<cmd>TodoTrouble<cr>', 'TODOコメント');
+  map('n', '<space>lt', '<cmd>Trouble todo toggle<cr>', 'TODOコメント');
   map('n', '<space>ft', '<cmd>TodoTelescope<cr>', 'TODOコメント');
   map('n', ']t', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
   map('n', '[t', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
-  map('n', '<space>xvt', '<cmd>TodoTrouble<cr>', 'TODOコメント');
   map('n', '<space>xgt', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
   map('n', '<space>xgT', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
 

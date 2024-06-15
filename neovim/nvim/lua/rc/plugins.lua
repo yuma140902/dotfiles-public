@@ -119,7 +119,7 @@ local plugins = {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/todo-comments.nvim' },
     config = function() require 'trouble'.setup() end,
-    cmd = { 'TroubleToggle', 'TodoTrouble' },
+    cmd = { 'Trouble' },
   },
 
   {
