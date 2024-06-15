@@ -6,6 +6,7 @@ function M.config()
       enable = true,
       notify = false,
       use_treesitter = true,
+      delay = 0,
     },
     indent = {
       enable = false,
