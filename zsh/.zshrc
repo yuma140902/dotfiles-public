@@ -144,3 +144,7 @@ if type 'brew' > /dev/null; then
   export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/include"
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/lib/pkgconfig"
 fi
+
+if type 'sccache' > /dev/null; then
+  export RUSTC_WRAPPER=$(which sccache)
+fi
