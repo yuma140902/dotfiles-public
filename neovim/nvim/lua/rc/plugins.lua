@@ -292,6 +292,7 @@ local plugins = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim'
     },
+    config = require 'pl.lspconfig'.config,
   },
 
   {
