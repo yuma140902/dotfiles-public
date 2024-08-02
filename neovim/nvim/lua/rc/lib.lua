@@ -27,7 +27,9 @@ function M.default_winblend()
   if vim.g.neovide then
     return 90
   else
-    return 20
+    -- onedark.lua で transparent = true とするときは 0、そうでないときは 20 が良い
+    -- return 20
+    return 0
   end
 end
 

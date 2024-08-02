@@ -5,7 +5,7 @@ function M.config()
   vim.opt.cursorline = true
   require 'onedark'.setup {
     style = 'dark',
-    transparent = false,
+    transparent = not vim.g.neovide,
     term_colors = true,
     ending_tildes = true,
     cmp_itemkind_reverse = false,
