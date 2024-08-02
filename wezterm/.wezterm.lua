@@ -62,8 +62,9 @@ wezterm.on(
 )
 
 
-config.window_background_opacity = 1.0
--- config.win32_system_backdrop = 'Acrylic'
+-- config.window_background_opacity = 1.0
+config.window_background_opacity = 0.4
+config.win32_system_backdrop = 'Tabbed'
 
 config.default_cursor_style = 'SteadyBlock'
 config.cursor_blink_rate = 800
