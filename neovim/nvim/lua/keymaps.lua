@@ -11,7 +11,7 @@ local function register_keymaps()
     { '<space>fgh', group = 'GitHub 関係' },
     { '<space>fx', group = 'その他' },
     { '<space>c', group = 'crates.nvim' },
-    { '<space>r', group = 'Rustaceanvim' },
+    { '<space>R', group = 'Rustaceanvim' },
     { '<space>b', group = 'デバッグ' },
     { '<space>t', group = 'ターミナル' },
   })
@@ -104,7 +104,7 @@ local function register_keymaps()
   map('n', 'gO', '<cmd>Lspsaga outgoing_calls<cr>', '[LSP] outgoing callsを表示')
   map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
   --map('n', '<C-k>', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
-  map('n', '<space>R', '<cmd>Lspsaga rename<cr>', 'リネームする')
+  map('n', '<space>r', '<cmd>Lspsaga rename<cr>', 'リネームする')
   map('n', '<space>a', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
   map('x', '<space>a', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
 
@@ -224,22 +224,22 @@ local function register_keymaps()
   map('n', '-', '<cmd>Oil<cr>', 'ディレクトリに移動')
 
   -- Rustaceanvim
-  map('n', '<space>rB', '<cmd>RustLsp debuggables<cr>', 'DAPでデバッグ')
-  map('n', '<space>rb', '<cmd>RustLsp debuggables last<cr>', '最後のターゲットをDAPでデバッグ')
-  map('n', '<space>rR', '<cmd>RustLsp runnables<cr>', '実行')
-  map('n', '<space>rr', '<cmd>RustLsp runnables last<cr>', '最後のターゲットを実行')
-  map({ 'n', 'v' }, '<space>rm', '<cmd>RustLsp expandMacro<cr>', 'マクロを再帰的に展開')
-  map({ 'n', 'v' }, '<space>rP', '<cmd>RustLsp rebuildProcMacros<cr>', 'proc macroを再ビルド')
-  map({ 'n', 'v' }, '<space>r[', '<cmd>RustLsp moveItem up<cr>', 'アイテムを上に移動')
-  map({ 'n', 'v' }, '<space>r]', '<cmd>RustLsp moveItem down<cr>', 'アイテムを下に移動')
-  map({ 'n', 'v' }, '<space>ra', '<cmd>RustLsp hover actions<cr>', 'Hover Actionsを表示')
-  map({ 'n', 'v' }, '<space>rA', '<cmd>RustLsp hover range<cr>', 'Hover Rangeを表示')
-  map('n', '<space>rd', '<cmd>RustLsp explainError<cr>', 'エラーの解説を表示')
-  map('n', '<space>rC', '<cmd>RustLsp openCargo<cr>', 'Cargo.tomlを表示')
-  map('n', '<space>rp', '<cmd>RustLsp parentModule<cr>', '親モジュール')
-  map({ 'n', 'v' }, '<space>rJ', '<cmd>RustLsp joinLines<cr>', '行を結合')
-  map({ 'n', 'v' }, '<space>rs', '<cmd>RustLsp syntaxTree<cr>', '構文木を表示')
-  map('n', '<space>rc', '<cmd>RustLsp flyCheck<cr>', 'fly-checkを実行')
+  map('n', '<space>RB', '<cmd>RustLsp debuggables<cr>', 'DAPでデバッグ')
+  map('n', '<space>Rb', '<cmd>RustLsp debuggables last<cr>', '最後のターゲットをDAPでデバッグ')
+  map('n', '<space>Rr', '<cmd>RustLsp runnables<cr>', '実行')
+  map('n', '<space>RR', '<cmd>RustLsp runnables last<cr>', '最後のターゲットを実行')
+  map({ 'n', 'v' }, '<space>Rm', '<cmd>RustLsp expandMacro<cr>', 'マクロを再帰的に展開')
+  map({ 'n', 'v' }, '<space>RP', '<cmd>RustLsp rebuildProcMacros<cr>', 'proc macroを再ビルド')
+  map({ 'n', 'v' }, '<space>R[', '<cmd>RustLsp moveItem up<cr>', 'アイテムを上に移動')
+  map({ 'n', 'v' }, '<space>R]', '<cmd>RustLsp moveItem down<cr>', 'アイテムを下に移動')
+  map({ 'n', 'v' }, '<space>RA', '<cmd>RustLsp hover actions<cr>', 'Hover Actionsを表示')
+  map({ 'n', 'v' }, '<space>Ra', '<cmd>RustLsp hover range<cr>', 'Hover Rangeを表示')
+  map('n', '<space>Rd', '<cmd>RustLsp explainError<cr>', 'エラーの解説を表示')
+  map('n', '<space>RC', '<cmd>RustLsp openCargo<cr>', 'Cargo.tomlを表示')
+  map('n', '<space>Rp', '<cmd>RustLsp parentModule<cr>', '親モジュール')
+  map({ 'n', 'v' }, '<space>RJ', '<cmd>RustLsp joinLines<cr>', '行を結合')
+  map({ 'n', 'v' }, '<space>Rs', '<cmd>RustLsp syntaxTree<cr>', '構文木を表示')
+  map('n', '<space>Rc', '<cmd>RustLsp flyCheck<cr>', 'fly-checkを実行')
 
   -- DAP
   map('n', '<F5>', function() require 'dap'.continue() end, '続行')
