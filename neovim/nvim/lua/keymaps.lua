@@ -14,6 +14,7 @@ local function register_keymaps()
     { '<space>R', group = 'Rustaceanvim' },
     { '<space>b', group = 'デバッグ' },
     { '<space>t', group = 'ターミナル' },
+    { '<space>j', group = 'Join/Split' },
   })
 
   -- バニラ
@@ -270,6 +271,11 @@ local function register_keymaps()
   end, 'スコープを表示')
   map('n', '<space>bb', function() require 'dapui'.toggle() end, 'DAP UIを開く/閉じる')
   map('n', '<space>bo', function() require 'nvim-dap-projects'.search_project_config() end, 'プロジェクト固有の設定を読み込む')
+
+  -- TSJ
+  map('n', '<space>jj', '<cmd>TSJJoin<cr>', 'TSJJoin')
+  map('n', '<space>js', '<cmd>TSJSplit<cr>', 'TSJSplit')
+  map('n', '<space>jt', '<cmd>TSJToggle<cr>', 'TSJToggle')
 end
 
 return {
