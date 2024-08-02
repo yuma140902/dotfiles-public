@@ -1,40 +1,20 @@
 local map = require 'rc/lib'.map
 
 local function register_keymaps()
-  require 'which-key'.register({
-    l = { name = 'trouble.nvim(画面下のリスト開閉)' },
-    x = {
-      name = 'IDE-like Neovim(エイリアス)',
-      g = { name = '移動系' },
-      v = { name = '表示系' },
-      e = { name = '編集系' }
-    },
-    h = {
-      name = 'gitsigns',
-      t = { name = 'トグル系' }
-    },
-    g = {
-      name = 'fugitive'
-    },
-    f = {
-      name = 'Telescope(ファジーファインダ)',
-      g = {
-        name = 'Git関係',
-        h = { name = 'GitHub関係 <C-T>でブラウザで開く' }
-      },
-      x = { name = 'EXTRA' }
-    },
-    c = {
-      name = 'crates.nvim'
-    },
-    r = {
-      name = 'Rustaceanvim'
-    },
-    b = {
-      name = 'デバッグ'
-    },
-    t = { name = "ターミナル" }
-  }, { prefix = '<space>' })
+  require 'which-key'.add({
+    { '<space>l', group = 'trouble.nvim' },
+    { '<space>h', group = 'gitsigns' },
+    { '<space>ht', group = 'トグル' },
+    { '<space>g', group = 'fugitive' },
+    { '<space>f', group = 'Telescope' },
+    { '<space>fg', group = 'Git 関係' },
+    { '<space>fgh', group = 'GitHub 関係' },
+    { '<space>fx', group = 'その他' },
+    { '<space>c', group = 'crates.nvim' },
+    { '<space>r', group = 'Rustaceanvim' },
+    { '<space>b', group = 'デバッグ' },
+    { '<space>t', group = 'ターミナル' },
+  })
 
   -- バニラ
   map('n', '[b', '<cmd>bprev<cr>', '前のバッファ')
@@ -116,12 +96,8 @@ local function register_keymaps()
   map('n', 'gp', '<cmd>Lspsaga peek_definition<cr>', '[LSP] 定義を表示')
   map('n', 'gP', '<cmd>Lspsaga peek_type_definition<cr>', '[LSP] 型定義を表示')
   map('n', '<space>D', vim.lsp.buf.type_definition, '変数の型の定義へ移動')
-  map('n', '<space>xgD', vim.lsp.buf.declaration, '宣言へ移動')
-  map('n', '<space>xgd', vim.lsp.buf.definition, '定義へ移動')
-  map('n', '<space>xgi', vim.lsp.buf.implementation, '実装へ移動')
 
   map('n', '<space>o', function() vim.lsp.buf.format { async = true } end, 'コードフォーマットする')
-  map('n', '<space>xef', function() vim.lsp.buf.format { async = true } end, 'コードフォーマットする')
   map('n', 'gr', '<cmd>Lspsaga finder ref+def<cr>', '[LSP] 参照・定義へ移動')
   map('n', 'gR', '<cmd>Lspsaga finder ref+def+imp<cr>', '[LSP] 参照・定義・実装へ移動')
   map('n', 'gI', '<cmd>Lspsaga incoming_calls<cr>', '[LSP] incoming callsを表示')
@@ -131,20 +107,12 @@ local function register_keymaps()
   map('n', '<space>R', '<cmd>Lspsaga rename<cr>', 'リネームする')
   map('n', '<space>a', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
   map('x', '<space>a', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
-  map('n', '<space>xvk', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
-  map('n', '<space>xvs', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
-  map('n', '<space>xer', '<cmd>Lspsaga rename<cr>', 'リネームする')
-  map('n', '<space>xva', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
-  map('x', '<space>xva', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
 
   -- 診断関係
   -- :h vim.diagnostic.*
   map('n', '<space>d', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示')
   map('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ')
   map('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
-  map('n', '<space>xve', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示')
-  map('n', '<space>xgD', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ')
-  map('n', '<space>xgd', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
 
   -- trouble.nvim
   map('n', '<space>lw', '<cmd>Trouble diagnostics toggle<cr>', 'プロジェクト全体の診断情報');
@@ -156,8 +124,6 @@ local function register_keymaps()
   map('n', '<space>ft', '<cmd>TodoTelescope<cr>', 'TODOコメント');
   map('n', ']t', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
   map('n', '[t', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
-  map('n', '<space>xgt', function() require 'todo-comments'.jump_next() end, '次のTODOコメントへ');
-  map('n', '<space>xgT', function() require 'todo-comments'.jump_prev() end, '前のTODOコメントへ');
 
   -- aerial
   map('n', '<space><space>', '<cmd>AerialToggle float<cr>', 'Aerialを開く')
