@@ -15,7 +15,5 @@
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [pull]
 	rebase = false
-[commit]
-	gpgsign = false
 
 # vim: ft=gitconfig ff=unix noexpandtab
