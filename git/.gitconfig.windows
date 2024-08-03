@@ -13,11 +13,6 @@
 	plog = log --pretty='format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]' --date=iso
 	glog = plog --all --graph
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
 [pull]
 	rebase = false
 [commit]
