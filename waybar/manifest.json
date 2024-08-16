@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "src": "config.jsonc",
+      "dst": "${XDG_CONFIG_HOME}/waybar/config.jsonc"
+    },
+    {
+      "src": "style.css",
+      "dst": "${XDG_CONFIG_HOME}/waybar/style.css"
+    }
+  ]
+}
