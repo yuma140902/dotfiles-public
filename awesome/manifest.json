@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "src": "nvim",
+      "src": "awesome",
       "dst": "${XDG_CONFIG_HOME}/awesome"
     }
   ]
