@@ -7,6 +7,10 @@
     {
       "src": "style.css",
       "dst": "${XDG_CONFIG_HOME}/waybar/style.css"
+    },
+    {
+      "src": "power_menu.xml",
+      "dst": "${XDG_CONFIG_HOME}/waybar/power_menu.xml"
     }
   ]
 }
