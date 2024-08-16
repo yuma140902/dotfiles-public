@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "src": "dunstrc",
+      "dst": "${XDG_CONFIG_HOME}/dunst/dunstrc"
+    }
+  ]
+}
