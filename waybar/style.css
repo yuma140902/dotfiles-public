@@ -26,11 +26,16 @@ window#waybar.hidden {
 #backlight,
 #network,
 #pulseaudio,
-#wireplumber
+#wireplumber,
+#temperature,
+#tray,
+#idle_inhibitor,
+#language
 {
     padding: 0 10px 0 10px;
     border-bottom: 5px;
     border-style: solid;
+    border-color: red;
 }
 
 #clock {
@@ -97,7 +102,6 @@ window#waybar.hidden {
 #pulseaudio {
     border-color: #f1c40f;
 }
-
 #pulseaudio.muted {
     border-color: #90b1b1;
 }
@@ -105,47 +109,39 @@ window#waybar.hidden {
 #wireplumber {
     border-color: #fff0f5;
 }
-
 #wireplumber.muted {
     border-color: #f53c3c;
 }
 
 #temperature {
-    background-color: #f0932b;
+    border-color: #f0932b;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    border-color: #eb4d4b;
 }
 
 #tray {
-    background-color: #2980b9;
+    border-color: #2980b9;
 }
-
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
-
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    border-color: #2d3436;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+    border-color: #ecf0f1;
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
+    border-color: #00b093;
 }
 
 #keyboard-state {
