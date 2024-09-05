@@ -1,0 +1,13 @@
+{
+  "notice": "以下のパッケージをインストールしてください。\n @textlint-ja/textlint-rule-no-synonyms\n sudachi-synonyms-dictionary\n textlint-filter-rule-comments\n textlint-plugin-latex2e\n textlint-rule-abbr-within-parentheses\n textlint-rule-first-sentence-length\n textlint-rule-ja-no-inappropriate-words\n textlint-rule-ja-overlooked-typo\n textlint-rule-no-hoso-kinshi-yogo\n textlint-rule-preset-ja-spacing\n textlint-rule-preset-ja-technical-writing\n textlint-rule-prh\n textlint-rule-terminology\n textlint\n textlint-filter-rule-node-types",
+  "files": [
+    {
+      "src": ".textlintrc.js",
+      "dst": ".textlintrc.js"
+    },
+    {
+      "src": "prh",
+      "dst": "${XDG_CONFIG_HOME}/prh"
+    }
+  ]
+}
