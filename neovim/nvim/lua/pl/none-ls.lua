@@ -10,6 +10,9 @@ function M.config()
       null_ls.builtins.diagnostics.textlint.with {
         filetypes = { 'txt', 'markdown', 'tex' }
       },
+      null_ls.builtins.formatting.textlint.with {
+        filetypes = { 'txt', 'markdown', 'tex' }
+      }
     }
   }
 end
