@@ -34,6 +34,11 @@ module.exports = {
         allowEmoji: true,
       },
       'no-exclamation-question-mark': false,
+      'no-mix-dearu-desumasu': {
+        preferInHeader: '',
+        preferInBody: '',
+        preferInList: '',
+      },
     },
     prh: {
       rulePaths: [
