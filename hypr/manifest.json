@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "src": "hypr",
+      "dst": "${XDG_CONFIG_HOME}/hypr"
+    }
+  ]
+}

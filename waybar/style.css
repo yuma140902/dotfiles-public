@@ -1,0 +1,145 @@
+* {
+    color: #ffffff;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    border: 0;
+    border-radius: 0;
+    padding: 0 0;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: transparent;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#clock,
+#battery,
+#power-profiles-daemon,
+#cpu,
+#memory,
+#disk,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#temperature,
+#tray,
+#idle_inhibitor,
+#language
+{
+    padding: 0 10px 0 10px;
+    border-bottom: 5px;
+    border-style: solid;
+    border-color: red;
+}
+
+#clock {
+    border-color: #64727D;
+}
+
+#battery {
+    border-color: #ffffff;
+}
+#battery.charging, #battery.plugged {
+    border-color: #26A65B;
+}
+@keyframes blink {
+    to {
+        border-color: #ffffff;
+    }
+}
+#battery.critical:not(.charging) {
+    border-color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    /* Using steps() instead of linear as a timing function to limit cpu usage */
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+#power-profiles-daemon.performance {
+    border-color: #f53c3c;
+}
+#power-profiles-daemon.balanced {
+    border-color: #2980b9;
+}
+#power-profiles-daemon.power-saver {
+    border-color: #2ecc71;
+}
+
+#cpu {
+    border-color: #2ecc71;
+}
+
+#memory {
+    border-color: #9b59b6;
+}
+
+#disk {
+    border-color: #964B00;
+}
+
+#backlight {
+    border-color: #90b1b1;
+}
+
+#network {
+    border-color: #2980b9;
+}
+#network.disconnected {
+    border-color: #f53c3c;
+}
+
+#pulseaudio {
+    border-color: #f1c40f;
+}
+#pulseaudio.muted {
+    border-color: #90b1b1;
+}
+
+#wireplumber {
+    border-color: #fff0f5;
+}
+#wireplumber.muted {
+    border-color: #f53c3c;
+}
+
+#temperature {
+    border-color: #f0932b;
+}
+
+#temperature.critical {
+    border-color: #eb4d4b;
+}
+
+#tray {
+    border-color: #2980b9;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    border-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    border-color: #ecf0f1;
+}
+
+#language {
+    border-color: #00b093;
+}

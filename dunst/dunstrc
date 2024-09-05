@@ -1,0 +1,7 @@
+[global]
+origin = top-right
+icon_corner_radius = 3
+frame_width = 0
+font = "Sans 12"
+format = "<b>%s</b> - <i>%a</i>\n%b"
+corner_radius = 5
