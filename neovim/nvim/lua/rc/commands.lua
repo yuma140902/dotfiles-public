@@ -34,6 +34,16 @@ command('Manual', function()
     "- `auto-split-direction` - `:SplitAutoDirection`, `<C-W>a`",
     "- `treesj` - `:TSJ**`",
     "",
+    "## その他のメモ",
+    "",
+    "### textlint",
+    "",
+    "txt、markdown、tex ファイルで textlint の diagnostics と formatting が利用可能です。",
+    "ただし保存時には実行されない※ので `<space>o` で手動で実行してください。",
+    "",
+    "※実行されない原因は不明ですが、実行されないこと自体は意図通りの動作です。",
+    "LSP Client の textDocument/formatting がなぜかサポートされていないので実行されません。しかし、保存時のフォーマットは同期的に実行するようにしており、textlint は遅いため、実行できたとしても timeout になります。そのためそもそも実行したくありません。",
+    "",
   }
   local tmpbuf = vim.api.nvim_create_buf(false, true)
   local height = math.min(math.floor(vim.o.lines * 0.8), #lines)
