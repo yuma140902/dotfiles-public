@@ -46,7 +46,7 @@ module.exports = {
     },
     'ja-overlooked-typo': true,
     'first-sentence-length': {
-      max: 30
+      max: 50
     },
     '@textlint-ja/no-synonyms': true,
     'no-hoso-kinshi-yogo': true,
