@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  require 'persisted.config'.setup {
+  require 'persisted'.setup {
     -- directory where session files are saved
     save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"),
     silent = false,                       -- silent nvim message when sourcing session file
@@ -16,6 +16,9 @@ function M.config()
     telescope = {                         -- options for the telescope extension
       reset_prompt_after_deletion = true, -- whether to reset prompt after session deleted
     },
+    should_save = function()
+      return vim.fn.argv()[1] ~= "."
+    end
   }
 end
 
