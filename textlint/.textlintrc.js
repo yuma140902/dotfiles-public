@@ -30,7 +30,7 @@ module.exports = {
       'ja-no-weak-phrase': false,
       'ja-no-mixed-period': {
         periodMark: '。',
-        allowPeriodMarks: ['。', '．'],
+        allowPeriodMarks: ['。', '．', ':', '：', '、', '，'],
         allowEmoji: true,
       },
       'no-exclamation-question-mark': false,
