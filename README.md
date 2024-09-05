@@ -4,11 +4,11 @@
 [![pages-build-deployment](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment)
 
 いろいろなアプリケーションの設定ファイルを管理しています。
-`./dotfiles`スクリプトを使用してアプリケーションごとに設定ファイルのインストールを行うことができます。
-例えばNeovimの設定ファイルをインストールするには`./dotfiles install neovim`を実行します。
+`./dotfiles` スクリプトを使用してアプリケーションごとに設定ファイルのインストールを行うことができます。
+例えば Neovim の設定ファイルをインストールするには `./dotfiles install neovim` を実行します。
 
-`./dotfiles`は設定ファイルの設置のみを行い、アプリケーション自体のインストールは行いません。つまり、`apt install`や`pacman -S`を自動で実行することはありません。
-アプリケーション自体のインストールは`./dotfiles install`とは別に各パッケージマネージャを使って行う必要があります。
+`./dotfiles` は設定ファイルの設置のみを行い、アプリケーション自体のインストールは行いません。つまり、`apt install` や `pacman -S` を自動で実行することはありません。
+アプリケーション自体のインストールは `./dotfiles install` とは別に各パッケージマネージャを使って行う必要があります。
 
 ## 動作環境
 
@@ -27,7 +27,7 @@ git clone https://github.com/yuma140902/dotfiles-public
 cd dotfiles-public
 ```
 
-次に`./dotfiles`を使って必要なモジュールをインストールします。
+次に `./dotfiles` を使って必要なモジュールをインストールします。
 
 ```
 > ./dotfiles --help
@@ -76,5 +76,5 @@ options:
 
 ## ベンチマーク
 
-GitHub ActionsでNeovimのベンチマークを行っています。
+GitHub Actions で Neovim のベンチマークを行っています。
 ベンチマーク結果は <https://yuma14.net/dotfiles-public/> で見ることができます。
