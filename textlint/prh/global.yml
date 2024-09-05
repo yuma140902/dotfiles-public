@@ -1,3 +1,12 @@
 version: 1
 
-rules: []
+rules:
+  - expected: Neovim
+    pattern: /Neo ?[Vv]im/
+    specs:
+      - from: NeoVim
+        to: Neovim
+      - from: Neo vim
+        to: Neovim
+      - from: Neo Vim
+        to: Neovim
