@@ -8,10 +8,10 @@ function M.config()
       null_ls.builtins.formatting.clang_format,
       null_ls.builtins.formatting.dart_format,
       null_ls.builtins.diagnostics.textlint.with {
-        filetypes = { 'txt', 'markdown', 'tex' }
+        filetypes = { 'text', 'markdown', 'tex' }
       },
       null_ls.builtins.formatting.textlint.with {
-        filetypes = { 'txt', 'markdown', 'tex' }
+        filetypes = { 'text', 'markdown', 'tex' }
       }
     }
   }
