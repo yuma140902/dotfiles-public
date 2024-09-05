@@ -17,7 +17,7 @@ function M.config()
       reset_prompt_after_deletion = true, -- whether to reset prompt after session deleted
     },
     should_save = function()
-      return vim.fn.argv()[1] ~= "."
+      return vim.fn.argc() == 0 or vim.fn.argv()[1] == "DUMMY"
     end
   }
 end
