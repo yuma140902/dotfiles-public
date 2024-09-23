@@ -17,7 +17,6 @@ command('Manual', function()
     "- `diffview.nvim` - `:Diffview**`",
     "- `nvim-dap-ui` - `<space>bb`",
     "- `twilight.nvim` - `:Twilight`",
-    "- `no-neck-pain` - `:NoNeckPain`",
     "",
     "## アクティブなプラグイン",
     "",

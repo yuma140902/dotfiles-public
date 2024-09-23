@@ -543,37 +543,6 @@ local plugins = {
   },
 
   {
-
-    -- 画面が横長のときにウィンドウを中央に寄せる
-    'shortcuts/no-neck-pain.nvim',
-    version = '*', -- stable release
-    config = function()
-      require 'no-neck-pain'.setup {
-        width = 120,
-        minSideBufferWidth = 10,
-        killAllBuffersOnDisable = true,
-        autocmds = {
-          enableOnVimEnter = false,
-          enableOnTabEnter = true,
-          reloadOnColorSchemeChange = false,
-          skipEnteringNoNeckPainBuffer = true,
-        },
-        mappings = {
-          enabled = false,
-        },
-      }
-
-      vim.api.nvim_create_autocmd({ 'User' }, {
-        pattern = 'PersistedSavePre',
-        callback = function()
-          require 'rc.lib'.close_buffers_by_filetype('no-neck-pain')
-        end
-      })
-    end,
-    cmd = { 'NoNeckPain' }
-  },
-
-  {
     -- Treesitterの情報を元に範囲選択する
     'sustech-data/wildfire.nvim',
     event = { 'ModeChanged *:[vV\\x16]*' }, -- visualモードに入った時
