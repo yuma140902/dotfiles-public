@@ -63,7 +63,13 @@ function M.do_format(bufnr)
   vim.lsp.buf.format({
     filter = function(client_)
       -- bufnrとclient_をもとに、各LSPサーバでフォーマットを行うかどうか決定する
-      -- 今のところはいつもtrueを返す。つまりアタッチされているすべてのLSPサーバでフォーマットを行う
+      if client_.name == 'ts_ls' or client_.name == 'null-ls' then
+        -- biomeがアタッチされているとき、ts_lsやnull-lsではフォーマットしない
+        local biome_attached = #(vim.lsp.get_clients({ bufnr = bufnr, name = 'biome' })) ~= 0
+        if biome_attached then
+          return false
+        end
+      end
       return true
     end,
     bufnr = bufnr,
