@@ -51,8 +51,8 @@ function M.config()
           single_file_support = false,
         }
       end,
-      ['tsserver'] = function()
-        require 'lspconfig'.tsserver.setup {
+      ['ts_ls'] = function()
+        require 'lspconfig'.ts_ls.setup {
           -- TODO: prettierを使いたい場合、on_attach内でcapabilityを変更してLSPのフォーマッタを無効化する
           -- see: https://github.com/nvimtools/none-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
           on_attach = on_attach,
