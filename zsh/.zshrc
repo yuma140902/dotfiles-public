@@ -74,7 +74,7 @@ if type 'lsd' > /dev/null; then
   alias ls='lsd'
 fi
 alias grep='grep --color=auto'
-alias gg='nvim DUMMY -c "Git" -c "only"'
+alias gg='nvim . -c "Git" -c "only"'
 alias :q='exit'
 alias cp='cp -i'
 set rmstar
