@@ -54,7 +54,6 @@ module.exports = {
       max: 50
     },
     '@textlint-ja/no-synonyms': true,
-    'no-hoso-kinshi-yogo': true,
     'ja-no-inappropriate-words': true,
     'abbr-within-parentheses': true,
   }
