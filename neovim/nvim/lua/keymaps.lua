@@ -17,7 +17,7 @@ local function register_keymaps()
     { '<space>j', group = 'Join/Split' },
   })
 
-  -- バニラ
+  -- ノーマルモード
   map('n', '[b', '<cmd>bprev<cr>', '前のバッファ')
   map('n', ']b', '<cmd>bnext<cr>', '次のバッファ')
   local open = 'xdg-open'
@@ -27,12 +27,20 @@ local function register_keymaps()
     open = 'start'
   end
   map({ 'n', 'x' }, 'gx', '<cmd>silent !' .. open .. ' <cfile><cr>', '標準アプリで開く')
-
-  -- タブ
   map('n', '<C-H>', '<cmd>tabprev<cr>')
   map('n', '<C-L>', '<cmd>tabnext<cr>')
 
-  -- バニラ - ターミナル
+  -- インサートモード
+  map('i', '<C-l>', function()
+    -- [Vim でアルファベット大文字の単語を楽に打つ裏技](https://zenn.dev/vim_jp/articles/2024-10-07-vim-insert-uppercase)
+    local line = vim.fn.getline(".")
+    local col = vim.fn.getpos(".")[3]
+    local substring = line:sub(1, col - 1)
+    local result = vim.fn.matchstr(substring, "[a-zA-Z0-9_]*$")
+    return "<C-w>" .. result:upper()
+  end, '直前の単語を大文字にする', { expr = true })
+
+  -- ターミナル
   map('n', '<space>tn', '<cmd>terminal<cr>', 'ターミナルを開く')
   map('n', '<space>tt', '<cmd>tabnew<cr><cmd>terminal<cr><cmd>startinsert<cr>', 'ターミナルを新規タブで開く')
   map('n', '<space>tf', '<cmd>Lspsaga term_toggle<cr>', 'floating windowのターミナルをトグル')
