@@ -536,13 +536,6 @@ local plugins = {
   },
 
   {
-    -- アクティブなウィンドウのボーダーに色をつける
-    'nvim-zh/colorful-winsep.nvim',
-    config = require 'pl.colorful-winsep'.config,
-    event = { 'WinNew' },
-  },
-
-  {
     -- Treesitterの情報を元に範囲選択する
     'sustech-data/wildfire.nvim',
     event = { 'ModeChanged *:[vV\\x16]*' }, -- visualモードに入った時
