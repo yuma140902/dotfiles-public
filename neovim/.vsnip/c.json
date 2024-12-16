@@ -1,0 +1,7 @@
+{
+  "#ifelsedef": {
+    "prefix": "#ifelsedef",
+    "body": ["#ifdef ${1:MACRO}", "$0", "#else /* ifdef $1 */", "", "#endif /* ifdef $1 */"],
+    "description": "#ifdef snippet"
+  }
+}
