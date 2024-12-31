@@ -87,6 +87,12 @@ local plugins = {
     priority = 1000, -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
     config = require 'pl.onedark'.config
   },
+  {
+    'echasnovski/mini.base16',
+    lazy = false,
+    priority = 1000,
+    config = require 'pl.mini_base16'.config
+  },
 
   {
     -- ファジーファインダ

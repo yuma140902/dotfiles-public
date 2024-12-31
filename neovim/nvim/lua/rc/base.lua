@@ -4,6 +4,8 @@
 vim.opt.number = true
 vim.opt.mouse = 'a'
 
+vim.opt.background = 'dark'
+
 -- インデント関係
 vim.opt.expandtab = true      -- タブ文字が入力されたとき、スペース文字に変える
 vim.opt.tabstop = 2
