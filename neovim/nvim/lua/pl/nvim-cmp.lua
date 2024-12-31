@@ -97,6 +97,9 @@ function M.config()
       fields = { 'abbr', 'kind', 'menu' }, -- :h completion-itemsを参照
       format = function(entry, vim_item)
         -- fun(entry: cmp.Entry, vim_item: vim.CompletedItem): vim.CompletedItem
+        if vim_item.kind == nil then
+          vim_item.kind = ''
+        end
         local kind_icon = cmp_kinds[vim_item.kind]
         if kind_icon == nil then
           vim_item.kind = '   ' .. '   ' .. vim_item.kind
