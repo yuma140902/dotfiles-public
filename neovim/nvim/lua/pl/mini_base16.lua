@@ -122,7 +122,7 @@ function M.config()
       base0E = "#00bb00",
       base0F = "#005500",
     },
-    ['onedark'] = {
+    ['onedark-base16'] = {
       -- name: OneDark
       -- author: Lalit Magant (http://github.com/tilal6991)
       base00 = "#282c34",
@@ -185,6 +185,7 @@ function M.config()
   }
 
   local scheme_names = vim.tbl_keys(palettes)
+  table.insert(scheme_names, 'onedark')
 
   -- mini.nvimで起動のたびに異なるbase16 colorschemeを使用する
   -- https://zenn.dev/kawarimidoll/articles/c2367b1e2e0849
@@ -193,7 +194,10 @@ function M.config()
     function(opts)
       local key = opts.fargs[1]
 
-      if vim.tbl_contains(scheme_names, key) then
+      if key == 'onedark' then
+        vim.cmd('colorscheme onedark')
+        return
+      elseif vim.tbl_contains(scheme_names, key) then
         vim.g.scheme_name = key
       else
         math.randomseed(os.time())
