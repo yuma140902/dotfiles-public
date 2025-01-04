@@ -182,6 +182,25 @@ function M.config()
       base0E = "#6c71c4",
       base0F = "#d33682",
     },
+    ['purple-and-pink'] = {
+      -- author: yuma140902
+      base00 = "#081245", -- "hsl(230 80% 15%)", -- default background
+      base01 = "#25085e", -- "hsl(260 85% 20%)", -- lighter background
+      base02 = "#5c0a5c", -- "hsl(300 80% 20%)", -- selection background
+      base03 = "#6d527a", -- "hsl(280 20% 40%)", -- comments, invisibles, line highlighting
+      base04 = "#af8bc1", -- "hsl(280 30% 65%)", -- dark foreground
+      base05 = "#dfc6ec", -- "hsl(280 50% 85%)", -- default foreground
+      base06 = "#f5ebfa", -- "hsl(280 60% 95%)", -- light foreground
+      base07 = "#7359a6", -- "hsl(260 30% 50%)", -- light background
+      base08 = "#d98cbf", -- "hsl(320 50% 70%)", -- variables
+      base09 = "#d98cd9", -- "hsl(300 50% 70%)", -- constants
+      base0A = "#bf8cd9", -- "hsl(280 50% 70%)", -- classes
+      base0B = "#a68cd9", -- "hsl(260 50% 70%)", -- strings
+      base0C = "#8c8cd9", -- "hsl(240 50% 70%)", -- support, regular expressions, escape characters
+      base0D = "#8ca6d9", -- "hsl(220 50% 70%)", -- functions
+      base0E = "#8cbfd9", -- "hsl(200 50% 70%)", -- keywords
+      base0F = "#8cb3d9", -- "hsl(210 50% 70%)", -- deprecated
+    }
   }
 
   local scheme_names = vim.tbl_keys(palettes)
