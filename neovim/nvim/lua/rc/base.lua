@@ -1,7 +1,7 @@
 -- 基本的な設定
 
 -- 基本
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.mouse = 'a'
 
 -- インデント関係
