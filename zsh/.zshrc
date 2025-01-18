@@ -50,6 +50,8 @@ zinit light zsh-users/zsh-completions
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
+zinit light olets/zsh-abbr
+
 if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
@@ -71,14 +73,15 @@ if [ -f /usr/share/nvm/init-nvm ]; then
 fi
 
 if type 'lsd' > /dev/null; then
-  alias ls='lsd'
+  abbr ls='lsd'
 fi
 alias grep='grep --color=auto'
-alias gg='nvim . -c "Git" -c "only"'
-alias :q='exit'
+abbr gg='nvim . -c "Git" -c "only"'
+abbr :q='exit'
 alias cp='cp -i'
+alias mv='mv -i'
 set rmstar
-alias rm='trash'
+alias rm='echo "rm is disabled. Use `trash` or `/bin/rm` instead."'
 
 function obs() {
   function help() {
