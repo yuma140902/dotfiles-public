@@ -81,7 +81,7 @@ abbr :q='exit'
 alias cp='cp -i'
 alias mv='mv -i'
 set rmstar
-alias rm='echo "rm is disabled. Use `trash` or `/bin/rm` instead."'
+alias rm='echo "rm is disabled. Use trash or /bin/rm instead."'
 
 function obs() {
   function help() {
