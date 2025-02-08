@@ -202,6 +202,12 @@ local plugins = {
   },
 
   {
+    -- pest-parser の syntax highlight
+    'pest-parser/pest.vim',
+    ft = 'pest'
+  },
+
+  {
     -- セッション管理
     'olimorris/persisted.nvim',
     lazy = false,
