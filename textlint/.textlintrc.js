@@ -1,6 +1,10 @@
 'use strict';
 module.exports = {
-  plugins: [ 'latex2e' ],
+  plugins: { 
+    'latex2e': {
+      extensions: ['.ltx']
+    }
+  },
   filters: {
     comments: true,
     'node-types': {
