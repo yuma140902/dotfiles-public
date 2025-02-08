@@ -8,8 +8,9 @@ end
 
 --config.font = wezterm.font 'HackGen Console NF'
 --config.font = wezterm.font 'UDEV Gothic NF'
-config.font = wezterm.font 'PlemolJP Console NF'
-config.font_size = 11.0
+config.font = wezterm.font 'UDEV Gothic NFLG'
+--config.font = wezterm.font 'PlemolJP Console NF'
+config.font_size = 10.0
 
 config.use_ime = true
 config.color_scheme = 'OneDark (base16)'
