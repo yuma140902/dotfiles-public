@@ -12,7 +12,7 @@
 
 	outputs = { self, nixpkgs, nixos-wsl, home-manager, nixfiles-private, ... } @ inputs: let
 		stateVersion = "24.11";
-		privateHome = path: if builtins.pathExists "${nixfiles-private}/${path}" then [
+		privateModule = path: if builtins.pathExists "${nixfiles-private}/${path}" then [
 			"${nixfiles-private}/${path}"
 		] else builtins.trace "WARNING: not found: ${nixfiles-private}/${path}" [];
 	in {
@@ -45,7 +45,7 @@
 					./tmux
 					./zsh
 				]
-				++ privateHome "home/git.nix";
+				++ privateModule "home/git.nix";
 			};
 		};
 	};
