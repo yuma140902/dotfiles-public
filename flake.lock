@@ -40,8 +40,8 @@
     "nixfiles-private": {
       "flake": false,
       "locked": {
-        "lastModified": 1740139174,
-        "narHash": "sha256-G7GFK8hc4JSKo82SD31OTQncernggfy58XQ/c+F5XXI=",
+        "lastModified": 1740146727,
+        "narHash": "sha256-N+H9DsJveQMXsP82hpk0cnuVWx8YIoFsxCUA0T0HB0M=",
         "path": "/home/yuma/repos/nixfiles-private",
         "type": "path"
       },
