@@ -15,8 +15,9 @@ in {
 				nix.settings.experimental-features = ["nix-command" "flakes"];
 				wsl = {
 					enable = true;
-					defaultUser = "nixos";
+					defaultUser = "yuma";
 					docker-desktop.enable = true;
+					interop.includePath = false;
 				};
 				users.users.yuma = {
 					isNormalUser = true;
