@@ -3,6 +3,10 @@
   "description": "zshの設定ファイル",
   "notice": "プラグインをインストールするためにzshを一度起動する必要があります",
   "files": [
-    ".zshrc"
+    ".zshrc",
+    {
+      "src": "user-abbreviations",
+      "dst": "${XDG_CONFIG_HOME}/zsh-abbr/user-abbreviations"
+    }
   ]
 }

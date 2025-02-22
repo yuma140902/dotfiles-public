@@ -1,0 +1,4 @@
+abbr ":q"="exit"
+abbr "gg"="nvim . -c \"Git\" -c \"only\""
+abbr "la"="ls -A"
+abbr "ll"="ls -alhF"
