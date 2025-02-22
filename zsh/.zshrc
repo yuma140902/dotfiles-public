@@ -102,10 +102,6 @@ if [ -f /usr/share/nvm/init-nvm ]; then
   source /usr/share/nvm/init-nvm.sh
 fi
 
-if type 'lsd' > /dev/null; then
-  alias ls=lsd
-fi
-
 if [ -r "$HOME/.opam/opam-init/init.sh" ]; then
   source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null
 fi
@@ -126,6 +122,12 @@ fi
 
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
+if type 'lsd' > /dev/null; then
+  alias ls=lsd
+else
+  alias ls="ls --color=auto"
 fi
 
 alias grep='grep --color=auto'
