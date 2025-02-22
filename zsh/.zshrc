@@ -124,6 +124,10 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
+if type 'nvim' > /dev/null; then
+  export EDITOR=nvim
+fi
+
 if type 'lsd' > /dev/null; then
   alias ls=lsd
 else
