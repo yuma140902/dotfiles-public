@@ -1,12 +1,19 @@
-# Lines configured by zsh-newuser-install
+setopt EXTENDED_GLOB NOMATCH NOTIFY
+unsetopt AUTO_CD BEEP
+unsetopt CLOBBER
+
 HISTFILE=~/.zsh_history
-HISTSIZE=100000
+HISTSIZE=1000000
 SAVEHIST=1000000
-HISTORY_IGNORE="(ls|cd|nvim|vim)"
-setopt extendedglob nomatch notify
-unsetopt autocd beep
+#HISTORY_IGNORE="(ls|cd|nvim|vim)"
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_SAVE_NO_DUPS
+
 bindkey -e
-# End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/yuma/.zshrc'
 
@@ -76,12 +83,10 @@ if type 'lsd' > /dev/null; then
   abbr ls='lsd'
 fi
 alias grep='grep --color=auto'
-abbr gg='nvim . -c "Git" -c "only"'
-abbr :q='exit'
 alias cp='cp -i'
 alias mv='mv -i'
 set rmstar
-alias rm='echo "rm is disabled. Use trash or /bin/rm instead."'
+alias rm='echo "rm is disabled. Use trash or command rm instead."'
 
 function obs() {
   function help() {
