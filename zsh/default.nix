@@ -33,4 +33,8 @@
 			bindkey -e
 		'';
 	};
+
+	xdg.configFile = {
+		"zsh-abbr/user-abbreviations".source = ./user-abbreviations;
+	};
 }
