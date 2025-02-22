@@ -59,21 +59,6 @@ zinit light sindresorhus/pure
 
 zinit light olets/zsh-abbr
 
-if [ -f "$HOME/.cargo/env" ]; then
-  . "$HOME/.cargo/env"
-fi
-
-if type 'pyenv' > /dev/null; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
-
-if type 'zoxide' > /dev/null; then
-  eval "$(zoxide init zsh)"
-  alias cd=z
-fi
-
 if [ -d "$HOME/.local/bin/" ]; then
   PATH=$PATH:$HOME/.local/bin/
 fi
@@ -96,6 +81,21 @@ if [ -d "/usr/local/texlive/2024/bin/x86_64-linux/" ]; then
   PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux/
 fi
 export PATH
+
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+
+if type 'pyenv' > /dev/null; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
+if type 'zoxide' > /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd=z
+fi
 
 if [ -f /usr/share/nvm/init-nvm ]; then
   source /usr/share/nvm/init-nvm.sh
