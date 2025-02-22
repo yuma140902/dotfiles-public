@@ -105,8 +105,9 @@ if type 'lsd' > /dev/null; then
   alias ls=lsd
 fi
 
-# opam configuration
-[[ ! -r /home/yuma/.opam/opam-init/init.zsh ]] || source /home/yuma/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+if [ -r "$HOME/.opam/opam-init/init.sh" ]; then
+  source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null
+fi
 
 if type 'mise' > /dev/null; then
   eval "$(mise activate zsh)"
