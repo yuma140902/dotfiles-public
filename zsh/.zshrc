@@ -74,7 +74,28 @@ if type 'zoxide' > /dev/null; then
   alias cd=z
 fi
 
-export PATH=$PATH:~/.local/bin/:~/go/bin:~/.cargo/bin:~/.volta/bin:~/.cabal/bin:~/.ghcup/bin:/usr/local/texlive/2024/bin/x86_64-linux/
+if [ -d "$HOME/.local/bin/" ]; then
+  PATH=$PATH:$HOME/.local/bin/
+fi
+if [ -d "$HOME/go/bin" ]; then
+  PATH=$PATH:$HOME/go/bin
+fi
+if [ -d "$HOME/.cargo/bin" ]; then
+  PATH=$PATH:$HOME/.cargo/bin
+fi
+if [ -d "$HOME/.volta/bin" ]; then
+  PATH=$PATH:$HOME/.volta/bin
+fi
+if [ -d "$HOME/.cabal/bin" ]; then
+  PATH=$PATH:$HOME/.cabal/bin
+fi
+if [ -d "$HOME/.ghcup/bin" ]; then
+  PATH=$PATH:$HOME/.ghcup/bin
+fi
+if [ -d "/usr/local/texlive/2024/bin/x86_64-linux/" ]; then
+  PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux/
+fi
+export PATH
 
 if [ -f /usr/share/nvm/init-nvm ]; then
   source /usr/share/nvm/init-nvm.sh
