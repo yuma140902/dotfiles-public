@@ -149,6 +149,10 @@ if type 'fzf' > /dev/null; then
   bindkey '^r' select-history
 fi
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey "^K" edit-command-line
+
 function backup() {
   if [ "$#" -ne 1 ]; then
     echo "Usage: backup <file>"
