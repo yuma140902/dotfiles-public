@@ -463,21 +463,6 @@ local plugins = {
   },
 
   {
-    -- Obsidian関係の機能を追加する
-    'epwalsh/obsidian.nvim',
-    lazy = true,
-    event = {
-      'BufReadPre ' .. (vim.fn.expand '~'):gsub('\\', '/') .. '/OneDrive/Obsidian/main/**.md',
-      'BufReadPre ' .. (vim.fn.expand '~'):gsub('\\', '/') .. '/OneDrive/Obsidian/main/**.md',
-    },
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
-    },
-    config = require 'pl.obsidian'.config,
-  },
-
-  {
     -- 曖昧幅文字の幅を設定する
     'rbtnn/vim-ambiwidth',
     init = require 'pl.ambiwidth'.init,

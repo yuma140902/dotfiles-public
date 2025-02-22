@@ -4,13 +4,6 @@
 	programs.zsh = {
 		enable = true;
 		enableCompletion = true;
-		history.append = false;
-		history.expireDuplicatesFirst = true;
-		history.extended = true;
-		history.ignorePatterns = [ "ls" "cd" "nvim" "vim" ];
-		history.save = 1000000;
-		history.share = true;
-		history.size = 100000;
 		antidote = {
 			enable = true;
 			plugins = [
@@ -23,8 +16,21 @@
 			];
 		};
 		initExtraFirst = ''
-			setopt extendedglob nomatch notify
-			unsetopt autocd beep
+			setopt EXTENDED_GLOB NOMATCH NOTIFY
+			unsetopt AUTO_CD BEEP
+			unsetopt CLOBBER
+
+			HISTFILE=~/.zsh_history
+			HISTSIZE=1000000
+			SAVEHIST=1000000
+			#HISTORY_IGNORE="(ls|cd|nvim|vim)"
+			setopt HIST_IGNORE_ALL_DUPS
+			setopt HIST_IGNORE_DUPS
+			setopt SHARE_HISTORY
+			setopt EXTENDED_HISTORY
+			setopt HIST_SAVE_NO_DUPS
+
+			bindkey -e
 		'';
 	};
 }
