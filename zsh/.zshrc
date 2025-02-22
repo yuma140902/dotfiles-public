@@ -122,6 +122,10 @@ if type 'sccache' > /dev/null; then
   export RUSTC_WRAPPER=$(which sccache)
 fi
 
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
+  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
 alias grep='grep --color=auto'
 alias cp='cp -i'
 alias mv='mv -i'
