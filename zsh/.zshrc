@@ -83,7 +83,7 @@ fi
 export PATH
 
 if [ -f "$HOME/.cargo/env" ]; then
-  . "$HOME/.cargo/env"
+  source "$HOME/.cargo/env"
 fi
 
 if type 'pyenv' > /dev/null; then
