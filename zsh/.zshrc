@@ -110,26 +110,6 @@ alias mv='mv -i'
 set rmstar
 alias rm='echo "rm is disabled. Use trash or command rm instead."'
 
-function obs() {
-  function help() {
-    echo 'obs'
-    echo 'Usage: obs'
-    echo 'ObsidianのVaultをNeovimで開く'
-    return
-  }
-
-  case $1 in
-    -h|--help)
-      help
-      return
-      ;;
-  esac
-
-  pushd ~/OneDrive/Obsidian/main
-  nvim
-  popd
-}
-
 if type 'fzf' > /dev/null; then
   function select-history() {
     BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
