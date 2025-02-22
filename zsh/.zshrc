@@ -104,6 +104,24 @@ fi
 if type 'lsd' > /dev/null; then
   abbr ls='lsd'
 fi
+
+# opam configuration
+[[ ! -r /home/yuma/.opam/opam-init/init.zsh ]] || source /home/yuma/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+if type 'mise' > /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
+if type 'brew' > /dev/null; then
+  export LDFLAGS="$LDFLAGS -L/opt/homebrew/lib"
+  export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/include"
+  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/lib/pkgconfig"
+fi
+
+if type 'sccache' > /dev/null; then
+  export RUSTC_WRAPPER=$(which sccache)
+fi
+
 alias grep='grep --color=auto'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -141,20 +159,3 @@ function mk() {
   make "$1"
   popd
 }
-
-# opam configuration
-[[ ! -r /home/yuma/.opam/opam-init/init.zsh ]] || source /home/yuma/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-if type 'mise' > /dev/null; then
-  eval "$(mise activate zsh)"
-fi
-
-if type 'brew' > /dev/null; then
-  export LDFLAGS="$LDFLAGS -L/opt/homebrew/lib"
-  export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/include"
-  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/lib/pkgconfig"
-fi
-
-if type 'sccache' > /dev/null; then
-  export RUSTC_WRAPPER=$(which sccache)
-fi
