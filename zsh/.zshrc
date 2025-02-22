@@ -54,11 +54,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 
 # プロンプト
-if [ -r "$HOME/.pure_prompt.zsh" ]; then
-  source "$HOME/.pure_prompt.zsh"
-fi
-[ -z "$PURE_PROMPT_SYMBOL" ] && PURE_PROMPT_SYMBOL="${PURE_PROMPT_BASE}❯"
-[ -z "$PURE_PROMPT_VICMD_SYMBOL" ] && PURE_PROMPT_VICMD_SYMBOL="${PURE_PROMPT_BASE}❮"
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
