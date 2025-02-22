@@ -102,7 +102,7 @@ if [ -f /usr/share/nvm/init-nvm ]; then
 fi
 
 if type 'lsd' > /dev/null; then
-  abbr ls='lsd'
+  alias ls=lsd
 fi
 
 # opam configuration
@@ -158,4 +158,13 @@ function mk() {
   pushd ~/repo/dotfiles/makefile
   make "$1"
   popd
+}
+
+function ntfy() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: ntfy <message>"
+    return
+  fi
+
+  curl -u writer:writerpass -d "$1" https://ntfy.yuma14.net/main
 }
