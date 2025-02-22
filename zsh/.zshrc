@@ -60,25 +60,25 @@ zinit light sindresorhus/pure
 zinit light olets/zsh-abbr
 
 if [ -d "$HOME/.local/bin/" ]; then
-  PATH=$PATH:$HOME/.local/bin/
+  PATH="$PATH:$HOME/.local/bin/"
 fi
 if [ -d "$HOME/go/bin" ]; then
-  PATH=$PATH:$HOME/go/bin
+  PATH="$PATH:$HOME/go/bin"
 fi
 if [ -d "$HOME/.cargo/bin" ]; then
-  PATH=$PATH:$HOME/.cargo/bin
+  PATH="$PATH:$HOME/.cargo/bin"
 fi
 if [ -d "$HOME/.volta/bin" ]; then
-  PATH=$PATH:$HOME/.volta/bin
+  PATH="$PATH:$HOME/.volta/bin"
 fi
 if [ -d "$HOME/.cabal/bin" ]; then
-  PATH=$PATH:$HOME/.cabal/bin
+  PATH="$PATH:$HOME/.cabal/bin"
 fi
 if [ -d "$HOME/.ghcup/bin" ]; then
-  PATH=$PATH:$HOME/.ghcup/bin
+  PATH="$PATH:$HOME/.ghcup/bin"
 fi
 if [ -d "/usr/local/texlive/2024/bin/x86_64-linux/" ]; then
-  PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux/
+  PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux/"
 fi
 export PATH
 
@@ -120,25 +120,25 @@ if type 'fzf' > /dev/null; then
 fi
 
 function backup() {
-  if [ $# -ne 1 ]; then
+  if [ "$#" -ne 1 ]; then
     echo "Usage: backup <file>"
     return
   fi
-  if [ ! -e $1 ]; then
+  if [ ! -e "$1" ]; then
     echo "File not found: $1"
     return
   fi
-  cp $1 $1.`date '+%Y%m%d-%H%M%S'`.bak
+  cp "$1" "$1.`date '+%Y%m%d-%H%M%S'`.bak"
 }
 
 function mk() {
-  if [ $# -ne 1 ]; then
+  if [ "$#" -ne 1 ]; then
     echo "Usage: mk <task>"
     return
   fi
 
   pushd ~/repo/dotfiles/makefile
-  make $1
+  make "$1"
   popd
 }
 
