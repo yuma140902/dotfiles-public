@@ -16,6 +16,7 @@ config.use_ime = true
 config.color_scheme = 'OneDark (base16)'
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' }
+  config.default_domain = 'WSL:NixOS'
 
   config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 end
