@@ -68,8 +68,6 @@ function M.config()
     cmdline = '[CMD]',
     cmdline_history = '[HIST]',
     conventionalcommits = '[CONV]',
-    obsidian = '[OBS]',
-    obsidian_new = '[OBS_NEW]',
     nvim_lsp_document_symbol = '[LSP_SYM]',
   }
 
@@ -163,9 +161,6 @@ function M.config()
       { name = "copilot" },
       { name = 'vsnip' },
       { name = 'path' },
-      -- https://github.com/epwalsh/obsidian.nvim/issues/124
-      { name = "obsidian",               option = require 'pl.obsidian'.opt },
-      { name = "obsidian_new",           option = require 'pl.obsidian'.opt },
       {
         name = 'buffer',
         option = {

@@ -57,7 +57,6 @@ in {
 		"./nvim/lua/pl/nvim-dap.lua"
 		"./nvim/lua/pl/nvim-notify.lua"
 		"./nvim/lua/pl/nvim-treesitter-context.lua"
-		"./nvim/lua/pl/obsidian.lua"
 		"./nvim/lua/pl/oil.lua"
 		"./nvim/lua/pl/onedark.lua"
 		"./nvim/lua/pl/persisted.lua"
