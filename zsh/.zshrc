@@ -168,3 +168,13 @@ function ntfy() {
 
   curl -u writer:writerpass -d "$1" https://ntfy.yuma14.net/main
 }
+
+agent="$HOME/.ssh/agent"
+if [ -S "$SSH_AUTH_SOCK" ]; then
+	case $SSH_AUTH_SOCK in
+	/tmp/*/agent.[0-9]*)
+		ln -snf "$SSH_AUTH_SOCK" $agent && export SSH_AUTH_SOCK=$agent
+	esac
+elif [ -S $agent ]; then
+	export SSH_AUTH_SOCK=$agent
+fi
