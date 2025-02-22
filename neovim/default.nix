@@ -16,6 +16,7 @@ in {
 			python3
 			#llvmPackages_19.clang-tools
 			rust-analyzer
+			cargo
 		];
 	};
 
