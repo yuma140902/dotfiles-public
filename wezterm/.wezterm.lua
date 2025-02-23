@@ -81,7 +81,7 @@ config.launch_menu = {
     args = { 'btm' }
   }
 }
-if wezterm.target_triplet == 'x86_64-pc-windows-msvc' then
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.launch_menu = {
     {
       label = 'System status (btm)',
