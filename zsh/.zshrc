@@ -143,6 +143,7 @@ alias rm='echo "rm is disabled. Use trash or command rm instead."'
 if type 'fzf' > /dev/null; then
   function select-history() {
     BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+    BUFFER=${BUFFER//\\n/$'\n'}
     CURSOR=$#BUFFER
   }
   zle -N select-history
