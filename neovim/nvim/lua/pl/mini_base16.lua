@@ -233,12 +233,6 @@ function M.config()
       complete = function() return scheme_names end
     }
   )
-
-  vim.api.nvim_create_autocmd({ 'VimEnter' }, {
-    pattern = '*',
-    command = 'MiniScheme',
-    once = true
-  })
 end
 
 return M
