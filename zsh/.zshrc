@@ -151,7 +151,8 @@ fi
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey "^K" edit-command-line
+bindkey "^K^K" kill-line
+bindkey "^K^L" edit-command-line
 
 function backup() {
   if [ "$#" -ne 1 ]; then
