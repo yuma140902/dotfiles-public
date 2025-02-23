@@ -198,8 +198,7 @@ function M.config()
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
-      { name = 'cmdline_history',          keyword_length = 3 }
-    }, {
+      { name = 'cmdline_history',          keyword_length = 3 },
       { name = 'buffer' }
     })
   })
