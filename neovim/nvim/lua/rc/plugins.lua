@@ -208,6 +208,12 @@ local plugins = {
   },
 
   {
+    -- マークダウンのテーブルと CSV を相互変換する
+    'mattn/vim-maketable',
+    cmd = 'MakeTable'
+  },
+
+  {
     -- セッション管理
     'olimorris/persisted.nvim',
     lazy = false,

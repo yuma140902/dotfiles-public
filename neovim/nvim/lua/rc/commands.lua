@@ -33,6 +33,7 @@ command('Manual', function()
     "- `vim-qfreplace` - `:Qfreplace`",
     "- `auto-split-direction` - `:SplitAutoDirection`, `<C-W>a`",
     "- `treesj` - `:TSJ**`",
+    "- `vim-maketable` - `:MakeTable`",
     "",
     "## その他のメモ",
     "",
