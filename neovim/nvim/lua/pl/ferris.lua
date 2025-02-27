@@ -3,8 +3,9 @@ local M = {}
 function M.config()
   require 'ferris'.setup {
     create_commands = true,
-    -- TODO:
-    url_handler = 'xdg-open'
+    url_handler = function(url)
+      vim.ui.open(url)
+    end
   }
 end
 
