@@ -79,5 +79,13 @@ in {
 		"./nvim/lua/rc/gui.lua"
 		"./nvim/lua/rc/lib.lua"
 		"./nvim/lua/rc/plugins.lua"
+		"./nvim/lua/rc/specs/debug.lua"
+		"./nvim/lua/rc/specs/git.lua"
+		"./nvim/lua/rc/specs/language.lua"
+		"./nvim/lua/rc/specs/libraries.lua"
+		"./nvim/lua/rc/specs/lsp.lua"
+		"./nvim/lua/rc/specs/other.lua"
+		"./nvim/lua/rc/specs/tools.lua"
+		"./nvim/lua/rc/specs/treesitter.lua"
 	];
 }
