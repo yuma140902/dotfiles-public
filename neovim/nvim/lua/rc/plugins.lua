@@ -16,9 +16,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+---@type LazySpec
 local plugins = {
   -- { 'folke/lazy.nvim' },
-
   {
     -- ファイルマネージャー
     'stevearc/oil.nvim',
@@ -558,7 +558,7 @@ local plugins = {
   },
 }
 
-require 'lazy'.setup(plugins, {
+require 'lazy'.setup({
   defaults = {
     lazy = false -- TODO: lazy = true
   },
@@ -572,6 +572,7 @@ require 'lazy'.setup(plugins, {
     },
     fallback = true, -- Fallback to git when local plugin doesn't exist
   },
+  spec = plugins,
   performance = {
     cache = {
       enabled = true,
