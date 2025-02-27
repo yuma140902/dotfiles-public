@@ -49,55 +49,11 @@ function M.close_buffers_by_filetype(filetype)
   end
 end
 
----バッファをフォーマットする
----@param bufnr number
-function M.do_format(bufnr)
-  -- b:no_formatがセットされているならフォーマットしない
-  -- :let b:no_format = 1
-  if vim.b[bufnr].no_format or vim.b[bufnr].no_format == 1 then
-    return
-  end
-
-  -- bufnrをもとにどのようにフォーマットするか決める
-  -- 今のところはいつもLSPを使う
-  vim.lsp.buf.format({
-    filter = function(client_)
-      -- bufnrとclient_をもとに、各LSPサーバでフォーマットを行うかどうか決定する
-      if client_.name == 'ts_ls' or client_.name == 'null-ls' then
-        -- biomeがアタッチされているとき、ts_lsやnull-lsではフォーマットしない
-        local biome_attached = #(vim.lsp.get_clients({ bufnr = bufnr, name = 'biome' })) ~= 0
-        if biome_attached then
-          return false
-        end
-      end
-      return true
-    end,
-    bufnr = bufnr,
-  })
-end
-
--- 保存時に自動保存するautocmdのグループ
-M.auto_format_augroup = vim.api.nvim_create_augroup('auto_format', { clear = true })
-
 ---LSPクライアントがアタッチされたときに呼ばれる
----@param client lsp.Client
+---@param client vim.lsp.Client
 ---@param bufnr number
 function M.on_attach(client, bufnr)
-  -- :h lspconfig-keybindings
-  -- :h vim.lsp.*
 
-  -- [Avoiding LSP formatting conflicts · nvimtools/none-ls.nvim Wiki](https://github.com/nvimtools/none-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts)
-  -- 保存時にフォーマットする
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = M.auto_format_augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = M.auto_format_augroup,
-      buffer = bufnr,
-      callback = function()
-        M.do_format(bufnr)
-      end,
-    })
-  end
 end
 
 return M

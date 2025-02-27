@@ -31,10 +31,12 @@ return {
   },
 
   {
-    -- Linter、Formatterを実行する
-    'nvimtools/none-ls.nvim',
-    config = require 'pl.none-ls'.config,
-    event = { 'BufWritePre', 'FileWritePre', 'BufNewFile', 'BufReadPost', 'FileReadPost' }
+    -- フォーマット
+    'stevearc/conform.nvim',
+    config = require 'pl.conform'.config,
+    init = require 'pl.conform'.init,
+    event = { 'BufWritePre' },
+    cmd = 'ConformInfo',
   },
 
   {

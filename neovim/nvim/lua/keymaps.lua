@@ -108,7 +108,6 @@ local function register_keymaps()
   map('n', 'gP', '<cmd>Lspsaga peek_type_definition<cr>', '[LSP] 型定義を表示')
   map('n', '<space>D', vim.lsp.buf.type_definition, '変数の型の定義へ移動')
 
-  map('n', '<space>o', function() vim.lsp.buf.format { async = true } end, 'コードフォーマットする')
   map('n', 'gr', '<cmd>Lspsaga finder ref+def<cr>', '[LSP] 参照・定義へ移動')
   map('n', 'gR', '<cmd>Lspsaga finder ref+def+imp<cr>', '[LSP] 参照・定義・実装へ移動')
   map('n', 'gI', '<cmd>Lspsaga incoming_calls<cr>', '[LSP] incoming callsを表示')
