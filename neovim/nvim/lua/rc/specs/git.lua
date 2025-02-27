@@ -12,12 +12,18 @@ return {
     -- vim内でgit操作をする
     'tpope/vim-fugitive',
     config = require 'pl.fugitive'.config,
-    cmd = { 'Git', 'G' }
+    cmd = {
+      'Git',
+      'G',
+      'Ggrep',
+      'Gclog',
+    }
   },
 
   {
     -- git diffの表示、コンフリクトの解決
     'sindrets/diffview.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.diffview'.config,
     cmd = {
       'DiffviewOpen',

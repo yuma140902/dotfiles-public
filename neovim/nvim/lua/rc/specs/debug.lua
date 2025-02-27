@@ -4,15 +4,13 @@ return {
     -- DAP
     'mfussenegger/nvim-dap',
     cmd = {
-      "DapSetLogLevel",
-      "DapShowLog",
-      "DapContinue",
-      "DapToggleBreakpoint",
-      "DapToggleRepl",
-      "DapStepOver",
-      "DapStepInto",
-      "DapStepOut",
-      "DapTerminate",
+      'DapNew',
+      'DapEval',
+      'DapToggleRepl',
+      'DapClearBreakpoints',
+      'DapToggleBreakpoint',
+      'DapSetLogLevel',
+      'DapShowLog',
     },
     config = require 'pl.nvim-dap'.config,
   },
@@ -20,6 +18,7 @@ return {
   {
     -- DAPのUI
     'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
     lazy = true,
     config = require 'pl.nvim-dap-ui'.config,
   },
@@ -27,6 +26,7 @@ return {
   {
     -- プロジェクト単位でデバッグ設定を管理する
     'yuma140902/nvim-dap-projects',
+    dependencies = { 'mfussenegger/nvim-dap' },
     lazy = true,
   },
 
