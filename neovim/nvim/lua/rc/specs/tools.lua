@@ -3,18 +3,19 @@ return {
   {
     -- マークダウンのテーブルと CSV を相互変換する
     'mattn/vim-maketable',
-    cmd = 'MakeTable'
+    cmd = 'MakeTable',
   },
   {
     -- :Linediffコマンドで2つの選択した部分の差分を表示してくれる
     'AndrewRadev/linediff.vim',
-    cmd = 'Linediff'
+    cmd = 'Linediff',
+    cond = not vim.g.vscode,
   },
   {
     -- カラーコードに色をつける、カラーピッカーで色を変える
     'uga-rosa/ccc.nvim',
     config = require 'pl.ccc'.config,
-    event = { 'BufNewFile', 'BufReadPost', 'FilterReadPost', 'FileReadPost' }
+    event = { 'BufNewFile', 'BufReadPost', 'FilterReadPost', 'FileReadPost' },
   },
   {
     -- バッファの一部を新しいバッファに切り出して編集できる
@@ -27,7 +28,7 @@ return {
     -- sudoでファイルを読み書きする
     'lambdalisue/suda.vim',
     cmd = { 'SudaRead', 'SudaWrite' },
-    init = require 'pl.suda'.init
+    init = require 'pl.suda'.init,
   },
   {
     -- ウィンドウの分割方向を自動で決める

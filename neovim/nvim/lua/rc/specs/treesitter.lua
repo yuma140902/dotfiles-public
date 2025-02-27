@@ -32,7 +32,8 @@ return {
     'shellRaining/hlchunk.nvim',
     event = { 'User UIEnterPost' },
     config = require 'pl.hlchunk'.config,
-    cmd = 'EnableHL'
+    cmd = 'EnableHL',
+    cond = not vim.g.vscode,
   },
 
   {
@@ -64,6 +65,7 @@ return {
     'nvim-treesitter/nvim-treesitter-context',
     event = { 'User UIEnterPost' },
     config = require 'pl.nvim-treesitter-context'.config,
+    cond = not vim.g.vscode,
   },
 
   {

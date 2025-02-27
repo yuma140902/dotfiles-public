@@ -5,7 +5,8 @@ return {
     'lewis6991/gitsigns.nvim',
     config = require 'pl.gitsigns'.config,
     event = { 'User UIEnterPost' },
-    cmd = 'Gitsigns'
+    cmd = 'Gitsigns',
+    cond = not vim.g.vscode,
   },
 
   {
@@ -17,7 +18,8 @@ return {
       'G',
       'Ggrep',
       'Gclog',
-    }
+    },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -32,15 +34,17 @@ return {
       'DiffviewFocusFiles',
       'DiffviewRefresh',
       'DiffviewFileHistory'
-    }
+    },
+    cond = not vim.g.vscode,
   },
 
   {
     -- Gitのブランチに関する情報を提供する。インストールされているとlightlineの該当機能が有効化される
     'itchyny/vim-gitbranch',
-    lazy = true
+    lazy = true,
     -- TODO: gitsignsがあるからいらないのでは？
     -- gitsignsに変える場合、遅延読み込みが課題である(gitbranchは軽いので同期読み込みでもよい)
+    cond = not vim.g.vscode,
   },
 
 }

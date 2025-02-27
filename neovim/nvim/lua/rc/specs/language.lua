@@ -7,6 +7,7 @@ return {
     'b0o/schemastore.nvim',
     -- mason-lspconfigがjsonlsの設定をするときに読み込まれる
     lazy = true,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -14,12 +15,14 @@ return {
     'folke/neodev.nvim',
     -- mason-lspconfigがlua_lsの設定をするときに読み込まれる
     lazy = true,
+    cond = not vim.g.vscode,
   },
 
   {
     -- pest-parser の syntax highlight
     'pest-parser/pest.vim',
-    ft = 'pest'
+    ft = 'pest',
+    cond = not vim.g.vscode,
   },
 
   {
@@ -39,7 +42,8 @@ return {
       "FerrisOpenDocumentation",
       "FerrisReloadWorkspace",
       "FerrisRebuildMacros",
-    }
+    },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -49,7 +53,8 @@ return {
     'mrcjkb/rustaceanvim',
     lazy = true,
     init = require 'pl.rustaceanvim'.init,
-    ft = 'rust'
+    ft = 'rust',
+    cond = not vim.g.vscode,
   },
 
   {
@@ -58,13 +63,15 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = { "BufRead Cargo.toml" },
     config = require 'pl.crates'.config,
+    cond = not vim.g.vscode,
   },
 
   {
     -- 対応するカッコをネストの深さに応じて色分けする
     -- Lispのときだけ使用する
     'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
-    ft = "lisp"
+    ft = 'lisp',
+    cond = not vim.g.vscode,
   },
 
 }

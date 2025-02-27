@@ -13,6 +13,7 @@ return {
       'DapShowLog',
     },
     config = require 'pl.nvim-dap'.config,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -21,6 +22,7 @@ return {
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
     lazy = true,
     config = require 'pl.nvim-dap-ui'.config,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -28,6 +30,7 @@ return {
     'yuma140902/nvim-dap-projects',
     dependencies = { 'mfussenegger/nvim-dap' },
     lazy = true,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -37,6 +40,7 @@ return {
     init = require 'pl.conform'.init,
     event = { 'BufWritePre' },
     cmd = 'ConformInfo',
+    cond = not vim.g.vscode,
   },
 
   {
@@ -48,7 +52,8 @@ return {
       'nvim-treesitter/nvim-treesitter'
     },
     config = require 'pl.neotest'.config,
-    cmd = 'Neotest'
+    cmd = 'Neotest',
+    cond = not vim.g.vscode,
   },
 
 }

@@ -5,7 +5,8 @@ return {
     'stevearc/oil.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.oil'.config,
-    cmd = { 'Oil' }
+    cmd = { 'Oil' },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -17,7 +18,8 @@ return {
       -- スニペット集
       { 'rafamadriz/friendly-snippets', lazy = true },
     },
-    event = { 'InsertEnter', 'CmdlineEnter' }
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -57,7 +59,8 @@ return {
     },
     init = require 'pl.nvim-cmp'.init,
     config = require 'pl.nvim-cmp'.config,
-    event = { 'InsertEnter', 'CmdlineEnter' }
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -65,13 +68,15 @@ return {
     'navarasu/onedark.nvim',
     lazy = false,
     priority = 1000, -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
-    config = require 'pl.onedark'.config
+    config = require 'pl.onedark'.config,
+    cond = not vim.g.vscode,
   },
   {
     'echasnovski/mini.base16',
     lazy = false,
     priority = 1000,
-    config = require 'pl.mini_base16'.config
+    config = require 'pl.mini_base16'.config,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -86,7 +91,8 @@ return {
       'rcarriga/nvim-notify',
     },
     config = require 'pl.telescope'.config,
-    cmd = 'Telescope'
+    cmd = 'Telescope',
+    cond = not vim.g.vscode,
   },
 
   {
@@ -95,6 +101,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/todo-comments.nvim' },
     config = require 'pl.trouble'.config,
     cmd = { 'Trouble' },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -102,6 +109,7 @@ return {
     'folke/todo-comments.nvim',
     config = require 'pl.todo-comments'.config,
     event = { 'BufNewFile', 'BufRead' },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -115,7 +123,8 @@ return {
     -- スクロールバーを表示する
     'dstein64/nvim-scrollview',
     config = require 'pl.scrollview'.config,
-    event = { 'User UIEnterPost' }
+    event = { 'User UIEnterPost' },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -123,6 +132,7 @@ return {
     'olimorris/persisted.nvim',
     lazy = false,
     config = require 'pl.persisted'.config,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -134,13 +144,15 @@ return {
     },
     init = require 'pl.lightline'.init,
     config = require 'pl.lightline'.config,
-    event = { 'User UIEnterPost' }
+    event = { 'User UIEnterPost' },
+    cond = not vim.g.vscode,
   },
 
   {
     -- vim.notifyを置き換えていい感じの見た目にする
     'rcarriga/nvim-notify',
     init = require 'pl.nvim-notify'.init,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -188,18 +200,21 @@ return {
       }
     end,
     cmd = { "Copilot" },
-    event = { "InsertEnter" }
+    event = { "InsertEnter" },
+    cond = not vim.g.vscode,
   },
 
   {
     -- quickfixリストから置換バッファを作り、置換バッファを編集すると実際のファイルに反映される
     'thinca/vim-qfreplace',
-    cmd = { 'Qfreplace' }
+    cmd = { 'Qfreplace' },
+    cond = not vim.g.vscode,
   },
 
   {
     -- quickfixリストを編集できるようにする
     'itchyny/vim-qfedit',
-    event = { 'BufReadPre' }
+    event = { 'BufReadPre' },
+    cond = not vim.g.vscode,
   },
 }

@@ -11,6 +11,7 @@ return {
       'williamboman/mason-lspconfig.nvim'
     },
     config = require 'pl.lspconfig'.config,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -20,6 +21,7 @@ return {
     -- > mason.nvim is optimized to load as little as possible during setup. Lazy-loading the plugin, or somehow deferring the setup, is not recommended.
     lazy = false,
     config = require 'pl.mason'.config,
+    cond = not vim.g.vscode,
   },
 
   {
@@ -27,7 +29,8 @@ return {
     'williamboman/mason-lspconfig.nvim',
     lazy = true,
     config = require 'pl.mason-lspconfig'.config,
-    event = { 'BufNewFile', 'BufReadPre', 'FilterReadPre', 'FileReadPre' }
+    event = { 'BufNewFile', 'BufReadPre', 'FilterReadPre', 'FileReadPre' },
+    cond = not vim.g.vscode,
   },
 
   {
@@ -35,7 +38,8 @@ return {
     'j-hui/fidget.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = require 'pl.fidget'.config,
-    event = 'LspAttach'
+    event = 'LspAttach',
+    cond = not vim.g.vscode,
   },
 
   {
@@ -46,7 +50,8 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     config = require 'pl.lspsaga'.config,
-    event = 'LspAttach'
+    event = 'LspAttach',
+    cond = not vim.g.vscode,
   },
 
 }

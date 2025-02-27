@@ -2,11 +2,11 @@
 return {
   {
     'nvim-lua/plenary.nvim',
-    lazy = true
+    lazy = true,
   },
   {
     'nvim-neotest/nvim-nio',
-    lazy = true
+    lazy = true,
   },
   {
     'nvim-tree/nvim-web-devicons',
