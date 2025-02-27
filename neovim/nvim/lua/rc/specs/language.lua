@@ -12,8 +12,7 @@ return {
   {
     -- lua_lsに対してNeovimのLua APIや読み込まれているプラグインのドキュメント・型を提供する
     'folke/neodev.nvim',
-    -- mason-lspconfigがlua_lsの設定をするときに読み込まれる
-    lazy = true,
+    ft = 'lua',
   },
 
   {

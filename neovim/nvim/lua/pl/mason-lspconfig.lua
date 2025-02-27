@@ -18,7 +18,6 @@ function M.config()
         -- rust-analyzerのセットアップはmason-lspconfigではなくrustaceanvimが行う
       end,
       ['lua_ls'] = function()
-        require 'pl.neodev'.config()
         require 'lspconfig'.lua_ls.setup {
           on_attach = on_attach,
           capabilities = capabilities,
