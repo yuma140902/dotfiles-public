@@ -93,7 +93,7 @@ return {
     -- quickfix, LSPの診断などのリストを下部にきれいに表示する
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/todo-comments.nvim' },
-    config = function() require 'trouble'.setup() end,
+    config = require 'pl.trouble'.config,
     cmd = { 'Trouble' },
   },
 
