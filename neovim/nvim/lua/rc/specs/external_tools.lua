@@ -30,4 +30,11 @@ return {
     lazy = true,
   },
 
+  {
+    -- Linter、Formatterを実行する
+    'nvimtools/none-ls.nvim',
+    config = require 'pl.none-ls'.config,
+    event = { 'BufWritePre', 'FileWritePre', 'BufNewFile', 'BufReadPost', 'FileReadPost' }
+  },
+
 }
