@@ -38,7 +38,7 @@ return {
   {
     -- Treesitterの情報を元に範囲選択する
     'sustech-data/wildfire.nvim',
-    event = { 'ModeChanged *:[vV\\x16]*' }, -- visualモードに入った時
+    event = { 'User UIEnterPost' },
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = require 'pl.wildfire'.config
   },
