@@ -68,7 +68,7 @@ command('Manual', function()
   vim.api.nvim_buf_set_option(tmpbuf, 'filetype', 'markdown')
   vim.api.nvim_put(lines, "l", false, false)
   vim.api.nvim_buf_set_option(tmpbuf, 'modifiable', false)
-  vim.api.nvim_buf_set_keymap(tmpbuf, 'n', 'q', '<cmd>q<cr>', {})
+  vim.api.nvim_buf_set_keymap(tmpbuf, 'n', '<ESC>', '<cmd>q<cr>', {})
 end)
 
 -- ウィンドウを閉じずにバッファを閉じる

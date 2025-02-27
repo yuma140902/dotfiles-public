@@ -29,6 +29,13 @@ function M.config()
     symbol_in_winbar = {
       enable = true
     },
+    finder = {
+      keys = {
+        shuttle = '<Tab>',
+        toggle_or_open = '<CR>',
+        quit = '<ESC>',
+      },
+    },
     rename = {
       enable = true,
       in_select = false,
