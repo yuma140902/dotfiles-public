@@ -34,6 +34,7 @@ command('Manual', function()
     "- `auto-split-direction` - `:SplitAutoDirection`, `<C-W>a`",
     "- `treesj` - `:TSJ**`",
     "- `vim-maketable` - `:MakeTable`",
+    "- `neotest` - `:Neotest summary`",
     "",
     "## その他のメモ",
     "",

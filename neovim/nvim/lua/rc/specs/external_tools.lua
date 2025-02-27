@@ -37,4 +37,16 @@ return {
     event = { 'BufWritePre', 'FileWritePre', 'BufNewFile', 'BufReadPost', 'FileReadPost' }
   },
 
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      { 'antoinemadec/FixCursorHold.nvim', lazy = true },
+      'nvim-treesitter/nvim-treesitter'
+    },
+    config = require 'pl.neotest'.config,
+    cmd = 'Neotest'
+  },
+
 }
