@@ -20,13 +20,15 @@ local function register_keymaps()
   -- ノーマルモード
   map('n', '[b', '<cmd>bprev<cr>', '前のバッファ')
   map('n', ']b', '<cmd>bnext<cr>', '次のバッファ')
-  local open = 'xdg-open'
-  if vim.fn.has('mac') == 1 then
-    open = 'open'
-  elseif vim.fn.has('win32') == 1 then
-    open = 'start'
-  end
-  map({ 'n', 'x' }, 'gx', '<cmd>silent !' .. open .. ' <cfile><cr>', '標準アプリで開く')
+  map({ 'n', 'x' }, 'gx', function()
+    local cfile = vim.fn.expand('<cfile>')
+    local pat = vim.regex("^[[:alnum:]_.-]\\+/[[:alnum:]_.-]\\+$")
+    if pat:match_str(cfile) then
+      vim.ui.open("https://github.com/" .. cfile)
+    else
+      vim.ui.open(cfile)
+    end
+  end, '標準アプリで開く')
   map('n', '<C-H>', '<cmd>tabprev<cr>')
   map('n', '<C-L>', '<cmd>tabnext<cr>')
 
