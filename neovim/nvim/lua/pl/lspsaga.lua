@@ -13,9 +13,13 @@ function M.config()
       imp_sign = '󰳛'
     },
     code_action = {
-      num_shortcut = true,
-      show_server_name = false,
+      num_shortcut = false,
+      show_server_name = true,
       extend_gitsigns = true,
+      keys = {
+        quit = '<ESC>',
+        exec = '<CR>',
+      },
     },
     definition = {
       -- peek definitionの幅
