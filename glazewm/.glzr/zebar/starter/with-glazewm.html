@@ -121,6 +121,12 @@
         await output.media.togglePlayPause();
       }
 
+      const shouryaku = (s, len) => {
+        if (s.length > len) {
+          return s.substring(0, len) + "...";
+        }
+        return s;
+      }
 
       return (
         <div className="app">
@@ -147,7 +153,7 @@
                 {output.media.currentSession.isPlaying
                   ? <button type="button" onClick={toggleMedia}><i className="nf nf-fa-pause" ></i></button>
                   : <button type="button" onClick={toggleMedia}><i className="nf nf-fa-play" ></i></button>}
-                {output.media.currentSession.title}
+                {shouryaku(output.media.currentSession.title, 50)}
               </div>
             )}
           </div>
