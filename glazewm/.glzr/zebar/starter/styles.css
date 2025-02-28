@@ -16,11 +16,6 @@ body {
   overflow: hidden;
 }
 
-.nf {
-  transform: translateY(-2px);
-  display: inline-block;
-}
-
 div,
 span,
 p {
@@ -104,7 +99,7 @@ body,
   color: rgb(255 255 255 / 90%);
   border-radius: 2px;
   line-height: 1;
-  padding: 4px 8px;
+  padding: 0px 8px;
   border: 0;
   cursor: pointer;
 }
@@ -126,4 +121,16 @@ body,
   font-size: 7px;
   left: -8px;
   top: 3px;
+}
+
+.media i {
+  color: rgb(255 255 255 / 90%);
+}
+
+.media button {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
