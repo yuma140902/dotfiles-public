@@ -185,36 +185,62 @@ binding_modes:
 
   - name: 'window'
     keybindings:
-      - commands: ['focus --direction left', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'focus --direction left'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['h', 'left']
-      - commands: ['focus --direction right', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'focus --direction right'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['l', 'right']
-      - commands: ['focus --direction up', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'focus --direction up'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['k', 'up']
-      - commands: ['focus --direction down', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'focus --direction down'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['j', 'down']
-      - commands: ['move --direction left', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'move --direction left'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['shift+h', 'shift+left']
-      - commands: ['move --direction right', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'move --direction right'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['shift+l', 'shift+right']
-      - commands: ['move --direction up', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'move --direction up'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['shift+k', 'shift+up']
-      - commands: ['move --direction down', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'move --direction down'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['shift+j', 'shift+down']
-      - commands: ['toggle-minimized', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'toggle-minimized'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['m']
-      - commands: ['toggle-tiling', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'toggle-tiling'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['t']
-      - commands: ['toggle-floating --centered', 'wm-disable-binding-mode --name window']
+      - commands:
+        - 'toggle-floating --centered'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['f']
       - commands: ['wm-disable-binding-mode --name window']
         bindings: ['escape', 'enter']
 
   - name: 'launcher'
     keybindings:
-      - commands: ['shell-exec --hide-window wezterm start --no-auto-connect', 'wm-disable-binding-mode --name launcher']
+      - commands:
+        - 'shell-exec --hide-window wezterm start --no-auto-connect'
+        - 'wm-disable-binding-mode --name launcher'
         bindings: ['enter']
-      - commands: ['shell-exec --hide-window wezterm start --no-auto-connect --domain local', 'wm-disable-binding-mode --name launcher']
+      - commands:
+        - 'shell-exec --hide-window wezterm start --no-auto-connect --domain local'
+        - 'wm-disable-binding-mode --name launcher'
         bindings: ['shift+enter']
       - commands: ['wm-disable-binding-mode --name launcher']
         bindings: ['escape']
