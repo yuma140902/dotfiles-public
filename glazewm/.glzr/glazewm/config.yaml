@@ -210,11 +210,23 @@ binding_modes:
       - commands: ['wm-disable-binding-mode --name window']
         bindings: ['escape', 'enter']
 
+  - name: 'launcher'
+    keybindings:
+      - commands: ['shell-exec --hide-window wezterm start --no-auto-connect', 'wm-disable-binding-mode --name launcher']
+        bindings: ['enter']
+      - commands: ['shell-exec --hide-window wezterm start --no-auto-connect --domain local', 'wm-disable-binding-mode --name launcher']
+        bindings: ['shift+enter']
+      - commands: ['wm-disable-binding-mode --name launcher']
+        bindings: ['escape']
+
+
 keybindings:
   - commands: ['wm-enable-binding-mode --name resize']
     bindings: ['alt+r']
   - commands: ['wm-enable-binding-mode --name window']
     bindings: ['alt+w']
+  - commands: ['wm-enable-binding-mode --name launcher']
+    bindings: ['alt+x']
 
   # Disables window management and all other keybindings until alt+shift+p
   # is pressed again.
