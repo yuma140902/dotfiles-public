@@ -156,7 +156,7 @@ window_rules:
       - window_class: { equals: 'Windows.UI.Core.CoreWindow' }
       # start menu
       - window_process: { equals: 'SearchHost' }
-  - commands: ['set-floating']
+  - commands: ['set-floating --centered=false --shown-on-top=false']
     match:
       - window_process: { equals: 'LINE' }
       # LINE
