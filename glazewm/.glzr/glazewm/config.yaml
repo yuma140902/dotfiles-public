@@ -260,6 +260,14 @@ binding_modes:
         - 'shell-exec --hide-window wezterm start --no-auto-connect --domain local'
         - 'wm-disable-binding-mode --name extra'
         bindings: ['shift+enter']
+      - commands:
+        - 'wm-redraw'
+        - 'wm-disable-binding-mode --name extra'
+        bindings: ['l']
+      - commands:
+        - 'wm-reload-config'
+        - 'wm-disable-binding-mode --name extra'
+        bindings: ['r']
       - commands: ['wm-disable-binding-mode --name extra']
         bindings: ['escape']
 
@@ -280,14 +288,6 @@ keybindings:
   # Change focus from tiling windows -> floating -> fullscreen.
   - commands: ['wm-cycle-focus']
     bindings: ['alt+page_up']
-
-  # Re-evaluate configuration file.
-  - commands: ['wm-reload-config']
-    bindings: ['alt+shift+r']
-
-  # Redraw all windows.
-  - commands: ['wm-redraw']
-    bindings: ['alt+shift+w']
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
