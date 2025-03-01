@@ -161,8 +161,10 @@ window_rules:
       - window_process: { equals: 'LINE' }
       # LINE
       - window_class: { equals: 'Qt663QWindowIcon' }
-      - window_title: { equals: 'Window Spy' }
       - window_process: { equals: 'Docker Desktop' }
+  - commands: ['set-floating --centered=false --shown-on-top=true']
+    match:
+      - window_title: { equals: 'Window Spy' }
   - commands: ['set-fullscreen --maximized']
     match:
       - window_process: { equals: 'thunderbird' }
