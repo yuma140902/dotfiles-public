@@ -240,11 +240,11 @@ binding_modes:
       - commands:
         - 'set-tiling-direction horizontal'
         - 'wm-disable-binding-mode --name window'
-        bindings: ['s']
+        bindings: ['v']
       - commands:
         - 'set-tiling-direction vertical'
         - 'wm-disable-binding-mode --name window'
-        bindings: ['v']
+        bindings: ['s']
       - commands: ['wm-disable-binding-mode --name window']
         bindings: ['escape', 'enter']
 
