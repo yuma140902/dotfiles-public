@@ -169,12 +169,12 @@
                 {getNetworkIcon(output.network)}
                 {output.network.defaultGateway?.ssid}
                 <i className="nf nf-fa-arrow_up"></i>
-                {output.network.traffic?.received?.iecValue.toFixed()}{" "}
-                {output.network.traffic?.received?.iecUnit}
-                /
-                <i className="nf nf-fa-arrow_down"></i>
                 {output.network.traffic?.transmitted?.iecValue.toFixed()}{" "}
                 {output.network.traffic?.transmitted?.iecUnit}
+                /
+                <i className="nf nf-fa-arrow_down"></i>
+                {output.network.traffic?.received?.iecValue.toFixed()}{" "}
+                {output.network.traffic?.received?.iecUnit}
               </div>
             )}
 
