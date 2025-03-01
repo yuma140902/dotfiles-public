@@ -233,6 +233,18 @@ binding_modes:
         - 'toggle-floating --centered'
         - 'wm-disable-binding-mode --name window'
         bindings: ['f']
+      - commands:
+        - 'toggle-fullscreen'
+        - 'wm-disable-binding-mode --name window'
+        bindings: ['z']
+      - commands:
+        - 'set-tiling-direction horizontal'
+        - 'wm-disable-binding-mode --name window'
+        bindings: ['s']
+      - commands:
+        - 'set-tiling-direction vertical'
+        - 'wm-disable-binding-mode --name window'
+        bindings: ['v']
       - commands: ['wm-disable-binding-mode --name window']
         bindings: ['escape', 'enter']
 
@@ -263,18 +275,9 @@ keybindings:
   - commands: ['wm-toggle-pause']
     bindings: ['alt+shift+p']
 
-  # Change tiling direction. This determines where new tiling windows will
-  # be inserted.
-  - commands: ['toggle-tiling-direction']
-    bindings: ['alt+v']
-
   # Change focus from tiling windows -> floating -> fullscreen.
   - commands: ['wm-cycle-focus']
     bindings: ['alt+page_up']
-
-  # Change the focused window to be fullscreen.
-  - commands: ['toggle-fullscreen']
-    bindings: ['alt+f']
 
   # Close focused window.
   - commands: ['close']
