@@ -166,10 +166,6 @@ window_rules:
   - commands: ['set-fullscreen --maximized']
     match:
       - window_process: { equals: 'thunderbird' }
-  - commands: ['set-title-bar-visibility hidden']
-    match:
-      - window_class: { equals: 'MozillaWindowClass' }
-        window_process: { equals: 'firefox' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
