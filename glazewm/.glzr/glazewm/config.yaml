@@ -156,6 +156,11 @@ window_rules:
       - window_class: { equals: 'Windows.UI.Core.CoreWindow' }
       # start menu
       - window_process: { equals: 'SearchHost' }
+      # GIMP Tool Window
+      - window_title: { not_regex: 'GIMP$' }
+        window_process: { regex: 'gimp' }
+      # GIMP PNG output settings
+      - window_process: { equals: 'file-png' }
   - commands: ['set-floating --centered=false --shown-on-top=false']
     match:
       - window_process: { equals: 'LINE' }
