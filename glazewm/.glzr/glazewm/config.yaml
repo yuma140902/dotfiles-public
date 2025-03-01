@@ -245,6 +245,8 @@ binding_modes:
         - 'set-tiling-direction vertical'
         - 'wm-disable-binding-mode --name window'
         bindings: ['s']
+      - commands: ['close']
+        bindings: ['q']
       - commands: ['wm-disable-binding-mode --name window']
         bindings: ['escape', 'enter']
 
@@ -278,10 +280,6 @@ keybindings:
   # Change focus from tiling windows -> floating -> fullscreen.
   - commands: ['wm-cycle-focus']
     bindings: ['alt+page_up']
-
-  # Close focused window.
-  - commands: ['close']
-    bindings: ['alt+shift+q']
 
   # Re-evaluate configuration file.
   - commands: ['wm-reload-config']
