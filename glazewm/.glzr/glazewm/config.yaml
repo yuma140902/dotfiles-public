@@ -150,8 +150,6 @@ window_rules:
         window_class: { regex: 'HwndWrapper' }
       - window_process: { regex: 'thilmera' }
       - window_process: { equals: 'pinentry' }
-      - window_class: { equals: 'TProgressBarForm' }
-        window_process: { equals: 'BunBackup' }
       # task bar
       - window_class: { equals: 'Shell_TrayWnd' }
       # start menu
