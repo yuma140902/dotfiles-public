@@ -294,10 +294,10 @@ keybindings:
     bindings: ['alt+l']
   - commands: ['focus --prev-active-workspace']
     bindings: ['alt+h']
-
-  # Focus the workspace that last had focus.
   - commands: ['focus --recent-workspace']
     bindings: ['alt+j']
+  - commands: ['toggle-fullscreen']
+    bindings: ['alt+k']
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ['focus --workspace 1']
