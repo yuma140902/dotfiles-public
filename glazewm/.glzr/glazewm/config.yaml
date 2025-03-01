@@ -224,9 +224,13 @@ binding_modes:
         - 'wm-disable-binding-mode --name window'
         bindings: ['m']
       - commands:
-        - 'toggle-tiling'
+        - 'set-title-bar-visibility hidden'
         - 'wm-disable-binding-mode --name window'
         bindings: ['t']
+      - commands:
+        - 'set-title-bar-visibility shown'
+        - 'wm-disable-binding-mode --name window'
+        bindings: ['shift+t']
       - commands:
         - 'toggle-floating --centered'
         - 'wm-disable-binding-mode --name window'
