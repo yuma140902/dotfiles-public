@@ -245,7 +245,9 @@ binding_modes:
         - 'set-tiling-direction vertical'
         - 'wm-disable-binding-mode --name window'
         bindings: ['s']
-      - commands: ['close']
+      - commands:
+        - 'close'
+        - 'wm-disable-binding-mode --name window'
         bindings: ['q']
       - commands: ['wm-disable-binding-mode --name window']
         bindings: ['escape', 'enter']
