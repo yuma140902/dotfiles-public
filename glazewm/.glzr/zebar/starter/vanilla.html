@@ -27,8 +27,9 @@
     const providers = zebar.createProviderGroup({
       network: {type: 'network'},
       cpu: {type: 'cpu'},
-      date: {type: 'date', formatting: 'EEE d MMM t'},
+      date: {type: 'date', formatting: 'yyyy-MM-dd (ccc) HH:mm', locale: 'en'},
       battery: {type: 'battery'},
+      media: {type: 'media'},
       memory: {type: 'memory'},
       weather: {type: 'weather'},
     });
@@ -85,40 +86,28 @@
         return <i className="nf nf-fa-battery_0"></i>;
       }
 
-      // Get icon to show for current weather status.
-      function getWeatherIcon(weatherOutput) {
-        switch (weatherOutput.status) {
-          case 'clear_day':
-            return <i className="nf nf-weather-day_sunny"></i>;
-          case 'clear_night':
-            return <i className="nf nf-weather-night_clear"></i>;
-          case 'cloudy_day':
-            return <i className="nf nf-weather-day_cloudy"></i>;
-          case 'cloudy_night':
-            return <i className="nf nf-weather-night_alt_cloudy"></i>;
-          case 'light_rain_day':
-            return <i className="nf nf-weather-day_sprinkle"></i>;
-          case 'light_rain_night':
-            return <i className="nf nf-weather-night_alt_sprinkle"></i>;
-          case 'heavy_rain_day':
-            return <i className="nf nf-weather-day_rain"></i>;
-          case 'heavy_rain_night':
-            return <i className="nf nf-weather-night_alt_rain"></i>;
-          case 'snow_day':
-            return <i className="nf nf-weather-day_snow"></i>;
-          case 'snow_night':
-            return <i className="nf nf-weather-night_alt_snow"></i>;
-          case 'thunder_day':
-            return <i className="nf nf-weather-day_lightning"></i>;
-          case 'thunder_night':
-            return <i className="nf nf-weather-night_alt_lightning"></i>;
+      const toggleMedia = async () => {
+        await output.media.togglePlayPause();
+      }
+
+      const shouryaku = (s, len) => {
+        if (s.length > len) {
+          return s.substring(0, len) + "...";
         }
+        return s;
       }
 
       return (
         <div className="app">
           <div className="left">
-            <i className="logo nf nf-fa-windows"></i>
+            {(output.media && output.media.currentSession) && (
+              <div className="media">
+                {output.media.currentSession.isPlaying
+                  ? <button type="button" onClick={toggleMedia}><i className="nf nf-fa-pause" ></i></button>
+                  : <button type="button" onClick={toggleMedia}><i className="nf nf-fa-play" ></i></button>}
+                {shouryaku(output.media.currentSession.title, 45)}
+              </div>
+            )}
           </div>
 
           <div className="center">{output.date?.formatted}</div>
@@ -128,6 +117,13 @@
               <div className="network">
                 {getNetworkIcon(output.network)}
                 {output.network.defaultGateway?.ssid}
+                <i className="nf nf-fa-arrow_up"></i>
+                {output.network.traffic?.transmitted?.iecValue.toFixed()}{" "}
+                {output.network.traffic?.transmitted?.iecUnit}
+                /
+                <i className="nf nf-fa-arrow_down"></i>
+                {output.network.traffic?.received?.iecValue.toFixed()}{" "}
+                {output.network.traffic?.received?.iecUnit}
               </div>
             )}
 
@@ -159,13 +155,6 @@
                 )}
                 {getBatteryIcon(output.battery)}
                 {Math.round(output.battery.chargePercent)}%
-              </div>
-            )}
-
-            {output.weather && (
-              <div className="weather">
-                {getWeatherIcon(output.weather)}
-                {Math.round(output.weather.celsiusTemp)}°C
               </div>
             )}
           </div>
