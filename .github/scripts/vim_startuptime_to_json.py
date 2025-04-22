@@ -86,8 +86,8 @@ def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> Benchma
             logger.debug('entering details_mode')
         elif details_mode:
             parts = line.split(sep=':', maxsplit=1)
-            logger.debug(f'parsing details: [{", ".join(parts)}]')
-            if len(parts) <= 2:
+            logger.debug(f'parsing details: {parts}')
+            if len(parts) <= 1:
                 logger.warning(f'unexpected line without ":" : {line}')
                 continue
             times = parts[0].split()
