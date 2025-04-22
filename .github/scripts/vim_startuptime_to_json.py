@@ -86,7 +86,7 @@ def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> Benchma
             logger.debug('details_mode on')
         elif details_mode:
             parts = line.split(sep=':', maxsplit=2)
-            assert len(parts) == 2
+            assert len(parts) >= 2
             times = parts[0].split()
             detail_avg = float(times[0])
             detail_max = float(times[1])
