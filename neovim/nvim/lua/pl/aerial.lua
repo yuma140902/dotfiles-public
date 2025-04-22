@@ -12,6 +12,9 @@ function M.config()
 
   require 'aerial'.setup {
     backends = { 'lsp', 'treesitter', 'markdown', 'man' },
+    layout = {
+      max_width = { 240, 0.5 },
+    },
   }
 end
 
