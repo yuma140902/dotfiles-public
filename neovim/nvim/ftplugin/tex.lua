@@ -1,3 +1,3 @@
-vim.cmd('setlocal noexpandtab')
-vim.cmd('setlocal sw=8')
-vim.cmd('setlocal ts=8')
+vim.bo.expandtab = false
+vim.bo.shiftwidth = 8
+vim.bo.tabstop = 8
