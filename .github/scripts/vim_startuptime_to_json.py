@@ -85,8 +85,10 @@ def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> Benchma
             details_mode = True
             logger.debug('details_mode on')
         elif details_mode:
-            parts = line.split(sep=':', maxsplit=2)
-            assert len(parts) >= 2
+            parts = line.split(sep=':', maxsplit=1)
+            if len(parts) <= 2:
+                logger.warn('unexpected line without ":"', line)
+                continue
             times = parts[0].split()
             detail_avg = float(times[0])
             detail_max = float(times[1])
