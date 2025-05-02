@@ -149,14 +149,14 @@ local function register_keymaps()
   -- Navigation
   map('n', ']h', function()
       if vim.wo.diff then return ']h' end
-      vim.schedule(function() require 'gitsigns'.next_hunk() end)
+      vim.schedule(function() require 'gitsigns'.nav_hunk('next') end)
       return '<Ignore>'
     end,
     '次のHunkへ',
     { expr = true })
   map('n', '[h', function()
       if vim.wo.diff then return '[h' end
-      vim.schedule(function() require 'gitsigns'.prev_hunk() end)
+      vim.schedule(function() require 'gitsigns'.nav_hunk('prev') end)
       return '<Ignore>'
     end,
     '前のHunkへ',
