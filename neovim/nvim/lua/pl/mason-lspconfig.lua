@@ -26,6 +26,9 @@ function M.config()
             Lua = {
               diagnostics = {
                 globals = { 'vim' }
+              },
+              hint = {
+                enable = true
               }
             }
           }
