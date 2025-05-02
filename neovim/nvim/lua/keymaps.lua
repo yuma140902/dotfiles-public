@@ -23,7 +23,7 @@ local function register_keymaps()
   map({ 'n', 'x' }, 'gx', function()
     local cfile = vim.fn.expand('<cfile>')
     local pat = vim.regex("^[[:alnum:]_.-]\\+/[[:alnum:]_.-]\\+$")
-    if pat:match_str(cfile) then
+    if pat ~= nil and pat:match_str(cfile) then
       vim.ui.open("https://github.com/" .. cfile)
     else
       vim.ui.open(cfile)
