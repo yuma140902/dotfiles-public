@@ -89,6 +89,7 @@ vim.opt.pumblend = require 'rc.lib'.default_winblend()
 vim.diagnostic.config({
   severity_sort = true,
 })
+vim.lsp.inlay_hint.enable(true)
 
 -- UIEnterのあと一定時間後にUser UIEnterPostイベントを発生させる
 vim.api.nvim_create_autocmd('UIEnter', {
