@@ -2,6 +2,11 @@
 
 local M = {}
 
+---@param mode string|string[]
+---@param key string
+---@param cmd string|function
+---@param desc? string
+---@param opt? vim.keymap.set.Opts
 function M.map(mode, key, cmd, desc, opt)
   if opt == nil then opt = {} end
   if opt['noremap'] == nil then opt['noremap'] = true end
@@ -18,11 +23,15 @@ function M.map(mode, key, cmd, desc, opt)
   vim.keymap.set(mode, key, cmd, opt)
 end
 
+---@param name string
+---@param command any
+---@param opt table<string, any>
 function M.command(name, command, opt)
   if opt == nil then opt = {} end
   vim.api.nvim_create_user_command(name, command, opt)
 end
 
+---@return integer
 function M.default_winblend()
   if vim.g.neovide then
     return 90
@@ -33,7 +42,8 @@ function M.default_winblend()
   end
 end
 
--- 特定のfiletypeを持つバッファを閉じる
+---特定のfiletypeを持つバッファを閉じる
+---@param filetype string
 function M.close_buffers_by_filetype(filetype)
   local target_buffers = {}
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
@@ -50,9 +60,9 @@ function M.close_buffers_by_filetype(filetype)
 end
 
 ---LSPクライアントがアタッチされたときに呼ばれる
----@param client vim.lsp.Client
----@param bufnr number
-function M.on_attach(client, bufnr)
+---@param _client vim.lsp.Client
+---@param _bufnr number
+function M.on_attach(_client, _bufnr)
 
 end
 
