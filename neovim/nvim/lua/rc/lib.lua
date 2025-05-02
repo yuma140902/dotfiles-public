@@ -2,12 +2,20 @@
 
 local M = {}
 
+---@alias rc.IconCat "LSP"|"Lspsaga"
+---@type table<rc.IconCat, wk.Icon>
+local IconCatTable = {
+  LSP = { icon = "", color = "purple" },
+  Lspsaga = { icon = "", color = "orange" },
+}
+
 ---@param mode string|string[]
 ---@param key string
 ---@param cmd string|function
 ---@param desc? string
 ---@param opt? vim.keymap.set.Opts
-function M.map(mode, key, cmd, desc, opt)
+---@param icon? rc.IconCat|wk.Icon
+function M.map(mode, key, cmd, desc, opt, icon)
   if opt == nil then opt = {} end
   if opt['noremap'] == nil then opt['noremap'] = true end
   if opt['silent'] == nil then opt['silent'] = true end
@@ -20,7 +28,19 @@ function M.map(mode, key, cmd, desc, opt)
     end
   end
 
+  if opt['desc'] ~= nil and type(icon) == "string" then
+    opt['desc'] = '[' .. icon .. '] ' .. opt['desc']
+  end
+
+  if type(icon) == "string" then
+    icon = IconCatTable[icon]
+  end
+
   vim.keymap.set(mode, key, cmd, opt)
+  require 'which-key'.add({
+    mode = mode,
+    { key, icon = icon }
+  })
 end
 
 ---@param name string

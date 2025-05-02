@@ -101,31 +101,32 @@ local function register_keymaps()
   map('t', '<C-W><C-Z>', '<cmd>pclose<cr>')
 
   -- LSP関係
-  map('n', 'gD', '<cmd>Lspsaga goto_type_definition<cr>', '[LSP] 型の定義へ移動')
-  map('n', 'gd', '<cmd>Lspsaga goto_definition<cr>', '[LSP] 定義へ移動')
-  map('n', 'gi', '<cmd>Lspsaga finder imp<cr>', '[LSP] 実装へ移動')
-  map('n', 'gp', '<cmd>Lspsaga peek_definition<cr>', '[LSP] 定義を表示')
-  map('n', 'gP', '<cmd>Lspsaga peek_type_definition<cr>', '[LSP] 型定義を表示')
-  map('n', '<space>D', vim.lsp.buf.type_definition, '変数の型の定義へ移動')
+  map('n', 'gD', '<cmd>Lspsaga goto_type_definition<cr>', '型の定義へ移動', nil, "Lspsaga")
+  map('n', 'gd', '<cmd>Lspsaga goto_definition<cr>', '定義へ移動', nil, "Lspsaga")
+  map('n', 'gi', '<cmd>Lspsaga finder imp<cr>', '実装へ移動', nil, "Lspsaga")
+  map('n', 'gp', '<cmd>Lspsaga peek_definition<cr>', '定義を表示', nil, "Lspsaga")
+  map('n', 'gP', '<cmd>Lspsaga peek_type_definition<cr>', '型定義を表示', nil, "Lspsaga")
+  map('n', '<space>D', vim.lsp.buf.type_definition, '変数の型の定義へ移動', nil, "LSP")
 
-  map('n', 'grr', '<cmd>Lspsaga finder ref+def<cr>', '[LSP] 参照・定義へ移動')
-  map('n', 'gri', '<cmd>Lspsaga finder imp<cr>', '[LSP] 実装へ移動')
-  map('n', 'gra', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
-  map('n', 'grn', '<cmd>Lspsaga rename<cr>', 'リネームする')
-  map('n', 'grI', '<cmd>Lspsaga incoming_calls<cr>', '[LSP] incoming callsを表示')
-  map('n', 'grO', '<cmd>Lspsaga outgoing_calls<cr>', '[LSP] outgoing callsを表示')
-  map('n', 'grh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, '[LSP] Inlay hint をトグル')
-  map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示')
+  map('n', 'grr', '<cmd>Lspsaga finder ref+def<cr>', '参照・定義へ移動', nil, "Lspsaga")
+  map('n', 'gri', '<cmd>Lspsaga finder imp<cr>', '実装へ移動', nil, "Lspsaga")
+  map('n', 'gra', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示', nil, "Lspsaga")
+  map('n', 'grn', '<cmd>Lspsaga rename<cr>', 'リネームする', nil, "Lspsaga")
+  map('n', 'grI', '<cmd>Lspsaga incoming_calls<cr>', 'incoming callsを表示', nil, "Lspsaga")
+  map('n', 'grO', '<cmd>Lspsaga outgoing_calls<cr>', 'outgoing callsを表示', nil, "Lspsaga")
+  map('n', 'grh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, 'Inlay hint をトグル', nil,
+    "LSP")
+  map('n', 'K', '<cmd>Lspsaga hover_doc<cr>', 'ドキュメント表示', nil, "Lspsaga")
   --map('n', '<C-k>', '<cmd>Lspsaga signature_help<cr>', 'シグネチャを表示')
-  map('n', '<space>r', '<cmd>Lspsaga rename<cr>', 'リネームする')
-  map('n', '<space>a', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示')
-  map('x', '<space>a', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示')
+  map('n', '<space>r', '<cmd>Lspsaga rename<cr>', 'リネームする', nil, "Lspsaga")
+  map('n', '<space>a', '<cmd>Lspsaga code_action<cr>', 'コードアクションを表示', nil, "Lspsaga")
+  map('x', '<space>a', '<cmd>Lspsaga range_code_action<cr>', 'コードアクションを表示', nil, "Lspsaga")
 
   -- 診断関係
   -- :h vim.diagnostic.*
-  map('n', '<space>d', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示')
-  map('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ')
-  map('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ')
+  map('n', '<space>d', '<cmd>Lspsaga show_line_diagnostics<cr>', '診断(エラーメッセージ等)をフロート表示', nil, "Lspsaga")
+  map('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', '前の診断へ', nil, "Lspsaga")
+  map('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', '次の診断へ', nil, "Lspsaga")
 
   -- trouble.nvim
   map('n', '<space>lw', '<cmd>Trouble diagnostics toggle<cr>', 'プロジェクト全体の診断情報');
