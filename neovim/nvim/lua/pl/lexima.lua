@@ -7,10 +7,10 @@ function M.init()
 end
 
 function M.config()
-  vim.cmd "call lexima#add_rule({'filetype': 'rust', 'char': '''', 'at': '&\\%#', 'input': ''''})"
-  vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '$', 'input_after': '$'})"
-  vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '$', 'at': '\\%#\\$', 'leave': 1})"
-  vim.cmd "call lexima#add_rule({'filetype': 'latex', 'char': '<BS>', 'at': '\\$\\%#\\$', 'delete': 1})"
+  vim.cmd "call lexima#add_rule({'filetype': [ 'tex', 'plaintex' ], 'char': '$', 'input_after': '$'})"
+  vim.cmd "call lexima#add_rule({'filetype': [ 'tex', 'plaintex' ], 'char': '$', 'at': '\\%#\\$', 'leave': 1})"
+  vim.cmd "call lexima#add_rule({'filetype': [ 'tex', 'plaintex' ], 'char': '<BS>', 'at': '\\$\\%#\\$', 'delete': 1})"
+  vim.cmd "call lexima#add_rule({'filetype': 'markdown', 'char': '<Space>', 'at': '\\[\\%#]'})"
 end
 
 return M
