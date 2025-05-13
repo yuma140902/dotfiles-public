@@ -1,6 +1,7 @@
 {
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 		nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 		home-manager.url = "github:nix-community/home-manager/release-24.11";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -10,7 +11,7 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, nixos-wsl, home-manager, nixfiles-private, ... } @ inputs: let
+	outputs = { self, nixpkgs, nixpkgs-unstable, nixos-wsl, home-manager, nixfiles-private, ... } @ inputs: let
 		stateVersion = "24.11";
 		privateModule = path: if builtins.pathExists "${nixfiles-private}/${path}" then [
 			"${nixfiles-private}/${path}"
@@ -33,6 +34,10 @@
 					username = "yuma";
 					homeDirectory = "/home/yuma";
 					stateVersion = stateVersion;
+					pkgsUnstable = import nixpkgs-unstable {
+						system = "x86_64-linux";
+						config.allowUnfree = true;
+					};
 				};
 				modules = [
 					./home-manager/base.nix

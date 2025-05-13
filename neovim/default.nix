@@ -1,9 +1,10 @@
-{ pkgs, ... }: let
+{ pkgs, pkgsUnstable , ... }: let
 	configFiles = files: builtins.foldl' (acc: file: acc // { ${file}.source = ./. + "/${file}"; }) {} files;
 in {
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
+		package = pkgsUnstable.neovim-unwrapped;
 
 		extraPackages = with pkgs; [
 			gcc14
