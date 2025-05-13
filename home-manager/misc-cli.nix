@@ -3,6 +3,8 @@
 {
 	home.packages = with pkgs; [
 		fd
+		unzip
+		wget
 	];
 
 	programs.bat.enable = true;
