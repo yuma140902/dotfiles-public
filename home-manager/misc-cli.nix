@@ -5,6 +5,7 @@
 		fd
 		unzip
 		wget
+		trash-cli
 	];
 
 	programs.bat.enable = true;
