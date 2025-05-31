@@ -7,8 +7,8 @@ return {
     'neovim/nvim-lspconfig',
     lazy = true,
     dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim'
+      'mason-org/mason.nvim',
+      'mason-org/mason-lspconfig.nvim'
     },
     config = require 'pl.lspconfig'.config,
     cond = not vim.g.vscode,
@@ -16,7 +16,7 @@ return {
 
   {
     -- LSP等のインストーラ
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     -- mason.nvimを遅延読み込みするのは非推奨だし不要である
     -- > mason.nvim is optimized to load as little as possible during setup. Lazy-loading the plugin, or somehow deferring the setup, is not recommended.
     lazy = false,
@@ -26,7 +26,7 @@ return {
 
   {
     -- masonでインストールしたサーバーのsetupを行う
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason-lspconfig.nvim',
     lazy = true,
     config = require 'pl.mason-lspconfig'.config,
     event = { 'BufNewFile', 'BufReadPre', 'FilterReadPre', 'FileReadPre' },
