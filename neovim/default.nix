@@ -1,9 +1,10 @@
-{ pkgs, ... }: let
+{ pkgs, pkgsUnstable , ... }: let
 	configFiles = files: builtins.foldl' (acc: file: acc // { ${file}.source = ./. + "/${file}"; }) {} files;
 in {
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
+		package = pkgsUnstable.neovim-unwrapped;
 
 		extraPackages = with pkgs; [
 			gcc14
@@ -21,9 +22,9 @@ in {
 	};
 
 	xdg.configFile = configFiles [
+		"./nvim/after/ftplugin/markdown.lua"
 		"./nvim/ftdetect/pest.vim"
 		"./nvim/ftplugin/c.lua"
-		"./nvim/ftplugin/markdown.lua"
 		"./nvim/ftplugin/nix.lua"
 		"./nvim/ftplugin/plaintex.lua"
 		"./nvim/ftplugin/tex.lua"
