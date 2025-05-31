@@ -23,6 +23,11 @@ in {
 
 	xdg.configFile = configFiles [
 		"./nvim/after/ftplugin/markdown.lua"
+		"./nvim/after/lsp/clangd.lua"
+		"./nvim/after/lsp/denols.lua"
+		"./nvim/after/lsp/jsonls.lua"
+		"./nvim/after/lsp/lua_ls.lua"
+		"./nvim/after/lsp/ts_ls.lua"
 		"./nvim/ftdetect/pest.vim"
 		"./nvim/ftplugin/c.lua"
 		"./nvim/ftplugin/nix.lua"

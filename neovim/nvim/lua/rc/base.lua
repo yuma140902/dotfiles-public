@@ -89,7 +89,19 @@ vim.opt.pumblend = require 'rc.lib'.default_winblend()
 vim.diagnostic.config({
   severity_sort = true,
 })
-vim.lsp.inlay_hint.enable(true)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('lsp_setup', { clear = true }),
+  pattern = '*',
+  callback = function()
+    vim.lsp.inlay_hint.enable(true)
+    local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+    local on_attach = require 'rc.lib'.on_attach
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+  end
+})
 
 -- UIEnterのあと一定時間後にUser UIEnterPostイベントを発生させる
 vim.api.nvim_create_autocmd('UIEnter', {

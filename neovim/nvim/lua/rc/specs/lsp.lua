@@ -3,9 +3,9 @@
 ---@type LazySpec
 return {
   {
-    -- LSPサーバーの起動、デフォルト設定の提供など
+    -- デフォルト設定の提供
     'neovim/nvim-lspconfig',
-    lazy = true,
+    lazy = false,
     dependencies = {
       'mason-org/mason.nvim',
       'mason-org/mason-lspconfig.nvim'
