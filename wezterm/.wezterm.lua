@@ -11,6 +11,9 @@ end
 config.font = wezterm.font 'UDEV Gothic NFLG'
 --config.font = wezterm.font 'PlemolJP Console NF'
 config.font_size = 10.0
+if wezterm.target_triple == 'aarch64-apple-darwin' then
+  config.font_size = 12.0
+end
 
 config.use_ime = true
 config.color_scheme = 'OneDark (base16)'
