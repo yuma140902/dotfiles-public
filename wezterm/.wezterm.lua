@@ -63,13 +63,15 @@ wezterm.on(
   end
 )
 
-local appearance = wezterm.gui.get_appearance()
-if appearance == 'Dark' then
-  config.window_background_opacity = 0.4
-  config.win32_system_backdrop = 'Tabbed'
-else
-  config.window_background_opacity = 0.98
-  config.win32_system_backdrop = 'Tabbed'
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  local appearance = wezterm.gui.get_appearance()
+  if appearance == 'Dark' then
+    config.window_background_opacity = 0.4
+    config.win32_system_backdrop = 'Tabbed'
+  else
+    config.window_background_opacity = 0.98
+    config.win32_system_backdrop = 'Tabbed'
+  end
 end
 
 config.default_cursor_style = 'SteadyBlock'
