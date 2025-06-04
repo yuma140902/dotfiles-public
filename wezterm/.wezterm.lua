@@ -129,6 +129,7 @@ local function make_split_with_specified_domain_action_callback(direction)
         }
       end),
       choices = domain_choices,
+      fuzzy = true,
     }, pane_)
   end
   )
