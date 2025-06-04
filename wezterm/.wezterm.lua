@@ -99,4 +99,54 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   }
 end
 
+---@param direction `'horizontal'` | `'vertical'`
+local function make_split_with_specified_domain_action_callback(direction)
+  local split_direction
+  if direction == 'horizontal' then
+    split_direction = 'Right'
+  else
+    split_direction = 'Bottom'
+  end
+
+  return wezterm.action_callback(function(window_, pane_)
+    local domains = wezterm.mux.all_domains()
+    local domain_choices = {}
+    for i, domain in ipairs(domains) do
+      if domain:is_spawnable() and not string.find(domain:label(), ' mux ') then
+        table.insert(domain_choices, {
+          label = domain:label(),
+          id = domain:name(),
+        })
+      end
+    end
+
+    window_:perform_action(wezterm.action.InputSelector {
+      title = 'Select domain',
+      action = wezterm.action_callback(function(window__, pane__, id, label)
+        pane__:split {
+          domain = { DomainName = id },
+          direction = split_direction,
+        }
+      end),
+      choices = domain_choices,
+    }, pane_)
+  end
+  )
+end
+
+wezterm.on('augment-command-palette', function(window, pane)
+  return {
+    {
+      brief = '[custom] Split horizontally with specified domain',
+      icon = 'cod_split_horizontal',
+      action = make_split_with_specified_domain_action_callback('horizontal'),
+    },
+    {
+      brief = '[custom] Split vertically with specified domain',
+      icon = 'cod_split_vertical',
+      action = make_split_with_specified_domain_action_callback('vertical'),
+    }
+  }
+end)
+
 return config
