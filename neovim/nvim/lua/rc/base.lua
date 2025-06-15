@@ -3,6 +3,7 @@
 -- 基本
 vim.opt.number = false
 vim.opt.mouse = 'a'
+vim.opt.fileformats = 'unix,dos'
 
 -- インデント関係
 vim.opt.expandtab = true      -- タブ文字が入力されたとき、スペース文字に変える
