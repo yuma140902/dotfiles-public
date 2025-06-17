@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "src": ".mise.toml",
+      "dst": "${HOME}/.mise.toml"
+    }
+  ]
+}
