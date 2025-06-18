@@ -2,6 +2,9 @@
 asdf = false
 vfox = true
 
+[settings.cargo]
+binstall = false
+
 [tools]
 python = "latest"
 node = "latest"
@@ -37,6 +40,3 @@ rust = { version = "stable", components = "rust-src,rust-analyzer" }
 "cargo:wasm-pack" = "latest"
 "cargo:wgpu-info" = "latest"
 "cargo:https://github.com/yuma140902/i-yuma14-net" = "rev:3e1e75ef"
-
-[cargo]
-binstall = false
