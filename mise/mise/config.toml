@@ -1,6 +1,7 @@
 [settings]
 asdf = false
 vfox = true
+idiomatic_version_file_enable_tools = []
 
 [settings.cargo]
 binstall = false
