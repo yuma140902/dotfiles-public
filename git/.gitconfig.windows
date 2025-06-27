@@ -15,5 +15,7 @@
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [pull]
 	rebase = false
+[ghq]
+	root = "~/pj/clones"
 
 # vim: ft=gitconfig ff=unix noexpandtab
