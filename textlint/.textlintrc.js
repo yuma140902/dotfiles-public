@@ -60,5 +60,6 @@ module.exports = {
     '@textlint-ja/no-synonyms': true,
     'ja-no-inappropriate-words': true,
     'abbr-within-parentheses': true,
+    '@textlint-ja/preset-ai-writing': true,
   }
 }
