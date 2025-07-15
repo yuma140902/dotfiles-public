@@ -30,6 +30,7 @@ config.window_padding = {
   bottom = 0,
 }
 
+--[[
 local function tab_title(tab_info)
   local title = tab_info.tab_title
   -- if the tab title is explicitly set, take that
@@ -62,6 +63,27 @@ wezterm.on(
     return title
   end
 )
+]]
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+tabline.setup {
+  options = {
+    theme = 'OneDark (base16)',
+  },
+  sections = {
+    tabline_a = { 'mode' },
+    tabline_b = {},
+    tabline_c = {},
+    tabline_x = {},
+    tabline_y = {},
+    tabline_z = { 'domain' }
+  },
+}
+--tabline.apply_to_config(config)
+-- https://github.com/michaelbrusegard/tabline.wez/discussions/3
+config.use_fancy_tab_bar = false
+config.show_new_tab_button_in_tab_bar = false
+config.tab_max_width = 32
+config.status_update_interval = 1000
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   local appearance = wezterm.gui.get_appearance()
