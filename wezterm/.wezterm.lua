@@ -80,7 +80,9 @@ tabline.setup {
 }
 --tabline.apply_to_config(config)
 -- https://github.com/michaelbrusegard/tabline.wez/discussions/3
-config.use_fancy_tab_bar = false
+if wezterm.target_triple ~= 'x86_64-pc-windows-msvc' then
+  config.use_fancy_tab_bar = false
+end
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 32
 config.status_update_interval = 1000
