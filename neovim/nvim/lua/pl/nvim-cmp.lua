@@ -60,11 +60,11 @@ function M.config()
 
   local source_names = {
     buffer = '[BUF]',
+    copilot = '[COPILOT]',
     nvim_lsp = '[LSP]',
     vsnip = '[VSNIP]',
     nvim_lua = '[LUA]',
     path = '[PATH]',
-    copilot = '[COPILOT]',
     cmdline = '[CMD]',
     cmdline_history = '[HIST]',
     conventionalcommits = '[CONV]',
