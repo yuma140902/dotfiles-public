@@ -68,10 +68,23 @@ return {
 
   {
     -- 対応するカッコをネストの深さに応じて色分けする
-    -- Lispのときだけ使用する
+    -- Lisp 系のときだけ使用する
     'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
-    ft = 'lisp',
+    ft = { 'lisp', 'clojure' },
     cond = not vim.g.vscode,
+  },
+
+  {
+    'gpanders/nvim-parinfer',
+    ft = { 'lisp', 'clojure' },
+  },
+
+  {
+    'julienvincent/nvim-paredit',
+    ft = { 'lisp', 'clojure' },
+    config = function()
+      require 'nvim-paredit'.setup()
+    end
   },
 
 }
