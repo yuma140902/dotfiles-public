@@ -36,6 +36,4 @@ rust = { version = "stable", components = "rust-src,rust-analyzer" }
 "cargo:tokei" = "latest"
 "cargo:topgrade" = "latest"
 "cargo:trunk" = "latest"
-"cargo:twiggy" = "latest"
-"cargo:wasm-pack" = "latest"
 "cargo:wgpu-info" = "latest"
