@@ -3,9 +3,6 @@ local M = {}
 function M.config()
   require 'crates'.setup {
     completion = {
-      cmp = {
-        enabled = true,
-      },
       crates = {
         enabled = true,  -- disabled by default
         max_results = 8, -- The maximum number of search results to display
@@ -14,31 +11,12 @@ function M.config()
     },
     lsp = {
       enabled = true,
+      on_attach = require 'rc.lib'.on_attach,
+      actions = true,
+      completion = true,
+      hover = true,
     }
   }
-
-  -- nvim-cmpソースの追加
-  vim.api.nvim_create_autocmd("BufRead", {
-    group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
-    pattern = "Cargo.toml",
-    callback = function()
-      require 'cmp'.setup.buffer({
-        sources = {
-          { name = "crates" },
-          { name = 'path' },
-          {
-            name = 'buffer',
-            option = {
-              get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
-              end,
-              keyword_length = 3
-            }
-          },
-        }
-      })
-    end,
-  })
 
   -- キーマップの追加
   local crates = require 'crates'
