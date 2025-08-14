@@ -2,7 +2,7 @@ local M = {}
 
 function M.config()
   require 'telescope'.setup {
-    defaults = { winblend = require 'rc.lib'.default_winblend(), file_ignore_patterns = { '.git/*' } },
+    defaults = { file_ignore_patterns = { '.git/*' } },
     extensions = {
       undo = {
         side_by_side = true,

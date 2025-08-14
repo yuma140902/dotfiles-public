@@ -51,17 +51,6 @@ function M.command(name, command, opt)
   vim.api.nvim_create_user_command(name, command, opt)
 end
 
----@return integer
-function M.default_winblend()
-  if vim.g.neovide then
-    return 90
-  else
-    -- onedark.lua で transparent = true とするときは 0、そうでないときは 20 が良い
-    -- return 20
-    return 0
-  end
-end
-
 ---特定のfiletypeを持つバッファを閉じる
 ---@param filetype string
 function M.close_buffers_by_filetype(filetype)
