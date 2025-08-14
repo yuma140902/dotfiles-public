@@ -68,7 +68,6 @@ in {
 		"./nvim/lua/pl/persisted.lua"
 		"./nvim/lua/pl/rustaceanvim.lua"
 		"./nvim/lua/pl/scrollview.lua"
-		"./nvim/lua/pl/solarized.lua"
 		"./nvim/lua/pl/suda.lua"
 		"./nvim/lua/pl/surround.lua"
 		"./nvim/lua/pl/telescope.lua"
