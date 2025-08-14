@@ -71,13 +71,6 @@ return {
     config = require 'pl.onedark'.config,
     cond = not vim.g.vscode,
   },
-  {
-    'echasnovski/mini.base16',
-    lazy = false,
-    priority = 1000,
-    config = require 'pl.mini_base16'.config,
-    cond = not vim.g.vscode,
-  },
 
   {
     -- ファジーファインダ

@@ -56,7 +56,6 @@ in {
 		"./nvim/lua/pl/lspsaga.lua"
 		"./nvim/lua/pl/mason-lspconfig.lua"
 		"./nvim/lua/pl/mason.lua"
-		"./nvim/lua/pl/mini_base16.lua"
 		"./nvim/lua/pl/neodev.lua"
 		"./nvim/lua/pl/neogen.lua"
 		"./nvim/lua/pl/neotest.lua"
