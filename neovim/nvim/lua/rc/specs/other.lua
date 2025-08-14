@@ -64,15 +64,6 @@ return {
   },
 
   {
-    -- カラースキーム
-    'navarasu/onedark.nvim',
-    lazy = false,
-    priority = 1000, -- メインのカラースキームは他のプラグインよりも先に読み込まれるのが良いらしい
-    config = require 'pl.onedark'.config,
-    cond = not vim.g.vscode,
-  },
-
-  {
     -- ファジーファインダ
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
