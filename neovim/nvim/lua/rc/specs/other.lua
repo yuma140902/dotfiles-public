@@ -1,6 +1,14 @@
 ---@type LazySpec
 return {
   {
+    'maxmx03/solarized.nvim',
+    lazy = false,
+    priority = 1000,
+    config = require 'pl.solarized'.config,
+    cond = not vim.g.vscode,
+  },
+
+  {
     -- ファイルマネージャー
     'stevearc/oil.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },

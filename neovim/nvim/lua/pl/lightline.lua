@@ -2,7 +2,7 @@ local M = {}
 
 function M.init()
   vim.g.lightline = {
-    colorscheme = 'one',
+    colorscheme = 'solarized',
     active = {
       left = {
         { 'mode',      'paste' },
