@@ -82,7 +82,7 @@ wezterm.on(
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup {
   options = {
-    theme = 'OneDark (base16)',
+    theme = config.color_scheme,
   },
   sections = {
     tabline_a = { 'mode' },
@@ -93,14 +93,7 @@ tabline.setup {
     tabline_z = { 'domain' }
   },
 }
---tabline.apply_to_config(config)
--- https://github.com/michaelbrusegard/tabline.wez/discussions/3
-if wezterm.target_triple ~= 'x86_64-pc-windows-msvc' then
-  config.use_fancy_tab_bar = false
-end
-config.show_new_tab_button_in_tab_bar = false
-config.tab_max_width = 32
-config.status_update_interval = 1000
+tabline.apply_to_config(config)
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   local appearance = wezterm.gui.get_appearance()
