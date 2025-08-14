@@ -28,22 +28,7 @@ config.window_padding = {
   bottom = 0,
 }
 
-local function get_appearance()
-  if wezterm.gui then
-    return wezterm.gui.get_appearance()
-  end
-  return 'Dark'
-end
-
-local function get_shceme()
-  local appearance = get_appearance()
-  if appearance:find 'Dark' then
-    return 'Solarized (dark) (terminal.sexy)'
-  else
-    return 'Solarized (light) (terminal.sexy)'
-  end
-end
-config.color_scheme = get_shceme()
+config.color_scheme = 'OneDark (base16)'
 
 --[[
 local function tab_title(tab_info)
