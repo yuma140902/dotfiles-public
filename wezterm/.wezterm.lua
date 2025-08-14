@@ -16,7 +16,6 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
 end
 
 config.use_ime = true
-config.color_scheme = 'OneDark (base16)'
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe' }
 
@@ -28,6 +27,23 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+
+local function get_appearance()
+  if wezterm.gui then
+    return wezterm.gui.get_appearance()
+  end
+  return 'Dark'
+end
+
+local function get_shceme()
+  local appearance = get_appearance()
+  if appearance:find 'Dark' then
+    return 'Solarized (dark) (terminal.sexy)'
+  else
+    return 'Solarized (light) (terminal.sexy)'
+  end
+end
+config.color_scheme = get_shceme()
 
 --[[
 local function tab_title(tab_info)
