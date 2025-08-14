@@ -65,6 +65,7 @@ in {
 		"./nvim/lua/pl/nvim-notify.lua"
 		"./nvim/lua/pl/nvim-treesitter-context.lua"
 		"./nvim/lua/pl/oil.lua"
+		"./nvim/lua/pl/onedark.lua"
 		"./nvim/lua/pl/persisted.lua"
 		"./nvim/lua/pl/rustaceanvim.lua"
 		"./nvim/lua/pl/scrollview.lua"
