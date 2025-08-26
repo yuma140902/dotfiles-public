@@ -6,6 +6,9 @@ idiomatic_version_file_enable_tools = []
 [settings.cargo]
 binstall = false
 
+[settings.python]
+compile = false
+
 [tools]
 "cargo:bat" = "latest"
 "cargo:bottom" = "latest"
