@@ -7,15 +7,6 @@ idiomatic_version_file_enable_tools = []
 binstall = false
 
 [tools]
-python = "latest"
-node = "latest"
-pnpm = "latest"
-"npm:aws-cdk" = "latest"
-"npm:tiged" = "latest"
-"npm:trash-cli" = "latest"
-"npm:wrangler" = "latest"
-rust = { version = "stable", components = "rust-src,rust-analyzer" }
-"cargo:sccache" = "latest"
 "cargo:bat" = "latest"
 "cargo:bottom" = "latest"
 "cargo:cargo-audit" = "latest"
@@ -30,6 +21,7 @@ rust = { version = "stable", components = "rust-src,rust-analyzer" }
 "cargo:random-output" = "latest"
 "cargo:ripgrep" = "latest"
 "cargo:ripgrep_all" = "latest"
+"cargo:sccache" = "latest"
 "cargo:sqlx-cli" = "latest"
 "cargo:tauri-cli" = "latest"
 "cargo:tealdeer" = "latest"
@@ -37,5 +29,13 @@ rust = { version = "stable", components = "rust-src,rust-analyzer" }
 "cargo:topgrade" = "latest"
 "cargo:trunk" = "latest"
 "cargo:wgpu-info" = "latest"
-"npm:@google/gemini-cli" = "latest"
 "cargo:zoxide" = "latest"
+"node" = "latest"
+"npm:@google/gemini-cli" = "latest"
+"npm:aws-cdk" = "latest"
+"npm:tiged" = "latest"
+"npm:trash-cli" = "latest"
+"npm:wrangler" = "latest"
+"pnpm" = "latest"
+"python" = "latest"
+"rust" = { version = "stable", components = "rust-src,rust-analyzer" }
