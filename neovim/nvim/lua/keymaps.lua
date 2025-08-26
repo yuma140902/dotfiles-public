@@ -82,7 +82,7 @@ local function register_keymaps()
   map.t '<C-w><C-l>' { '<cmd>wincmd l<CR>' }
   map.t '<C-w>l' { '<cmd>wincmd l<CR>' }
   map.t '<C-w>w' { '<cmd>wincmd w<CR>' }
-  map.t '<C-w><C-w>' { '<cmd>wincmd w<CR>' }
+  --map.t '<C-w><C-w>' { '<cmd>wincmd w<CR>' }
   map.t '<C-w>W' { '<cmd>wincmd W<CR>' }
   map.t '<C-w>t' { '<cmd>wincmd t<CR>' }
   map.t '<C-w><C-t>' { '<cmd>wincmd t<CR>' }
