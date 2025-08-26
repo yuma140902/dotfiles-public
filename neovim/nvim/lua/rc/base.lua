@@ -17,6 +17,8 @@ vim.opt.scrolloff = 3
 
 vim.opt.ambiwidth = 'single' -- use rbtnn/vim-ambiwidth
 
+vim.opt.formatoptions:append('M')
+
 vim.opt.laststatus = 2
 
 -- 検索
