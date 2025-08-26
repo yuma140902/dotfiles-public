@@ -87,6 +87,10 @@ if [ -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
 fi
 
+if type 'mise' > /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
 if type 'pyenv' > /dev/null; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
@@ -94,8 +98,7 @@ if type 'pyenv' > /dev/null; then
 fi
 
 if type 'zoxide' > /dev/null; then
-  eval "$(zoxide init zsh)"
-  alias cd=z
+  eval "$(zoxide init zsh --cmd cd)"
 fi
 
 if [ -f /usr/share/nvm/init-nvm ]; then
@@ -104,10 +107,6 @@ fi
 
 if [ -r "$HOME/.opam/opam-init/init.sh" ]; then
   source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null
-fi
-
-if type 'mise' > /dev/null; then
-  eval "$(mise activate zsh)"
 fi
 
 if type 'brew' > /dev/null; then
