@@ -16,10 +16,12 @@ function M.config()
       buffers = {
         mappings = {
           i = {
-            ['<esc>'] = require 'telescope.actions'.close
+            ['<esc>'] = require 'telescope.actions'.close,
+            ['<C-k>'] = require 'telescope.actions'.delete_buffer,
           },
           n = {
-            ['<C-f>'] = require 'telescope.actions'.close
+            ['<C-f>'] = require 'telescope.actions'.close,
+            ['<C-k>'] = require 'telescope.actions'.delete_buffer,
           }
         }
       }
