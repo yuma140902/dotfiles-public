@@ -38,3 +38,4 @@ rust = { version = "stable", components = "rust-src,rust-analyzer" }
 "cargo:trunk" = "latest"
 "cargo:wgpu-info" = "latest"
 "npm:@google/gemini-cli" = "latest"
+"cargo:zoxide" = "latest"
