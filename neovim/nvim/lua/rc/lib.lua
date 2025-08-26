@@ -9,43 +9,118 @@ local IconCatTable = {
   Lspsaga = { icon = "", color = "orange" },
 }
 
----@param mode string|string[]
----@param key string
----@param cmd string|function
----@param desc? string
----@param opt? vim.keymap.set.Opts
----@param icon? rc.IconCat|wk.Icon
-function M.map(mode, key, cmd, desc, opt, icon)
-  if opt == nil then opt = {} end
-  if opt['noremap'] == nil then opt['noremap'] = true end
-  if opt['silent'] == nil then opt['silent'] = true end
+---@class mapset_opts: vim.keymap.set.Opts
+---@field icon? rc.IconCat|wk.Icon
 
-  if desc ~= nil then
-    if opt['desc'] == nil then
-      opt['desc'] = desc
-    else
-      print('warn: desc argument will be ignored')
+-- reference: https://zenn.dev/monaqa/articles/2025-07-23-vim-keymap-set-dsl
+
+---@param mode string|string[]
+---@param is_buffer_local? boolean
+---@return fun(lhs: string): fun(opts: mapset_opts): nil
+local function map_(mode, is_buffer_local)
+  ---@param lhs string
+  ---@return fun(vim.keymap.set.Opts): nil
+  return function(lhs)
+    ---@param opts mapset_opts
+    return function(opts)
+      local body = opts[1]
+      local icon = opts['icon']
+      opts[1] = nil
+      opts['icon'] = nil
+      if opts['buffer'] == nil then
+        opts['buffer'] = is_buffer_local
+      end
+      if opts['desc'] ~= nil and type(icon) == 'string' then
+        opts['desc'] = '[' .. icon .. ']' .. opts['desc']
+      end
+      if type(icon) == 'string' then
+        icon = IconCatTable[icon]
+      end
+      vim.keymap.set(mode, lhs, body, opts)
+      require 'which-key'.add {
+        mode = mode,
+        { lhs, icon = icon }
+      }
     end
   end
-
-  if opt['desc'] ~= nil and type(icon) == "string" then
-    opt['desc'] = '[' .. icon .. '] ' .. opt['desc']
-  end
-
-  if type(icon) == "string" then
-    icon = IconCatTable[icon]
-  end
-
-  vim.keymap.set(mode, key, cmd, opt)
-  require 'which-key'.add({
-    mode = mode,
-    { key, icon = icon }
-  })
 end
+
+M.map = {
+  --- NORMAL mode のキーマップを定義する。
+  n = map_ 'n',
+  --- VISUAL mode のキーマップを定義する。
+  x = map_ 'x',
+  --- OPERATOR-PENDING mode のキーマップを定義する。
+  o = map_ 'o',
+  --- INSERT mode のキーマップを定義する。
+  i = map_ 'i',
+  --- COMMAND-LINE mode のキーマップを定義する。
+  c = map_ 'c',
+  --- SELECT mode のキーマップを定義する。
+  s = map_ 'x',
+  --- TERMINAL mode のキーマップを定義する。
+  t = map_ 't',
+
+  --- NORMAL / VISUAL キーマップ（オペレータ/モーションなど）
+  nx = map_ { 'n', 'x' },
+  --- VISUAL / SELECT キーマップ（制御文字を用いた VISUAL キーマップなど）
+  xs = map_ { 'x', 's' },
+  --- VISUAL / OPERATOR-PENDING キーマップ（モーション、text object など）
+  xo = map_ { 'x', 'o' },
+  --- NORMAL / TERMINAL キーマップ（ターミナルの制御など）
+  nt = map_ { 'n', 't' },
+
+  --- NORMAL-like mode のキーマップ（モーションなど）
+  nxo = map_ { 'n', 'x', 'o' },
+  --- INSERT-like mode のキーマップ（文字入力など）
+  ic = map_ { 'i', 'c' },
+
+  --- iabbrev を定義する。
+  ia = map_ 'ia',
+  --- cabbrev を定義する。
+  ca = map_ 'ca',
+
+  --- モードを文字列で指定してキーマップを定義する。
+  with_mode = map_,
+}
+
+M.map_local = {
+  --- NORMAL mode の buffer-local キーマップを定義する。
+  n = map_('n', true),
+  --- VISUAL mode の buffer-local キーマップを定義する。
+  x = map_('x', true),
+  --- OPERATOR-PENDING mode の buffer-local キーマップを定義する。
+  o = map_('o', true),
+  --- INSERT mode の buffer-local キーマップを定義する。
+  i = map_('i', true),
+  --- COMMAND-LINE mode の buffer-local キーマップを定義する。
+  c = map_('c', true),
+  --- SELECT mode の buffer-local キーマップを定義する。
+  s = map_('s', true),
+  --- TERMINAL mode の buffer-local キーマップを定義する。
+  t = map_('t', true),
+
+  --- NORMAL / VISUAL の buffer-local キーマップ。
+  nx = map_({ 'n', 'x' }, true),
+  --- VISUAL / SELECT の buffer-local キーマップ。
+  xs = map_({ 'x', 's' }, true),
+  --- VISUAL / OPERATOR-PENDING の buffer-local キーマップ。
+  xo = map_({ 'x', 'o' }, true),
+
+  --- NORMAL-like モードの buffer-local キーマップ。
+  nxo = map_({ 'n', 'x', 'o' }, true),
+  --- INSERT-like モードの buffer-local キーマップ。
+  ic = map_({ 'i', 'c' }, true),
+
+  --- buffer-local iabbrev を定義する。
+  ia = map_('ia', true),
+  --- buffer-local cabbrev を定義する。
+  ca = map_('ca', true),
+}
 
 ---@param name string
 ---@param command any
----@param opt table<string, any>
+---@param opt table<string, any>?
 function M.command(name, command, opt)
   if opt == nil then opt = {} end
   vim.api.nvim_create_user_command(name, command, opt)
