@@ -19,6 +19,9 @@ vim.opt.ambiwidth = 'single' -- use rbtnn/vim-ambiwidth
 
 vim.opt.formatoptions:append('M')
 
+vim.opt.timeout = true
+vim.opt.timeoutlen = 1000
+
 vim.opt.laststatus = 2
 
 -- 検索
