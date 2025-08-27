@@ -66,6 +66,14 @@ local function register_keymaps()
       end
     end,
   }
+  map.nxo 'f<C-j>' { 'f。' }
+  map.nxo 'F<C-j>' { 'F。' }
+  map.nxo 't<C-j>' { 't。' }
+  map.nxo 'T<C-j>' { 'T。' }
+  map.nxo 'f<C-u>' { 'f、' }
+  map.nxo 'F<C-u>' { 'F、' }
+  map.nxo 't<C-u>' { 't、' }
+  map.nxo 'T<C-u>' { 'T、' }
 
   -- インサートモード
   map.i '<C-l>' {
