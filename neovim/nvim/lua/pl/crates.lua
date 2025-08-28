@@ -20,29 +20,29 @@ function M.config()
 
   -- キーマップの追加
   local crates = require 'crates'
-  local map = require 'rc.lib'.map
+  local map_local = require 'rc.lib'.map_local
 
-  map('n', '<space>ct', crates.toggle, 'Toggle')
-  map('n', '<space>cr', crates.reload, 'Reload')
+  map_local.n '<space>ct' { crates.toggle, desc = 'Toggle' }
+  map_local.n '<space>cr' { crates.reload, desc = 'Reload' }
 
-  map('n', '<space>cv', crates.show_versions_popup, 'Show versions popup')
-  map('n', '<space>cf', crates.show_features_popup, 'Show features popup')
-  map('n', '<space>cd', crates.show_dependencies_popup, 'Show dependencies popup')
+  map_local.n '<space>cv' { crates.show_versions_popup, desc = 'Show versions popup' }
+  map_local.n '<space>cf' { crates.show_features_popup, desc = 'Show features popup' }
+  map_local.n '<space>cd' { crates.show_dependencies_popup, desc = 'Show dependencies popup' }
 
-  map('n', '<space>cu', crates.update_crate, 'Update crate')
-  map('v', '<space>cu', crates.update_crates, 'Update crates')
-  map('n', '<space>ca', crates.update_all_crates, 'Update ALL crates')
-  map('n', '<space>cU', crates.upgrade_crate, 'Upgrade crate')
-  map('v', '<space>cU', crates.upgrade_crates, 'Upgrade crates')
-  map('n', '<space>cA', crates.upgrade_all_crates, 'Upgrade ALL crates')
+  map_local.n '<space>cu' { crates.update_crate, desc = 'Update crate' }
+  map_local.x '<space>cu' { crates.update_crates, desc = 'Update crates' }
+  map_local.n '<space>ca' { crates.update_all_crates, desc = 'Update ALL crates' }
+  map_local.n '<space>cU' { crates.upgrade_crate, desc = 'Upgrade crate' }
+  map_local.x '<space>cU' { crates.upgrade_crates, desc = 'Upgrade crates' }
+  map_local.n '<space>cA' { crates.upgrade_all_crates, desc = 'Upgrade ALL crates' }
 
   --vim.keymap.set('n', '<space>ce', crates.expand_p desc =lain_crate_to_inline_table, {silent = true})
   --vim.keymap.set('n', '<space>cE', crates.extract_crate_into_table, {silent = true})
 
-  map('n', '<space>cH', crates.open_homepage, 'Open homepage')
-  map('n', '<space>cR', crates.open_repository, 'Open repo')
-  map('n', '<space>cD', crates.open_documentation, 'Open doc')
-  map('n', '<space>cC', crates.open_crates_io, 'Open crates.io')
+  map_local.n '<space>cH' { crates.open_homepage, desc = 'Open homepage' }
+  map_local.n '<space>cR' { crates.open_repository, desc = 'Open repo' }
+  map_local.n '<space>cD' { crates.open_documentation, desc = 'Open doc' }
+  map_local.n '<space>cC' { crates.open_crates_io, desc = 'Open crates.io' }
 end
 
 return M
