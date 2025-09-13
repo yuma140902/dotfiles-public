@@ -186,6 +186,16 @@ function ntfy() {
   curl -u writer:writerpass -d "$1" https://ntfy.yuma14.net/main
 }
 
+function ghq-cd() {
+  local root
+  local repo
+  root=$(ghq root)
+  repo=$(ghq list | fzf --preview "lsd $root/{}")
+  if [ -n "$repo" ]; then
+    cd "$root/$repo" || return
+  fi
+}
+
 agent="$HOME/.ssh/agent"
 if [ -S "$SSH_AUTH_SOCK" ]; then
 	case $SSH_AUTH_SOCK in
