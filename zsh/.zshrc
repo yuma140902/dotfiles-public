@@ -81,6 +81,9 @@ fi
 if [ -d "/usr/local/texlive/2024/bin/x86_64-linux/" ]; then
   PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux/"
 fi
+if [ -d "/snap/bin" ]; then
+  PATH="$PATH:/snap/bin"
+fi
 export PATH
 
 if [ -f "$HOME/.cargo/env" ]; then
