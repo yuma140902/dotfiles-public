@@ -60,3 +60,14 @@ home-manager switch --flake '.#usernamehogehoge'
 
 GitHub Actions で Neovim のベンチマークを行っています。
 ベンチマーク結果は <https://yuma14.net/dotfiles-public/> で見ることができます。
+
+## 注意事項
+
+### zsh-abbr
+
+zsh-abbr は zsh 内で使える abbreviation を管理する zsh プラグインである。abbr コマンドを使ってユーザ定義の abbreviation を追加することができる。追加した abbreviation は ~/.config/zsh-abbr/user-abbreviations に保存される。
+
+本リポジトリ dotfiles-public では、zsh モジュールをインストールすると zsh-abbr を使えるようになる。
+dotfiles-public には user-abbreviations の定義も含まれていて、~/.config/zsh-abbr/user-abbreviations にシンボリックリンクが作られる。
+
+本リポジトリから zsh モジュールをインストールした場合、abbr コマンドは使用すべきではない。abbr コマンドは user-abbreviations を削除してから新しい user-abbreviations ファイルを作るという動作をするので、シンボリックリンクではなくなってしまい git 管理から外れてしまうからである。
