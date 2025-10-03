@@ -16,6 +16,7 @@
 [pull]
 	rebase = false
 [ghq]
-	root = "~/pj/clones"
+	root = "~/ghq"
+	user = "yuma140902"
 
 # vim: ft=gitconfig ff=unix noexpandtab
