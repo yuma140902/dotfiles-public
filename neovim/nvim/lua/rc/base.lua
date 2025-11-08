@@ -79,9 +79,6 @@ if vim.fn.has('win32') == 1 then
   vim.opt.shellxquote = ''
 end
 
--- クリップボード
-vim.g.clipboard = 'osc52'
-
 -- 自動でquickfix windowを開く
 vim.api.nvim_create_autocmd('QuickFixCmdPost', {
   group = vim.api.nvim_create_augroup('auto_open_quickfix_window', { clear = true }),
