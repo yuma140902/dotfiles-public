@@ -58,7 +58,7 @@ return {
 
   {
     'numToStr/FTerm.nvim',
-    event = 'UIEnterPost',
+    event = 'User UIEnterPost',
     config = require 'pl.fterm'.config,
     cond = not vim.g.vscode,
   },
