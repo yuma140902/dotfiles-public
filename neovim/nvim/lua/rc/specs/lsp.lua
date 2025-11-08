@@ -44,14 +44,24 @@ return {
 
   {
     -- LSP用のUI
-    'nvimdev/lspsaga.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    config = require 'pl.lspsaga'.config,
+    'jinzhongjia/LspUI.nvim',
+    config = require 'pl.lspui'.config,
     event = 'LspAttach',
     cond = not vim.g.vscode,
+  },
+
+  {
+    'ray-x/lsp_signature.nvim',
+    event = "InsertEnter",
+    cond = not vim.g.vscode,
+    config = function()
+      require "lsp_signature".setup {
+        bind = true,
+        handler_opts = {
+          border = "none"
+        },
+      }
+    end
   },
 
 }

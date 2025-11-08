@@ -92,8 +92,18 @@ local function register_keymaps()
   -- ターミナル
   map.n '<space>tn' { '<cmd>terminal<CR>', desc = 'ターミナルを開く' }
   map.n '<space>tt' { '<cmd>tabnew<CR><cmd>terminal<CR><cmd>startinsert<CR>', desc = 'ターミナルを新規タブで開く' }
-  map.n '<space>tf' { '<cmd>Lspsaga term_toggle<CR>', desc = 'floating windowのターミナルをトグル' }
-  map.nt '<A-d>' { '<cmd>Lspsaga term_toggle<CR>', desc = 'floating windowのターミナルをトグル' }
+  map.n '<space>tf' {
+    desc = 'floating windowのターミナルをトグル',
+    function()
+      require 'FTerm'.toggle()
+    end
+  }
+  map.nt '<A-d>' {
+    desc = 'floating windowのターミナルをトグル',
+    function()
+      require 'FTerm'.toggle()
+    end
+  }
   map.n '<space>tj' { '<cmd>belowright new<CR><cmd>terminal<CR><cmd>startinsert<CR>', desc = 'ターミナルを下に開く' }
   map.n '<space>tl' { '<C-w>v<C-w>l<cmd>terminal<CR><cmd>startinsert<CR>', desc = 'ターミナルを左に開く' }
 
@@ -148,34 +158,30 @@ local function register_keymaps()
   map.t '<C-w><C-z>' { '<cmd>pclose<CR>' }
 
   -- LSP関係
-  map.n 'gD' { '<cmd>Lspsaga goto_type_definition<CR>', desc = '型の定義へ移動', icon = 'Lspsaga' }
-  map.n 'gd' { '<cmd>Lspsaga goto_definition<CR>', desc = '定義へ移動', icon = 'Lspsaga' }
-  map.n 'gi' { '<cmd>Lspsaga finder imp<CR>', desc = '実装へ移動', icon = 'Lspsaga' }
-  map.n 'gp' { '<cmd>Lspsaga peek_definition<CR>', desc = '定義を表示', icon = 'Lspsaga' }
-  map.n 'gP' { '<cmd>Lspsaga peek_type_definition<CR>', desc = '型定義を表示', icon = 'Lspsaga' }
-  map.n '<space>D' { vim.lsp.buf.type_definition, desc = '変数の型の定義へ移動', icon = 'LSP' }
+  map.n 'gD' { '<cmd>LspUI type_definition<CR>', desc = '型を表示', icon = 'LspUI' }
+  map.n 'gd' { '<cmd>LspUI definition<CR>', desc = '定義を表示', icon = 'LspUI' }
+  map.n 'gi' { '<cmd>LspUI implementation<CR>', desc = '実装を表示', icon = 'LspUI' }
+  map.n '<space>D' { '<cmd>LspUI declaration', desc = '宣言を表示', icon = 'LspUI' }
 
-  map.n 'grr' { '<cmd>Lspsaga finder ref+def<CR>', desc = '参照・定義へ移動', icon = 'Lspsaga' }
-  map.n 'gri' { '<cmd>Lspsaga finder imp<CR>', desc = '実装へ移動', icon = 'Lspsaga' }
-  map.n 'gra' { '<cmd>Lspsaga code_action<CR>', desc = 'コードアクションを表示', icon = 'Lspsaga' }
-  map.n 'grn' { '<cmd>Lspsaga rename<CR>', desc = 'リネームする', icon = 'Lspsaga' }
-  map.n 'grI' { '<cmd>Lspsaga incoming_calls<CR>', desc = 'incoming callsを表示', icon = 'Lspsaga' }
-  map.n 'grO' { '<cmd>Lspsaga outgoing_calls<CR>', desc = 'outgoing callsを表示', icon = 'Lspsaga' }
+  map.n 'grr' { '<cmd>LspUI reference<CR>', desc = '参照を表示', icon = 'LspUI' }
+  map.n 'gri' { '<cmd>LspUI implementation<CR>', desc = '実装を表示', icon = 'LspUI' }
+  map.n 'gra' { '<cmd>LspUI code_action<CR>', desc = 'コードアクションを表示', icon = 'LspUI' }
+  map.n 'grn' { '<cmd>LspUI rename<CR>', desc = 'リネームする', icon = 'LspUI' }
+  map.n 'grI' { '<cmd>LspUI call_hierarchy incoming<CR>', desc = 'incoming callsを表示', icon = 'LspUI' }
+  map.n 'grO' { '<cmd>LspUI call_hierarchy outgoing<CR>', desc = 'outgoing callsを表示', icon = 'LspUI' }
   map.n 'grh' {
     desc = 'Inlay hint をトグル',
     icon = 'LSP',
     function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
   }
-  map.n 'K' { '<cmd>Lspsaga hover_doc<CR>', desc = 'ドキュメント表示', icon = 'Lspsaga' }
-  map.n '<space>r' { '<cmd>Lspsaga rename<CR>', desc = 'リネームする', icon = 'Lspsaga' }
-  map.n '<space>a' { '<cmd>Lspsaga code_action<CR>', desc = 'コードアクションを表示', icon = 'Lspsaga' }
-  map.x '<space>a' { '<cmd>Lspsaga range_code_action<CR>', desc = 'コードアクションを表示', icon = 'Lspsaga' }
+  map.n 'K' { '<cmd>LspUI hover<CR>', desc = 'ドキュメント表示', icon = 'LspUI' }
+  map.n '<space>r' { '<cmd>LspUI rename<CR>', desc = 'リネームする', icon = 'LspUI' }
+  map.nx '<space>a' { '<cmd>LspUI code_action<CR>', desc = 'コードアクションを表示', icon = 'LspUI' }
 
   -- 診断関係
   -- :h vim.diagnostic.*
-  map.n '<space>d' { '<cmd>Lspsaga show_line_diagnostics<CR>', desc = '診断(エラーメッセージ等)をフロート表示', icon = 'Lspsaga' }
-  map.n '[d' { '<cmd>Lspsaga diagnostic_jump_prev<CR>', desc = '前の診断へ', icon = 'Lspsaga' }
-  map.n ']d' { '<cmd>Lspsaga diagnostic_jump_next<CR>', desc = '次の診断へ', icon = 'Lspsaga' }
+  map.n '[d' { '<cmd>LspUI diagnostic prev<CR>', desc = '前の診断へ', icon = 'LspUI' }
+  map.n ']d' { '<cmd>LspUI diagnostic next<CR>', desc = '次の診断へ', icon = 'LspUI' }
 
   -- trouble.nvim
   map.n '<space>lw' { '<cmd>Trouble diagnostics toggle<CR>', desc = 'プロジェクト全体の診断情報' }

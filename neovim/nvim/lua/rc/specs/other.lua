@@ -41,8 +41,6 @@ return {
       { 'hrsh7th/cmp-vsnip',                     lazy = true },
       -- LSPからの候補
       { 'hrsh7th/cmp-nvim-lsp',                  lazy = true },
-      -- カーソル位置のメソッドのシグネチャを表示する
-      { 'hrsh7th/cmp-nvim-lsp-signature-help',   lazy = true },
       -- NeovimのLua APIの補完ソース
       { 'hrsh7th/cmp-nvim-lua',                  lazy = true },
       -- ファイルパスの補完ソース
