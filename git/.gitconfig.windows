@@ -15,8 +15,5 @@
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [pull]
 	rebase = false
-[ghq]
-	root = "~/ghq"
-	user = "yuma140902"
 
 # vim: ft=gitconfig ff=unix noexpandtab
