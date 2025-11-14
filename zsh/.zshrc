@@ -193,7 +193,7 @@ function ghq-cd() {
   local root
   local repo
   root=$(ghq root)
-  repo=$(ghq list | fzf --preview "lsd $root/{}")
+  repo=$(ghq list | fzf --preview "lsd --color always --icon always -1 $root/{}" --query=$1)
   if [ -n "$repo" ]; then
     cd "$root/$repo" || return
   fi
