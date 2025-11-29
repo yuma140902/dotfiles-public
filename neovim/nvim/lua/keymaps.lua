@@ -265,15 +265,6 @@ local function register_keymaps()
   map.n '<space>gg' { '<cmd>Git<cr><C-w>T', desc = 'git status' }
   map.n '<space>gc' { '<cmd>Git commit<cr>', desc = 'git commit' }
 
-  -- vsnipで挿入されたスニペットのプレースホルダ間を移動するキーマップ
-  vim.cmd([[
-  " Jump forward or backward
-  imap <expr> <C-j>   vsnip#jumpable(1)   ? "<Plug>(vsnip-jump-next)"      : "<Tab>"
-  smap <expr> <C-j>   vsnip#jumpable(1)   ? "<Plug>(vsnip-jump-next)"      : "<Tab>"
-  imap <expr> <C-k> vsnip#jumpable(-1)  ? "<Plug>(vsnip-jump-prev)"      : "<S-Tab>"
-  smap <expr> <C-k> vsnip#jumpable(-1)  ? "<Plug>(vsnip-jump-prev)"      : "<S-Tab>"
-]])
-
   -- telescope
   map.n '<space>fd' { function() require 'telescope.builtin'.find_files() end, desc = 'ファイル' }
   map.n '<space>ff' { '<cmd>Telescope find_files hidden=true<CR>', desc = 'ファイル(すべて)' }

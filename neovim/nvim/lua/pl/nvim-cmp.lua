@@ -133,6 +133,8 @@ function M.config()
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+        elseif vim.fn['vsnip#available'](1) == 1 then
+          feedkey('<Plug>(vsnip-jump-next)', '')
         elseif has_words_before() then
           cmp.complete { select = false }
         else
