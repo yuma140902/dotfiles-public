@@ -135,7 +135,7 @@ function M.config()
           cmp.select_next_item { behavior = cmp.SelectBehavior
               .Select }
         elseif has_words_before() then
-          cmp.confirm { select = false }
+          cmp.complete { select = false }
         else
           fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
         end
