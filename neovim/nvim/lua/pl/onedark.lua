@@ -22,10 +22,6 @@ function M.config()
     }
   }
   require 'onedark'.load()
-
-  -- see <https://github.com/navarasu/onedark.nvim/issues/252>
-  vim.cmd [[hi clear @nospell]]
-  vim.cmd [[hi clear @spell]]
 end
 
 return M
