@@ -205,6 +205,8 @@ return {
     cond = not vim.g.vscode,
   },
 
+  -- Copilot LSP
+  -- Needed for NES (New Editing Session)
   {
     'copilotlsp-nvim/copilot-lsp',
     init = function()
@@ -223,6 +225,7 @@ return {
         end
       })
     end,
+    lazy = true,
   },
 
   {
