@@ -54,7 +54,7 @@ in {
 		"./nvim/lua/pl/lexima.lua"
 		"./nvim/lua/pl/lightline.lua"
 		"./nvim/lua/pl/lspconfig.lua"
-		"./nvim/lua/pl/lspui.lua"
+		"./nvim/lua/pl/lspsaga.lua"
 		"./nvim/lua/pl/mason-lspconfig.lua"
 		"./nvim/lua/pl/mason.lua"
 		"./nvim/lua/pl/neodev.lua"

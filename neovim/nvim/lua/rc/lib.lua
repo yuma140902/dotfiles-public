@@ -2,11 +2,11 @@
 
 local M = {}
 
----@alias rc.IconCat "LSP"|"LspUI"
+---@alias rc.IconCat "LSP"|"Lspsaga"
 ---@type table<rc.IconCat, wk.Icon>
 local IconCatTable = {
   LSP = { icon = "", color = "purple" },
-  LspUI = { icon = "", color = "orange" },
+  Lspsaga = { icon = "", color = "orange" },
 }
 
 ---@class mapset_opts: vim.keymap.set.Opts

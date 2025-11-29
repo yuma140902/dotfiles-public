@@ -19,6 +19,7 @@ compile = false
 "cargo:cargo-update" = "latest"
 "cargo:fd-find" = "latest"
 "cargo:git-cliff" = "latest"
+"cargo:gitlogue" = "latest"
 "cargo:lsd" = "latest"
 "cargo:mdbook" = "latest"
 "cargo:random-output" = "latest"

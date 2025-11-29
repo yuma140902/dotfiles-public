@@ -44,8 +44,12 @@ return {
 
   {
     -- LSP用のUI
-    'jinzhongjia/LspUI.nvim',
-    config = require 'pl.lspui'.config,
+    'nvimdev/lspsaga.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = require 'pl.lspsaga'.config,
     event = 'LspAttach',
     cond = not vim.g.vscode,
   },
