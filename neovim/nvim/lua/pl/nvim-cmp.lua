@@ -68,7 +68,6 @@ function M.config()
     cmdline = '[CMD]',
     cmdline_history = '[HIST]',
     conventionalcommits = '[CONV]',
-    nvim_lsp_document_symbol = '[LSP_SYM]',
   }
 
   cmp.setup {
@@ -196,8 +195,7 @@ function M.config()
       documentation = cmp.config.window.bordered(),
     },
     sources = cmp.config.sources({
-      { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
-      { name = 'cmdline_history',          keyword_length = 3 },
+      { name = 'cmdline_history', keyword_length = 3 },
       { name = 'buffer' }
     })
   })
