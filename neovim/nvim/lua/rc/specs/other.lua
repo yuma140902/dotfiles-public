@@ -180,19 +180,49 @@ return {
   {
     -- GitHub Copilot
     'zbirenbaum/copilot.lua',
+    dependencies = { 'copilotlsp-nvim/copilot-lsp' },
     config = function()
-      require("copilot").setup {
+      require 'copilot'.setup {
         suggestion = { enabled = false },
         panel = { enabled = false },
         filetypes = {
           tex = false,
           plaintex = false,
-        }
+        },
+        nes = {
+          enabled = true, -- requires copilot-lsp as a dependency
+          auto_trigger = false,
+          keymap = {
+            accept_and_goto = '<space><CR>',
+            accept = false,
+            dismiss = false,
+          },
+        },
       }
     end,
     cmd = { "Copilot" },
     event = { "InsertEnter" },
     cond = not vim.g.vscode,
+  },
+
+  {
+    'copilotlsp-nvim/copilot-lsp',
+    init = function()
+      vim.g.copilot_nes_debounce = 500
+    end,
+    config = function()
+      require 'copilot-lsp'.setup({
+        nes = {
+          move_count_threshold = 3,
+        }
+      })
+
+      vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+        callback = function()
+          require 'copilot-lsp.nes'.clear()
+        end
+      })
+    end,
   },
 
   {
