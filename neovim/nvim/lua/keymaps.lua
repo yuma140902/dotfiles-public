@@ -36,6 +36,7 @@ local function register_keymaps()
   map.n '<C-l>' { '<cmd>tabnext<CR>' }
 
   map.nx 'gy' { '"+y', desc = 'システムクリップボードにヤンク' }
+  map.n 'gY' { 'gg"+yG', desc = 'バッファ全体をクリップボードにヤンク' }
 
   -- インサートモード
   map.i '<C-l>' {
