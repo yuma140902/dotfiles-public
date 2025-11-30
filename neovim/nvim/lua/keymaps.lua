@@ -43,6 +43,8 @@ local function register_keymaps()
   map.nxo 't<C-u>' { 't、' }
   map.nxo 'T<C-u>' { 'T、' }
 
+  map.nx 'gy' { '"+y', desc = 'システムクリップボードにヤンク' }
+
   -- インサートモード
   map.i '<C-l>' {
     desc = '直前の単語を大文字にする',
