@@ -241,4 +241,10 @@ return {
     event = { 'BufReadPre' },
     cond = not vim.g.vscode,
   },
+
+  {
+    's-show/ft-mapper.nvim',
+    config = require 'pl.ft-mapper'.config,
+    event = { 'BufNewFile', 'BufRead' },
+  },
 }

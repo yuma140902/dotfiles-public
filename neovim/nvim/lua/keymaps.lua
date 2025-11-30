@@ -34,14 +34,6 @@ local function register_keymaps()
   }
   map.n '<C-h>' { '<cmd>tabprev<CR>' }
   map.n '<C-l>' { '<cmd>tabnext<CR>' }
-  map.nxo 'f<C-j>' { 'f。' }
-  map.nxo 'F<C-j>' { 'F。' }
-  map.nxo 't<C-j>' { 't。' }
-  map.nxo 'T<C-j>' { 'T。' }
-  map.nxo 'f<C-u>' { 'f、' }
-  map.nxo 'F<C-u>' { 'F、' }
-  map.nxo 't<C-u>' { 't、' }
-  map.nxo 'T<C-u>' { 'T、' }
 
   map.nx 'gy' { '"+y', desc = 'システムクリップボードにヤンク' }
 
