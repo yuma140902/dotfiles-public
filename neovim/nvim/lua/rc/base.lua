@@ -6,10 +6,15 @@ vim.opt.mouse = 'a'
 vim.opt.fileformats = 'unix,dos'
 
 -- インデント関係
-vim.opt.expandtab = true      -- タブ文字が入力されたとき、スペース文字に変える
+vim.opt.expandtab = true   -- タブ文字が入力されたとき、スペース文字に変える
 vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2        -- '>>'等で入力されるインデントの深さ
-vim.opt.softtabstop = 2       -- 2つのスペースを一文字であるかのように扱う
+vim.opt.shiftwidth = 2     -- '>>'等で入力されるインデントの深さ
+vim.opt.softtabstop = 2    -- 2つのスペースを一文字であるかのように扱う
+vim.opt.breakindent = true -- 折り返し行のインデントを揃えて表示する
+-- treesitter の無い環境での自動インデント
+vim.opt.smartindent = true
+vim.opt.cindent = true
+vim.opt.autoindent = true
 
 vim.opt.virtualedit = 'block' -- 矩形選択で文字が無い部分にカーソルを移動できる
 
