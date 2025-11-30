@@ -163,7 +163,7 @@ local function register_keymaps()
   map.n 'gi' { '<cmd>Lspsaga finder imp<CR>', desc = '実装を表示', icon = 'Lspsaga' }
   map.n '<space>D' { vim.lsp.buf.type_definition, desc = '型定義を表示', icon = 'LSP' }
 
-  map.n 'grr' { '<cmd>Lspsaga finder ref+def<CR>', desc = '参照を表示', icon = 'Lspsaga' }
+  map.n 'grr' { '<cmd>Lspsaga finder ref<CR>', desc = '参照を表示', icon = 'Lspsaga' }
   map.n 'gri' { '<cmd>Lspsaga finder imp <CR>', desc = '実装を表示', icon = 'Lspsaga' }
   map.n 'gra' { '<cmd>Lspsaga code_action<CR>', desc = 'コードアクションを表示', icon = 'Lspsaga' }
   map.n 'grn' { '<cmd>Lspsaga rename<CR>', desc = 'リネームする', icon = 'Lspsaga' }
