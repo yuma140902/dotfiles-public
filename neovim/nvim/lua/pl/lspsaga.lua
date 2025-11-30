@@ -31,7 +31,7 @@ function M.config()
       virtual_text = true,
     },
     symbol_in_winbar = {
-      enable = true
+      enable = false,
     },
     finder = {
       keys = {
