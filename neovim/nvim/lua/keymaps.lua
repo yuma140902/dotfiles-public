@@ -34,38 +34,6 @@ local function register_keymaps()
   }
   map.n '<C-h>' { '<cmd>tabprev<CR>' }
   map.n '<C-l>' { '<cmd>tabnext<CR>' }
-  -- TODO: ドットリピートに対応させる
-  map.n 'g,' {
-    desc = '行末カンマをトグル',
-    function()
-      local line = vim.api.nvim_get_current_line()
-      if line:match(',$') then
-        line = line:gsub(',$', '')
-      else
-        line = line .. ','
-      end
-      vim.api.nvim_set_current_line(line)
-    end,
-  }
-  map.x 'g,' {
-    desc = '選択範囲の行末カンマをトグル',
-    function()
-      local start_line = vim.fn.line("v")
-      local end_line = vim.fn.line(".")
-      if start_line > end_line then
-        start_line, end_line = end_line, start_line
-      end
-      for line_num = start_line, end_line do
-        local line = vim.api.nvim_buf_get_lines(0, line_num - 1, line_num, false)[1]
-        if line:match(',$') then
-          line = line:gsub(',$', '')
-        else
-          line = line .. ','
-        end
-        vim.api.nvim_buf_set_lines(0, line_num - 1, line_num, false, { line })
-      end
-    end,
-  }
   map.nxo 'f<C-j>' { 'f。' }
   map.nxo 'F<C-j>' { 'F。' }
   map.nxo 't<C-j>' { 't。' }
