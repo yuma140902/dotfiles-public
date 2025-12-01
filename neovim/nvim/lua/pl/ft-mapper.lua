@@ -21,7 +21,7 @@ function M.config()
       { " ", "　" }, -- 半角・全角スペース
     },
     line_limit = 1,
-    no_default_mappings = true,
+    no_default_mappings = false,
     debug = false,
   }
 end
