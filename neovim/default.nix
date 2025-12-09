@@ -47,6 +47,7 @@ in {
 		"./nvim/lua/pl/diffview.lua"
 		"./nvim/lua/pl/ferris.lua"
 		"./nvim/lua/pl/fidget.lua"
+		"./nvim/lua/pl/ft-mapper.lua"
 		"./nvim/lua/pl/fterm.lua"
 		"./nvim/lua/pl/fugitive.lua"
 		"./nvim/lua/pl/gitsigns.lua"
