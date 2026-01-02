@@ -19,7 +19,6 @@ compile = false
 "cargo:cargo-update" = "latest"
 "cargo:gitlogue" = "latest"
 "cargo:random-output" = "latest"
-"cargo:sccache" = "latest"
 "cargo:sqlx-cli" = "latest"
 "cargo:tauri-cli" = "latest"
 "cargo:tealdeer" = "latest"
