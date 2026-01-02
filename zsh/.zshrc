@@ -45,7 +45,8 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 # シンタックスハイライト
-zinit light zsh-users/zsh-syntax-highlighting
+zinit ice wait lucid
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 # 履歴のサジェスト
 zinit light zsh-users/zsh-autosuggestions
