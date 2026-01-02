@@ -34,6 +34,7 @@ compile = false
 "cargo:trunk" = "latest"
 "cargo:wgpu-info" = "latest"
 "cargo:zoxide" = "latest"
+hyperfine = "latest"
 "node" = "latest"
 "npm:@github/copilot" = "latest"
 "npm:@google/gemini-cli" = "latest"
