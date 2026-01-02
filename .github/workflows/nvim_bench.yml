@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: '[Setup > repo] Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: '[Setup > vim-startuptime] Download'
         run: wget https://github.com/rhysd/vim-startuptime/releases/download/v1.3.2/vim-startuptime_1.3.2_linux_amd64.tar.gz
