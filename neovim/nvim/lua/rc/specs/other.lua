@@ -188,6 +188,7 @@ return {
         filetypes = {
           tex = false,
           plaintex = false,
+          typst = false,
         },
         nes = {
           enabled = true, -- requires copilot-lsp as a dependency
