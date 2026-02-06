@@ -10,7 +10,7 @@ binstall = false
 compile = false
 
 [tools]
-"cargo:cargo-audit" = "0.22.0"
+"cargo:cargo-audit" = "0.22.1"
 "cargo:cargo-bloat" = "0.12.1"
 "cargo:cargo-cache" = "0.8.3"
 "cargo:cargo-edit" = "0.13.8"
