@@ -19,6 +19,7 @@
 				quotepath = false;
 			};
 			pull.rebase = false;
+			include.path = "~/.gitconfig.private";
 		};
 		lfs.enable = true;
 	};

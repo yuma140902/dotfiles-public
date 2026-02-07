@@ -7,11 +7,11 @@
 
 ## Install
 
-まずリポジトリをクローンします。クローン先は自由です。
+まずリポジトリをクローンします。クローン先は `~/repos/dotfiles-public/` を推奨します。
 
 ```sh
-git clone https://github.com/yuma140902/dotfiles-public
-cd dotfiles-public
+git clone https://github.com/yuma140902/dotfiles-public ~/repos/dotfiles-public/
+cd ~/repos/dotfiles-public
 ```
 
 ### Nix を使用しない方法
@@ -48,6 +48,16 @@ home-manager switch --flake .
 
 ```sh
 home-manager switch --flake '.#usernamehogehoge'
+```
+
+## git の email, name の設定
+
+`~/.gitconfig.private` に以下のような内容を書く。このファイルは git のメインの設定ファイルから読み込まれるように設定されている。
+
+```
+[user]
+name = "hogehoge"
+email = "hogehoge@example.com"
 ```
 
 ## ベンチマーク
