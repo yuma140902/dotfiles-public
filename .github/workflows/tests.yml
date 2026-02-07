@@ -14,25 +14,28 @@ jobs:
     name: "[Ubuntu] mise"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - run: cd ./_tests && docker compose run --build ubuntu /root/repos/dotfiles-public/_tests/test_mise_setup.sh
 
   mise_arch:
     name: "[Arch Linux] mise"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - run: cd ./_tests && docker compose run --build arch /root/repos/dotfiles-public/_tests/test_mise_setup.sh
+
+  mise_windows:
+    name: "[Windows] mise"
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./dotfiles install mise
+      - run: winget install --disable-interactivity --id jdx.mise
+      - run: "(&mise activate pwsh) | Out-String | Invoke-Expression ; mise i --jobs=1"
 
   nixos_nixos:
     name: "[NixOS] nixos"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - run: cd ./_tests && docker compose run --build nixos /root/repos/dotfiles-public/_tests/test_nixos_setup.sh
