@@ -37,19 +37,6 @@
         "type": "github"
       }
     },
-    "nixfiles-private": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1749229073,
-        "narHash": "sha256-N+H9DsJveQMXsP82hpk0cnuVWx8YIoFsxCUA0T0HB0M=",
-        "path": "/home/yuma/repos/nixfiles-private",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/yuma/repos/nixfiles-private",
-        "type": "path"
-      }
-    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -121,7 +108,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixfiles-private": "nixfiles-private",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable"
