@@ -1,0 +1,13 @@
+services:
+  ubuntu:
+    build:
+      context: ..
+      dockerfile: ./_tests/Dockerfile.ubuntu
+  arch:
+    build:
+      context: ..
+      dockerfile: ./_tests/Dockerfile.arch
+  nixos:
+    build:
+      context: ..
+      dockerfile: ./_tests/Dockerfile.nixos
