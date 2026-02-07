@@ -10,6 +10,8 @@
 
 	outputs = { self, nixpkgs, nixpkgs-unstable, nixos-wsl, home-manager, ... } @ inputs: let
 		stateVersion = "24.11";
+		username = builtins.getEnv "USER";
+		homeDirectory = builtins.getEnv "HOME";
 	in {
 		nixosConfigurations = builtins.listToAttrs [
 			(import ./hosts/raytrek-wsl.nix (inputs // {
@@ -18,15 +20,15 @@
 		];
 
 		homeConfigurations = {
-			yuma = home-manager.lib.homeManagerConfiguration {
+			"${username}" = home-manager.lib.homeManagerConfiguration {
 				pkgs = import nixpkgs {
 					system = "x86_64-linux";
 					config.allowUnfree = true;
 				};
 				extraSpecialArgs = {
 					inherit inputs;
-					username = "yuma";
-					homeDirectory = "/home/yuma";
+					username = username;
+					homeDirectory = homeDirectory;
 					stateVersion = stateVersion;
 					pkgsUnstable = import nixpkgs-unstable {
 						system = "x86_64-linux";

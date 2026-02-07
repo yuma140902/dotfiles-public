@@ -41,14 +41,10 @@ sudo nixos-rebuild switch --flake '.#hostnamehogehoge'
 #### Home Manager
 
 ```sh
-home-manager switch --flake .
+home-manager switch --flake . --impure
 ```
 
-または
-
-```sh
-home-manager switch --flake '.#usernamehogehoge'
-```
+ユーザ名とホームディレクトリは `$USER` と `$HOME` の値が使用されます。
 
 ## git の email, name の設定
 
