@@ -2,6 +2,7 @@
 
 [![Neovim Benchmark](https://github.com/yuma140902/dotfiles-public/actions/workflows/nvim_bench.yml/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/nvim_bench.yml)
 [![pages-build-deployment](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment)
+[![Dotfiles setup test](https://github.com/yuma140902/dotfiles-public/actions/workflows/tests.yml/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/tests.yml)
 
 いろいろなアプリケーションの設定ファイルを管理しています。
 
@@ -71,3 +72,4 @@ zsh-abbr は zsh 内で使える abbreviation を管理する zsh プラグイ�
 dotfiles-public には user-abbreviations の定義も含まれていて、~/.config/zsh-abbr/user-abbreviations にシンボリックリンクが作られる。
 
 本リポジトリから zsh モジュールをインストールした場合、abbr コマンドは使用すべきではない。abbr コマンドは user-abbreviations を削除してから新しい user-abbreviations ファイルを作るという動作をするので、シンボリックリンクではなくなってしまい git 管理から外れてしまうからである。
+
