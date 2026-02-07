@@ -6,6 +6,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+
 --config.font = wezterm.font 'HackGen Console NF'
 --config.font = wezterm.font 'UDEV Gothic NF'
 config.font = wezterm.font 'UDEV Gothic NFLG'
@@ -13,6 +14,10 @@ config.font = wezterm.font 'UDEV Gothic NFLG'
 config.font_size = 10.0
 if wezterm.target_triple == 'aarch64-apple-darwin' then
   config.font_size = 12.0
+end
+if wezterm.hostname() == 'pc5thinkpad' then
+  config.front_end = 'WebGpu'
+  config.font_size = 11.0
 end
 
 config.use_ime = true
