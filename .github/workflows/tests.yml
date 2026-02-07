@@ -30,8 +30,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ./dotfiles install mise
-      - run: winget install --disable-interactivity --accept-package-agreements --accept-source-agreements --id jdx.mise
-      - run: "(&mise activate pwsh) | Out-String | Invoke-Expression ; mise i --jobs=1"
+      - uses: jdx/mise-action@v3
+        with:
+          install: false
+      - run: mise i --jobs=1
 
   nixos_nixos:
     name: "[NixOS] nixos"
