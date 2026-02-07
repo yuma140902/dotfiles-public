@@ -25,6 +25,8 @@ cd ~/repos/dotfiles-public
 インストール可能なモジュールは `./dotfiles list` で確認できます。
 Python 3 が必要です。
 
+Mise を使ってツール類のインストールができます。まず `./dotfiles install mise` で mise の設定ファイルを設置し、`mise i` で設定ファイルをもとにインストールします。
+
 ### Nix を使用する方法
 
 #### NixOS
@@ -72,4 +74,5 @@ zsh-abbr は zsh 内で使える abbreviation を管理する zsh プラグイ�
 dotfiles-public には user-abbreviations の定義も含まれていて、~/.config/zsh-abbr/user-abbreviations にシンボリックリンクが作られる。
 
 本リポジトリから zsh モジュールをインストールした場合、abbr コマンドは使用すべきではない。abbr コマンドは user-abbreviations を削除してから新しい user-abbreviations ファイルを作るという動作をするので、シンボリックリンクではなくなってしまい git 管理から外れてしまうからである。
+
 
