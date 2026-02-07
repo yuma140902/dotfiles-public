@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ./dotfiles install mise
-      - run: winget install --disable-interactivity --accept-package-agreements --id jdx.mise
+      - run: winget install --disable-interactivity --accept-package-agreements --accept-source-agreements --id jdx.mise
       - run: "(&mise activate pwsh) | Out-String | Invoke-Expression ; mise i --jobs=1"
 
   nixos_nixos:
