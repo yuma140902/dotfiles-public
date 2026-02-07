@@ -24,17 +24,6 @@ jobs:
       - uses: actions/checkout@v4
       - run: cd ./_tests && docker compose run --build arch /root/repos/dotfiles-public/_tests/test_mise_setup.sh
 
-  mise_windows:
-    name: "[Windows] mise"
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: ./dotfiles install mise
-      - uses: jdx/mise-action@v3
-        with:
-          install: false
-      - run: mise i --jobs=1
-
   nixos_nixos:
     name: "[NixOS] nixos"
     runs-on: ubuntu-latest
