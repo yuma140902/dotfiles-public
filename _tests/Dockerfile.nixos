@@ -1,10 +1,7 @@
 FROM nixos/nix:2.33.2
-#RUN mkdir -p /home/yuma/repos/nixfiles-private
 RUN echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
 
 # remove conflicting packages
 RUN nix-env -e less man-db git-minimal wget curl
 
-#USER yuma
-#WORKDIR /home/yuma
 COPY .. /root/repos/dotfiles-public
