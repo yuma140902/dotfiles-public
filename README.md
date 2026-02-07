@@ -26,12 +26,6 @@ Python 3 が必要です。
 
 ### Nix を使用する方法
 
-以下に示す場所に空のディレクトリが必要です。
-
-```sh
-mkdir -p /home/yuma/repos/nixfiles-private/
-```
-
 #### NixOS
 
 ```sh
