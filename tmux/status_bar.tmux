@@ -32,8 +32,8 @@ set status-right-length 90
 set status-bg "$black"
 set status-fg "$white"
 
-set status-right "#H #{tmux_mode_indicator}"
-set status-left "#[bg=$green,fg=$black] #S #[default] "
+set status-right "#{tmux_mode_indicator}"
+set status-left "#[bg=$visual_grey] #H #[bg=$green,fg=$black] #S #[default] "
 
 set "display-panes-active-colour" "$yellow"
 set "display-panes-colour" "$blue"
