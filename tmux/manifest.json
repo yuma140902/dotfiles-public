@@ -4,6 +4,10 @@
     {
       "src": ".tmux.conf",
       "dst": ".tmux.conf"
+    },
+    {
+      "src": "status_bar.tmux",
+      "dst": ".tmux/status_bar.tmux"
     }
   ]
 }
