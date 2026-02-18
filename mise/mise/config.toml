@@ -38,5 +38,5 @@ python = "3.14.3"
 ripgrep = "15.1.0"
 rust = { version = "1", components = "rust-src,rust-analyzer" }
 tokei = "14.0.0"
-uv = "0.10.3"
+uv = "0.10.4"
 zoxide = "0.9.9"
