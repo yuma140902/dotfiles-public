@@ -38,5 +38,5 @@ set status-left "#[bg=$visual_grey] #H #[bg=$green,fg=$black] #S #[default] "
 set "display-panes-active-colour" "$yellow"
 set "display-panes-colour" "$blue"
 
-setw window-status-format "#[bg=$visual_grey,fg=$white] #I: #W "
-setw window-status-current-format "#[bg=$purple,fg=$black,bold] #I: #W "
+setw window-status-format "#[bg=$black,fg=$white] #I: #W "
+setw window-status-current-format "#[bg=$visual_grey,fg=$white] #I: #W "
