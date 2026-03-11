@@ -42,6 +42,6 @@ compile = false
 "npm:@google/gemini-cli" = "0.32.1"
 "npm:tiged" = "2.12.7"
 "npm:trash-cli" = "7.2.0"
-node = "25.8.0"
+node = "25.8.1"
 python = "3.14.3"
 rust = { version = "1.94.0", components = "rust-src,rust-analyzer" }
