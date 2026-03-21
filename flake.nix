@@ -1,15 +1,15 @@
 {
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 		nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 		nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-		home-manager.url = "github:nix-community/home-manager/release-24.11";
+		home-manager.url = "github:nix-community/home-manager/release-25.11";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 	};
 
 
 	outputs = { self, nixpkgs, nixpkgs-unstable, nixos-wsl, home-manager, ... } @ inputs: let
-		stateVersion = "24.11";
+		stateVersion = "25.11";
 		username = builtins.getEnv "USER";
 		homeDirectory = builtins.getEnv "HOME";
 	in {
