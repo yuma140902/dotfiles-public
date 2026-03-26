@@ -44,4 +44,4 @@ compile = false
 "npm:trash-cli" = "7.2.0"
 node = "25.8.1"
 python = "3.14.3"
-rust = { version = "1.94.0", components = "rust-src,rust-analyzer" }
+rust = { version = "1.94.1", components = "rust-src,rust-analyzer" }
