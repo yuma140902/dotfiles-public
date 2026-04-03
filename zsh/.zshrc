@@ -101,12 +101,6 @@ if type 'mise' > /dev/null; then
   eval "$(mise activate zsh)"
 fi
 
-if type 'pyenv' > /dev/null; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
-
 if type 'zoxide' > /dev/null; then
   eval "$(zoxide init zsh --cmd cd)"
 fi
