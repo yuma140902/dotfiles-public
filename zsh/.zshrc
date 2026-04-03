@@ -85,6 +85,12 @@ fi
 if [ -d "/snap/bin" ]; then
   PATH="$PATH:/snap/bin"
 fi
+if [ -d "$HOME/.antigravity/antigravity/bin:$PATH" ]; then
+  PATH="$PATH:$HOME/.antigravity/antigravity/bin"
+fi
+if [ -d "$HOME/.lmstudio/bin" ]; then
+  PATH="$PATH:$HOME/.lmstudio/bin"
+fi
 export PATH
 
 if [ -f "$HOME/.cargo/env" ]; then
