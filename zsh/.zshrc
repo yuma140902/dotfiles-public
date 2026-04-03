@@ -109,10 +109,6 @@ if [ -f /usr/share/nvm/init-nvm ]; then
   source /usr/share/nvm/init-nvm.sh
 fi
 
-if [ -r "$HOME/.opam/opam-init/init.sh" ]; then
-  source "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null
-fi
-
 if type 'brew' > /dev/null; then
   export LDFLAGS="$LDFLAGS -L/opt/homebrew/lib"
   export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/include"
