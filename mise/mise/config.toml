@@ -1,6 +1,5 @@
 [settings]
-asdf = false
-vfox = true
+disable_backends = ["asdf"]
 idiomatic_version_file_enable_tools = []
 
 [settings.cargo]
@@ -30,7 +29,7 @@ compile = false
 "aqua:sharkdp/hyperfine" = "1.20.0"
 "aqua:topgrade-rs/topgrade" = "17.2.1"
 "aqua:x-motemen/ghq" = "1.9.4"
-"aqua:lima-vm/lima" = { version = "2.1.0", os = [ "macos" ] }
+"aqua:lima-vm/lima" = { version = "2.1.0", os = ["macos"] }
 "cargo:cargo-audit" = "0.22.1"
 "cargo:cargo-bloat" = "0.12.1"
 "cargo:cargo-cache" = "0.8.3"
