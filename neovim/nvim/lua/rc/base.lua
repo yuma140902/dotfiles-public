@@ -24,6 +24,8 @@ vim.opt.ambiwidth = 'single' -- use rbtnn/vim-ambiwidth
 
 vim.opt.formatoptions:append('M')
 
+vim.opt.foldcolumn = 'auto'
+
 vim.opt.timeout = true
 vim.opt.timeoutlen = 1000
 
