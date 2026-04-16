@@ -28,7 +28,7 @@ compile = false
 "aqua:sharkdp/fd" = "10.4.2"
 "aqua:sharkdp/hyperfine" = "1.20.0"
 "aqua:topgrade-rs/topgrade" = "17.2.1"
-"aqua:x-motemen/ghq" = "1.9.4"
+"aqua:x-motemen/ghq" = "1.10.0"
 "aqua:lima-vm/lima" = { version = "2.1.1", os = ["macos"] }
 "cargo:cargo-audit" = "0.22.1"
 "cargo:cargo-bloat" = "0.12.1"
