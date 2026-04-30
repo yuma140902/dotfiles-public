@@ -40,6 +40,7 @@ in {
 		"./nvim/lua/pl/aerial.lua"
 		"./nvim/lua/pl/ambiwidth.lua"
 		"./nvim/lua/pl/auto-split-direction.lua"
+		"./nvim/lua/pl/bigfile.lua"
 		"./nvim/lua/pl/ccc.lua"
 		"./nvim/lua/pl/colorful-winsep.lua"
 		"./nvim/lua/pl/conform.lua"

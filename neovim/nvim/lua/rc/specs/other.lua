@@ -248,4 +248,10 @@ return {
     config = require 'pl.ft-mapper'.config,
     event = { 'BufNewFile', 'BufRead' },
   },
+
+  {
+    'https://github.com/LunarVim/bigfile.nvim',
+    config = require 'pl.bigfile'.config,
+    lazy = false,
+  },
 }
