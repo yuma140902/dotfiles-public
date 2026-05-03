@@ -5,35 +5,33 @@ vim.opt.number = false
 vim.opt.mouse = 'a'
 vim.opt.fileformats = 'unix,dos'
 
--- インデント関係
-vim.opt.expandtab = true   -- タブ文字が入力されたとき、スペース文字に変える
+-- インデント
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2     -- '>>'等で入力されるインデントの深さ
-vim.opt.softtabstop = 2    -- 2つのスペースを一文字であるかのように扱う
-vim.opt.breakindent = true -- 折り返し行のインデントを揃えて表示する
--- treesitter の無い環境での自動インデント
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.breakindent = true
 vim.opt.smartindent = true
 vim.opt.cindent = true
 vim.opt.autoindent = true
 
+-- ビジュアルモード
 vim.opt.virtualedit = 'block' -- 矩形選択で文字が無い部分にカーソルを移動できる
 
+-- エディタの見た目
 vim.opt.scrolloff = 3
-
-vim.opt.ambiwidth = 'single' -- use rbtnn/vim-ambiwidth
+vim.opt.ambiwidth = 'single' -- 後から rbtnn/vim-ambiwidth でいい感じに設定する
+vim.opt.foldcolumn = 'auto'
+vim.opt.laststatus = 2
 
 vim.opt.formatoptions:append('M')
-
-vim.opt.foldcolumn = 'auto'
 
 vim.opt.timeout = true
 vim.opt.timeoutlen = 1000
 
-vim.opt.laststatus = 2
-
 -- 検索
-vim.opt.smartcase = true -- 検索ワードが小文字のみなら大文字小文字を無視
-vim.opt.wrapscan = true  -- 最後まで検索したら最初に戻る
+vim.opt.smartcase = true
+vim.opt.wrapscan = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
@@ -42,36 +40,33 @@ vim.opt.wildignorecase = true
 -- ターミナル
 local terminal_augroup = vim.api.nvim_create_augroup('terminal_augroup', { clear = true })
 
--- ターミナルのバッファでは行番号非表示
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = terminal_augroup,
-  pattern = '*',
-  command = 'setlocal nonumber'
-})
-
--- ターミナルのバッファを判別するための変数を設定
 vim.api.nvim_create_autocmd('TermOpen', {
   group = terminal_augroup,
   pattern = '*',
   callback = function()
+    -- ターミナルのバッファでは行番号非表示
+    vim.opt_local.number = false
+    -- ターミナルのバッファを判別するための変数を設定
     vim.b.this_is_a_terminal_buffer = true
+
+    vim.cmd.startinsert()
   end
 })
 
--- ターミナルウィンドウに切り替わったら自動的にインサートモードへ入る
+-- ターミナルのバッファに入ったとき自動でインサートモードに入る
 vim.api.nvim_create_autocmd('BufEnter', {
   group = terminal_augroup,
   pattern = '*',
   callback = function()
     if vim.b.this_is_a_terminal_buffer then
-      vim.cmd('startinsert')
+      vim.cmd.startinsert()
     end
   end
 })
 
 -- シェル
 if vim.fn.has('win32') == 1 then
-  -- WindowsではシェルはPowershellとする
+  -- Windows ではシェルは PowerShell を使う
   -- see also :help shell-powershell
   if vim.fn.executable('pwsh') then
     vim.opt.shell = 'pwsh'
@@ -86,41 +81,35 @@ if vim.fn.has('win32') == 1 then
   vim.opt.shellxquote = ''
 end
 
--- 自動でquickfix windowを開く
-vim.api.nvim_create_autocmd('QuickFixCmdPost', {
-  group = vim.api.nvim_create_augroup('auto_open_quickfix_window', { clear = true }),
-  pattern = '*',
-  nested = true,
-  command = 'cwindow'
-})
-
--- 組み込みのLSPクライアントの設定
-vim.diagnostic.config({
+vim.diagnostic.config {
+  virtual_text = true,
   severity_sort = true,
-})
+  float = {
+    border = 'rounded',
+  },
+}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp_setup', { clear = true }),
   pattern = '*',
   callback = function()
     vim.lsp.inlay_hint.enable(true)
     local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
-    local on_attach = require 'rc.lib'.on_attach
-    vim.lsp.config("*", {
+    vim.lsp.config('*', {
       capabilities = capabilities,
-      on_attach = on_attach,
     })
   end
 })
 
--- UIEnterのあと一定時間後にUser UIEnterPostイベントを発生させる
+-- UIEnter から一定時間後に User UIEnterPost イベントを発生させる
 vim.api.nvim_create_autocmd('UIEnter', {
-  group = vim.api.nvim_create_augroup('UIEnterDelay', { clear = true }),
+  group = vim.api.nvim_create_augroup('ui_enter_post', { clear = true }),
   pattern = '*',
   nested = true,
   callback = function()
     vim.defer_fn(function()
-      vim.api.nvim_exec_autocmds("User", {
-        pattern = "UIEnterPost",
+      vim.api.nvim_exec_autocmds('User', {
+        pattern = 'UIEnterPost',
         modeline = false,
       })
     end, 600)

@@ -1,7 +1,7 @@
 vim.loader.enable()
-require 'rc.disable_default_plugins'
+require 'rc.disable_builtin_plugins'
 require 'rc.base'
 require 'rc.gui'
-require 'rc.plugins'
+require 'rc.plugin'
+require 'rc.keymaps'.register_keymaps()
 require 'rc.commands'
-require 'keymaps'.register_keymaps()

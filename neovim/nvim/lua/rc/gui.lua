@@ -1,4 +1,4 @@
--- GUIに関する設定
+-- GUI に関する設定
 
 if vim.fn.has 'win32' == 1 then
   vim.o.guifont = 'PlemolJP Console NF:h10'
