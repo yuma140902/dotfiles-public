@@ -1,6 +1,6 @@
-vim.cmd('setlocal conceallevel=1')
-vim.cmd('setlocal noexpandtab')
-vim.cmd('setlocal sw=8')
-vim.cmd('setlocal ts=8')
-vim.cmd('setlocal foldmethod=marker')
-vim.cmd('setlocal foldmarker=<details>,</details>')
+vim.opt_local.conceallevel = 1
+vim.opt_local.expandtab = false
+vim.opt_local.tabstop = 8
+vim.opt_local.shiftwidth = 8
+vim.opt_local.foldmethod = 'marker'
+vim.opt_local.foldmarker = '<details>,</details>'

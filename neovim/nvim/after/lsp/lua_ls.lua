@@ -1,16 +1,14 @@
--- load neodev.nvim
-require 'pl.neodev'.config()
-
 ---@type vim.lsp.Config
 return {
   settings = {
     Lua = {
-      diagnostics = {
-        globals = { 'vim' }
+      runtime = {
+        version = 'LuaJIT',
+        pathStrict = true,
       },
       hint = {
-        enable = true
-      }
+        enable = true,
+      },
     }
   }
 }
