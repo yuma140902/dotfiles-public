@@ -26,6 +26,7 @@ compile = false
 "aqua:topgrade-rs/topgrade" = "17.4.0"
 "aqua:x-motemen/ghq" = "1.10.1"
 "aqua:lima-vm/lima" = { version = "2.1.1", os = ["macos"] }
+"aqua:tree-sitter/tree-sitter" = "0.26.8"
 "cargo:cargo-audit" = "0.22.1"
 "cargo:cargo-bloat" = "0.12.1"
 "cargo:cargo-cache" = "0.8.3"
@@ -38,6 +39,7 @@ compile = false
 "npm:@google/gemini-cli" = "0.40.1"
 "npm:tiged" = "2.12.7"
 "npm:trash-cli" = "7.2.0"
+"vfox:mise-plugins/vfox-neovim" = "0.12.2"
 node = "25.9.0"
 python = "3.14.4"
 rust = { version = "1.95.0", components = "rust-src,rust-analyzer" }
