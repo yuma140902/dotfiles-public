@@ -202,7 +202,7 @@ function M.register_keymaps()
   -- treesitter incremental selection
   map.n '<CR>' {
     function()
-      if vim.tbl_contains({ 'vim' }, vim.bo.filetype) then
+      if vim.tbl_contains({ 'vim', 'qf' }, vim.bo.filetype) then
         return '<CR>'
       end
       return '<Cmd>normal van<CR>'
