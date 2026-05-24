@@ -30,7 +30,8 @@ compile = false
 "cargo:tokei" = "14.0.0"
 "npm:@google/gemini-cli" = "0.40.1"
 "npm:tiged" = "2.12.7"
-"npm:trash-cli" = "7.2.0"
+"npm:trash-cli" = { version = "7.2.0", os = ["windows"] }
+"pipx:trash-cli" = { version = "0.24.5.26", os = ["linux", "macos"] }
 "vfox:mise-plugins/vfox-neovim" = "0.12.2"
 node = "25.9.0"
 python = "3.14.5"
