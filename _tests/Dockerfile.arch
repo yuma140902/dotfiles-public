@@ -1,3 +1,3 @@
-FROM archlinux:base@sha256:36301eef718527e362e568206b7606a3246c1fc089b24fce20c47cf68065f229
+FROM archlinux:base@sha256:a9a1e6db522cf5f8018c920d035e2bfbf8e39c485ee737ce0388990898f2f042
 RUN pacman -Syu --noconfirm git curl base-devel zsh python
 COPY .. /root/repos/dotfiles-public
