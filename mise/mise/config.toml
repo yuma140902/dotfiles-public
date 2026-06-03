@@ -19,7 +19,7 @@ compile = false
 "aqua:lima-vm/lima" = { version = "2.1.1", os = ["macos"] }
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:openai/codex" = { version = "0.133.0", os = ["linux", "macos"] }
-"aqua:pnpm/pnpm" = "11.3.0"
+"aqua:pnpm/pnpm" = "11.4.0"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.4.2"
 "aqua:topgrade-rs/topgrade" = "17.5.1"
