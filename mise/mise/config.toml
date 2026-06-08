@@ -17,7 +17,7 @@ compile = false
 "aqua:go-task/task" = "3.51.1"
 "aqua:jqlang/jq" = "1.8.1"
 "aqua:junegunn/fzf" = "0.73.1"
-"aqua:lima-vm/lima" = { version = "2.1.1", os = ["macos"] }
+"aqua:lima-vm/lima" = { version = "2.1.2", os = ["macos"] }
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:openai/codex" = { version = "0.133.0", os = ["linux", "macos"] }
 "aqua:pnpm/pnpm" = "11.5.0"
