@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "src": ".psmux.conf",
+      "dst": ".psmux.conf"
+    }
+  ]
+}
