@@ -11,6 +11,7 @@ setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_SAVE_NO_DUPS
+setopt PRINT_EXIT_VALUE
 
 bindkey -e
 
