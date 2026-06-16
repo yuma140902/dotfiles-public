@@ -2,9 +2,3 @@
 
 [aws]
 symbol = " "
-
-[git_metrics]
-disabled = false
-
-[status]
-disabled = false
