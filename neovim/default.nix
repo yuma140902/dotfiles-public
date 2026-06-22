@@ -72,6 +72,7 @@ in {
 		"./nvim/lua/plugins/nav-todo-comments.lua"
 		"./nvim/lua/plugins/nav-treesitter-context.lua"
 		"./nvim/lua/plugins/nav-trouble.lua"
+		"./nvim/lua/plugins/other-cscope-maps.lua"
 		"./nvim/lua/plugins/other-onedark.lua"
 		"./nvim/lua/plugins/other-persisted.lua"
 		"./nvim/lua/plugins/other-pest.lua"
