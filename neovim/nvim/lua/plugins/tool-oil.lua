@@ -26,6 +26,8 @@ return {
       end)
     end
 
+    local last_cmd = ""
+
     local detail_view = false
 
     require 'oil'.setup {
@@ -86,17 +88,11 @@ return {
             if entry and dir then
               local full_path = vim.fn.shellescape(dir .. entry.name)
 
-              local open_cmd = 'xdg-open'
-              if vim.fn.has('mac') == 1 then
-                open_cmd = 'open'
-              elseif vim.fn.has('win32') == 1 then
-                open_cmd = 'start'
-              end
-
-              vim.ui.input({ prompt = ('Shell command (default = %s): '):format(open_cmd) }, function(input)
+              vim.ui.input({ prompt = 'Shell command: ', default = last_cmd }, function(input)
                 if not input or input == '' then
-                  input = open_cmd
+                  return
                 end
+                last_cmd = input
                 shell(input .. ' ' .. full_path)
               end)
             else
