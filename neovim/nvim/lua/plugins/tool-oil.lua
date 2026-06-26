@@ -99,6 +99,15 @@ return {
             end
           end
         },
+        ['gT'] = {
+          desc = 'Open terminal',
+          callback = function()
+            local dir = require 'oil'.get_current_dir()
+            if dir then
+              vim.cmd(("tab split | lcd %s | terminal"):format(vim.fn.fnameescape(dir)))
+            end
+          end
+        },
         ['gt'] = {
           desc = 'Open terminal',
           callback = function()
