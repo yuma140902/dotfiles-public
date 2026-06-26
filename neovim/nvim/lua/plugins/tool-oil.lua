@@ -99,6 +99,15 @@ return {
             end
           end
         },
+        ['gt'] = {
+          desc = 'Open terminal',
+          callback = function()
+            local dir = require 'oil'.get_current_dir()
+            if dir then
+              vim.cmd(("lcd %s | terminal"):format(vim.fn.fnameescape(dir)))
+            end
+          end
+        },
         ['gd'] = {
           desc = 'Toggle file detail view',
           callback = function()
