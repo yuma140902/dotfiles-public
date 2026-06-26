@@ -53,6 +53,7 @@ return {
   end,
 
   config = function()
+    local detail_view = false
     require 'oil'.setup {
       default_file_explorer = false,
       delete_to_trash = true,
@@ -63,9 +64,6 @@ return {
 
       columns = {
         'icon',
-        -- 'permissions',
-        -- 'size',
-        -- 'mtime',
       },
 
       buf_options = {
@@ -104,6 +102,17 @@ return {
         ['gs'] = 'actions.change_sort',
         ['gx'] = 'actions.open_external',
         ['g\\'] = 'actions.toggle_trash',
+        ['gd'] = {
+          desc = 'Toggle file detail view',
+          callback = function()
+            detail_view = not detail_view
+            if detail_view then
+              require 'oil'.set_columns { 'icon', 'permissions', 'size', 'mtime' }
+            else
+              require 'oil'.set_columns { 'icon' }
+            end
+          end
+        }
       },
       use_default_keymaps = true,
 
