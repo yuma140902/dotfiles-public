@@ -13,9 +13,10 @@ return {
 
   config = function()
     ---@param input string
-    local function shell(input)
+    ---@param cwd string|nil
+    local function shell(input, cwd)
       local cmd = { 'sh', '-c', input } -- TODO: win32
-      vim.system(cmd, { text = true }, function(job)
+      vim.system(cmd, { text = true, cwd = cwd }, function(job)
         vim.schedule(function()
           if job.code == 0 then
             print(job.stdout)
@@ -86,14 +87,12 @@ return {
             local dir = oil.get_current_dir()
 
             if entry and dir then
-              local full_path = vim.fn.shellescape(dir .. entry.name)
-
               vim.ui.input({ prompt = 'Shell command: ', default = last_cmd }, function(input)
                 if not input or input == '' then
                   return
                 end
                 last_cmd = input
-                shell(input .. ' ' .. full_path)
+                shell(input .. ' ' .. vim.fn.shellescape(entry.name), dir)
               end)
             else
               print('No entry selected')
