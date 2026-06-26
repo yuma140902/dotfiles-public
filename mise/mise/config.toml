@@ -16,7 +16,7 @@ compile = false
 "aqua:fastfetch-cli/fastfetch" = "2.64.2"
 "aqua:jqlang/jq" = "1.8.1"
 "aqua:junegunn/fzf" = "0.73.1"
-"aqua:lima-vm/lima" = { version = "2.1.2", os = ["macos"] }
+"aqua:lima-vm/lima" = { version = "2.1.3", os = ["macos"] }
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:openai/codex" = { version = "0.133.0", os = ["linux", "macos"] }
 "aqua:pnpm/pnpm" = "11.8.0"
