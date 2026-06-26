@@ -9,6 +9,47 @@ return {
   init = function()
     local map = require 'rc.keymaps'.map
     map.n '-' { '<cmd>Oil<CR>', desc = 'ディレクトリに移動' }
+
+    ---@param input string
+    local function shell(input)
+      local cmd = { 'sh', '-c', input } -- TODO: win32
+      vim.system(cmd, { text = true }, function(job)
+        vim.schedule(function()
+          if job.code == 0 then
+            print(job.stdout)
+          else
+            print(("code: %d, stderr: %s"):format(job.code, job.stderr))
+          end
+        end)
+      end)
+    end
+
+    map.n '<leader>x' { desc = 'Execute shell command on oil.nvim entry', function()
+      local oil = require 'oil'
+      local entry = oil.get_cursor_entry()
+      local dir = oil.get_current_dir()
+
+      if entry and dir then
+        local full_path = vim.fn.shellescape(dir .. entry.name)
+
+        local open_cmd = 'xdg-open'
+        if vim.fn.has('mac') == 1 then
+          open_cmd = 'open'
+        elseif vim.fn.has('win32') == 1 then
+          open_cmd = 'start'
+        end
+
+        vim.ui.input({ prompt = ("Shell command (default = %s): "):format(open_cmd) }, function(input)
+          if not input or input == "" then
+            input = open_cmd
+          end
+          shell(input .. " " .. full_path)
+        end)
+      else
+        print("No entry selected")
+      end
+    end
+    }
   end,
 
   config = function()
