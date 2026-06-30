@@ -197,6 +197,14 @@ function ghq-cd() {
   fi
 }
 
+function wt-cd() {
+  local dir
+  dir=$(git wt --json | jq '.[].path' -r | fzf)
+  if [ -n "$dir" ]; then
+    cd "$dir" || return
+  fi
+}
+
 agent="$HOME/.ssh/agent"
 if [ -S "$SSH_AUTH_SOCK" ]; then
 	case $SSH_AUTH_SOCK in

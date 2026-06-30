@@ -14,6 +14,12 @@
 	glog = plog --all --graph
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [pull]
-	rebase = false
+	rebase = true
+[rerere]
+	enabled = true
+[wt]
+	basedir = ../{gitroot}-wts
+	nocd = true
+	remover = trash
 
 # vim: ft=gitconfig ff=unix noexpandtab
