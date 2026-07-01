@@ -2,7 +2,7 @@
   "notice": "git-privateモジュールもインストールするか、~/.gitconfig.privateファイルを書いてください",
   "files": [
     {
-      "cond": "platform.system() == 'Linux'",
+      "cond": "platform.system() != 'Windows'",
       "src": ".gitconfig.arch",
       "dst": ".gitconfig"
     },
