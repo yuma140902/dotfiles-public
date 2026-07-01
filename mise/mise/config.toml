@@ -13,7 +13,7 @@ compile = false
 "aqua:ajeetdsouza/zoxide" = "0.9.9"
 "aqua:astral-sh/uv" = "0.11.24"
 "aqua:cli/cli" = "2.95.0"
-"aqua:fastfetch-cli/fastfetch" = "2.64.2"
+"aqua:fastfetch-cli/fastfetch" = "2.65.1"
 "aqua:jqlang/jq" = "1.8.1"
 "aqua:junegunn/fzf" = "0.73.1"
 "aqua:lima-vm/lima" = { version = "2.1.3", os = ["macos"] }
