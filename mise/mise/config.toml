@@ -18,7 +18,7 @@ compile = false
 "aqua:junegunn/fzf" = "0.73.1"
 "aqua:lima-vm/lima" = { version = "2.1.3", os = ["macos"] }
 "aqua:lsd-rs/lsd" = "1.2.0"
-"aqua:openai/codex" = { version = "0.133.0", os = ["linux", "macos"] }
+"aqua:openai/codex" = { version = "0.142.5", os = ["linux", "macos"] }
 "aqua:pnpm/pnpm" = "11.9.0"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.4.2"
