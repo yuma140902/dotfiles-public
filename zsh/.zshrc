@@ -149,6 +149,7 @@ if type 'fzf' > /dev/null; then
   zle -N select-history
   bindkey '^r' select-history
 fi
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
