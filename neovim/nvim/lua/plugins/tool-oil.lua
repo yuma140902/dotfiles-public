@@ -99,8 +99,8 @@ return {
             end
           end
         },
-        ['gT'] = {
-          desc = 'Open terminal',
+        ['gt'] = {
+          desc = 'Open terminal in new tab',
           callback = function()
             local dir = require 'oil'.get_current_dir()
             if dir then
@@ -108,13 +108,20 @@ return {
             end
           end
         },
-        ['gt'] = {
-          desc = 'Open terminal',
+        ['gT'] = {
+          desc = 'Open new tmux window',
           callback = function()
             local dir = require 'oil'.get_current_dir()
-            if dir then
-              vim.cmd(("lcd %s | terminal"):format(vim.fn.fnameescape(dir)))
-            end
+            local cmd = { 'tmux', 'new-window', '-c', dir }
+            vim.system(cmd, { text = true }, function(job)
+              vim.schedule(function()
+                if job.code == 0 then
+                  vim.notify("New tmux window created in " .. dir, vim.log.levels.INFO)
+                else
+                  vim.notify(("Failed to create new tmux window: %s"):format(job.stderr), vim.log.levels.ERROR)
+                end
+              end)
+            end)
           end
         },
         ['gd'] = {
