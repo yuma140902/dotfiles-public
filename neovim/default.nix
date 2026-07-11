@@ -84,6 +84,7 @@ in {
 		"./nvim/lua/plugins/rust-rustaceanvim.lua"
 		"./nvim/lua/plugins/tool-fterm.lua"
 		"./nvim/lua/plugins/tool-linediff.lua"
+		"./nvim/lua/plugins/tool-nvim-lua-calc.lua"
 		"./nvim/lua/plugins/tool-oil.lua"
 		"./nvim/lua/plugins/tool-qfreplace.lua"
 		"./nvim/lua/plugins/tool-suda.lua"
