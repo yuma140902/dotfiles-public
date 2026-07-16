@@ -1,0 +1,6 @@
+path=(
+  "$HOME/.local/bin"
+  "$HOME/.local/share/mise/shims"
+  $path
+)
+export PATH

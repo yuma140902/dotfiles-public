@@ -62,9 +62,6 @@ zinit light sindresorhus/pure
 zinit light olets/zsh-abbr
 zinit light chisui/zsh-nix-shell
 
-if [ -d "$HOME/.local/bin/" ]; then
-  PATH="$PATH:$HOME/.local/bin/"
-fi
 if [ -d "$HOME/go/bin" ]; then
   PATH="$PATH:$HOME/go/bin"
 fi

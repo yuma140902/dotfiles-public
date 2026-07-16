@@ -4,6 +4,7 @@
   "notice": "プラグインをインストールするためにzshを一度起動する必要があります",
   "files": [
     ".zshrc",
+    ".zshenv",
     {
       "src": "user-abbreviations",
       "dst": "${XDG_CONFIG_HOME}/zsh-abbr/user-abbreviations"
