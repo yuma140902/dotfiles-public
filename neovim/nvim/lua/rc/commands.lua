@@ -1,6 +1,4 @@
-local command = require 'rc.util'.command
-
-command('Manual', function()
+vim.api.nvim_create_user_command('Manual', function()
   local lines = {
     '# Manual',
     '',
@@ -60,11 +58,11 @@ command('Manual', function()
   vim.api.nvim_put(lines, 'l', false, false)
   vim.api.nvim_set_option_value('modifiable', false, { buf = tmpbuf })
   vim.api.nvim_buf_set_keymap(tmpbuf, 'n', '<ESC>', '<cmd>q<cr>', {})
-end)
+end, {})
 
 -- ウィンドウを閉じずにバッファを閉じる
 -- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
-command('Bd', 'bp|bd#')
+vim.api.nvim_create_user_command('Bd', 'bp|bd#', {})
 
 ---@return table<integer, boolean>
 local function window_buffers()
@@ -92,12 +90,12 @@ local function delete_buffers(predicate, force)
 end
 
 -- どのウィンドウにも表示されていないバッファを閉じる
-command('BDHidden', function(opts)
+vim.api.nvim_create_user_command('BDHidden', function(opts)
   local displayed = window_buffers()
   delete_buffers(function(bufnr) return not displayed[bufnr] end, opts.bang)
 end, { bang = true })
 
 -- すべてのバッファを閉じる
-command('BDAll', function(opts)
+vim.api.nvim_create_user_command('BDAll', function(opts)
   delete_buffers(function() return true end, opts.bang)
 end, { bang = true })
