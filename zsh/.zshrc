@@ -70,12 +70,6 @@ if type 'zoxide' > /dev/null; then
   eval "$(zoxide init zsh --cmd cd)"
 fi
 
-if type 'brew' > /dev/null; then
-  export LDFLAGS="$LDFLAGS -L/opt/homebrew/lib"
-  export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/include"
-  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/lib/pkgconfig"
-fi
-
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
@@ -105,7 +99,6 @@ if type 'fzf' > /dev/null; then
   zle -N select-history
   bindkey '^r' select-history
 fi
-export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
