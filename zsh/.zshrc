@@ -66,10 +66,6 @@ if type 'mise' > /dev/null; then
   eval "$(mise activate zsh)"
 fi
 
-if [ -f "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
-fi
-
 if type 'zoxide' > /dev/null; then
   eval "$(zoxide init zsh --cmd cd)"
 fi
