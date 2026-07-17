@@ -62,41 +62,12 @@ zinit light sindresorhus/pure
 zinit light olets/zsh-abbr
 zinit light chisui/zsh-nix-shell
 
-if [ -d "$HOME/go/bin" ]; then
-  PATH="$PATH:$HOME/go/bin"
+if type 'mise' > /dev/null; then
+  eval "$(mise activate zsh)"
 fi
-if [ -d "$HOME/.cargo/bin" ]; then
-  PATH="$PATH:$HOME/.cargo/bin"
-fi
-if [ -d "$HOME/.volta/bin" ]; then
-  PATH="$PATH:$HOME/.volta/bin"
-fi
-if [ -d "$HOME/.cabal/bin" ]; then
-  PATH="$PATH:$HOME/.cabal/bin"
-fi
-if [ -d "$HOME/.ghcup/bin" ]; then
-  PATH="$PATH:$HOME/.ghcup/bin"
-fi
-if [ -d "/usr/local/texlive/2024/bin/x86_64-linux/" ]; then
-  PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux/"
-fi
-if [ -d "/snap/bin" ]; then
-  PATH="$PATH:/snap/bin"
-fi
-if [ -d "$HOME/.antigravity/antigravity/bin:$PATH" ]; then
-  PATH="$PATH:$HOME/.antigravity/antigravity/bin"
-fi
-if [ -d "$HOME/.lmstudio/bin" ]; then
-  PATH="$PATH:$HOME/.lmstudio/bin"
-fi
-export PATH
 
 if [ -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
-fi
-
-if type 'mise' > /dev/null; then
-  eval "$(mise activate zsh)"
 fi
 
 if type 'zoxide' > /dev/null; then
