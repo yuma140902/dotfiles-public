@@ -24,3 +24,7 @@ if type 'brew' > /dev/null; then
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/lib/pkgconfig"
   export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 fi
+
+if type 'nvim' > /dev/null; then
+  export EDITOR=nvim
+fi
