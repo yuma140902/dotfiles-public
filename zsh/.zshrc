@@ -76,10 +76,6 @@ if type 'brew' > /dev/null; then
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/lib/pkgconfig"
 fi
 
-if type 'sccache' > /dev/null; then
-  export RUSTC_WRAPPER=$(which sccache)
-fi
-
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi

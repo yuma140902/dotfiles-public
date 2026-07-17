@@ -13,3 +13,7 @@ path=(
 typeset -U path PATH
 path=($^path(N-/))
 export PATH
+
+if type 'sccache' > /dev/null; then
+  export RUSTC_WRAPPER=$(which sccache)
+fi
