@@ -19,7 +19,7 @@ return {
       cmp_itemkind_reverse = false,
       toggle_style_key = '<leader>t',
       code_style = {
-        comments = vim.fn.has('win32') == 1 and 'bold,italic' or 'italic',
+        comments = vim.fn.has('win32') == 1 and 'bold,italic' or 'none',
         keywords = 'bold',
         functions = 'none',
         strings = 'none',
