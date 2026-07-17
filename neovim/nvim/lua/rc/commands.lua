@@ -8,6 +8,8 @@ command('Manual', function()
     '',
     '- `:Manual` - このマニュアルを表示する',
     '- `:Bd` - ウィンドウを閉じずにバッファを閉じる',
+    '- `:BDHidden[!]` - ウィンドウで開かれていないバッファをすべて閉じる',
+    '- `:BDAll[!]` - すべてのバッファを閉じる',
     '',
     '## パッシブなプラグインで、手動で読み込む必要があるもの',
     '',
@@ -63,3 +65,39 @@ end)
 -- ウィンドウを閉じずにバッファを閉じる
 -- https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window
 command('Bd', 'bp|bd#')
+
+---@return table<integer, boolean>
+local function window_buffers()
+  local buffers = {}
+  for _, tabpage in ipairs(vim.api.nvim_list_tabpages()) do
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tabpage)) do
+      buffers[vim.api.nvim_win_get_buf(win)] = true
+    end
+  end
+  return buffers
+end
+
+---@param predicate fun(integer): boolean
+---@param force boolean
+local function delete_buffers(predicate, force)
+  local targets = {}
+
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if predicate(bufnr) then table.insert(targets, bufnr) end
+  end
+
+  for _, bufnr in ipairs(targets) do
+    vim.api.nvim_buf_delete(bufnr, { force = force })
+  end
+end
+
+-- どのウィンドウにも表示されていないバッファを閉じる
+command('BDHidden', function(opts)
+  local displayed = window_buffers()
+  delete_buffers(function(bufnr) return not displayed[bufnr] end, opts.bang)
+end, { bang = true })
+
+-- すべてのバッファを閉じる
+command('BDAll', function(opts)
+  delete_buffers(function() return true end, opts.bang)
+end, { bang = true })
