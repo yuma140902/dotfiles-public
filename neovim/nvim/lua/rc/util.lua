@@ -2,7 +2,7 @@ local M = {}
 
 ---@param name string
 ---@param command any
----@param opt vim.api.keyset.user_command
+---@param opt? vim.api.keyset.user_command
 function M.command(name, command, opt)
   if opt == nil then opt = {} end
   vim.api.nvim_create_user_command(name, command, opt)
