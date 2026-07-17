@@ -151,6 +151,10 @@ function wt-cd() {
   fi
 }
 
+if [ -f "$HOME/.include.zsh" ]; then
+  source "$HOME/.include.zsh"
+fi
+
 agent="$HOME/.ssh/agent"
 if [ -S "$SSH_AUTH_SOCK" ]; then
 	case $SSH_AUTH_SOCK in

@@ -1,7 +1,7 @@
 {
   "name": "zsh",
   "description": "zshの設定ファイル",
-  "notice": "プラグインをインストールするためにzshを一度起動する必要があります",
+  "notice": "プラグインをインストールするためにzshを一度起動する必要があります。マシン固有の設定は ~/.include.zsh に書いてください。",
   "files": [
     ".zshrc",
     ".zshenv",
