@@ -70,10 +70,6 @@ if type 'zoxide' > /dev/null; then
   eval "$(zoxide init zsh --cmd cd)"
 fi
 
-if [ -f /usr/share/nvm/init-nvm ]; then
-  source /usr/share/nvm/init-nvm.sh
-fi
-
 if type 'brew' > /dev/null; then
   export LDFLAGS="$LDFLAGS -L/opt/homebrew/lib"
   export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/include"
