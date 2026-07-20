@@ -3,7 +3,14 @@ return {
   -- ファイルマネージャー
   'https://github.com/stevearc/oil.nvim',
   cond = not vim.g.vscode,
-  dependencies = { 'https://github.com/nvim-tree/nvim-web-devicons' },
+  dependencies = { 'https://github.com/nvim-tree/nvim-web-devicons',
+    {
+      'https://github.com/malewicz1337/oil-git.nvim',
+      config = function()
+        require 'oil-git'.setup {}
+      end
+    },
+  },
   cmd = { 'Oil' },
 
   init = function()
