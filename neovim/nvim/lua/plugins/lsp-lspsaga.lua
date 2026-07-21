@@ -43,7 +43,7 @@ return {
       },
       finder = {
         keys = {
-          shuttle = '<Tab>',
+          shuttle = '[w',
           toggle_or_open = '<CR>',
           quit = '<ESC>',
         },
