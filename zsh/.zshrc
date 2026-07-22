@@ -145,7 +145,7 @@ function ghq-cd() {
 
 function wt-cd() {
   local dir
-  dir=$(git wt --json | jq '.[].path' -r | fzf)
+  dir=$(git wt --json | jq '.[].path' -r | fzf --query="$1")
   if [ -n "$dir" ]; then
     cd "$dir" || return
   fi
