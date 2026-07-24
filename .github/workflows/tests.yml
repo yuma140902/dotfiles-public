@@ -14,19 +14,19 @@ jobs:
     name: "[Ubuntu] mise"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - run: cd ./_tests && docker compose run --build ubuntu /root/repos/dotfiles-public/_tests/test_mise_setup.sh
 
   mise_arch:
     name: "[Arch Linux] mise"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - run: cd ./_tests && docker compose run --build arch /root/repos/dotfiles-public/_tests/test_mise_setup.sh
 
   nixos_nixos:
     name: "[NixOS] nixos"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - run: cd ./_tests && docker compose run --build nixos /root/repos/dotfiles-public/_tests/test_nixos_setup.sh
