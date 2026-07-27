@@ -32,6 +32,7 @@ vim.api.nvim_create_user_command('Manual', function()
     '- `vim-maketable` - `:MakeTable`',
     '- `neotest` - `:Neotest summary`',
     '- `rustaceanvim` - `RustLsp *`',
+    '- `nvim-lua-calc` - `:LCalc`, `<space>=`',
     '',
     '## その他のメモ',
     '',
