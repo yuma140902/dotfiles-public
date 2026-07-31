@@ -6,14 +6,28 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-
+local font_name = 'UDEV Gothic NFLG'
 --config.font = wezterm.font 'HackGen Console NF'
 --config.font = wezterm.font 'UDEV Gothic NF'
-config.font = wezterm.font 'UDEV Gothic NFLG'
+config.font = wezterm.font(font_name)
 --config.font = wezterm.font 'PlemolJP Console NF'
 config.font_size = 10.0
 if wezterm.target_triple == 'aarch64-apple-darwin' then
   config.font_size = 12.0
+  config.font_rules = {
+    -- Prevent normal italic text from slanting
+    {
+      italic = true,
+      intensity = 'Normal',
+      font = wezterm.font(font_name, { style = 'Normal' }),
+    },
+    -- Prevent bold italic text from slanting
+    {
+      italic = true,
+      intensity = 'Bold',
+      font = wezterm.font(font_name, { weight = 'Bold', style = 'Normal' }),
+    },
+  }
 end
 if wezterm.hostname() == 'pc5thinkpad' then
   config.front_end = 'WebGpu'
