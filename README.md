@@ -75,5 +75,5 @@ dotfiles-public には user-abbreviations の定義も含まれていて、~/.co
 
 本リポジトリから zsh モジュールをインストールした場合、abbr コマンドは使用すべきではない。abbr コマンドは user-abbreviations を削除してから新しい user-abbreviations ファイルを作るという動作をするので、シンボリックリンクではなくなってしまい git 管理から外れてしまうからである。
 
-
+PR テスト
 
