@@ -22,41 +22,24 @@ class Detail:
 @dataclasses.dataclass
 class BenchmarkResult:
     datetime: str
-    branch: str
     average_ms: float
     max_ms: float
     min_ms: float
 
-def reset_benchmarks_json(path: pathlib.Path) -> None:
-    """benchmarks.jsonをリセットする
-
-    Args:
-        path: benchmarks.jsonの場所
-    """
-    logger.debug(f'resetting {path}')
-    with open(path, mode='w+', encoding='UTF-8') as f:
-        f.write('{"benchmarks": []}')
-    logger.debug(f'reset {path}')
-
-def append_to_benchmarks_json(result: BenchmarkResult, path: pathlib.Path) -> None:
-    """benchmarks.jsonにベンチマーク結果を追加する
+def write_benchmark_json(result: BenchmarkResult, path: pathlib.Path) -> None:
+    """ベンチマーク結果をJSONに書き込む
 
     Args:
         result: ベンチマーク結果
-        path: benchmarks.jsonの場所
+        path: benchmark.jsonの場所
     """
-    logger.debug(f'loading benchmarks from {path}')
-    with open(path, mode='r', encoding='UTF-8') as f:
-        obj = json.load(f)
-    logger.debug(f'loaded benchmarks from {path}')
-    obj['benchmarks'].append(dataclasses.asdict(result))
-    logger.debug(f'writing benchmarks to {path}')
+    logger.debug(f'writing benchmark to {path}')
     with open(path, mode='w+', encoding='UTF-8') as f:
-        json.dump(obj, f)
-    logger.debug(f'wrote benchmarks to {path}')
+        json.dump(dataclasses.asdict(result), f)
+    logger.debug(f'wrote benchmark to {path}')
 
-def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> BenchmarkResult:
-    """vim-startuptimeの実行結果をパースしする
+def parse_startuptime_result(now: str, lines: list[str]) -> BenchmarkResult:
+    """vim-startuptimeの実行結果をパースする
 
     Args:
         lines: vim-startuptimeの実行結果のテキスト
@@ -108,7 +91,6 @@ def parse_startuptime_result(branch: str, now: str, lines: list[str]) -> Benchma
     assert min_ms >= 0
     benchmark_result = BenchmarkResult(
         datetime=now,
-        branch=branch,
         average_ms=average_ms,
         max_ms=max_ms,
         min_ms=min_ms,
@@ -125,24 +107,18 @@ def main(args) -> None:
         logger.error(f'{input_path} is not file')
         raise Exception(f'{input_path} is not file')
 
-    # 出力ファイル(benchmarks.json)が存在しなければ初期化する
-    if not output_path.is_file():
-        reset_benchmarks_json(output_path)
-
     with open(input_path, mode='r', encoding='UTF-8') as f:
         startuptime_text = f.readlines()
 
-    branch = args.branch
-    now = datetime.datetime.now().isoformat()
-    benchmark_result = parse_startuptime_result(branch, now, startuptime_text)
+    now = datetime.datetime.now().astimezone().isoformat()
+    benchmark_result = parse_startuptime_result(now, startuptime_text)
     logger.debug(f'benchmark_result={benchmark_result}')
-    append_to_benchmarks_json(benchmark_result, output_path)
+    write_benchmark_json(benchmark_result, output_path)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', required=True)
     parser.add_argument('-o', '--output', required=True)
-    parser.add_argument('-b', '--branch', required=True)
     args = parser.parse_args()
     main(args)

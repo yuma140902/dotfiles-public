@@ -1,0 +1,71 @@
+name: Neovim Benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - neovim/**
+      - .github/**
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Neovim
+        uses: rhysd/action-setup-vim@febef33995d6649302e9d88dda81e071b68f16a7 # v1.6.1
+        with:
+          neovim: true
+
+      - name: Install Neovim config
+        run: ./dotfiles install neovim
+
+      - name: Install Neovim plugins
+        run: nvim --headless -c 'Lazy! restore' -c 'qall'
+
+      - name: Download benchmark tool with mise
+        uses: jdx/mise-action@9e7f7633ff6f6d6048a9418a68d48f288f50eb14 # v4.2.3
+        with:
+          working_directory: .github/scripts
+
+      - name: Run benchmark
+        working-directory: .github/scripts
+        env:
+          TERM: screen-256color
+          TZ: Asia/Tokyo
+        run: |
+          vim-startuptime -vimpath nvim | tee result.txt
+          python vim_startuptime_to_json.py \
+            --input result.txt \
+            --output benchmark.json
+
+      - name: Get OIDC token
+        id: oidc
+        shell: bash
+        run: |
+          token="$(
+            curl -fsSL \
+              -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=dotfiles-benchmark-data" \
+              | jq -r .value
+          )"
+          echo "token=$token" >> "$GITHUB_OUTPUT"
+
+      - name: Upload benchmark
+        env:
+          OIDC_TOKEN: ${{ steps.oidc.outputs.token }}
+        run: |
+          curl --fail-with-body \
+            -H "Authorization: Bearer $OIDC_TOKEN" \
+            --json @.github/scripts/benchmark.json \
+            "https://dotfiles-benchmark-data.yuma140902-cloudflare.workers.dev/neovim/"
