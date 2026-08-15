@@ -61,7 +61,7 @@ email = "hogehoge@example.com"
 ## ベンチマーク
 
 GitHub Actions で Neovim のベンチマークを行っています。
-ベンチマーク結果は <https://yuma14.net/dotfiles-public/> で見ることができます。
+ベンチマーク結果は <https://dotfiles-benchmark-data.yuma140902-cloudflare.workers.dev/neovim/> で見ることができます。
 
 ## 注意事項
 
