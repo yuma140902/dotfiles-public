@@ -63,9 +63,13 @@ jobs:
 
       - name: Upload benchmark
         env:
+          GIT_COMMIT: ${{ github.sha }}
           OIDC_TOKEN: ${{ steps.oidc.outputs.token }}
         run: |
-          curl --fail-with-body \
-            -H "Authorization: Bearer $OIDC_TOKEN" \
-            --json @.github/scripts/benchmark.json \
-            "https://dotfiles-benchmark-data.yuma140902-cloudflare.workers.dev/neovim/"
+          jq --arg git_commit "$GIT_COMMIT" \
+            '. + {git_commit: $git_commit}' \
+            .github/scripts/benchmark.json \
+            | curl --fail-with-body \
+              -H "Authorization: Bearer $OIDC_TOKEN" \
+              --json @- \
+              "https://dotfiles-benchmark-data.yuma140902-cloudflare.workers.dev/neovim/"
