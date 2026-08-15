@@ -1,7 +1,6 @@
 # dotfiles
 
-[![Neovim Benchmark](https://github.com/yuma140902/dotfiles-public/actions/workflows/nvim_bench.yml/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/nvim_bench.yml)
-[![pages-build-deployment](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/pages/pages-build-deployment)
+[![Neovim Benchmark](https://github.com/yuma140902/dotfiles-public/actions/workflows/benchmark.yml/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/benchmark.yml)
 [![Dotfiles setup test](https://github.com/yuma140902/dotfiles-public/actions/workflows/tests.yml/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/tests.yml)
 
 いろいろなアプリケーションの設定ファイルを管理しています。
