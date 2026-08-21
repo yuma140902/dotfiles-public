@@ -18,7 +18,7 @@ compile = false
 "aqua:fastfetch-cli/fastfetch" = "2.67.0"
 "aqua:jqlang/jq" = "1.8.1"
 "aqua:junegunn/fzf" = "0.74.2"
-"aqua:k1LoW/git-wt" = "0.29.0"
+"aqua:k1LoW/git-wt" = "0.29.1"
 "aqua:lima-vm/lima" = { version = "2.2.0", os = ["macos"] }
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:ogulcancelik/herdr" = { version = "0.8.0", os = ["linux", "macos"] }
