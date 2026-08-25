@@ -30,7 +30,7 @@ compile = false
 "aqua:tree-sitter/tree-sitter" = "0.26.12"
 "aqua:x-motemen/ghq" = "1.10.1"
 "cargo:cargo-audit" = "0.22.2"
-"cargo:random-output" = "0.3.5"
+"cargo:random-output" = "0.3.6"
 "cargo:tealdeer" = "1.8.1"
 "cargo:tokei" = "14.0.0"
 "github:psmux/psmux" = { version = "3.3.7", os = ["windows"] }
