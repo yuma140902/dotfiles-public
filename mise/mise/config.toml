@@ -21,7 +21,7 @@ compile = false
 "aqua:k1LoW/git-wt" = "0.29.1"
 "aqua:lima-vm/lima" = { version = "2.2.0", os = ["macos"] }
 "aqua:lsd-rs/lsd" = "1.2.0"
-"aqua:ogulcancelik/herdr" = { version = "0.8.0", os = ["linux", "macos"] }
+"aqua:ogulcancelik/herdr" = { version = "0.8.2", os = ["linux", "macos"] }
 "aqua:openai/codex" = { version = "0.144.1", os = ["linux", "macos"] }
 "aqua:pnpm/pnpm" = "11.22.0"
 "aqua:sharkdp/bat" = "0.26.1"
