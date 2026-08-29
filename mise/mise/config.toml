@@ -30,9 +30,7 @@ compile = false
 "aqua:tree-sitter/tree-sitter" = "0.26.12"
 "aqua:x-motemen/ghq" = "1.10.1"
 "cargo:cargo-audit" = "0.22.2"
-"cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = [
-  "windows"
-] }
+"cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = ["windows"] }
 "cargo:random-output" = "0.3.6"
 "cargo:tealdeer" = "1.8.1"
 "cargo:tokei" = "14.0.0"
@@ -46,6 +44,7 @@ node = "25.9.0"
 python = "3.14.7"
 rust = { version = "1.98.0", components = "rust-src,rust-analyzer" }
 "aqua:cloudflare/cloudflared" = "2026.8.2"
+"aqua:aws/aws-cli" = { version = "2.36.34", os = ["linux"] }
 
 [bootstrap.packages]
 # brew backend ではバージョン指定がまだサポートされていないので仕方なく latest を指定する
