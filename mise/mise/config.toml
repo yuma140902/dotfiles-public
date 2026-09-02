@@ -31,7 +31,7 @@ compile = false
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.4.2"
 "aqua:topgrade-rs/topgrade" = "17.9.0"
-"aqua:tree-sitter/tree-sitter" = "0.26.12"
+"aqua:tree-sitter/tree-sitter" = "0.26.13"
 "aqua:x-motemen/ghq" = "1.10.1"
 "cargo:cargo-audit" = "0.22.2"
 "cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = ["windows"] }
