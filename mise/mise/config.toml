@@ -26,7 +26,7 @@ compile = false
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:ogulcancelik/herdr" = { version = "0.8.2", os = ["linux", "macos"] }
 "aqua:openai/codex" = { version = "0.144.1", os = ["linux", "macos"] }
-"aqua:pnpm/pnpm" = "11.24.0"
+"aqua:pnpm/pnpm" = "12.0.0"
 "aqua:qpdf/qpdf" = "12.4.0"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.0"
