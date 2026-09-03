@@ -27,7 +27,7 @@ compile = false
 "aqua:ogulcancelik/herdr" = { version = "0.8.2", os = ["linux", "macos"] }
 "aqua:openai/codex" = { version = "0.144.1", os = ["linux", "macos"] }
 "aqua:pnpm/pnpm" = "12.0.0"
-"aqua:qpdf/qpdf" = { version = "12.4.0", os = ["linux", "windows"] }
+"aqua:qpdf/qpdf" = { version = "12.4.0", os = ["windows"] }
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.0"
 "aqua:topgrade-rs/topgrade" = "17.9.0"
