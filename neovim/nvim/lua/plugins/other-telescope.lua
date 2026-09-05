@@ -47,7 +47,7 @@ return {
 
   config = function()
     require 'telescope'.setup {
-      defaults = { file_ignore_patterns = { '^%.git/' } },
+      defaults = { file_ignore_patterns = { '^%.git[/\\]' } },
       extensions = {
         undo = {
           side_by_side = true,
