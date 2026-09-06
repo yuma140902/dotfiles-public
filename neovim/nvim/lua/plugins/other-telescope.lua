@@ -47,7 +47,6 @@ return {
 
   config = function()
     require 'telescope'.setup {
-      defaults = { file_ignore_patterns = { '^%.git[/\\]' } },
       extensions = {
         undo = {
           side_by_side = true,
@@ -58,6 +57,9 @@ return {
         },
       },
       pickers = {
+        find_files = {
+          find_command = { 'fd', '--type', 'f', '--color', 'never', '--exclude', '.git' },
+        },
         buffers = {
           mappings = {
             i = {
