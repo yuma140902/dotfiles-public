@@ -28,14 +28,21 @@ compile = false
 "aqua:openai/codex" = { version = "0.153.0", os = ["linux", "macos"] }
 "aqua:pnpm/pnpm" = "12.1.0"
 "aqua:qpdf/qpdf" = { version = "12.4.1", os = ["windows"] }
+"aqua:rhysd/actionlint" = "1.7.12"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.0"
+"aqua:suzuki-shunsuke/pinact" = "4.1.1"
 "aqua:topgrade-rs/topgrade" = "17.9.0"
 "aqua:tree-sitter/tree-sitter" = "0.26.13"
 "aqua:x-motemen/ghq" = "1.10.1"
 "cargo:cargo-audit" = "0.22.2"
-"cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = ["windows"] }
+"cargo:cargo-bloat" = "0.12.1"
+"cargo:flamegraph" = "0.6.13"
+"cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = [
+  "windows"
+] }
 "cargo:random-output" = "0.3.7"
+"cargo:samply" = "0.13.1"
 "cargo:tealdeer" = "1.9.0"
 "cargo:tokei" = "14.0.0"
 "github:psmux/psmux" = { version = "3.3.8", os = ["windows"] }
