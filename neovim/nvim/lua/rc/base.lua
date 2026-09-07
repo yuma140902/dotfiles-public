@@ -116,4 +116,7 @@ vim.api.nvim_create_autocmd('UIEnter', {
   end
 })
 
-vim.lsp.enable("zshcs")
+
+if vim.fn.has('mac') == 1 or vim.fn.has('linux') then
+  vim.lsp.enable("zshcs")
+end
