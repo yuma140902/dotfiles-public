@@ -38,9 +38,8 @@ compile = false
 "cargo:cargo-audit" = "0.22.2"
 "cargo:cargo-bloat" = "0.12.1"
 "cargo:flamegraph" = "0.6.14"
-"cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = [
-  "windows"
-] }
+"cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = ["windows"] }
+"cargo:https://github.com/yuys13/zshcs" = { version = "branch:main", os = ["linux", "macos"] }
 "cargo:random-output" = "0.3.7"
 "cargo:samply" = "0.13.1"
 "cargo:tealdeer" = "1.9.0"

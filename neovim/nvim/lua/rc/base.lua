@@ -115,3 +115,5 @@ vim.api.nvim_create_autocmd('UIEnter', {
     end, 600)
   end
 })
+
+vim.lsp.enable("zshcs")
