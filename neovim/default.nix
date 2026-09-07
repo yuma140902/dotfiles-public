@@ -37,6 +37,7 @@ in {
 		"./nvim/init.lua"
 		"./nvim/lazy-lock.json"
 		"./nvim/lsp/cscope_lsp.lua"
+		"./nvim/lsp/zshcs.lua"
 		"./nvim/lua/plugins/edit-ccc.lua"
 		"./nvim/lua/plugins/edit-conform.lua"
 		"./nvim/lua/plugins/edit-maketable.lua"
