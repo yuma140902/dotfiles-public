@@ -14,8 +14,6 @@ git clone https://github.com/yuma140902/dotfiles-public ~/repos/dotfiles-public/
 cd ~/repos/dotfiles-public
 ```
 
-### Nix を使用しない方法
-
 `./dotfiles` スクリプトを使用してアプリケーションごとに設定ファイルのインストールができます。
 例えば Neovim の設定ファイルをインストールするには `./dotfiles install neovim` を実行します。
 `./dotfiles` は設定ファイルの設置のみを行い、アプリケーション自体のインストールは行いません。
@@ -25,28 +23,6 @@ cd ~/repos/dotfiles-public
 Python 3 が必要です。
 
 Mise を使ってツール類のインストールができます。まず `./dotfiles install mise` で mise の設定ファイルを設置し、何らかの方法で mise 自体をインストールし、`mise i` で設定ファイルをもとにツール達をインストールします。
-
-### Nix を使用する方法
-
-#### NixOS
-
-```sh
-sudo nixos-rebuild switch --flake .
-```
-
-または
-
-```sh
-sudo nixos-rebuild switch --flake '.#hostnamehogehoge'
-```
-
-#### Home Manager
-
-```sh
-home-manager switch --flake . --impure
-```
-
-ユーザ名とホームディレクトリは `$USER` と `$HOME` の値が使用されます。
 
 ## git の email, name の設定
 

@@ -1,7 +1,0 @@
-FROM nixos/nix:2.35.2@sha256:7a007c766426c1877758ddc5cb87a965ac131fc78c582ce0083d922d51ae945c
-RUN echo 'experimental-features = nix-command flakes' >> /etc/nix/nix.conf
-
-# remove pre-installed conflicting packages
-RUN nix-env -e less man-db git-minimal wget curl
-
-COPY .. /root/repos/dotfiles-public
