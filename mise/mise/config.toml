@@ -12,66 +12,66 @@ compile = false
 [tools]
 # CLI tools
 "aqua:BurntSushi/ripgrep" = "15.2.0"
-"aqua:FiloSottile/age" = "1.3.2"
+"aqua:FiloSottile/age" = { version = "1.3.2", lazy = true, lazy_bins = [ "age", "age-keygen" ] }
 "aqua:ajeetdsouza/zoxide" = "0.10.0"
-"aqua:aws/aws-cli" = { version = "2.36.39", os = ["linux"] }
+"aqua:aws/aws-cli" = { version = "2.36.39", os = ["linux"], lazy = true, lazy_bins = [ "aws" ] }
 "aqua:chmln/sd" = "1.1.0"
 "aqua:cloudflare/cloudflared" = "2026.8.3"
-"aqua:fastfetch-cli/fastfetch" = "2.68.1"
+"aqua:fastfetch-cli/fastfetch" = { version = "2.68.1", lazy = true, lazy_bins = [ "fastfetch" ] }
 "aqua:jqlang/jq" = "1.8.1"
 "aqua:junegunn/fzf" = "0.74.3"
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.0"
-"aqua:topgrade-rs/topgrade" = "17.9.0"
-"cargo:random-output" = "0.3.7"
-"cargo:tealdeer" = "1.9.0"
-"cargo:tokei" = "14.0.0"
+"aqua:topgrade-rs/topgrade" = { version = "17.9.0", lazy = true, lazy_bins = [ "topgrade" ] }
+"cargo:random-output" = { version = "0.3.7", lazy = true, lazy_bins = [ "random-output" ] }
+"cargo:tealdeer" = { version = "1.9.0", lazy = true, lazy_bins = [ "tldr" ] }
+"cargo:tokei" = { version = "14.0.0", lazy = true, lazy_bins = [ "tokei" ] }
 "npm:trash-cli" = { version = "7.2.0", os = ["windows"] }
 "pipx:trash-cli" = { version = "0.24.5.26", os = ["linux", "macos"] }
 
 # Git
-"aqua:cli/cli" = "2.100.0"
+"aqua:cli/cli" = { version = "2.100.0", lazy = true, lazy_bins = [ "gh" ] }
 "aqua:k1LoW/git-wt" = "0.29.1"
 "aqua:x-motemen/ghq" = "1.10.1"
-"npm:tiged" = "2.12.8"
+"npm:tiged" = { version = "2.12.8", lazy = true, lazy_bins = [ "tiged" ] }
 
 # Neovim
 "vfox:mise-plugins/vfox-neovim" = "0.12.2"
 "aqua:tree-sitter/tree-sitter" = "0.27.0"
 
 # Language servers, linters and formatters
-"aqua:rhysd/actionlint" = "1.7.12"
-"aqua:suzuki-shunsuke/pinact" = "4.1.1"
+"aqua:rhysd/actionlint" = { version = "1.7.12", lazy = true, lazy_bins = [ "actionlint" ] }
+"aqua:suzuki-shunsuke/pinact" = { version = "4.1.1", lazy = true, lazy_bins = [ "pinact" ] }
 "cargo:https://github.com/yuys13/zshcs" = { version = "branch:main", os = [ "linux", "macos" ] }
 "go:github.com/dhananjaylatkar/cscope_lsp" = "0.0.0-20260528122522-ea87eb716001"
 
 # Python
 "aqua:astral-sh/uv" = "0.12.9"
-"pipx:marimo" = "0.24.0"
+"pipx:marimo" = { version = "0.24.0", lazy = true, lazy_bins = [ "marimo" ] }
 
 # Javascript
-"aqua:pnpm/pnpm" = "12.3.4"
+"aqua:pnpm/pnpm" = { version = "12.3.4", lazy = true, lazy_bins = [ "pnpm" ] }
 
 # Rust
-"cargo:cargo-audit" = "0.22.2"
-"cargo:cargo-bloat" = "0.12.1"
+"cargo:cargo-audit" = { version = "0.22.2", lazy = true, lazy_bins = [ "cargo-audit" ] }
+"cargo:cargo-bloat" = { version = "0.12.1", lazy = true, lazy_bins = [ "cargo-bloat" ] }
 
 # Coding agent
-"aqua:ogulcancelik/herdr" = { version = "0.8.2", os = ["linux", "macos"] }
-"aqua:openai/codex" = { version = "0.153.0", os = ["linux", "macos"] }
+"aqua:ogulcancelik/herdr" = { version = "0.8.2", os = ["linux", "macos"], lazy = true, lazy_bins = [ "herdr" ] }
+"aqua:openai/codex" = { version = "0.153.0", os = ["linux", "macos"], lazy = true, lazy_bins = [ "codex" ] }
 
 # Windows
 "aqua:qpdf/qpdf" = { version = "12.4.1", os = ["windows"] }
 "cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = [ "windows" ] }
-"github:psmux/psmux" = { version = "3.3.8", os = ["windows"] }
+"github:psmux/psmux" = { version = "3.3.8", os = ["windows"], lazy = true, lazy_bins = [ "psmux" ] }
 
 # macOS
-"aqua:lima-vm/lima" = { version = "2.2.0", os = ["macos"] }
+"aqua:lima-vm/lima" = { version = "2.2.0", os = ["macos"], lazy = true, lazy_bins = [ "lima" ] }
 
 # Performance
-"cargo:samply" = "0.13.1"
-"cargo:flamegraph" = "0.6.14"
+"cargo:samply" = { version = "0.13.1", lazy = true, lazy_bins = [ "samply" ] }
+"cargo:flamegraph" = { version = "0.6.14", lazy = true, lazy_bins = [ "flamegraph", "cargo-flamegraph" ] }
 
 node = "25.9.0"
 python = "3.14.7"
