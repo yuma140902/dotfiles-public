@@ -41,14 +41,23 @@ Mise を使ってツール類のインストールができる。まず
 
 このリポジトリが提供している設定を微調整したり設定を追加したりしたい場合があると思うので、そのための方法を用意してある。
 
-### git の email, name の設定
+### git の email, name 等の設定
 
 `~/.gitconfig.private` に以下のような内容を書く。このファイルは .gitconfig から読み込まれるように設定されている。
 
+例:
+
 ```gitconfig
 [user]
-name = "hogehoge"
-email = "hogehoge@example.com"
+    name = "hogehoge"
+    email = "hogehoge@example.com"
+[credential]
+    helper = manager
+[credential "helperselector"]
+    selected = manager
+[ghq]
+    root = "/data/ghq"
+    user = "hogehoge"
 ```
 
 ### zsh
