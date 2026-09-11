@@ -13,4 +13,4 @@ export PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate bash)"
 
 # install mise tools
-mise i --jobs=1
+mise i --jobs=1 --include-lazy
