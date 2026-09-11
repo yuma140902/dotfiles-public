@@ -3,52 +3,65 @@
 [![Neovim Benchmark](https://github.com/yuma140902/dotfiles-public/actions/workflows/benchmark.yml/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/benchmark.yml)
 [![Dotfiles setup test](https://github.com/yuma140902/dotfiles-public/actions/workflows/tests.yml/badge.svg)](https://github.com/yuma140902/dotfiles-public/actions/workflows/tests.yml)
 
-いろいろなアプリケーションの設定ファイルを管理しています。
+## Requirements
+
+- Python3
 
 ## Install
 
-まずリポジトリをクローンします。クローン先は `~/repos/dotfiles-public/` を推奨します。
+まずリポジトリをクローンする。クローン先は `~/repos/dotfiles-public/` 推奨。
 
 ```sh
 git clone https://github.com/yuma140902/dotfiles-public ~/repos/dotfiles-public/
 cd ~/repos/dotfiles-public
 ```
 
-`./dotfiles` スクリプトを使用してアプリケーションごとに設定ファイルのインストールができます。
-例えば Neovim の設定ファイルをインストールするには `./dotfiles install neovim` を実行します。
-`./dotfiles` は設定ファイルの設置のみを行い、アプリケーション自体のインストールは行いません。
+`./dotfiles` スクリプトを使用してアプリケーションごとに設定ファイルのインストールができる。
+例えば Neovim の設定ファイルをインストールするには 
 
-`./dotfiles install` を使って必要なモジュールをインストールします。
-インストール可能なモジュールは `./dotfiles list` で確認できます。
-Python 3 が必要です。
-
-Mise を使ってツール類のインストールができます。まず `./dotfiles install mise` で mise の設定ファイルを設置し、何らかの方法で mise 自体をインストールし、`mise i` で設定ファイルをもとにツール達をインストールします。
-
-## git の email, name の設定
-
-`~/.gitconfig.private` に以下のような内容を書く。このファイルは git のメインの設定ファイルから読み込まれるように設定されている。
-
+```sh
+./dotfiles install neovim
 ```
+
+を実行する。`./dotfiles` は設定ファイルの設置のみを行い、アプリケーション自体のインストールは行わない。
+
+インストール可能なモジュールの一覧は `./dotfiles list` で確認できる。
+
+## Mise
+
+Mise を使ってツール類のインストールができる。まず
+
+```sh
+./dotfiles install mise
+```
+
+で mise の設定ファイルを設置する。そして、何らかの方法で mise 自体をインストールし、`mise i` で設定ファイルをもとにツール達をインストールする。
+
+## 追加の設定
+
+このリポジトリが提供している設定を微調整したり設定を追加したりしたい場合があると思うので、そのための方法を用意してある。
+
+### git の email, name の設定
+
+`~/.gitconfig.private` に以下のような内容を書く。このファイルは .gitconfig から読み込まれるように設定されている。
+
+```gitconfig
 [user]
 name = "hogehoge"
 email = "hogehoge@example.com"
 ```
 
+### zsh
+
+`$HOME/.include.zsh` を使用する。このスクリプトは .zshrc から source される。
+
 ## ベンチマーク
 
-GitHub Actions で Neovim のベンチマークを行っています。
-ベンチマーク結果は <https://dotfiles-benchmark-data.yuma140902-cloudflare.workers.dev/neovim/> で見ることができます。
+GitHub Actions で Neovim のベンチマークを行っている。
+ベンチマーク結果は <https://dotfiles-benchmark-data.yuma140902-cloudflare.workers.dev/neovim/> で見ることができる。
 
 ## 注意事項
 
 ### zsh-abbr
 
-zsh-abbr は zsh 内で使える abbreviation を管理する zsh プラグインである。abbr コマンドを使ってユーザ定義の abbreviation を追加することができる。追加した abbreviation は ~/.config/zsh-abbr/user-abbreviations に保存される。
-
-本リポジトリ dotfiles-public では、zsh モジュールをインストールすると zsh-abbr を使えるようになる。
-dotfiles-public には user-abbreviations の定義も含まれていて、~/.config/zsh-abbr/user-abbreviations にシンボリックリンクが作られる。
-
-本リポジトリから zsh モジュールをインストールした場合、abbr コマンドは使用すべきではない。abbr コマンドは user-abbreviations を削除してから新しい user-abbreviations ファイルを作るという動作をするので、シンボリックリンクではなくなってしまい git 管理から外れてしまうからである。
-
-
-
+zsh-abbr コマンドを使って `~/.config/zsh-abbr/user-abbreviations` を編集すると、シンボリックリンクが切れて新しいファイルが作られてしまう。
