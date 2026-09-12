@@ -24,7 +24,7 @@ compile = false
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.0"
 "aqua:topgrade-rs/topgrade" = { version = "17.9.0", lazy = true, lazy_bins = [ "topgrade" ] }
-"cargo:random-output" = { version = "0.3.7", lazy = true, lazy_bins = [ "random-output" ] }
+"cargo:random-output" = { version = "0.3.8", lazy = true, lazy_bins = [ "random-output" ] }
 "cargo:tealdeer" = { version = "1.9.0", lazy = true, lazy_bins = [ "tldr" ] }
 "cargo:tokei" = { version = "14.0.0", lazy = true, lazy_bins = [ "tokei" ] }
 "npm:trash-cli" = { version = "7.2.0", os = ["windows"] }
