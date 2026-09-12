@@ -47,7 +47,7 @@ compile = false
 "go:github.com/dhananjaylatkar/cscope_lsp" = "0.0.0-20260528122522-ea87eb716001"
 
 # Python
-"aqua:astral-sh/uv" = "0.12.9"
+"aqua:astral-sh/uv" = "0.12.10"
 "pipx:marimo" = { version = "0.24.0", lazy = true, lazy_bins = [ "marimo" ] }
 
 # Javascript
