@@ -19,7 +19,7 @@ compile = false
 "aqua:cloudflare/cloudflared" = "2026.9.1"
 "aqua:fastfetch-cli/fastfetch" = { version = "2.68.1", lazy = true, lazy_bins = [ "fastfetch" ] }
 "aqua:jqlang/jq" = "1.8.1"
-"aqua:junegunn/fzf" = "0.74.3"
+"aqua:junegunn/fzf" = "0.74.4"
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.0"
