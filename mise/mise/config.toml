@@ -42,7 +42,7 @@ compile = false
 
 # Language servers, linters and formatters
 "aqua:rhysd/actionlint" = { version = "1.7.12", lazy = true, lazy_bins = [ "actionlint" ] }
-"aqua:suzuki-shunsuke/pinact" = { version = "4.1.1", lazy = true, lazy_bins = [ "pinact" ] }
+"aqua:suzuki-shunsuke/pinact" = { version = "5.0.0", lazy = true, lazy_bins = [ "pinact" ] }
 "cargo:https://github.com/yuys13/zshcs" = { version = "branch:main", os = [ "linux", "macos" ] }
 "go:github.com/dhananjaylatkar/cscope_lsp" = "0.0.0-20260528122522-ea87eb716001"
 
