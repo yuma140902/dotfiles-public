@@ -31,7 +31,7 @@ compile = false
 "pipx:trash-cli" = { version = "0.24.5.26", os = ["linux", "macos"] }
 
 # Git
-"aqua:cli/cli" = { version = "2.100.0", lazy = true, lazy_bins = [ "gh" ] }
+"aqua:cli/cli" = { version = "2.101.0", lazy = true, lazy_bins = [ "gh" ] }
 "aqua:k1LoW/git-wt" = "0.29.3"
 "aqua:x-motemen/ghq" = "1.10.1"
 "npm:tiged" = { version = "2.12.8", lazy = true, lazy_bins = [ "tiged" ] }
