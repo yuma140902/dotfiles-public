@@ -58,7 +58,7 @@ compile = false
 "cargo:cargo-bloat" = { version = "0.12.1", lazy = true, lazy_bins = [ "cargo-bloat" ] }
 
 # Coding agent
-"aqua:ogulcancelik/herdr" = { version = "0.9.0", os = ["linux", "macos"], lazy = true, lazy_bins = [ "herdr" ] }
+"aqua:ogulcancelik/herdr" = { version = "0.9.1", os = ["linux", "macos"], lazy = true, lazy_bins = [ "herdr" ] }
 "aqua:openai/codex" = { version = "0.153.0", os = ["linux", "macos"], lazy = true, lazy_bins = [ "codex" ] }
 
 # Windows
