@@ -37,3 +37,37 @@ bind status  +      !git commit --amend --allow-empty
 
 # 直前のコミットをコミット前の状態に戻す
 bind generic ^      ?git reset --soft HEAD^
+
+# -- onedark 風のテーマ --
+# General colors
+color default        default default
+color cursor         black   blue    bold
+color status         green   default
+color delimiter      cyan    default
+color date           yellow  default
+color mode           cyan    default
+
+# Main view
+color main-commit    white  default
+color main-tag       magenta default bold
+color main-local-tag magenta default
+color main-remote    blue    default
+color main-head      green   default bold
+
+# Diff view
+color diff-header    blue    default
+color diff-index     cyan    default
+color diff-chunk     magenta default
+color "---"          red     default
+color "+++"          green   default
+color diff-add       green   default
+color diff-del       red     default
+color diff-add2      green   default
+color diff-del2      red     default
+
+# Status view
+color status.header      blue    default
+color status.section   cyan    default
+color stat-staged    green   default
+color stat-unstaged  red     default
+color stat-untracked red     default
