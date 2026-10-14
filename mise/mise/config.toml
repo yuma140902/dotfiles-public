@@ -60,6 +60,7 @@ compile = false
 # Coding agent
 "aqua:ogulcancelik/herdr" = { version = "0.9.1", os = ["linux", "macos"], lazy = true, lazy_bins = [ "herdr" ] }
 "aqua:openai/codex" = { version = "0.153.0", os = ["linux", "macos"], lazy = true, lazy_bins = [ "codex" ] }
+"cargo:rust-analyzer-mcp" = { version = "0.4.0", lazy = true, lazy_bins = [ "rust-analyzer-mcp" ] }
 
 # Windows
 "aqua:qpdf/qpdf" = { version = "12.4.1", os = ["windows"] }
