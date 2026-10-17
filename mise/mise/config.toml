@@ -68,7 +68,7 @@ compile = false
 "github:psmux/psmux" = { version = "3.3.8", os = ["windows"], lazy = true, lazy_bins = [ "psmux" ] }
 
 # macOS
-"aqua:lima-vm/lima" = { version = "2.2.0", os = ["macos"], lazy = true, lazy_bins = [ "lima" ] }
+"aqua:lima-vm/lima" = { version = "2.2.1", os = ["macos"], lazy = true, lazy_bins = [ "lima" ] }
 
 # Performance
 "cargo:samply" = { version = "0.13.1", lazy = true, lazy_bins = [ "samply" ] }
