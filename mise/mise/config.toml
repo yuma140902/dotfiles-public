@@ -63,7 +63,7 @@ compile = false
 "cargo:rust-analyzer-mcp" = { version = "0.4.0", lazy = true, lazy_bins = [ "rust-analyzer-mcp" ] }
 
 # Windows
-"aqua:qpdf/qpdf" = { version = "12.4.1", os = ["windows"] }
+"aqua:qpdf/qpdf" = { version = "12.4.2", os = ["windows"] }
 "cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = [ "windows" ] }
 "github:psmux/psmux" = { version = "3.3.8", os = ["windows"], lazy = true, lazy_bins = [ "psmux" ] }
 
