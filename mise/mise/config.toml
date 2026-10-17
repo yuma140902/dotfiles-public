@@ -33,7 +33,7 @@ compile = false
 # Git
 "aqua:cli/cli" = { version = "2.102.0", lazy = true, lazy_bins = [ "gh" ] }
 "aqua:k1LoW/git-wt" = "0.29.3"
-"aqua:x-motemen/ghq" = "1.10.1"
+"aqua:x-motemen/ghq" = "1.11.2"
 "npm:tiged" = { version = "2.12.8", lazy = true, lazy_bins = [ "tiged" ] }
 
 # Neovim
