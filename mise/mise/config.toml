@@ -49,7 +49,7 @@ compile = false
 
 # Python
 "aqua:astral-sh/uv" = "0.13.5"
-"pipx:marimo" = { version = "0.25.1", lazy = true, lazy_bins = [ "marimo" ] }
+"pipx:marimo" = { version = "0.25.2", lazy = true, lazy_bins = [ "marimo" ] }
 
 # Javascript
 "aqua:pnpm/pnpm" = { version = "12.15.0", lazy = true, lazy_bins = [ "pnpm" ] }
