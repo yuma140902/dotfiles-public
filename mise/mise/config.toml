@@ -66,7 +66,7 @@ compile = false
 # Windows
 "aqua:qpdf/qpdf" = { version = "12.4.2", os = ["windows"] }
 "cargo:https://github.com/yuma140902/grid-images" = { version = "tag:v0.1.0", os = [ "windows" ] }
-"github:psmux/psmux" = { version = "3.3.8", os = ["windows"], lazy = true, lazy_bins = [ "psmux" ] }
+"github:psmux/psmux" = { version = "3.4.0", os = ["windows"], lazy = true, lazy_bins = [ "psmux" ] }
 
 # macOS
 "aqua:lima-vm/lima" = { version = "2.2.1", os = ["macos"], lazy = true, lazy_bins = [ "lima" ] }
