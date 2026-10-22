@@ -29,7 +29,7 @@ compile = false
 "cargo:tokei" = { version = "15.0.0", lazy = true, lazy_bins = [ "tokei" ] }
 "npm:trash-cli" = { version = "7.2.0", os = ["windows"] }
 "pipx:trash-cli" = { version = "0.26.9.29", os = ["linux", "macos"] }
-"aqua:rclone/rclone" = { version = "1.75.1", lazy = true, lazy_bins = [ "rclone" ] }
+"aqua:rclone/rclone" = { version = "1.75.2", lazy = true, lazy_bins = [ "rclone" ] }
 
 # Git
 "aqua:cli/cli" = { version = "2.102.0", lazy = true, lazy_bins = [ "gh" ] }
