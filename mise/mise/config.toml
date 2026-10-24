@@ -30,6 +30,7 @@ compile = false
 "npm:trash-cli" = { version = "7.2.0", os = ["windows"] }
 "pipx:trash-cli" = { version = "0.26.9.29", os = ["linux", "macos"] }
 "aqua:rclone/rclone" = { version = "1.75.2", lazy = true, lazy_bins = [ "rclone" ] }
+"aqua:rustic-rs/rustic" = { version = "0.11.4", lazy = true, lazy_bins = [ "rustic" ] }
 
 # Git
 "aqua:cli/cli" = { version = "2.103.0", lazy = true, lazy_bins = [ "gh" ] }
