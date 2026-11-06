@@ -33,7 +33,7 @@ compile = false
 "aqua:rustic-rs/rustic" = { version = "0.11.4", lazy = true, lazy_bins = ["rustic"] }
 
 # Git
-"aqua:cli/cli" = { version = "2.103.0", lazy = true, lazy_bins = ["gh"] }
+"aqua:cli/cli" = { version = "2.103.3", lazy = true, lazy_bins = ["gh"] }
 "aqua:k1LoW/git-wt" = "0.30.0"
 "aqua:x-motemen/ghq" = "1.11.2"
 "npm:tiged" = { version = "2.12.8", lazy = true, lazy_bins = ["tiged"] }
