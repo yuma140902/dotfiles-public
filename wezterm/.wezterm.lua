@@ -142,6 +142,9 @@ local function make_split_with_specified_domain_action_callback(direction)
     window_:perform_action(wezterm.action.InputSelector {
       title = 'Select domain',
       action = wezterm.action_callback(function(window__, pane__, id, label)
+        if id == nil then
+          return
+        end
         pane__:split {
           domain = { DomainName = id },
           direction = split_direction,
