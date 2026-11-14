@@ -17,7 +17,7 @@ compile = false
 "aqua:aws/aws-cli" = { version = "2.39.3", os = ["linux"], lazy = true, lazy_bins = ["aws"] }
 "aqua:chmln/sd" = "1.1.0"
 "aqua:cloudflare/cloudflared" = "2026.10.7"
-"aqua:fastfetch-cli/fastfetch" = { version = "2.70.0", lazy = true, lazy_bins = ["fastfetch"] }
+"aqua:fastfetch-cli/fastfetch" = { version = "2.71.0", lazy = true, lazy_bins = ["fastfetch"] }
 "aqua:jqlang/jq" = "1.8.2"
 "aqua:junegunn/fzf" = "0.74.5"
 "aqua:lsd-rs/lsd" = "1.2.0"
