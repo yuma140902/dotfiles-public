@@ -22,7 +22,7 @@ compile = false
 "aqua:junegunn/fzf" = "0.74.5"
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:sharkdp/bat" = "0.26.1"
-"aqua:sharkdp/fd" = "10.5.0"
+"aqua:sharkdp/fd" = "10.5.1"
 "aqua:topgrade-rs/topgrade" = { version = "17.14.1", lazy = true, lazy_bins = ["topgrade"] }
 "cargo:random-output" = { version = "0.3.11", lazy = true, lazy_bins = ["random-output"] }
 "cargo:tealdeer" = { version = "1.9.1", lazy = true, lazy_bins = ["tldr"] }
