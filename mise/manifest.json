@@ -1,8 +1,8 @@
 {
   "files": [
     {
-      "src": "mise",
-      "dst": "${XDG_CONFIG_HOME}/mise"
+      "src": "mise/config.toml",
+      "dst": "${XDG_CONFIG_HOME}/mise/config.toml"
     }
   ]
 }
