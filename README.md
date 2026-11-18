@@ -64,6 +64,22 @@ Mise を使ってツール類のインストールができる。まず
 
 `$HOME/.include.zsh` を使用する。このスクリプトは .zshrc から source される。
 
+### mise
+
+`~/.config/mise/config.local.toml` を使用する。このファイルは mise 自体の機能によって読み込まれる。
+
+### wezterm
+
+`~/.wezterm.local.lua` を使用する。以下のように関数の形で実装する。`wezterm.config_builder()` が引数として渡される。
+
+例:
+
+```lua
+return function(config)
+    config.window_background_opacity = 0.9
+end
+```
+
 ## ベンチマーク
 
 GitHub Actions で Neovim のベンチマークを行っている。
