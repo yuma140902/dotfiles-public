@@ -1,10 +1,5 @@
 local wezterm = require 'wezterm'
-
 local config = wezterm.config_builder()
-
-if wezterm.config_builder then
-  config = wezterm.config_builder()
-end
 
 local font_name = 'UDEV Gothic NFLG'
 --config.font = wezterm.font 'HackGen Console NF'
