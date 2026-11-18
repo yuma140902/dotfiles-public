@@ -13,7 +13,7 @@ return {
     vim.opt.cursorline = true
     require 'onedark'.setup {
       style = 'darker',
-      transparent = false,
+      transparent = true,
       term_colors = true,
       ending_tildes = true,
       cmp_itemkind_reverse = false,
