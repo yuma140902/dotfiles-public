@@ -167,4 +167,12 @@ wezterm.on('augment-command-palette', function(window, pane)
   }
 end)
 
+-- マシン固有の設定
+local local_config = wezterm.home_dir .. '/.wezterm.local.lua'
+local file = io.open(local_config, 'r')
+if file then
+  file:close()
+  dofile(local_config)(config)
+end
+
 return config
