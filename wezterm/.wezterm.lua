@@ -113,6 +113,35 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   }
 end
 
+local extra = {}
+
+---@class Wallpaper
+---@field name string 壁紙の名前
+---@field filename string ファイル名．`~/.config/wezterm/` からの相対パス
+---@field image_brightness number 画像の明るさ．1.0 が元の明るさ
+---@field text_brightness number 文字の明るさ．1.0 が元の明るさ
+
+---@return Wallpaper[]
+function extra.list_wallpapers()
+  return {}
+end
+
+---@param wallpapers Wallpaper[]
+local function make_wallpaper_choices(wallpapers)
+  local ret = {}
+  ret[1] = {
+    label = 'No wallpaper',
+    id = "0",
+  }
+  for i, wallpaper in ipairs(wallpapers) do
+    ret[i + 1] = {
+      label = wallpaper.name,
+      id = tostring(i),
+    }
+  end
+  return ret
+end
+
 ---@param direction `'horizontal'` | `'vertical'`
 local function make_split_with_specified_domain_action_callback(direction)
   local split_direction
@@ -163,6 +192,47 @@ wezterm.on('augment-command-palette', function(window, pane)
       brief = '[custom] Split vertically with specified domain',
       icon = 'cod_split_vertical',
       action = make_split_with_specified_domain_action_callback('vertical'),
+    },
+    {
+      brief = '[custom] Change wallpaper',
+      icon = 'md_wallpaper',
+      action = wezterm.action_callback(function(window, pane, line)
+        local wallpapers = extra.list_wallpapers()
+        if #wallpapers == 0 then
+          wezterm.log_info('No wallpapers found')
+        end
+
+        window:perform_action(wezterm.action.InputSelector {
+          title = 'Select wallpaper',
+          action = wezterm.action_callback(function(window, pane, id, label)
+            if id == nil then
+              return
+            end
+            local overrides = window:get_config_overrides() or {}
+            if id == "0" then
+              overrides.background = nil
+              overrides.foreground_text_hsb = nil
+            else
+              local id_num = tonumber(id)
+              overrides.background = {
+                {
+                  source = { File = wezterm.home_dir .. '/.config/wezterm/' .. wallpapers[id_num].filename },
+                  hsb = {
+                    brightness = wallpapers[id_num].image_brightness,
+                  },
+                  horizontal_align = 'Center',
+                }
+              }
+              overrides.foreground_text_hsb = {
+                brightness = wallpapers[id_num].text_brightness,
+              }
+            end
+            window:set_config_overrides(overrides)
+          end),
+          choices = make_wallpaper_choices(wallpapers),
+          fuzzy = true,
+        }, pane)
+      end)
     }
   }
 end)
@@ -172,7 +242,7 @@ local local_config = wezterm.home_dir .. '/.wezterm.local.lua'
 local file = io.open(local_config, 'r')
 if file then
   file:close()
-  dofile(local_config)(config)
+  dofile(local_config)(wezterm, config, extra)
 end
 
 return config

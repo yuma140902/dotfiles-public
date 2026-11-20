@@ -70,12 +70,12 @@ Mise を使ってツール類のインストールができる。まず
 
 ### wezterm
 
-`~/.wezterm.local.lua` を使用する。以下のように関数の形で実装する。`wezterm.config_builder()` が引数として渡される。
+`~/.wezterm.local.lua` を使用する。以下のように関数の形で実装する。`wezterm`, `wezterm.config_builder()`, `extra` が引数として渡される。`extra` の内容はコードを参照．
 
 例:
 
 ```lua
-return function(config)
+return function(wezterm, config, extra)
     config.window_background_opacity = 0.9
 end
 ```
