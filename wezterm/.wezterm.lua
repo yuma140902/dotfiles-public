@@ -210,8 +210,8 @@ wezterm.on('augment-command-palette', function(window, pane)
             end
             local overrides = window:get_config_overrides() or {}
             if id == "0" then
-              overrides.background = nil
-              overrides.foreground_text_hsb = nil
+              overrides.background = {}
+              overrides.foreground_text_hsb = {}
             else
               local id_num = tonumber(id)
               overrides.background = {
