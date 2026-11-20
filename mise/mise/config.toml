@@ -16,10 +16,10 @@ compile = false
 "aqua:ajeetdsouza/zoxide" = "0.10.0"
 "aqua:aws/aws-cli" = { version = "2.39.6", os = ["linux"], lazy = true, lazy_bins = ["aws"] }
 "aqua:chmln/sd" = "1.1.0"
-"aqua:cloudflare/cloudflared" = "2026.10.7"
+"aqua:cloudflare/cloudflared" = "2026.11.0"
 "aqua:fastfetch-cli/fastfetch" = { version = "2.71.0", lazy = true, lazy_bins = ["fastfetch"] }
 "aqua:jqlang/jq" = "1.8.2"
-"aqua:junegunn/fzf" = "0.74.5"
+"aqua:junegunn/fzf" = "0.75.0"
 "aqua:lsd-rs/lsd" = "1.2.0"
 "aqua:sharkdp/bat" = "0.26.1"
 "aqua:sharkdp/fd" = "10.5.2"
@@ -33,14 +33,14 @@ compile = false
 "aqua:rustic-rs/rustic" = { version = "0.11.4", lazy = true, lazy_bins = ["rustic"] }
 
 # Git
-"aqua:cli/cli" = { version = "2.103.3", lazy = true, lazy_bins = ["gh"] }
+"aqua:cli/cli" = { version = "2.104.0", lazy = true, lazy_bins = ["gh"] }
 "aqua:k1LoW/git-wt" = "0.30.0"
 "aqua:x-motemen/ghq" = "1.12.0"
 "npm:tiged" = { version = "2.12.8", lazy = true, lazy_bins = ["tiged"] }
 
 # Neovim
 "vfox:mise-plugins/vfox-neovim" = "0.12.6"
-"aqua:tree-sitter/tree-sitter" = "0.27.1"
+"aqua:tree-sitter/tree-sitter" = "0.27.2"
 
 # Language servers, linters and formatters
 "aqua:rhysd/actionlint" = { version = "1.7.12", lazy = true, lazy_bins = ["actionlint"] }
@@ -49,19 +49,19 @@ compile = false
 "go:github.com/dhananjaylatkar/cscope_lsp" = "0.0.0-20260528122522-ea87eb716001"
 
 # Python
-"aqua:astral-sh/uv" = "0.13.7"
+"aqua:astral-sh/uv" = "0.13.8"
 "pipx:marimo" = { version = "0.25.2", lazy = true, lazy_bins = ["marimo"] }
 
 # Javascript
-"aqua:pnpm/pnpm" = { version = "12.18.0", lazy = true, lazy_bins = ["pnpm"] }
+"aqua:pnpm/pnpm" = { version = "12.20.0", lazy = true, lazy_bins = ["pnpm"] }
 
 # Rust
-"cargo:cargo-audit" = { version = "0.22.2", lazy = true, lazy_bins = ["cargo-audit"] }
+"cargo:cargo-audit" = { version = "0.23.0", lazy = true, lazy_bins = ["cargo-audit"] }
 "cargo:cargo-bloat" = { version = "0.12.1", lazy = true, lazy_bins = ["cargo-bloat"] }
 
 # Coding agent
 "aqua:ogulcancelik/herdr" = { version = "0.9.5", os = ["linux", "macos"], lazy = true, lazy_bins = ["herdr"] }
-"aqua:openai/codex" = { version = "0.167.0", os = ["linux", "macos"], lazy = true, lazy_bins = ["codex"] }
+"aqua:openai/codex" = { version = "0.168.0", os = ["linux", "macos"], lazy = true, lazy_bins = ["codex"] }
 "cargo:rust-analyzer-mcp" = { version = "0.4.0", lazy = true, lazy_bins = ["rust-analyzer-mcp"] }
 
 # Windows
@@ -76,10 +76,10 @@ compile = false
 "cargo:samply" = { version = "0.13.1", lazy = true, lazy_bins = ["samply"] }
 "cargo:flamegraph" = { version = "0.6.15", lazy = true, lazy_bins = ["flamegraph", "cargo-flamegraph"] }
 
-node = "26.13.0"
+node = "26.13.1"
 python = "3.15.2"
 rust = { version = "1.100.0", components = "rust-src,rust-analyzer" }
-go = "1.27.3"
+go = "1.27.4"
 
 [bootstrap.packages]
 # brew backend ではバージョン指定がまだサポートされていないので仕方なく latest を指定する
