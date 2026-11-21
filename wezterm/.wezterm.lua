@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+config.mux_enable_ssh_agent = false
+
 local font_name = 'UDEV Gothic NFLG'
 --config.font = wezterm.font 'HackGen Console NF'
 --config.font = wezterm.font 'UDEV Gothic NF'
