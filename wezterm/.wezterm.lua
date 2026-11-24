@@ -28,10 +28,6 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
     },
   }
 end
-if wezterm.hostname() == 'pc5thinkpad' then
-  config.front_end = 'WebGpu'
-  config.font_size = 11.0
-end
 
 config.use_ime = true
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
