@@ -155,7 +155,7 @@ if [ -f "$HOME/.include.zsh" ]; then
   source "$HOME/.include.zsh"
 fi
 
-agent="$HOME/.ssh/agent"
+agent="$HOME/.ssh/agent_"
 if [ -S "$SSH_AUTH_SOCK" ]; then
 	case $SSH_AUTH_SOCK in
 	/tmp/*/agent.[0-9]*)
